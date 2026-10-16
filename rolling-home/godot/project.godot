@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rolling Home"
-config/description="家滾滾：從家裡出發的塊球收集遊戲原型（Godot 4.7）"
+config/description="家滾滾：給小學生玩的滾球收集遊戲，從書桌上的小玻璃珠開始（Godot 4.7）"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -41,9 +41,9 @@ theme/custom_font="res://assets/fonts/Huninn-Regular.ttf"
 common/physics_ticks_per_second=60
 jolt_physics_3d/limits/max_linear_velocity=20000.0
 jolt_physics_3d/limits/max_angular_velocity=100.0
-jolt_physics_3d/simulation/speculative_contact_distance=0.5
-jolt_physics_3d/simulation/penetration_slop=0.1
-jolt_physics_3d/simulation/sleep_velocity_threshold=1.0
+jolt_physics_3d/simulation/speculative_contact_distance=0.3
+jolt_physics_3d/simulation/penetration_slop=0.03
+jolt_physics_3d/simulation/sleep_velocity_threshold=0.3
 
 [rendering]
 

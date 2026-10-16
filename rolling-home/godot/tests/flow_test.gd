@@ -33,16 +33,16 @@ func _process(delta: float) -> void:
 			pass
 		8:
 			_expect(not Game.last_result.is_empty(), "結算資料已記錄")
-			_expect(_find_label("塊球直徑"), "結算畫面顯示直徑")
+			_expect(_find_label("滾球變成"), "結算畫面顯示直徑")
 			_main.show_collection()
 		9:
-			_expect(_find_label("收藏目錄"), "收藏目錄畫面")
+			_expect(_find_label("收藏圖鑑"), "收藏圖鑑畫面")
 			_main.show_stage_select()
 		10:
-			_expect(_find_label("關卡選擇"), "關卡選擇畫面")
+			_expect(_find_label("選關卡"), "選關卡畫面")
 			_main.show_help()
 		11:
-			_expect(_find_label("操作說明"), "操作說明畫面")
+			_expect(_find_label("怎麼玩"), "怎麼玩畫面")
 			_main.start_stage("home_2")
 		12:
 			var stage2 := _main.get_child(_main.get_child_count() - 1) as Stage

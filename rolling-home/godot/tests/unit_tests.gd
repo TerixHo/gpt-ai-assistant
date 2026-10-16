@@ -26,6 +26,7 @@ func check(cond: bool, label: String) -> void:
 func _test_kmath() -> void:
 	check(KMath.format_size(5.0) == "5cm", "format 5cm")
 	check(KMath.format_size(12.34) == "12cm3mm", "format 12.34cm")
+	check(KMath.format_size(0.6) == "6mm", "format 6mm")
 	check(KMath.format_size(100.0) == "1m", "format 1m")
 	check(KMath.format_size(124.0) == "1m24cm", "format 1m24cm")
 	check(KMath.format_time(65.2) == "1:06", "format time")

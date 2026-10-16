@@ -77,8 +77,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _pick_target(k: Katamari) -> PickupItem:
-	var best: PickupItem = null
-	var best_score := INF
+	# 先找同一個高度（例如同一張桌面）上的目標，沒有了才往下找
+	var same := _pick(k, true)
+	return same if same != null else _pick(k, false)
+
+
+func _pick(k: Katamari, same_level: bool) -> PickupItem:
+	var candidates: Array = []
 	var p := k.global_position
 	var bottom := p.y - k.radius()
 	for child in stage.items_root.get_children():
@@ -94,9 +99,30 @@ func _pick_target(k: Katamari) -> PickupItem:
 		# 高於塊球的東西（桌上、架上）通常到不了
 		if dy > k.radius() * 0.8:
 			continue
+		if same_level and dy < -maxf(k.diameter, 3.0):
+			continue
 		var score := Vector2(q.x - p.x, q.z - p.z).length() + absf(dy) * 3.0
-		score -= item.size_cm * 2.0
-		if score < best_score:
-			best_score = score
-			best = item
-	return best
+		# 越大的東西越值得去黏；相對太小的東西（米粒之於大球）幾乎不會讓球長大
+		score -= item.size_cm * 6.0
+		if item.size_cm < k.diameter * 0.1:
+			score += 400.0
+		candidates.append([score, item])
+	candidates.sort_custom(func(a, b): return a[0] < b[0])
+	# 只挑整顆球過得去的目標（沒有被牆、門框或還沒打開的門擋住），機器人不會繞路
+	var space := k.get_world_3d().direct_space_state
+	var cast := PhysicsShapeQueryParameters3D.new()
+	var sphere := SphereShape3D.new()
+	sphere.radius = k.radius() * 0.85
+	cast.shape = sphere
+	cast.collision_mask = KMath.LAYER_WORLD | KMath.LAYER_GATE
+	var start := p + Vector3.UP * k.radius() * 0.2
+	cast.transform = Transform3D(Basis.IDENTITY, start)
+	for i in mini(candidates.size(), 12):
+		var item: PickupItem = candidates[i][1]
+		var goal := item.global_position
+		goal.y = start.y
+		cast.motion = goal - start
+		var frac := space.cast_motion(cast)
+		if frac.is_empty() or frac[0] >= 0.98:
+			return item
+	return null

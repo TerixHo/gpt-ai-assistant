@@ -1,59 +1,245 @@
 {
-	"_note": "關卡節奏（起始尺寸／目標／時限）參考 2004 原作的成長曲線，場景、物件與命名皆為原創。playable=false 為規劃中關卡。",
+	"_note": "給小學生的關卡設計：從 1.2 公分（只黏得起 6 到 8mm 的小玻璃珠）開始，同一棟房子逐關放大。節奏參考 2004 原作的成長曲線，場景、物件與命名皆為原創。playable=false 為規劃中。",
 	"stages": [
 		{
 			"id": "home_1",
-			"name": "家 1：客廳",
+			"name": "1. 書桌上的小珠珠",
 			"playable": true,
 			"level": "res://data/levels/home.json",
-			"zones": ["living_table", "living_rug", "under_sofa", "living_floor"],
-			"gates": {"front_door": 999, "living_kitchen": 999, "kitchen_backyard": 999},
-			"start_cm": 5,
-			"goal_cm": 10,
-			"time_sec": 180,
-			"comet_sec": 60,
+			"zones": [
+				"girl_desk_beads",
+				"girl_desk",
+				"boy_desk",
+				"kids_floor",
+				"kids_mat"
+			],
+			"gates": {
+				"pet_gate_e": 999,
+				"pet_gate_s": 999,
+				"fusuma": 999,
+				"hall_door": 999,
+				"washroom_door": 999,
+				"deck_window": 999
+			},
+			"start_cm": 1.2,
+			"goal_cm": 5,
+			"time_sec": 240,
+			"comet_sec": 100,
 			"seed": 2004,
 			"music": "home",
-			"intro": "從茶几出發！做出 10cm 的塊球",
-			"tuning": {},
+			"start": {
+				"pos": [
+					85,
+					72.3,
+					322
+				],
+				"yaw_deg": -90
+			},
+			"intro": "從姊姊的書桌出發！先把小玻璃珠黏起來，變成 5 公分吧",
+			"tuning": {
+				"min_top_speed": 6.0
+			},
 			"grades": [
-				{"min_ratio": 0.0, "text": "星婆婆：這麼小一顆，連螢火蟲都比它亮。再來一次！"},
-				{"min_ratio": 1.0, "text": "星婆婆：嗯，算是一顆星星了。勉強及格。"},
-				{"min_ratio": 1.3, "text": "星婆婆：不錯喔！夜空亮了一點點。"},
-				{"min_ratio": 1.6, "text": "星婆婆：哎唷，滾得真漂亮，婆婆眼睛都亮了！"},
-				{"min_ratio": 1.9, "text": "星婆婆：太厲害了！這顆要掛在夜空正中間！"}
+				{
+					"min_ratio": 0.0,
+					"text": "星婆婆：還差一點點！再試一次一定可以的！"
+				},
+				{
+					"min_ratio": 1.0,
+					"text": "星婆婆：做到了！書桌變乾淨囉。"
+				},
+				{
+					"min_ratio": 1.3,
+					"text": "星婆婆：好棒！連弟弟的積木都黏起來了。"
+				},
+				{
+					"min_ratio": 1.6,
+					"text": "星婆婆：哇，好大一顆！你是收拾高手！"
+				},
+				{
+					"min_ratio": 1.9,
+					"text": "星婆婆：太厲害了！這顆星星要掛在最亮的地方！"
+				}
 			]
 		},
 		{
 			"id": "home_2",
-			"name": "家 2：一樓與後院",
+			"name": "2. 客廳大冒險",
 			"playable": true,
 			"level": "res://data/levels/home.json",
-			"zones": ["living_table", "living_rug", "under_sofa", "living_floor", "kitchen_floor", "backyard_floor"],
-			"gates": {"front_door": 999, "living_kitchen": 12, "kitchen_backyard": 15},
-			"start_cm": 5,
-			"goal_cm": 20,
-			"time_sec": 360,
-			"comet_sec": 180,
+			"zones": [
+				"girl_desk_beads",
+				"girl_desk",
+				"boy_desk",
+				"kids_floor",
+				"kids_mat",
+				"living_floor",
+				"living_rug",
+				"dining_floor",
+				"kitchen_floor",
+				"kitchen_south",
+				"pet_corner",
+				"washitsu_floor"
+			],
+			"gates": {
+				"pet_gate_e": 4,
+				"pet_gate_s": 4,
+				"fusuma": 9,
+				"hall_door": 999,
+				"washroom_door": 999,
+				"deck_window": 999
+			},
+			"start_cm": 3,
+			"goal_cm": 15,
+			"time_sec": 420,
+			"comet_sec": 200,
 			"seed": 2005,
 			"music": "home",
-			"intro": "整個一樓都是你的！做出 20cm",
+			"start": {
+				"pos": [
+					150,
+					1.0,
+					470
+				],
+				"yaw_deg": 180
+			},
+			"intro": "長到 4 公分，寵物柵欄就會打開喔！目標 15 公分",
 			"tuning": {},
 			"grades": [
-				{"min_ratio": 0.0, "text": "星婆婆：廚房還有好多東西沒滾到呢。"},
-				{"min_ratio": 1.0, "text": "星婆婆：好，這顆星星可以用。"},
-				{"min_ratio": 1.3, "text": "星婆婆：連後院都滾乾淨啦？不錯不錯。"},
-				{"min_ratio": 1.6, "text": "星婆婆：哇！這顆星星好圓好亮！"},
-				{"min_ratio": 1.9, "text": "星婆婆：婆婆要拿去當北極星了！"}
+				{
+					"min_ratio": 0.0,
+					"text": "星婆婆：小心貓咪！再挑戰一次吧！"
+				},
+				{
+					"min_ratio": 1.0,
+					"text": "星婆婆：客廳整理好了，謝謝你！"
+				},
+				{
+					"min_ratio": 1.3,
+					"text": "星婆婆：和室裡的日本玩具也找到了嗎？"
+				},
+				{
+					"min_ratio": 1.6,
+					"text": "星婆婆：好大的滾球！貓咪都嚇一跳！"
+				},
+				{
+					"min_ratio": 1.9,
+					"text": "星婆婆：太厲害了！這顆星星亮晶晶！"
+				}
 			]
 		},
-		{"id": "park_1", "name": "3：街角公園", "playable": false, "start_cm": 10, "goal_cm": 50, "time_sec": 480},
-		{"id": "home_street", "name": "4：家與巷口", "playable": false, "start_cm": 5, "goal_cm": 100, "time_sec": 600},
-		{"id": "market", "name": "5：市場與商店街", "playable": false, "start_cm": 10, "goal_cm": 150, "time_sec": 720},
-		{"id": "school", "name": "6：學校與廟埕", "playable": false, "start_cm": 50, "goal_cm": 300, "time_sec": 600},
-		{"id": "riverside", "name": "7：河濱公園", "playable": false, "start_cm": 50, "goal_cm": 600, "time_sec": 600},
-		{"id": "town", "name": "8：整個小鎮", "playable": false, "start_cm": 10, "goal_cm": 1200, "time_sec": 1080},
-		{"id": "city", "name": "9：城市", "playable": false, "start_cm": 50, "goal_cm": 3000, "time_sec": 1080},
-		{"id": "island", "name": "10：整座島", "playable": false, "start_cm": 100, "goal_cm": 30000, "time_sec": 1500}
+		{
+			"id": "home_3",
+			"name": "3. 全家走透透",
+			"playable": true,
+			"level": "res://data/levels/home.json",
+			"zones": [
+				"girl_desk_beads",
+				"girl_desk",
+				"boy_desk",
+				"kids_floor",
+				"kids_mat",
+				"living_floor",
+				"living_rug",
+				"dining_floor",
+				"kitchen_floor",
+				"kitchen_south",
+				"pet_corner",
+				"washitsu_floor",
+				"hallway_floor",
+				"genkan_hall",
+				"genkan_doma",
+				"washroom_floor",
+				"deck",
+				"garden",
+				"garden_east"
+			],
+			"gates": {
+				"pet_gate_e": 0,
+				"pet_gate_s": 0,
+				"fusuma": 7,
+				"hall_door": 10,
+				"washroom_door": 14,
+				"deck_window": 17
+			},
+			"start_cm": 6,
+			"goal_cm": 30,
+			"time_sec": 600,
+			"comet_sec": 300,
+			"seed": 2006,
+			"music": "home",
+			"start": {
+				"pos": [
+					150,
+					1.0,
+					470
+				],
+				"yaw_deg": 180
+			},
+			"intro": "整個一樓都可以去！長到 30 公分，就能把貓咪黏起來囉",
+			"tuning": {},
+			"grades": [
+				{
+					"min_ratio": 0.0,
+					"text": "星婆婆：家裡好大喔，再滾一次吧！"
+				},
+				{
+					"min_ratio": 1.0,
+					"text": "星婆婆：全家都整理好了！"
+				},
+				{
+					"min_ratio": 1.3,
+					"text": "星婆婆：連院子的小石頭都滾起來了！"
+				},
+				{
+					"min_ratio": 1.6,
+					"text": "星婆婆：哇！連貓咪都變成星星的一部分了！"
+				},
+				{
+					"min_ratio": 1.9,
+					"text": "星婆婆：小狗也黏起來了？你是全世界最會滾的小朋友！"
+				}
+			]
+		},
+		{
+			"id": "street",
+			"name": "4. 家門前的巷子",
+			"playable": false,
+			"start_cm": 20,
+			"goal_cm": 200,
+			"time_sec": 600
+		},
+		{
+			"id": "park",
+			"name": "5. 公園",
+			"playable": false,
+			"start_cm": 50,
+			"goal_cm": 500,
+			"time_sec": 600
+		},
+		{
+			"id": "school",
+			"name": "6. 學校",
+			"playable": false,
+			"start_cm": 100,
+			"goal_cm": 2000,
+			"time_sec": 720
+		},
+		{
+			"id": "town",
+			"name": "7. 小鎮",
+			"playable": false,
+			"start_cm": 300,
+			"goal_cm": 10000,
+			"time_sec": 900
+		},
+		{
+			"id": "island",
+			"name": "8. 整座島",
+			"playable": false,
+			"start_cm": 1000,
+			"goal_cm": 100000,
+			"time_sec": 1200
+		}
 	]
 }

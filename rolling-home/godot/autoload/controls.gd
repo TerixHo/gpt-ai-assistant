@@ -5,7 +5,8 @@ extends Node
 ##   兩桿同推前 = 前進；同推後 = 後退；同推左右 = 平移。
 ##   左桿前右桿後 = 原地右轉；反之左轉。
 ##   兩桿上下快速交替 = 王子衝刺；同時按下兩桿（L3+R3）= 180 度迴轉。
-## 鍵盤簡化模式會先轉成同樣的虛擬雙搖桿，後段邏輯完全共用。
+## 簡化模式（預設，適合小學生）：鍵盤 W/S 前後、A/D 轉向；手把左桿上下前後、左右轉向，右桿左右也能轉向。
+## 簡化模式會先轉成同樣的虛擬雙搖桿，後段邏輯完全共用。
 
 class Drive:
 	## x 為向右平移、y 為前進（相機座標），長度不超過 1
@@ -68,13 +69,16 @@ func _add_keys(action: String, keys: Array, buttons: Array = []) -> void:
 		InputMap.action_add_event(action, jb)
 
 
+func is_simple() -> bool:
+	return Game.settings.get("control_scheme", "simple") == "simple"
+
+
 func scheme_label() -> String:
-	return "鍵盤簡化" if Game.settings["keyboard_scheme"] == "simple" else "鍵盤雙搖桿"
+	return "簡單操作" if is_simple() else "雙搖桿（原作式）"
 
 
 func toggle_scheme() -> void:
-	var s: String = Game.settings["keyboard_scheme"]
-	Game.settings["keyboard_scheme"] = "classic" if s == "simple" else "simple"
+	Game.settings["control_scheme"] = "classic" if is_simple() else "simple"
 	Game.save()
 
 
@@ -87,14 +91,22 @@ func read(delta: float) -> Drive:
 	var right := Vector2.ZERO
 	var pads := Input.get_connected_joypads()
 	var stick_click := false
+	var simple := is_simple()
 	if not pads.is_empty():
 		var id: int = pads[0]
-		left = _stick(id, JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y)
-		right = _stick(id, JOY_AXIS_RIGHT_X, JOY_AXIS_RIGHT_Y)
+		var ls := _stick(id, JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y)
+		var rs := _stick(id, JOY_AXIS_RIGHT_X, JOY_AXIS_RIGHT_Y)
 		stick_click = Input.is_joy_button_pressed(id, JOY_BUTTON_LEFT_STICK) \
 			and Input.is_joy_button_pressed(id, JOY_BUTTON_RIGHT_STICK)
+		if simple:
+			var turn_pad := clampf(ls.x * 0.8 + rs.x, -1.0, 1.0)
+			left += Vector2(0.0, ls.y + turn_pad)
+			right += Vector2(0.0, ls.y - turn_pad)
+		else:
+			left = ls
+			right = rs
 
-	if Game.settings["keyboard_scheme"] == "simple":
+	if simple:
 		var fwd := Input.get_axis("kb_back", "kb_forward")
 		var turn := Input.get_axis("kb_left", "kb_right")
 		var strafe := Input.get_axis("kb_strafe_left", "kb_strafe_right")

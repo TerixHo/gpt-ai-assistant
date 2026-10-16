@@ -49,7 +49,8 @@ static func material(hex: String) -> StandardMaterial3D:
 
 
 ## 回傳 { "visual": Node3D, "shapes": [ {shape, xform}, ... ] }
-static func build(def: Dictionary) -> Dictionary:
+## color_override：簡單形狀整個換色；組合形狀只換標記 "tint": true 的零件。
+static func build(def: Dictionary, color_override := "") -> Dictionary:
 	var visual := Node3D.new()
 	visual.name = "Visual"
 	var shapes: Array = []
@@ -69,8 +70,13 @@ static func build(def: Dictionary) -> Dictionary:
 			var dims := KMath.vec3(p.get("dims"), Vector3.ONE)
 			var mi := MeshInstance3D.new()
 			mi.mesh = _mesh(shape_type, dims)
-			mi.material_override = material(p.get("color", def.get("color", "#cccccc")))
+			var hex: String = p.get("color", def.get("color", "#cccccc"))
+			if not color_override.is_empty() and (p.get("tint", false) or def.get("shape", "box") != "parts"):
+				hex = color_override
+			mi.material_override = material(hex)
 			mi.transform = _part_xform(p, dims)
+			if p.has("name"):
+				mi.name = p["name"]
 			visual.add_child(mi)
 	return {"visual": visual, "shapes": shapes}
 

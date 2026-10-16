@@ -81,21 +81,25 @@ func _process(delta: float) -> void:
 		return
 	var k := katamari.get_global_transform_interpolated().origin
 	var r := katamari.radius()
+	# 角色身高隨塊球緩慢放大（1.2cm 時約 1.6cm），小朋友在大尺寸時仍看得到角色
+	var h := clampf(1.6 * pow(katamari.diameter / 1.2, 0.4), 1.6, 7.0)
+	scale = Vector3.ONE * (h / HEIGHT)
 	var fwd := Vector3(-sin(cam.yaw), 0.0, -cos(cam.yaw))
-	var pos := Vector3(k.x, k.y, k.z) - fwd * (r + 1.0)
+	var pos := Vector3(k.x, k.y, k.z) - fwd * (r + h * 0.22)
 	# 腳底貼地：往下找最近的地面
 	_ray.from = pos + Vector3.UP * r
-	_ray.to = pos - Vector3.UP * (r + 60.0)
+	_ray.to = pos - Vector3.UP * (r + 80.0)
 	_ray.exclude = [katamari.get_rid()]
 	var hit := get_world_3d().direct_space_state.intersect_ray(_ray)
 	pos.y = (hit["position"] as Vector3).y if not hit.is_empty() else k.y - r
 	global_position = pos
 	rotation.y = cam.yaw
 	var speed := katamari.horizontal_speed()
-	_walk += delta * (4.0 + speed * 0.35) * (1.0 if speed > 1.0 else 0.0)
-	var swing := sin(_walk) * minf(speed / 20.0, 1.0) * 0.7
+	var rel := minf(speed / maxf(katamari.diameter * 2.5, 4.0), 1.0)
+	_walk += delta * (5.0 + rel * 6.0) * (1.0 if rel > 0.05 else 0.0)
+	var swing := sin(_walk) * rel * 0.7
 	if _legs.size() == 2:
 		_legs[0].rotation.x = swing
 		_legs[1].rotation.x = -swing
-	_body.position.y = absf(sin(_walk)) * 0.25 * minf(speed / 20.0, 1.0)
+	_body.position.y = absf(sin(_walk)) * 0.25 * rel
 	_body.rotation.x = -0.25 if katamari.is_dashing() else 0.0

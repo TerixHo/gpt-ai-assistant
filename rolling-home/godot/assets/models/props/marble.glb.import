@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://yuanwwduvijy"
-path="res://.godot/imported/mahjong.glb-ce9171f7d3386b488f9a6d33001f31e0.scn"
+uid="uid://bpumhnbpmbbps"
+path="res://.godot/imported/marble.glb-c6278d2f5667ff443267c70ab66abd69.scn"
 
 [deps]
 
-source_file="res://assets/models/props/mahjong.glb"
-dest_files=["res://.godot/imported/mahjong.glb-ce9171f7d3386b488f9a6d33001f31e0.scn"]
+source_file="res://assets/models/props/marble.glb"
+dest_files=["res://.godot/imported/marble.glb-c6278d2f5667ff443267c70ab66abd69.scn"]
 
 [params]
 

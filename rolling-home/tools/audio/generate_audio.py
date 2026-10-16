@@ -97,6 +97,21 @@ def sfx(out: Path):
         acc = acc * 0.85 + v * 0.15
         smooth.append(acc)
     write_wav(out / "dash.wav", smooth)
+    # 貓叫：音高先升後降、帶顫音與鼻音泛音
+    def meow_f(t):
+        base = 520 + 420 * math.sin(math.pi * min(t / 0.55, 1.0)) - 120 * max(0.0, t - 0.4)
+        return base * (1 + 0.02 * math.sin(2 * math.pi * 7 * t))
+    nasal = lambda p: math.sin(p) + 0.45 * math.sin(2 * p) + 0.25 * math.sin(3 * p) + 0.12 * math.sin(5 * p)
+    write_wav(out / "meow.wav", tone(meow_f, 0.6, nasal, attack=0.04, release=0.25, amp=0.5))
+    # 狗叫：短促下滑的吠聲，疊一點雜音
+    n = int(0.42 * RATE)
+    bark = lambda: mix(tone(lambda t: 380 - 500 * t, 0.16, soft_square, attack=0.005, release=0.1, amp=0.6),
+                       noise(0.12, 0.25, random.Random(3)))
+    write_wav(out / "woof.wav", mix(at(bark(), 0.0, n), at(bark(), 0.22, n)))
+    # 歡呼：快速上行的亮晶晶琶音
+    n = int(0.8 * RATE)
+    write_wav(out / "cheer.wav", mix(*[at(tone(lambda t, f=note_hz(m): f, 0.25, epiano, release=0.2, amp=0.7), i * 0.06, n)
+                                       for i, m in enumerate([72, 76, 79, 84, 88, 91])]))
 
 
 def music(out: Path, name: str, bpm: float, progression, seed: int, swing=0.0):

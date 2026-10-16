@@ -15,17 +15,19 @@ var look_up := false
 var _quick_turn_left := 0.0
 var _shake := 0.0
 var _ray := PhysicsRayQueryParameters3D.new()
+# 震動用自己的亂數，避免每秒畫面數不同時打亂遊戲邏輯共用的亂數序列（自動測試需要可重現）
+var _rng := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
 	name = "KatamariCamera"
 	camera = Camera3D.new()
-	camera.near = 0.25
+	camera.near = 0.1
 	camera.far = 8000.0
 	camera.fov = 64.0
 	add_child(camera)
 	camera.current = true
-	_ray.collision_mask = KMath.LAYER_WORLD | KMath.LAYER_ITEM
+	_ray.collision_mask = KMath.LAYER_WORLD | KMath.LAYER_ITEM | KMath.LAYER_GATE
 	_ray.hit_back_faces = false
 
 
@@ -57,8 +59,8 @@ func _process(delta: float) -> void:
 func _update(delta: float, instant: bool) -> void:
 	var t := target.get_global_transform_interpolated().origin
 	var dm := target.diameter
-	var dist := dm * 2.6 + 7.0
-	var height := dm * 1.1 + 3.0
+	var dist := dm * 3.2 + 4.0
+	var height := dm * 1.3 + 1.8
 	if look_up:
 		dist *= 1.6
 		height = dm * 6.0 + 30.0
@@ -79,12 +81,27 @@ func _update(delta: float, instant: bool) -> void:
 			exclude.append((col as PickupItem).get_rid())
 			_ray.exclude = exclude
 			continue
-		desired = (hit["position"] as Vector3) + (hit["normal"] as Vector3) * 1.5
+		var hit_pos := (hit["position"] as Vector3) + (hit["normal"] as Vector3) * 1.5
+		if hit_pos.distance_to(focus) < dm * 1.3:
+			# 背後太擠（緊貼牆或大家具）：改成從上方往下看，避免鏡頭穿進球裡
+			var over := t + Vector3.UP * (dm * 2.2 + 4.0) + Basis(Vector3.UP, yaw) * Vector3(0.0, 0.0, dm * 0.4)
+			# 上方也可能有東西（書桌底面、櫃子），碰到就停在它前面
+			var up_ray := PhysicsRayQueryParameters3D.new()
+			up_ray.from = focus
+			up_ray.to = over
+			up_ray.collision_mask = _ray.collision_mask
+			up_ray.exclude = exclude
+			var up_hit := space.intersect_ray(up_ray)
+			if not up_hit.is_empty():
+				over = (up_hit["position"] as Vector3) + (up_hit["normal"] as Vector3) * 1.0
+			desired = over
+		else:
+			desired = hit_pos
 		break
 	var w := 1.0 if instant else 1.0 - exp(-follow_sharpness * delta)
 	camera.global_position = camera.global_position.lerp(desired, w)
 	if _shake > 0.0:
-		camera.global_position += Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * _shake * dm * 0.06
+		camera.global_position += Vector3(_rng.randf_range(-1, 1), _rng.randf_range(-1, 1), _rng.randf_range(-1, 1)) * _shake * dm * 0.06
 		_shake = maxf(_shake - delta * 3.0, 0.0)
 	if camera.global_position.distance_to(focus) > 0.01:
 		camera.look_at(focus, Vector3.UP)

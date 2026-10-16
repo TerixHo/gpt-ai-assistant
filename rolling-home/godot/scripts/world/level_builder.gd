@@ -167,9 +167,12 @@ static func _place_item(p: Dictionary, items_root: Node3D) -> PickupItem:
 	var def := Data.get_item(p.get("item", ""))
 	if def.is_empty():
 		return null
-	var item := PickupItem.create(def)
+	var item := PickupItem.spawn(def, p.get("color", ""))
 	items_root.add_child(item)
 	item.position = KMath.vec3(p.get("pos"))
+	if item is Critter and p.has("roam"):
+		var r: Array = p["roam"]
+		(item as Critter).roam = Rect2(float(r[0]), float(r[1]), float(r[2]), float(r[3]))
 	item.rotation_degrees = Vector3(0, float(p.get("rot", 0.0)), 0)
 	return item
 
@@ -213,7 +216,9 @@ static func _spawn_zone(zone: Dictionary, items_root: Node3D, footprints: Array[
 					continue
 				if _overlaps(pos, y, half, occupied):
 					continue
-				var item := PickupItem.create(def)
+				var colors: Array = def.get("colors", [])
+				var color: String = colors[rng.randi() % colors.size()] if not colors.is_empty() else ""
+				var item := PickupItem.spawn(def, color)
 				items_root.add_child(item)
 				item.position = Vector3(pos.x, y, pos.y)
 				item.rotation_degrees = Vector3(0, rng.randf_range(0, 360), 0)

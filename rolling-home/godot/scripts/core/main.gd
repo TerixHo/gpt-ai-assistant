@@ -96,17 +96,39 @@ func _column(root: Control, width := 520.0) -> VBoxContainer:
 func show_title() -> void:
 	var root := _screen()
 	var box := _column(root)
-	box.add_child(_label("家滾滾", 96))
-	box.add_child(_label("Rolling Home　原型版", 24, Color(1, 1, 1, 0.9)))
-	box.add_child(_label("從家裡出發，把整個世界滾成一顆星星。", 22, Color(1, 0.98, 0.9)))
+	box.add_child(_label("家滾滾", 92))
+	box.add_child(_label("從書桌上的小珠珠開始，把家裡的東西滾成一顆大球！", 22, Color(1, 0.98, 0.9)))
 	var spacer := Control.new()
-	spacer.custom_minimum_size = Vector2(0, 20)
+	spacer.custom_minimum_size = Vector2(0, 12)
 	box.add_child(spacer)
 	var first := _button("開始遊戲", func(): start_stage(Data.stages[0]["id"]))
 	box.add_child(first)
-	box.add_child(_button("關卡選擇", show_stage_select))
-	box.add_child(_button("收藏目錄", show_collection))
-	box.add_child(_button("操作說明", show_help))
+	box.add_child(_button("選關卡", show_stage_select))
+	box.add_child(_button("收藏圖鑑", show_collection))
+	box.add_child(_button("怎麼玩", show_help))
+	var settings := HBoxContainer.new()
+	settings.alignment = BoxContainer.ALIGNMENT_CENTER
+	settings.add_theme_constant_override("separation", 10)
+	box.add_child(settings)
+	for spec in [["zhuyin", "注音"], ["no_time_limit", "不限時間"]]:
+		var key: String = spec[0]
+		var label: String = spec[1]
+		var b := Button.new()
+		b.custom_minimum_size = Vector2(200, 46)
+		b.add_theme_font_size_override("font_size", 20)
+		b.text = "%s：%s" % [label, "開" if Game.settings.get(key, false) else "關"]
+		b.pressed.connect(func():
+			Game.toggle_setting(key)
+			b.text = "%s：%s" % [label, "開" if Game.settings.get(key, false) else "關"])
+		settings.add_child(b)
+	var scheme := Button.new()
+	scheme.custom_minimum_size = Vector2(260, 46)
+	scheme.add_theme_font_size_override("font_size", 20)
+	scheme.text = "操作：" + Controls.scheme_label()
+	scheme.pressed.connect(func():
+		Controls.toggle_scheme()
+		scheme.text = "操作：" + Controls.scheme_label())
+	settings.add_child(scheme)
 	box.add_child(_button("離開", func(): get_tree().quit()))
 	first.grab_focus()
 	Sfx.play_music("title")
@@ -115,7 +137,7 @@ func show_title() -> void:
 func show_stage_select() -> void:
 	var root := _screen()
 	var box := _column(root, 680)
-	box.add_child(_label("關卡選擇", 52))
+	box.add_child(_label("選關卡", 52))
 	var first: Button = null
 	for s in Data.stages:
 		var best := float(Game.best.get(s["id"], 0.0))
@@ -144,7 +166,7 @@ func show_collection() -> void:
 	for id in Data.items:
 		if int(Game.collection.get(id, 0)) > 0:
 			got += 1
-	box.add_child(_label("收藏目錄　%d / %d" % [got, total], 44))
+	box.add_child(_label("收藏圖鑑　%d / %d" % [got, total], 44))
 	var scroll := ScrollContainer.new()
 	scroll.custom_minimum_size = Vector2(900, 470)
 	box.add_child(scroll)
@@ -170,14 +192,15 @@ func show_collection() -> void:
 func show_help() -> void:
 	var root := _screen()
 	var box := _column(root, 900)
-	box.add_child(_label("操作說明", 52))
+	box.add_child(_label("怎麼玩", 52))
 	var lines := [
-		"手把（原作式雙搖桿）：兩桿同推＝前進／後退／平移；一前一後＝原地轉向",
-		"兩桿上下快速交替＝衝刺　同時按下兩桿（L3＋R3）或 Y＝180 度迴轉　RB＝俯瞰",
-		"鍵盤簡化：W/S 前後　A/D 轉向　Q/E 平移　Shift 衝刺　Space 迴轉　Tab 俯瞰",
-		"鍵盤雙搖桿（F2 切換）：左桿 WASD、右桿 方向鍵或 IJKL",
-		"規則：比塊球小的東西碰到就會黏上，塊球越大越能黏大東西。",
-		"高速撞牆或撞到太大的東西，身上的物件會掉下來。時間到時達到目標尺寸就過關。",
+		"比滾球小的東西，碰到就會黏上來。滾球越大，就能黏越大的東西！",
+		"一開始只黏得起小玻璃珠，慢慢變大以後，橡皮擦、小汽車、恐龍都黏得起來。",
+		"鍵盤：W/S 前進後退　A/D 轉彎　Shift 衝刺　Space 轉身　Tab 看遠一點",
+		"手把：左搖桿前進和轉彎，右搖桿也可以轉彎　X 衝刺　Y 轉身　RB 看遠一點",
+		"小心貓咪和小狗！滾球很小的時候，牠們會把你身上的東西拍掉。",
+		"變大以後牠們就會逃跑，再大一點就能把牠們黏起來了！",
+		"想用原作的雙搖桿操作，可以在標題畫面切換，或按 F2。",
 	]
 	for t in lines:
 		var l := _label(t, 20)
@@ -198,21 +221,23 @@ func show_results(result: Dictionary) -> void:
 	var ok: bool = result["success"]
 	var d: float = result["diameter_cm"]
 	var g: float = result["goal_cm"]
-	box.add_child(_label("過關！" if ok else "差一點點…", 64, Color.WHITE if ok else Color(1, 0.92, 0.85)))
-	box.add_child(_label("塊球直徑 %s（目標 %s）" % [KMath.format_size(d), KMath.format_size(g)], 30))
+	box.add_child(_label("過關！" if ok else "還差一點點！", 64, Color.WHITE if ok else Color(1, 0.92, 0.85)))
+	box.add_child(_label("滾球變成 %s 了（目標 %s）" % [KMath.format_size(d), KMath.format_size(g)], 30))
 	box.add_child(_label(grade_text(result), 24, Color(1, 1, 0.85)))
 	var ttg: float = result["time_to_goal"]
 	if ok and ttg >= 0.0:
-		var line := "達標用時 %s" % KMath.format_time(ttg)
+		var line := "%s 就達成目標" % KMath.format_time(ttg)
 		if float(result.get("comet_sec", 0.0)) > 0.0 and ttg <= float(result["comet_sec"]):
 			line += "　獲得流星獎勵！"
 		box.add_child(_label(line, 22))
-	box.add_child(_label("共黏了 %d 件物品" % int(result["count"]), 22))
+	if result.get("no_limit", false):
+		box.add_child(_label("這次玩了 %s" % KMath.format_time(float(result.get("elapsed", 0.0))), 22))
+	box.add_child(_label("一共黏了 %d 個東西" % int(result["count"]), 22))
 	var names: Array = []
 	for id in result["top_items"]:
 		names.append(Data.get_item(id).get("name", id))
 	if not names.is_empty():
-		box.add_child(_label("最大的戰利品：" + "、".join(names), 20))
+		box.add_child(_label("黏到最大的東西：" + "、".join(names), 20))
 	var next_id := Game.next_stage_id(result["stage_id"])
 	var first: Button
 	if ok and not next_id.is_empty() and Game.is_stage_playable(next_id):
@@ -227,7 +252,7 @@ func show_results(result: Dictionary) -> void:
 
 static func grade_text(result: Dictionary) -> String:
 	var ratio := float(result["diameter_cm"]) / maxf(float(result["goal_cm"]), 0.01)
-	var best_text := "星婆婆：嗯……再試一次吧。"
+	var best_text := "星婆婆：再試一次，一定可以的！"
 	var best_min := -1.0
 	for g in result.get("grades", []):
 		var m := float(g["min_ratio"])

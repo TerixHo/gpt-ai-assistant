@@ -4,6 +4,8 @@ extends Control
 
 var time_left := 180.0
 var time_total := 180.0
+## 不限時間模式時 >= 0，改成顯示經過時間
+var elapsed := -1.0
 var _blink := 0.0
 
 
@@ -21,8 +23,11 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	var c := size * 0.5
 	var r := 58.0
+	var counting_up := elapsed >= 0.0
 	var ratio := clampf(time_left / maxf(time_total, 0.01), 0.0, 1.0)
-	var warn := time_left <= 30.0
+	if counting_up:
+		ratio = fposmod(elapsed, 60.0) / 60.0
+	var warn := time_left <= 30.0 and not counting_up
 	draw_circle(c, r + 6, Color(0.08, 0.1, 0.22, 0.72))
 	draw_circle(c, r, Color(1, 1, 1, 0.12))
 	var col := Color(0.35, 0.75, 1.0)
@@ -39,7 +44,7 @@ func _draw() -> void:
 		var a := TAU * i / 12.0
 		draw_line(c + Vector2.from_angle(a) * (r - 6), c + Vector2.from_angle(a) * r, Color(1, 1, 1, 0.6), 2.0)
 	var font := get_theme_default_font()
-	var txt := KMath.format_time(time_left)
+	var txt := KMath.format_time(elapsed if counting_up else time_left)
 	var fs := 30
 	var w := font.get_string_size(txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
 	draw_string_outline(font, c + Vector2(-w * 0.5, 11), txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 7, Color(0.1, 0.1, 0.2))

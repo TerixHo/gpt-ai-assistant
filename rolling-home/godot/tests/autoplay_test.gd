@@ -86,7 +86,11 @@ func _screenshot() -> void:
 	var img := get_viewport().get_texture().get_image()
 	var path := "%s/shot_%03d.png" % [_shot_dir, int(_elapsed)]
 	img.save_png(path)
-	print("[autoplay] 截圖：", ProjectSettings.globalize_path(path))
+	var cam := get_viewport().get_camera_3d()
+	var kp := _stage.katamari.global_position
+	print("[autoplay] 截圖：%s 球=(%.1f, %.1f, %.1f) 鏡頭=(%.1f, %.1f, %.1f)" % [
+		ProjectSettings.globalize_path(path), kp.x, kp.y, kp.z,
+		cam.global_position.x, cam.global_position.y, cam.global_position.z])
 
 
 func _on_finished(result: Dictionary) -> void:

@@ -13,6 +13,9 @@ const SOUNDS := {
 	"dash": "res://assets/audio/dash.wav",
 	"ui": "res://assets/audio/ui.wav",
 	"gate": "res://assets/audio/gate.wav",
+	"meow": "res://assets/audio/meow.wav",
+	"woof": "res://assets/audio/woof.wav",
+	"cheer": "res://assets/audio/cheer.wav",
 }
 const MUSIC := {
 	"title": "res://assets/audio/music_title.wav",

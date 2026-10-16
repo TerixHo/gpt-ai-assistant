@@ -10,17 +10,43 @@ var collection: Dictionary = {}
 ## 各關最佳直徑（公分）
 var best: Dictionary = {}
 var settings: Dictionary = {
-	"keyboard_scheme": "simple",
+	"control_scheme": "simple",
 	"camera_turn_speed": 1.0,
 	"sfx_volume": 0.8,
 	"music_volume": 0.5,
+	## 注音模式：介面改用注音版粉圓字型，方便低年級小朋友閱讀
+	"zhuyin": false,
+	## 不限時間：練習或年紀較小的小朋友可以慢慢滾
+	"no_time_limit": false,
 }
 ## 測試或錄影時可關閉存檔
 var persist := true
 
 
+const FONT_NORMAL := "res://assets/fonts/Huninn-Regular.ttf"
+const FONT_ZHUYIN := "res://assets/fonts/BpmfHuninn-Regular.ttf"
+
+
 func _ready() -> void:
 	load_save()
+	apply_font.call_deferred()
+
+
+## 依設定切換全域字型（一般／注音）。
+func apply_font() -> void:
+	var path := FONT_ZHUYIN if settings.get("zhuyin", false) else FONT_NORMAL
+	if not ResourceLoader.exists(path):
+		return
+	var theme := Theme.new()
+	theme.default_font = load(path)
+	get_tree().root.theme = theme
+
+
+func toggle_setting(key: String) -> void:
+	settings[key] = not bool(settings.get(key, false))
+	if key == "zhuyin":
+		apply_font()
+	save()
 
 
 func record_result(result: Dictionary) -> void:
@@ -71,4 +97,5 @@ func load_save() -> void:
 		best = data.get("best", {})
 		var s: Dictionary = data.get("settings", {})
 		for k in s:
-			settings[k] = s[k]
+			if settings.has(k):
+				settings[k] = s[k]

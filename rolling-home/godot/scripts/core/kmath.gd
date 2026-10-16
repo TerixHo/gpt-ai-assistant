@@ -29,6 +29,8 @@ static func can_pick(item_size_cm: float, diameter_cm: float, ratio: float) -> b
 ## 原作風格的尺寸字串：未滿 1 公尺顯示「12cm3mm」（整數公分顯示「10cm」），滿 1 公尺顯示「1m24cm」。
 static func format_size(cm: float) -> String:
 	var mm_total := int(round(cm * 10.0))
+	if mm_total < 10:
+		return "%dmm" % mm_total
 	if mm_total < 1000:
 		if mm_total % 10 == 0:
 			return "%dcm" % (mm_total / 10)

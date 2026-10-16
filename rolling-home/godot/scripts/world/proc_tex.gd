@@ -25,6 +25,8 @@ static func floor_material(pattern: String, base_hex: String, repeat_cm := 90.0)
 			img = _tile(base)
 		"carpet":
 			img = _carpet(base)
+		"jointmat":
+			img = _jointmat()
 		_:
 			img = Image.create(4, 4, false, Image.FORMAT_RGB8)
 			img.fill(base)
@@ -95,5 +97,22 @@ static func _carpet(base: Color) -> Image:
 			var v := rng.randf_range(-0.05, 0.05)
 			var edge := x < 4 or y < 4 or x >= n - 4 or y >= n - 4
 			var c := base.darkened(0.2) if edge else (base.lightened(v) if v > 0 else base.darkened(-v))
+			img.set_pixel(x, y, c)
+	return img
+
+
+## 兒童巧拼地墊：粉彩方塊拼接（一個重複單位含 2×2 塊）。
+static func _jointmat() -> Image:
+	var n := 128
+	var img := Image.create(n, n, false, Image.FORMAT_RGB8)
+	var colors := [Color("#ffadad"), Color("#a0c4ff"), Color("#caffbf"), Color("#fdffb6")]
+	for y in n:
+		for x in n:
+			var c: Color = colors[(x / 64) + (y / 64) * 2]
+			var lx := x % 64
+			var ly := y % 64
+			# 拼接處的鋸齒線
+			if lx < 2 or ly < 2 or (lx < 5 and (ly / 8) % 2 == 0) or (ly < 5 and (lx / 8) % 2 == 0):
+				c = c.darkened(0.15)
 			img.set_pixel(x, y, c)
 	return img

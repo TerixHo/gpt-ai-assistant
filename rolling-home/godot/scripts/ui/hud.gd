@@ -5,6 +5,7 @@ extends CanvasLayer
 signal resume_requested
 signal restart_requested
 signal quit_requested
+signal finish_requested
 
 var gauge: SizeGauge
 var clock: ClockDial
@@ -83,17 +84,18 @@ func _label(font_size: int, align: HorizontalAlignment) -> Label:
 
 
 func refresh_hint() -> void:
-	if Game.settings["keyboard_scheme"] == "simple":
-		_hint.text = "W/S 前後  A/D 轉向  Q/E 平移  Shift 衝刺  Space 迴轉  Tab 俯瞰  Esc 暫停  F2 雙搖桿鍵位"
+	if Controls.is_simple():
+		_hint.text = "W/S 前進後退  A/D 轉彎  Shift 衝刺  Space 轉身  Tab 看遠一點  Esc 暫停"
 	else:
-		_hint.text = "左桿 WASD  右桿 方向鍵  兩桿交替=衝刺  Space 迴轉  Tab 俯瞰  Esc 暫停  F2 簡化鍵位"
+		_hint.text = "左桿 WASD  右桿 方向鍵  兩桿交替=衝刺  Space 轉身  Tab 看遠一點  Esc 暫停"
 
 
-func set_status(diameter: float, goal: float, time_left: float, time_total: float, count: int) -> void:
+func set_status(diameter: float, goal: float, time_left: float, time_total: float, count: int, elapsed := -1.0) -> void:
 	gauge.set_values(diameter, goal)
 	clock.time_left = time_left
 	clock.time_total = time_total
-	_count.text = "已黏 %d 件" % count
+	clock.elapsed = elapsed
+	_count.text = "已經黏了 %d 個" % count
 
 
 func toast(text: String, big := false) -> void:
@@ -141,8 +143,8 @@ func set_paused(paused: bool) -> void:
 func _build_pause() -> PanelContainer:
 	var panel := PanelContainer.new()
 	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.position = Vector2(-170, -150)
-	panel.size = Vector2(340, 300)
+	panel.position = Vector2(-190, -190)
+	panel.size = Vector2(380, 380)
 	panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 14)
@@ -150,7 +152,7 @@ func _build_pause() -> PanelContainer:
 	var title := _label(34, HORIZONTAL_ALIGNMENT_CENTER)
 	title.text = "暫停"
 	box.add_child(title)
-	for spec in [["Resume", "繼續", resume_requested], ["Restart", "重新開始", restart_requested], ["Quit", "回到標題", quit_requested]]:
+	for spec in [["Resume", "繼續", resume_requested], ["Finish", "結束這一局，看成績", finish_requested], ["Restart", "重新開始", restart_requested], ["Quit", "回到標題", quit_requested]]:
 		var b := Button.new()
 		b.name = spec[0]
 		b.text = spec[1]
@@ -159,11 +161,11 @@ func _build_pause() -> PanelContainer:
 		b.pressed.connect(func(): sig.emit())
 		box.add_child(b)
 	var scheme := Button.new()
-	scheme.text = "鍵盤配置：" + Controls.scheme_label()
+	scheme.text = "操作方式：" + Controls.scheme_label()
 	scheme.add_theme_font_size_override("font_size", 18)
 	scheme.pressed.connect(func():
 		Controls.toggle_scheme()
-		scheme.text = "鍵盤配置：" + Controls.scheme_label()
+		scheme.text = "操作方式：" + Controls.scheme_label()
 		refresh_hint())
 	box.add_child(scheme)
 	return panel

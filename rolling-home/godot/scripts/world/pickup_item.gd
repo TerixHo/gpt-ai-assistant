@@ -10,16 +10,28 @@ var collected := false
 ## 撞落後的短暫保護時間，避免剛掉下來又立刻黏回去
 var pickup_cooldown := 0.0
 var visual: Node3D
+## 同一種物件的不同顏色（例如各色玻璃珠），空字串代表用資料預設色
+var color_override := ""
 
 
-static func create(item_def: Dictionary) -> PickupItem:
+static func create(item_def: Dictionary, color := "") -> PickupItem:
 	var item := PickupItem.new()
-	item.setup(item_def)
+	item.setup(item_def, color)
 	return item
 
 
-func setup(item_def: Dictionary) -> void:
+## 依資料建立物件；有 critter 欄位的會建立成會動的動物。
+static func spawn(item_def: Dictionary, color := "") -> PickupItem:
+	if item_def.has("critter"):
+		var c := Critter.new()
+		c.setup(item_def, color)
+		return c
+	return create(item_def, color)
+
+
+func setup(item_def: Dictionary, color := "") -> void:
 	def = item_def
+	color_override = color
 	item_id = item_def.get("id", "")
 	name = item_id
 	size_cm = PropFactory.size_of(item_def)
@@ -27,7 +39,7 @@ func setup(item_def: Dictionary) -> void:
 	collision_mask = KMath.LAYER_WORLD | KMath.LAYER_ITEM | KMath.LAYER_KATAMARI
 	freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
 	freeze = true
-	var built := PropFactory.build(item_def)
+	var built := PropFactory.build(item_def, color)
 	visual = built["visual"]
 	add_child(visual)
 	for s in built["shapes"]:

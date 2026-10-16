@@ -13,6 +13,8 @@ signal bumped(strength: float, lost: int)
 signal dashed
 
 const MAX_PROTRUSIONS := 10
+## 吸附範圍的固定餘裕（公分）：物理引擎會在極近距離就停住，小球需要這點餘裕才黏得到 6mm 珠子
+const GRAB_EXTRA := 0.2
 
 @export var start_diameter_cm := 5.0
 ## 可吸附門檻：物件尺寸 ≤ 直徑 × 此比例
@@ -22,7 +24,7 @@ const MAX_PROTRUSIONS := 10
 ## 最高速度：每秒幾個直徑
 @export var max_speed_d := 3.0
 ## 最高速度下限（公分/秒），避免太小時寸步難行
-@export var min_top_speed := 14.0
+@export var min_top_speed := 8.0
 ## 加速度：每秒² 幾個直徑
 @export var accel_d := 7.0
 ## 放開搖桿時的減速度：每秒² 幾個直徑
@@ -33,6 +35,11 @@ const MAX_PROTRUSIONS := 10
 @export var knock_threshold_d := 2.9
 ## 吸附偵測球相對於本體半徑的倍率
 @export var grab_margin := 1.1
+## 台階輔助：推著接觸點低於「半徑 × 此比例」的低矮障礙物（地上的鉛筆、蠟筆）時自動跳上去。
+## 接觸點在球的赤道附近代表是牆或櫃子側面，不觸發。
+@export var step_up_ratio := 0.92
+## 每次撞擊最多掉幾件（給小朋友玩，不宜太多）
+@export var max_drop := 2
 
 var diameter := 5.0
 var volume := 0.0
@@ -51,6 +58,7 @@ var _last_velocity := Vector3.ZERO
 var _knock_cooldown := 0.0
 var _pending_knock: Dictionary = {}
 var _pending_lift := 0.0
+var _step_cooldown := 0.0
 var _body_shape := SphereShape3D.new()
 var _grab_shape := SphereShape3D.new()
 var _query := PhysicsShapeQueryParameters3D.new()
@@ -64,6 +72,7 @@ var _protrusions: Array[Dictionary] = []
 
 func _ready() -> void:
 	name = "Katamari"
+	add_to_group("katamari")
 	collision_layer = KMath.LAYER_KATAMARI
 	collision_mask = KMath.LAYER_WORLD | KMath.LAYER_ITEM | KMath.LAYER_GATE
 	continuous_cd = true
@@ -124,6 +133,16 @@ func is_dashing() -> bool:
 	return _dash_left > 0.0
 
 
+## 被外力打到（例如貓咪伸爪）：推開並掉落 drop 件物件。
+func external_hit(dir: Vector3, push_speed: float, drop := 1) -> void:
+	if _knock_cooldown > 0.0:
+		return
+	var d := Vector3(dir.x, 0.0, dir.z).normalized()
+	apply_central_impulse((d + Vector3.UP * 0.35) * push_speed * mass)
+	_pending_knock = {"strength": knock_threshold_d, "ratio": 1.0 + float(drop - 1) * 0.5, "normal": d}
+	_knock_cooldown = 0.6
+
+
 func forward_dir() -> Vector3:
 	return Vector3(-sin(_yaw), 0.0, -cos(_yaw))
 
@@ -145,17 +164,30 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var n_sum := Vector3.ZERO
 	var impact := 0.0
 	var impact_normal := Vector3.ZERO
+	var step_normal := Vector3.ZERO
+	var step_height := 0.0
+	var bottom := state.transform.origin.y - radius()
 	for i in state.get_contact_count():
 		var n := state.get_contact_local_normal(i)
 		if n.y > 0.55:
 			_grounded = true
 			n_sum += n
 		else:
+			# 低矮障礙（黏不起來的鉛筆、蠟筆、積木）：記下來，稍後在推向它時把球抬上去
+			var cp := state.get_contact_local_position(i)
+			var h := cp.y - bottom
+			var obj := state.get_contact_collider_object(i)
+			var pickable_now := obj is PickupItem and KMath.can_pick((obj as PickupItem).size_cm, diameter, pickup_ratio)
+			if not pickable_now and h < radius() * step_up_ratio and h > diameter * 0.05 and h > step_height:
+				step_normal = n
+				step_height = h
 			# 碰到本來就黏得起來的小東西不算撞擊
 			var other := state.get_contact_collider_object(i)
 			if other is PickupItem and KMath.can_pick((other as PickupItem).size_cm, diameter, pickup_ratio):
 				continue
-			var into := -_last_velocity.dot(n)
+			# 只算水平方向的撞擊（掉落、跳過障礙後落地不算）
+			var nh := Vector3(n.x, 0.0, n.z)
+			var into := -Vector3(_last_velocity.x, 0.0, _last_velocity.z).dot(nh)
 			if into > impact:
 				impact = into
 				impact_normal = n
@@ -173,6 +205,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var wish := right * _move.x + fwd * _move.y
 	var wish_len := minf(wish.length(), 1.0)
 	var top := maxf(max_speed_d * diameter, min_top_speed)
+	var base_top := top
 	if _dash_left > 0.0:
 		wish = fwd
 		wish_len = 1.0
@@ -186,7 +219,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if wish_len > 0.01:
 		dir = (wish - up * wish.dot(up)).normalized()
 		target = dir * top * wish_len
-		accel = maxf(accel_d * diameter, 35.0) * (1.0 if _grounded else 0.3)
+		accel = maxf(accel_d * diameter, 25.0) * (1.0 if _grounded else 0.3)
 	else:
 		accel = maxf(coast_decel_d * diameter, 10.0) if _grounded else 0.0
 	var dv := (target - v_plane).limit_length(accel * dt)
@@ -198,6 +231,20 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var along := (g - up * g.dot(up)).dot(dir)
 		if along < 0.0:
 			v -= dir * along * dt
+	# 台階輔助：正推著低矮障礙時，給剛好跳過障礙高度的向上速度（v = √(2gh)）
+	_step_cooldown -= dt
+	if _grounded and _step_cooldown <= 0.0 and step_normal != Vector3.ZERO and wish_len > 0.3 and dir.dot(-step_normal) > 0.3:
+		var g_len := state.total_gravity.length()
+		v.y = maxf(v.y, sqrt(2.0 * g_len * (step_height + diameter * 0.12)))
+		_step_cooldown = 0.3
+	# 非衝刺時限制水平速度，避免碰撞把彈跳轉成暴衝
+	if _dash_left <= 0.0:
+		var vh := Vector3(v.x, 0.0, v.z)
+		var cap := base_top * 1.25
+		if vh.length() > cap:
+			vh = vh.normalized() * cap
+			v.x = vh.x
+			v.z = vh.z
 	state.linear_velocity = v
 
 	# 3. 接地時讓角速度貼近純滾動，外觀上確實在「滾」
@@ -206,8 +253,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		state.angular_velocity = state.angular_velocity.lerp(roll, 0.35)
 
 	# 4. 撞擊偵測（實際掉落在 _physics_process 處理，避免在物理回呼中增刪節點）
-	if impact > knock_threshold_d * diameter and _knock_cooldown <= 0.0:
-		_pending_knock = {"strength": impact / diameter, "normal": impact_normal}
+	# 撞落門檻至少要比平常最高速度快（衝刺或從高處摔下才會掉東西）
+	var knock_at := maxf(knock_threshold_d * diameter, base_top * 1.3)
+	if impact > knock_at and _knock_cooldown <= 0.0:
+		_pending_knock = {"strength": impact / diameter, "ratio": impact / knock_at, "normal": impact_normal}
 		_knock_cooldown = 0.5
 	_last_velocity = v
 
@@ -215,14 +264,14 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _grab_check() -> void:
 	var space := get_world_3d().direct_space_state
 	_query.transform = Transform3D(Basis.IDENTITY, global_position)
-	_grab_shape.radius = radius() * grab_margin
+	_grab_shape.radius = radius() * grab_margin + GRAB_EXTRA
 	_try_hits(space.intersect_shape(_query, 32))
 	# 突出的大物件也能黏東西（迭代副本：吸附過程可能新增或移除突出點）
 	for p in _protrusions.duplicate():
 		_grab_shape.radius = float(p["radius"]) * 1.15
 		_query.transform = Transform3D(Basis.IDENTITY, global_transform * (p["local"] as Vector3))
 		_try_hits(space.intersect_shape(_query, 8))
-	_grab_shape.radius = radius() * grab_margin
+	_grab_shape.radius = radius() * grab_margin + GRAB_EXTRA
 
 
 func _try_hits(hits: Array[Dictionary]) -> void:
@@ -253,7 +302,7 @@ func _attach(item: PickupItem) -> void:
 	var gain := KMath.item_volume(item.size_cm, float(item.def.get("fill", 0.5))) * growth_gain
 	volume += gain
 	_stuck.append({"node": v, "id": item.item_id, "def": item.def, "size": item.size_cm,
-		"volume": gain, "dist": dist, "half": half})
+		"volume": gain, "dist": dist, "half": half, "color": item.color_override})
 	if item.size_cm > diameter * 0.26 and _protrusions.size() < MAX_PROTRUSIONS:
 		_add_protrusion(v, dir, dist, half)
 	collected_count += 1
@@ -279,7 +328,7 @@ func _apply_size() -> void:
 	diameter = KMath.diameter_from_volume(volume)
 	var r := radius()
 	_body_shape.radius = r
-	_grab_shape.radius = r * grab_margin
+	_grab_shape.radius = r * grab_margin + GRAB_EXTRA
 	_core.scale = Vector3.ONE * diameter * 0.9
 	mass = maxf(0.02, volume * 0.0008)
 	_prune()
@@ -309,7 +358,8 @@ func _prune() -> void:
 func _knock(k: Dictionary) -> void:
 	var strength: float = k["strength"]
 	var normal: Vector3 = k["normal"]
-	var drop := clampi(int(strength - knock_threshold_d) + 1, 1, 4)
+	var ratio: float = k.get("ratio", 1.0)
+	var drop := clampi(1 + int((ratio - 1.0) * 2.0), 1, max_drop)
 	var lost := 0
 	var min_volume := KMath.sphere_volume(start_diameter_cm)
 	for i in drop:
@@ -326,7 +376,7 @@ func _knock(k: Dictionary) -> void:
 				keep_p.append(p)
 		_protrusions = keep_p
 		node.queue_free()
-		var item := PickupItem.create(e["def"])
+		var item := PickupItem.spawn(e["def"], e.get("color", ""))
 		items_parent.add_child(item)
 		item.global_transform = gt
 		var out := (gt.origin - global_position).normalized()
