@@ -1,0 +1,6 @@
+# Godot 產生的快取與匯出
+.godot/
+/android/
+*.translation
+export/
+*.tmp

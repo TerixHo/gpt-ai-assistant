@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Rolling Home"
+config/description="家滾滾：從家裡出發的塊球收集遊戲原型（Godot 4.7）"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Data="*res://autoload/data.gd"
+Game="*res://autoload/game.gd"
+Controls="*res://autoload/controls.gd"
+Sfx="*res://autoload/sfx.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom_font="res://assets/fonts/Huninn-Regular.ttf"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+3d/default_gravity=980.0
+common/physics_ticks_per_second=60
+jolt_physics_3d/limits/max_linear_velocity=20000.0
+jolt_physics_3d/limits/max_angular_velocity=100.0
+jolt_physics_3d/simulation/speculative_contact_distance=0.5
+jolt_physics_3d/simulation/penetration_slop=0.1
+jolt_physics_3d/simulation/sleep_velocity_threshold=1.0
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=2
+lights_and_shadows/directional_shadow/size=4096

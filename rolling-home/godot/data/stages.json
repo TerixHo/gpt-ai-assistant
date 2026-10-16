@@ -1,0 +1,59 @@
+{
+	"_note": "關卡節奏（起始尺寸／目標／時限）參考 2004 原作的成長曲線，場景、物件與命名皆為原創。playable=false 為規劃中關卡。",
+	"stages": [
+		{
+			"id": "home_1",
+			"name": "家 1：客廳",
+			"playable": true,
+			"level": "res://data/levels/home.json",
+			"zones": ["living_table", "living_rug", "under_sofa", "living_floor"],
+			"gates": {"front_door": 999, "living_kitchen": 999, "kitchen_backyard": 999},
+			"start_cm": 5,
+			"goal_cm": 10,
+			"time_sec": 180,
+			"comet_sec": 60,
+			"seed": 2004,
+			"music": "home",
+			"intro": "從茶几出發！做出 10cm 的塊球",
+			"tuning": {},
+			"grades": [
+				{"min_ratio": 0.0, "text": "星婆婆：這麼小一顆，連螢火蟲都比它亮。再來一次！"},
+				{"min_ratio": 1.0, "text": "星婆婆：嗯，算是一顆星星了。勉強及格。"},
+				{"min_ratio": 1.3, "text": "星婆婆：不錯喔！夜空亮了一點點。"},
+				{"min_ratio": 1.6, "text": "星婆婆：哎唷，滾得真漂亮，婆婆眼睛都亮了！"},
+				{"min_ratio": 1.9, "text": "星婆婆：太厲害了！這顆要掛在夜空正中間！"}
+			]
+		},
+		{
+			"id": "home_2",
+			"name": "家 2：一樓與後院",
+			"playable": true,
+			"level": "res://data/levels/home.json",
+			"zones": ["living_table", "living_rug", "under_sofa", "living_floor", "kitchen_floor", "backyard_floor"],
+			"gates": {"front_door": 999, "living_kitchen": 12, "kitchen_backyard": 15},
+			"start_cm": 5,
+			"goal_cm": 20,
+			"time_sec": 360,
+			"comet_sec": 180,
+			"seed": 2005,
+			"music": "home",
+			"intro": "整個一樓都是你的！做出 20cm",
+			"tuning": {},
+			"grades": [
+				{"min_ratio": 0.0, "text": "星婆婆：廚房還有好多東西沒滾到呢。"},
+				{"min_ratio": 1.0, "text": "星婆婆：好，這顆星星可以用。"},
+				{"min_ratio": 1.3, "text": "星婆婆：連後院都滾乾淨啦？不錯不錯。"},
+				{"min_ratio": 1.6, "text": "星婆婆：哇！這顆星星好圓好亮！"},
+				{"min_ratio": 1.9, "text": "星婆婆：婆婆要拿去當北極星了！"}
+			]
+		},
+		{"id": "park_1", "name": "3：街角公園", "playable": false, "start_cm": 10, "goal_cm": 50, "time_sec": 480},
+		{"id": "home_street", "name": "4：家與巷口", "playable": false, "start_cm": 5, "goal_cm": 100, "time_sec": 600},
+		{"id": "market", "name": "5：市場與商店街", "playable": false, "start_cm": 10, "goal_cm": 150, "time_sec": 720},
+		{"id": "school", "name": "6：學校與廟埕", "playable": false, "start_cm": 50, "goal_cm": 300, "time_sec": 600},
+		{"id": "riverside", "name": "7：河濱公園", "playable": false, "start_cm": 50, "goal_cm": 600, "time_sec": 600},
+		{"id": "town", "name": "8：整個小鎮", "playable": false, "start_cm": 10, "goal_cm": 1200, "time_sec": 1080},
+		{"id": "city", "name": "9：城市", "playable": false, "start_cm": 50, "goal_cm": 3000, "time_sec": 1080},
+		{"id": "island", "name": "10：整座島", "playable": false, "start_cm": 100, "goal_cm": 30000, "time_sec": 1500}
+	]
+}

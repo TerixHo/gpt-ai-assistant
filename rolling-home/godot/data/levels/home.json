@@ -1,0 +1,84 @@
+{
+	"_note": "原創場景：台灣透天厝一樓（騎樓、客廳、廚房餐廳、後院）。單位公分；x 往東、z 往南（騎樓在北側 z=0）。",
+	"id": "home",
+	"name": "家",
+	"areas": [
+		{"name": "騎樓", "rect": [0, 0, 560, 150]},
+		{"name": "客廳", "rect": [0, 150, 560, 500]},
+		{"name": "廚房與餐廳", "rect": [0, 650, 560, 400]},
+		{"name": "後院", "rect": [0, 1050, 560, 200]}
+	],
+	"start": {"pos": [260, 40.8, 400], "yaw_deg": 90},
+	"floors": [
+		{"name": "外面地面", "rect": [-1500, -1500, 3560, 4250], "y": -0.6, "thickness": 4, "pattern": "plain", "color": "#9bc995"},
+		{"name": "騎樓", "rect": [0, 0, 560, 150], "y": 0, "pattern": "tile", "color": "#b9b9b4", "repeat": 60},
+		{"name": "客廳", "rect": [0, 150, 560, 500], "y": 0, "pattern": "tile", "color": "#e2d2ae", "repeat": 120},
+		{"name": "廚房", "rect": [0, 650, 560, 400], "y": 0, "pattern": "tile", "color": "#e4e4dc", "repeat": 60},
+		{"name": "後院", "rect": [0, 1050, 560, 200], "y": 0, "pattern": "tile", "color": "#a7a8a2", "repeat": 200}
+	],
+	"walls": [
+		{"from": [0, 150], "to": [0, 1250], "height": 260, "thickness": 12},
+		{"from": [560, 150], "to": [560, 1250], "height": 260, "thickness": 12},
+		{"from": [0, 0], "to": [0, 150], "height": 90, "thickness": 12, "color": "#d6d2c4"},
+		{"from": [560, 0], "to": [560, 150], "height": 90, "thickness": 12, "color": "#d6d2c4"},
+		{"from": [0, 0], "to": [560, 0], "height": 70, "thickness": 8, "color": "#d6d2c4", "gaps": [[240, 340, 70]]},
+		{"from": [0, 150], "to": [560, 150], "height": 260, "thickness": 12, "gaps": [[200, 330, 210]]},
+		{"from": [0, 650], "to": [560, 650], "height": 260, "thickness": 12, "gaps": [[380, 480, 205]]},
+		{"from": [0, 1050], "to": [560, 1050], "height": 260, "thickness": 12, "color": "#e9ecef", "gaps": [[60, 160, 205]]},
+		{"from": [0, 1250], "to": [560, 1250], "height": 180, "thickness": 14, "color": "#ced4da"}
+	],
+	"blocks": [
+		{"name": "地墊", "pos": [260, 0, 400], "size": [220, 0.8, 150], "pattern": "carpet", "color": "#8d99ae", "repeat": 220},
+		{"name": "後院排水溝蓋", "pos": [280, 0, 1060], "size": [520, 0.6, 14], "color": "#6c757d"}
+	],
+	"ramps": [
+		{"name": "斜靠的厚紙板", "from": [398, 0, 400], "to": [316, 40.8, 400], "width": 30, "thickness": 1.2, "color": "#c8a165"}
+	],
+	"placements": [
+		{"item": "coffee_table", "pos": [260, 0.8, 400], "rot": 0, "blocks_spawn": false},
+		{"item": "sofa", "pos": [62, 0, 400], "rot": 0},
+		{"item": "tv_cabinet", "pos": [530, 0, 400], "rot": 0},
+		{"item": "tv", "pos": [530, 50, 400], "rot": 0},
+		{"item": "rattan_chair", "pos": [425, 0, 235], "rot": 200, "blocks_spawn": false},
+		{"item": "standing_fan", "pos": [515, 0, 195], "rot": 0},
+		{"item": "shoe_cabinet", "pos": [90, 0, 176], "rot": 0},
+		{"item": "bookshelf", "pos": [150, 0, 628], "rot": 0},
+		{"item": "trash_can", "pos": [520, 0, 615], "rot": 0},
+		{"item": "red_stool", "pos": [330, 0, 565], "rot": 15, "blocks_spawn": false},
+		{"item": "dining_table", "pos": [270, 0, 840], "rot": 0, "blocks_spawn": false},
+		{"item": "red_stool", "pos": [185, 0, 845], "rot": 5, "blocks_spawn": false},
+		{"item": "red_stool", "pos": [355, 0, 835], "rot": -8, "blocks_spawn": false},
+		{"item": "red_stool", "pos": [270, 0, 925], "rot": 20, "blocks_spawn": false},
+		{"item": "kitchen_counter", "pos": [524, 0, 830], "rot": 0},
+		{"item": "fridge", "pos": [522, 0, 1012], "rot": 0},
+		{"item": "rice_cooker", "pos": [524, 85, 760], "rot": 30},
+		{"item": "trash_can", "pos": [40, 0, 1020], "rot": 0},
+		{"item": "washer", "pos": [480, 0, 1200], "rot": 0},
+		{"item": "bucket", "pos": [400, 0, 1215], "rot": 0},
+		{"item": "potted_plant", "pos": [60, 0, 1222], "rot": 0},
+		{"item": "potted_plant", "pos": [95, 0, 1226], "rot": 40},
+		{"item": "potted_plant", "pos": [130, 0, 1222], "rot": 80},
+		{"item": "scooter", "pos": [400, 0, 75], "rot": 90}
+	],
+	"spawns": [
+		{"zone": "living_table", "rect": [207, 374.5, 106, 51], "y": 40.8,
+			"items": {"seed": 10, "peanut": 8, "candy": 6, "coin_1": 4, "coin_10": 3, "toothpick": 3, "mahjong": 4, "tangerine_segment": 3, "pineapple_cake": 2, "teacup": 1, "tangerine": 1}},
+		{"zone": "living_rug", "rect": [151, 326, 218, 148], "y": 0.8, "avoid_furniture": false,
+			"items": {"thumbtack": 6, "button": 4, "die": 4, "marble": 4, "candy": 4, "mahjong": 6, "coin_10": 3, "eraser": 4, "battery": 3, "crayon": 4, "toy_block": 4, "pineapple_cake": 2, "tangerine_segment": 3, "lactic_drink": 2, "teacup": 1}},
+		{"zone": "under_sofa", "rect": [22, 294, 80, 212], "y": 0, "avoid_furniture": false,
+			"items": {"coin_1": 4, "coin_10": 2, "coin_50": 2, "marble": 4, "button": 4, "peanut": 5, "seed": 6, "die": 2, "key": 1, "crayon": 2, "paperclip": 3}},
+		{"zone": "living_floor", "rect": [12, 162, 536, 476], "y": 0, "exclude": [[146, 321, 228, 158], [300, 380, 110, 40]],
+			"items": {"thumbtack": 12, "button": 8, "paperclip": 8, "rubber_band": 6, "coin_1": 6, "bottle_cap": 6, "eraser": 6, "battery": 5, "crayon": 8, "clothespin": 6, "toy_block": 8, "pencil": 4, "pen": 3, "gum": 5, "key": 2, "lighter": 2, "pineapple_cake": 4, "toy_car": 3, "lactic_drink": 4, "correction_tape": 3, "chopsticks": 2, "teacup": 2, "tangerine": 3, "transit_card": 2, "sticky_notes": 2, "receipt": 3, "spoon": 2, "red_envelope": 2, "slipper": 2, "remote": 1, "tissue_box": 1, "bubble_tea": 1}},
+		{"zone": "kitchen_floor", "rect": [12, 662, 536, 376], "y": 0,
+			"items": {"garlic": 6, "carrot": 4, "spoon": 4, "chopsticks": 4, "bottle_cap": 8, "peanut": 10, "tangerine": 4, "teacup": 3, "bubble_tea": 3, "tissue_box": 2, "slipper": 2, "lactic_drink": 6, "coin_1": 6, "coin_10": 4, "receipt": 4, "red_envelope": 2, "toothpick": 6, "rubber_band": 6, "remote": 1}},
+		{"zone": "backyard_floor", "rect": [12, 1072, 536, 166], "y": 0,
+			"items": {"clothespin": 15, "slipper": 4, "bottle_cap": 6, "toy_car": 3, "marble": 6, "toy_block": 6, "coin_10": 4, "key": 1, "transit_card": 1, "garlic": 2, "bubble_tea": 2}},
+		{"zone": "porch_floor", "rect": [12, 12, 536, 126], "y": 0,
+			"items": {"bottle_cap": 6, "receipt": 6, "transit_card": 2, "slipper": 4, "bubble_tea": 3, "red_envelope": 2, "key": 2}}
+	],
+	"gates": [
+		{"id": "front_door", "name": "大門", "pos": [265, 0, 150], "size": [130, 210, 6], "color": "#c0c7cf", "slide": [-122, 0, 0], "open_at_cm": 999, "message": "大門打開了！可以到騎樓去了"},
+		{"id": "living_kitchen", "name": "門簾", "pos": [430, 0, 650], "size": [100, 185, 3], "color": "#e76f51", "slide": [0, 182, 0], "open_at_cm": 12, "message": "門簾掀開了！往廚房前進"},
+		{"id": "kitchen_backyard", "name": "後門", "pos": [110, 0, 1050], "size": [100, 205, 5], "color": "#adb5bd", "slide": [95, 0, 0], "open_at_cm": 15, "message": "後門打開了！到後院去吧"}
+	]
+}
