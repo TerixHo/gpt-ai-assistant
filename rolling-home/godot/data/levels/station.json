@@ -1,0 +1,4888 @@
+{
+	"_note": "原創場景：宜蘭冬山鄉的小鎮、稻田、文旦果園、冬山河、工廠區與住宅區，一路滾到高架的冬山車站。塊球 10 公尺到 100 公尺。單位公分；x 往東、z 往南。",
+	"id": "station",
+	"name": "滾到冬山火車站",
+	"areas": [
+		{
+			"name": "冬山小鎮",
+			"rect": [
+				-140000,
+				34000,
+				72000,
+				64000
+			]
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-55000,
+				30000,
+				150000,
+				85000
+			]
+		},
+		{
+			"name": "文旦果園與茶園",
+			"rect": [
+				103000,
+				28000,
+				42000,
+				87000
+			]
+		},
+		{
+			"name": "冬山河畔",
+			"rect": [
+				-150000,
+				3000,
+				300000,
+				21000
+			]
+		},
+		{
+			"name": "工業區",
+			"rect": [
+				-145000,
+				-115000,
+				85000,
+				112000
+			]
+		},
+		{
+			"name": "冬山住宅區",
+			"rect": [
+				-55000,
+				-115000,
+				143000,
+				112000
+			]
+		},
+		{
+			"name": "冬山車站",
+			"rect": [
+				86000,
+				-75000,
+				59000,
+				72000
+			]
+		},
+		{
+			"name": "森林公園",
+			"rect": [
+				103000,
+				-115000,
+				42000,
+				40000
+			]
+		}
+	],
+	"start": {
+		"pos": [
+			-112000,
+			4,
+			60000
+		],
+		"yaw_deg": -90
+	},
+	"floors": [
+		{
+			"name": "北岸地面",
+			"rect": [
+				-150000,
+				-120000,
+				300000,
+				135000
+			],
+			"y": 0,
+			"pattern": "grass",
+			"color": "#9bc995",
+			"repeat": 3000,
+			"thickness": 400
+		},
+		{
+			"name": "南岸地面",
+			"rect": [
+				-150000,
+				24000,
+				300000,
+				96000
+			],
+			"y": 0,
+			"pattern": "grass",
+			"color": "#9bc995",
+			"repeat": 3000,
+			"thickness": 400
+		},
+		{
+			"name": "冬山河",
+			"rect": [
+				-150000,
+				17000,
+				300000,
+				5000
+			],
+			"y": -400,
+			"pattern": "water",
+			"color": "#5aa9c9",
+			"repeat": 2400,
+			"thickness": 400
+		},
+		{
+			"name": "主幹道（東西）",
+			"rect": [
+				-150000,
+				-1500,
+				300000,
+				3000
+			],
+			"y": 4,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "主幹道（南北，北段）",
+			"rect": [
+				-21500,
+				-120000,
+				3000,
+				135000
+			],
+			"y": 4,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "主幹道（南北，南段）",
+			"rect": [
+				-21500,
+				24000,
+				3000,
+				96000
+			],
+			"y": 4,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "鐵路（南段）",
+			"rect": [
+				99000,
+				0,
+				2000,
+				120000
+			],
+			"y": 8,
+			"pattern": "gravel",
+			"color": "#a39e93",
+			"repeat": 800,
+			"thickness": 20
+		},
+		{
+			"name": "鐵路（北段）",
+			"rect": [
+				99000,
+				-120000,
+				2000,
+				35000
+			],
+			"y": 8,
+			"pattern": "gravel",
+			"color": "#a39e93",
+			"repeat": 800,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮地面",
+			"rect": [
+				-140000,
+				34000,
+				72000,
+				64000
+			],
+			"y": 2,
+			"pattern": "concrete",
+			"color": "#c8c3b8",
+			"repeat": 3000,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-140000,
+				38700,
+				72000,
+				2600
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-140000,
+				48700,
+				72000,
+				2600
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-140000,
+				58700,
+				72000,
+				2600
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-140000,
+				68700,
+				72000,
+				2600
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-140000,
+				78700,
+				72000,
+				2600
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-140000,
+				88700,
+				72000,
+				2600
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-136300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-126300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-116300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-106300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-96300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-86300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "小鎮街道",
+			"rect": [
+				-76300,
+				34000,
+				2600,
+				64000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-54550.0,
+				30450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-54550.0,
+				42950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-54550.0,
+				55450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-54550.0,
+				67950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-54550.0,
+				80450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-54550.0,
+				92950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-14550.0,
+				30450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-14550.0,
+				42950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-14550.0,
+				55450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-14550.0,
+				67950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-14550.0,
+				80450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-14550.0,
+				92950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				5450.0,
+				30450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				5450.0,
+				42950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				5450.0,
+				55450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				5450.0,
+				67950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				5450.0,
+				80450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				5450.0,
+				92950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				25450.0,
+				30450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				25450.0,
+				42950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				25450.0,
+				55450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				25450.0,
+				67950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				25450.0,
+				80450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				25450.0,
+				92950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				45450.0,
+				30450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				45450.0,
+				42950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				45450.0,
+				55450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				45450.0,
+				67950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				45450.0,
+				80450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				45450.0,
+				92950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				65450.0,
+				30450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				65450.0,
+				42950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				65450.0,
+				55450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				65450.0,
+				67950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				65450.0,
+				80450.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				65450.0,
+				92950.0,
+				19100,
+				11600
+			],
+			"y": 3,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 2400,
+			"thickness": 10
+		},
+		{
+			"name": "農路",
+			"rect": [
+				-55000,
+				54550,
+				150000,
+				900
+			],
+			"y": 6,
+			"pattern": "concrete",
+			"color": "#c9c9c4",
+			"repeat": 1200,
+			"thickness": 20
+		},
+		{
+			"name": "農路",
+			"rect": [
+				-55000,
+				79550,
+				150000,
+				900
+			],
+			"y": 6,
+			"pattern": "concrete",
+			"color": "#c9c9c4",
+			"repeat": 1200,
+			"thickness": 20
+		},
+		{
+			"name": "農路",
+			"rect": [
+				-55000,
+				104550,
+				150000,
+				900
+			],
+			"y": 6,
+			"pattern": "concrete",
+			"color": "#c9c9c4",
+			"repeat": 1200,
+			"thickness": 20
+		},
+		{
+			"name": "果園",
+			"rect": [
+				103000,
+				28000,
+				42000,
+				50000
+			],
+			"y": 2,
+			"pattern": "soil",
+			"color": "#a98467",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "河濱自行車道",
+			"rect": [
+				-150000,
+				12500,
+				300000,
+				1200
+			],
+			"y": 6,
+			"pattern": "concrete",
+			"color": "#d8d5cc",
+			"repeat": 1200,
+			"thickness": 20
+		},
+		{
+			"name": "工業區地面",
+			"rect": [
+				-145000,
+				-115000,
+				85000,
+				112000
+			],
+			"y": 2,
+			"pattern": "concrete",
+			"color": "#c9c9c4",
+			"repeat": 2000,
+			"thickness": 20
+		},
+		{
+			"name": "住宅區地面",
+			"rect": [
+				-55000,
+				-115000,
+				143000,
+				112000
+			],
+			"y": 2,
+			"pattern": "concrete",
+			"color": "#c8c3b8",
+			"repeat": 3000,
+			"thickness": 20
+		},
+		{
+			"name": "住宅區街道",
+			"rect": [
+				-55000,
+				-31500,
+				143000,
+				3000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "住宅區街道",
+			"rect": [
+				-55000,
+				-61500,
+				143000,
+				3000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "住宅區街道",
+			"rect": [
+				-55000,
+				-91500,
+				143000,
+				3000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "住宅區街道",
+			"rect": [
+				18500,
+				-115000,
+				3000,
+				112000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "住宅區街道",
+			"rect": [
+				53500,
+				-115000,
+				3000,
+				112000
+			],
+			"y": 5,
+			"pattern": "asphalt",
+			"color": "#5c6168",
+			"repeat": 1500,
+			"thickness": 20
+		},
+		{
+			"name": "站前廣場",
+			"rect": [
+				84000,
+				-60000,
+				14500,
+				30000
+			],
+			"y": 6,
+			"pattern": "paving",
+			"color": "#e3d5ca",
+			"repeat": 1000,
+			"thickness": 20
+		},
+		{
+			"name": "森林公園草地",
+			"rect": [
+				103000,
+				-115000,
+				42000,
+				40000
+			],
+			"y": 2,
+			"pattern": "grass",
+			"color": "#8cc084",
+			"repeat": 2500,
+			"thickness": 20
+		}
+	],
+	"walls": [
+		{
+			"from": [
+				-150000,
+				-120000
+			],
+			"to": [
+				150000,
+				-120000
+			],
+			"height": 8500,
+			"thickness": 3000,
+			"color": "#9fc5a8",
+			"y": -600
+		},
+		{
+			"from": [
+				150000,
+				-120000
+			],
+			"to": [
+				150000,
+				120000
+			],
+			"height": 8500,
+			"thickness": 3000,
+			"color": "#9fc5a8",
+			"y": -600
+		},
+		{
+			"from": [
+				150000,
+				120000
+			],
+			"to": [
+				-150000,
+				120000
+			],
+			"height": 8500,
+			"thickness": 3000,
+			"color": "#9fc5a8",
+			"y": -600
+		},
+		{
+			"from": [
+				-150000,
+				120000
+			],
+			"to": [
+				-150000,
+				-120000
+			],
+			"height": 8500,
+			"thickness": 3000,
+			"color": "#9fc5a8",
+			"y": -600
+		}
+	],
+	"blocks": [
+		{
+			"name": "鐵路橋",
+			"pos": [
+				100000,
+				-300,
+				19500.0
+			],
+			"size": [
+				2000,
+				308,
+				9400
+			],
+			"color": "#868e96"
+		},
+		{
+			"name": "鐵路橋墩",
+			"pos": [
+				100000,
+				-400,
+				18200
+			],
+			"size": [
+				800,
+				400,
+				800
+			],
+			"color": "#6c757d"
+		},
+		{
+			"name": "鐵路橋墩",
+			"pos": [
+				100000,
+				-400,
+				20800
+			],
+			"size": [
+				800,
+				400,
+				800
+			],
+			"color": "#6c757d"
+		},
+		{
+			"name": "高架橋面",
+			"pos": [
+				100000,
+				1350,
+				-45000.0
+			],
+			"size": [
+				1400,
+				150,
+				50000
+			],
+			"color": "#ced4da"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-67500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-62500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-57500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-52500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-47500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-42500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-37500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-32500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-27500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		},
+		{
+			"name": "高架橋墩",
+			"pos": [
+				100000,
+				0,
+				-22500
+			],
+			"size": [
+				700,
+				1350,
+				700
+			],
+			"color": "#adb5bd"
+		}
+	],
+	"ramps": [
+		{
+			"name": "北岸河堤",
+			"from": [
+				0,
+				-400,
+				17000
+			],
+			"to": [
+				0,
+				0,
+				15000
+			],
+			"width": 300000,
+			"thickness": 400,
+			"color": "#86b86b"
+		},
+		{
+			"name": "南岸河堤",
+			"from": [
+				0,
+				-400,
+				22000
+			],
+			"to": [
+				0,
+				0,
+				24000
+			],
+			"width": 300000,
+			"thickness": 400,
+			"color": "#86b86b"
+		},
+		{
+			"name": "高架引道（北）",
+			"from": [
+				100000,
+				0,
+				-85000
+			],
+			"to": [
+				100000,
+				1500,
+				-70000
+			],
+			"width": 1400,
+			"thickness": 400,
+			"color": "#ced4da"
+		},
+		{
+			"name": "高架引道（南）",
+			"from": [
+				100000,
+				0,
+				-5000
+			],
+			"to": [
+				100000,
+				1500,
+				-20000
+			],
+			"width": 1400,
+			"thickness": 400,
+			"color": "#ced4da"
+		}
+	],
+	"stairs": [
+		{
+			"name": "車站西側樓梯",
+			"from": [
+				95909.1,
+				6,
+				-47500.0
+			],
+			"to": [
+				98300,
+				1500,
+				-47500
+			],
+			"width": 1600,
+			"step": 150,
+			"style": "blocks",
+			"colors": [
+				"#f1faee",
+				"#ced4da",
+				"#adb5bd"
+			]
+		},
+		{
+			"name": "車站東側樓梯",
+			"from": [
+				104094.1,
+				4,
+				-42500.0
+			],
+			"to": [
+				101700,
+				1500,
+				-42500
+			],
+			"width": 1600,
+			"step": 150,
+			"style": "blocks",
+			"colors": [
+				"#f1faee",
+				"#ced4da",
+				"#adb5bd"
+			]
+		}
+	],
+	"decor": [
+		{
+			"name": "主幹道標線",
+			"shape": "box",
+			"pos": [
+				0,
+				4,
+				0
+			],
+			"size": [
+				300000,
+				2,
+				40
+			],
+			"color": "#f8f9fa",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "南北標線（北）",
+			"shape": "box",
+			"pos": [
+				-20000,
+				4,
+				-52500.0
+			],
+			"size": [
+				40,
+				2,
+				135000
+			],
+			"color": "#f8f9fa",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "南北標線（南）",
+			"shape": "box",
+			"pos": [
+				-20000,
+				4,
+				72000.0
+			],
+			"size": [
+				40,
+				2,
+				96000
+			],
+			"color": "#f8f9fa",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "鋼軌（南）",
+			"shape": "box",
+			"pos": [
+				99920,
+				8,
+				60000.0
+			],
+			"size": [
+				20,
+				18,
+				120000
+			],
+			"color": "#6c757d",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "鋼軌（北）",
+			"shape": "box",
+			"pos": [
+				99920,
+				8,
+				-102500.0
+			],
+			"size": [
+				20,
+				18,
+				35000
+			],
+			"color": "#6c757d",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "鋼軌（高架）",
+			"shape": "box",
+			"pos": [
+				99920,
+				1500,
+				-45000.0
+			],
+			"size": [
+				20,
+				18,
+				50000
+			],
+			"color": "#6c757d",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "鋼軌（南）",
+			"shape": "box",
+			"pos": [
+				100080,
+				8,
+				60000.0
+			],
+			"size": [
+				20,
+				18,
+				120000
+			],
+			"color": "#6c757d",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "鋼軌（北）",
+			"shape": "box",
+			"pos": [
+				100080,
+				8,
+				-102500.0
+			],
+			"size": [
+				20,
+				18,
+				35000
+			],
+			"color": "#6c757d",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "鋼軌（高架）",
+			"shape": "box",
+			"pos": [
+				100080,
+				1500,
+				-45000.0
+			],
+			"size": [
+				20,
+				18,
+				50000
+			],
+			"color": "#6c757d",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（西）",
+			"shape": "cone",
+			"pos": [
+				-268000.0,
+				-600,
+				-100000
+			],
+			"size": [
+				220000,
+				90000,
+				220000
+			],
+			"color": "#6b8f71",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（西）",
+			"shape": "cone",
+			"pos": [
+				-288000.0,
+				-600,
+				-10000
+			],
+			"size": [
+				260000,
+				110000,
+				260000
+			],
+			"color": "#5f8575",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（西）",
+			"shape": "cone",
+			"pos": [
+				-273000.0,
+				-600,
+				90000
+			],
+			"size": [
+				230000,
+				95000,
+				230000
+			],
+			"color": "#78967c",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（南）",
+			"shape": "cone",
+			"pos": [
+				-140000,
+				-600,
+				248000.0
+			],
+			"size": [
+				240000,
+				100000,
+				240000
+			],
+			"color": "#6a8a80",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（南）",
+			"shape": "cone",
+			"pos": [
+				-20000,
+				-600,
+				268000.0
+			],
+			"size": [
+				280000,
+				120000,
+				280000
+			],
+			"color": "#6b8f71",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（南）",
+			"shape": "cone",
+			"pos": [
+				100000,
+				-600,
+				253000.0
+			],
+			"size": [
+				250000,
+				105000,
+				250000
+			],
+			"color": "#5f8575",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山（南）",
+			"shape": "cone",
+			"pos": [
+				210000,
+				-600,
+				238000.0
+			],
+			"size": [
+				220000,
+				85000,
+				220000
+			],
+			"color": "#78967c",
+			"rot": 0,
+			"no_shadow": true
+		}
+	],
+	"petals": [],
+	"placements": [
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-131500,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-130860,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-130220,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-121500,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-120860,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-110394.3754692995,
+				4,
+				45500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-101500,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-100860,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-91500,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-90860,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-90220,
+				4,
+				47000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-78636.75069696747,
+				4,
+				45500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-131500,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-130860,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-120792.2891285078,
+				4,
+				55500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-111500,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-110860,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-101500,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-100860,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-100220,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-88998.34190424487,
+				4,
+				55500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-81500,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-80860,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-80220,
+				4,
+				57000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-128274.01058307903,
+				4,
+				65500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-121500,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-120860,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-111500,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-110860,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-110220,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-102156.49200582449,
+				4,
+				65500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-91500,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-90860,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-90220,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-81500,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-80860,
+				4,
+				67000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-131500,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-130860,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-121500,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-120860,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-120220,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-108896.92962146421,
+				4,
+				75500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-101500,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-100860,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-100220,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-91500,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-90860,
+				4,
+				77000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-78927.26912995066,
+				4,
+				75500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-131500,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-130860,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-130220,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-121732.92059105453,
+				4,
+				85500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-111500,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-110860,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-110220,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-101500,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-100860,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-90343.34252391318,
+				4,
+				85500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-81500,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-80860,
+				4,
+				87000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_temple",
+			"pos": [
+				-105000,
+				4,
+				62500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shade_tree",
+			"pos": [
+				-101500,
+				4,
+				67500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_market",
+			"pos": [
+				-125000,
+				4,
+				76000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_water_tower",
+			"pos": [
+				-137000,
+				4,
+				37000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-78000,
+				4,
+				45000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-132000,
+				4,
+				86000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_fire_station",
+			"pos": [
+				-88000,
+				4,
+				63000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_supermarket",
+			"pos": [
+				-96000,
+				4,
+				84000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-136000,
+				4,
+				52000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-74000,
+				4,
+				72000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-118000,
+				4,
+				93000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-84000,
+				4,
+				94000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				-45000,
+				4,
+				42000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				-43800,
+				4,
+				42300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				-5000,
+				4,
+				56000
+			],
+			"rot": 180
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				25000,
+				4,
+				44000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				26200,
+				4,
+				44300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				52000,
+				4,
+				69000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				-38000,
+				4,
+				93000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				-36800,
+				4,
+				93300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				10000,
+				4,
+				82000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				40000,
+				4,
+				106000
+			],
+			"rot": 180
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				41200,
+				4,
+				106300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				75000,
+				4,
+				92000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				68000,
+				4,
+				48000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				69200,
+				4,
+				48300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				-12000,
+				4,
+				108000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				30000,
+				4,
+				68000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				31200,
+				4,
+				68300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				85000,
+				4,
+				62000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				-50000,
+				4,
+				70000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_shed",
+			"pos": [
+				-48800,
+				4,
+				70300
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_farmhouse",
+			"pos": [
+				5000,
+				4,
+				96000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_sanheyuan",
+			"pos": [
+				-30000,
+				4,
+				66000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_sanheyuan",
+			"pos": [
+				60000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_sanheyuan",
+			"pos": [
+				20000,
+				4,
+				33100
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_sanheyuan",
+			"pos": [
+				-48000,
+				4,
+				108000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-35000,
+				4,
+				36000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				15000,
+				4,
+				62000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				45000,
+				4,
+				36000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-5000,
+				4,
+				90000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				70000,
+				4,
+				78000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_two_story",
+			"pos": [
+				-45000,
+				4,
+				84000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_rice_mill",
+			"pos": [
+				45000,
+				4,
+				88000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_rice_silo",
+			"pos": [
+				49000,
+				4,
+				84000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_rice_silo",
+			"pos": [
+				49800,
+				4,
+				84000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_rice_silo",
+			"pos": [
+				50600,
+				4,
+				84000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_rice_silo",
+			"pos": [
+				51400,
+				4,
+				84000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_shrine",
+			"pos": [
+				-24000,
+				4,
+				47000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				-24000,
+				4,
+				51000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-50000,
+				4,
+				75000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-24000,
+				4,
+				76500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				2000,
+				4,
+				75000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				28000,
+				4,
+				76500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				54000,
+				4,
+				75000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				80000,
+				4,
+				76500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_buffalo",
+			"pos": [
+				-15000,
+				4,
+				62000
+			],
+			"rot": 241,
+			"roam": [
+				-18000,
+				59000,
+				6000,
+				6000
+			]
+		},
+		{
+			"item": "sn_buffalo",
+			"pos": [
+				35000,
+				4,
+				58000
+			],
+			"rot": 88,
+			"roam": [
+				32000,
+				55000,
+				6000,
+				6000
+			]
+		},
+		{
+			"item": "sn_buffalo",
+			"pos": [
+				60000,
+				4,
+				85000
+			],
+			"rot": 80,
+			"roam": [
+				57000,
+				82000,
+				6000,
+				6000
+			]
+		},
+		{
+			"item": "sn_buffalo",
+			"pos": [
+				-40000,
+				4,
+				100000
+			],
+			"rot": 10,
+			"roam": [
+				-43000,
+				97000,
+				6000,
+				6000
+			]
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				107000,
+				4,
+				33000
+			],
+			"rot": 237
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				107000,
+				4,
+				44000
+			],
+			"rot": 78
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				107000,
+				4,
+				55000
+			],
+			"rot": 272
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				107000,
+				4,
+				66000
+			],
+			"rot": 182
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				115000,
+				4,
+				33000
+			],
+			"rot": 283
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				115000,
+				4,
+				44000
+			],
+			"rot": 15
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				115000,
+				4,
+				55000
+			],
+			"rot": 310
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				115000,
+				4,
+				66000
+			],
+			"rot": 166
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				123000,
+				4,
+				33000
+			],
+			"rot": 75
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				123000,
+				4,
+				44000
+			],
+			"rot": 159
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				123000,
+				4,
+				55000
+			],
+			"rot": 225
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				123000,
+				4,
+				66000
+			],
+			"rot": 334
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				131000,
+				4,
+				33000
+			],
+			"rot": 199
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				131000,
+				4,
+				44000
+			],
+			"rot": 250
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				131000,
+				4,
+				55000
+			],
+			"rot": 218
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				131000,
+				4,
+				66000
+			],
+			"rot": 335
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				139000,
+				4,
+				33000
+			],
+			"rot": 113
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				139000,
+				4,
+				44000
+			],
+			"rot": 249
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				139000,
+				4,
+				55000
+			],
+			"rot": 220
+		},
+		{
+			"item": "sn_pomelo_tree",
+			"pos": [
+				139000,
+				4,
+				66000
+			],
+			"rot": 288
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				107000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				107000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				112000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				112000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				117000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				117000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				122000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				122000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				127000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				127000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				132000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				132000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				137000,
+				4,
+				88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tea_row",
+			"pos": [
+				137000,
+				4,
+				100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_gazebo",
+			"pos": [
+				125000,
+				4,
+				81000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_rice_mill",
+			"pos": [
+				135000,
+				4,
+				106000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_road_bridge",
+			"pos": [
+				-20000,
+				0,
+				19500.0
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_road_bridge",
+			"pos": [
+				-90000,
+				0,
+				19500.0
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_footbridge",
+			"pos": [
+				40000,
+				0,
+				19500.0
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_footbridge",
+			"pos": [
+				70000,
+				0,
+				19500.0
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_dragon_boat",
+			"pos": [
+				-60000,
+				-400,
+				18500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_dragon_boat",
+			"pos": [
+				-40000,
+				-400,
+				19700
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_dragon_boat",
+			"pos": [
+				15000,
+				-400,
+				20900
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_dragon_boat",
+			"pos": [
+				55000,
+				-400,
+				18500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_dragon_boat",
+			"pos": [
+				85000,
+				-400,
+				19700
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_dragon_boat",
+			"pos": [
+				-130000,
+				-400,
+				20900
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				-45000,
+				-400,
+				19500
+			],
+			"rot": 50,
+			"roam": [
+				-48000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				-44600,
+				-400,
+				19900
+			],
+			"rot": 224,
+			"roam": [
+				-48000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				-10000,
+				-400,
+				19500
+			],
+			"rot": 243,
+			"roam": [
+				-13000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				-9600,
+				-400,
+				19900
+			],
+			"rot": 210,
+			"roam": [
+				-13000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				25000,
+				-400,
+				19500
+			],
+			"rot": 127,
+			"roam": [
+				22000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				25400,
+				-400,
+				19900
+			],
+			"rot": 134,
+			"roam": [
+				22000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				60000,
+				-400,
+				19500
+			],
+			"rot": 112,
+			"roam": [
+				57000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_duck",
+			"pos": [
+				60400,
+				-400,
+				19900
+			],
+			"rot": 73,
+			"roam": [
+				57000,
+				17300,
+				6000,
+				4400
+			]
+		},
+		{
+			"item": "sn_pavilion",
+			"pos": [
+				-40000,
+				4,
+				7000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_pavilion",
+			"pos": [
+				20000,
+				4,
+				7000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_pavilion",
+			"pos": [
+				50000,
+				4,
+				7000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				-50000,
+				4,
+				5000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				-25000,
+				4,
+				5500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				5000,
+				4,
+				5500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				30000,
+				4,
+				4500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_slide",
+			"pos": [
+				-33000,
+				4,
+				9500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_slide",
+			"pos": [
+				12000,
+				4,
+				9500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_slide",
+			"pos": [
+				42000,
+				4,
+				9500
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_factory",
+			"pos": [
+				-130000,
+				4,
+				-20000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_factory",
+			"pos": [
+				-100000,
+				4,
+				-22000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_factory",
+			"pos": [
+				-75000,
+				4,
+				-40000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_factory",
+			"pos": [
+				-130000,
+				4,
+				-60000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_factory",
+			"pos": [
+				-100000,
+				4,
+				-95000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_factory",
+			"pos": [
+				-75000,
+				4,
+				-80000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_warehouse",
+			"pos": [
+				-118000,
+				4,
+				-38000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_warehouse",
+			"pos": [
+				-88000,
+				4,
+				-55000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_warehouse",
+			"pos": [
+				-140000,
+				4,
+				-85000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_warehouse",
+			"pos": [
+				-112000,
+				4,
+				-75000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_warehouse",
+			"pos": [
+				-80000,
+				4,
+				-105000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_warehouse",
+			"pos": [
+				-65000,
+				4,
+				-20000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_big_factory",
+			"pos": [
+				-115000,
+				4,
+				-105000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_factory",
+			"pos": [
+				-85000,
+				4,
+				-75000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_factory",
+			"pos": [
+				-140000,
+				4,
+				-40000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_factory",
+			"pos": [
+				-70000,
+				4,
+				-60000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_factory",
+			"pos": [
+				-120000,
+				4,
+				-8000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_logistics",
+			"pos": [
+				-100000,
+				4,
+				-62000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_logistics",
+			"pos": [
+				-135000,
+				4,
+				-109000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_logistics",
+			"pos": [
+				-70000,
+				4,
+				-109000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_gas_station",
+			"pos": [
+				-60000,
+				4,
+				-5500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_gas_station",
+			"pos": [
+				60000,
+				4,
+				5000
+			],
+			"rot": 180
+		},
+		{
+			"item": "sn_water_tower",
+			"pos": [
+				-95000,
+				4,
+				-35000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_water_tower",
+			"pos": [
+				-128000,
+				4,
+				-100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_water_tower",
+			"pos": [
+				-66000,
+				4,
+				-95000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_rice_mill",
+			"pos": [
+				-66000,
+				4,
+				-68000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-140000,
+				4,
+				-50000
+			],
+			"rot": 30
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-125000,
+				4,
+				-42000
+			],
+			"rot": 30
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-110000,
+				4,
+				-34000
+			],
+			"rot": 30
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-95000,
+				4,
+				-26000
+			],
+			"rot": 30
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-80000,
+				4,
+				-18000
+			],
+			"rot": 30
+		},
+		{
+			"item": "sn_power_tower",
+			"pos": [
+				-65000,
+				4,
+				-10000
+			],
+			"rot": 30
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-17000,
+				4,
+				-12000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-16440,
+				4,
+				-12000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-15880,
+				4,
+				-12000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-15320,
+				4,
+				-12000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-27000,
+				4,
+				-12000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-26400,
+				4,
+				-12000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-25800,
+				4,
+				-12000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-25200,
+				4,
+				-12000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-17000,
+				4,
+				-42000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-16440,
+				4,
+				-42000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-15880,
+				4,
+				-42000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_townhouse",
+			"pos": [
+				-15320,
+				4,
+				-42000
+			],
+			"rot": 270
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-27000,
+				4,
+				-42000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-26400,
+				4,
+				-42000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-25800,
+				4,
+				-42000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_shophouse",
+			"pos": [
+				-25200,
+				4,
+				-42000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-45000,
+				4,
+				-20000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-40000,
+				4,
+				-45000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-5000,
+				4,
+				-20000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				8000,
+				4,
+				-45000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				35000,
+				4,
+				-20000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				35000,
+				4,
+				-45000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				70000,
+				4,
+				-20000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-45000,
+				4,
+				-75000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				5000,
+				4,
+				-75000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				35000,
+				4,
+				-75000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				70000,
+				4,
+				-75000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				-5000,
+				4,
+				-105000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				45000,
+				4,
+				-105000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_apartment",
+			"pos": [
+				75000,
+				4,
+				-50000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				-30000,
+				4,
+				-70000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				0,
+				4,
+				-69000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				28000,
+				4,
+				-69000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				62000,
+				4,
+				-38000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				-35000,
+				4,
+				-100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				15000,
+				4,
+				-100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				62000,
+				4,
+				-100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				75000,
+				4,
+				-10000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				-48000,
+				4,
+				-33000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				45000,
+				4,
+				-85000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tall_hotel",
+			"pos": [
+				-14000,
+				4,
+				-82000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tall_hotel",
+			"pos": [
+				40000,
+				4,
+				-12000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tall_hotel",
+			"pos": [
+				68000,
+				4,
+				-65000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tall_hotel",
+			"pos": [
+				-48000,
+				4,
+				-58000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tall_hotel",
+			"pos": [
+				25000,
+				4,
+				-108000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-35000,
+				4,
+				-12000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				12000,
+				4,
+				-28000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				48000,
+				4,
+				-30000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-10000,
+				4,
+				-55000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				60000,
+				4,
+				-88000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				25000,
+				4,
+				-40000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				-50000,
+				4,
+				-88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_row_houses",
+			"pos": [
+				80000,
+				4,
+				-30000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_supermarket",
+			"pos": [
+				48000,
+				4,
+				-62000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_fire_station",
+			"pos": [
+				-38000,
+				4,
+				-28000
+			],
+			"rot": 90
+		},
+		{
+			"item": "sn_hospital",
+			"pos": [
+				-25000,
+				4,
+				-88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_hospital",
+			"pos": [
+				50000,
+				4,
+				-109000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_hospital",
+			"pos": [
+				78000,
+				4,
+				-95000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_temple",
+			"pos": [
+				0,
+				4,
+				-40000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				0,
+				4,
+				-34500
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_temple_big",
+			"pos": [
+				30000,
+				4,
+				-94000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_market",
+			"pos": [
+				10000,
+				4,
+				-10000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_sports_park",
+			"pos": [
+				-30000,
+				4,
+				-106000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_station",
+			"pos": [
+				100000,
+				4,
+				-45000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				1500,
+				-62000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				1500,
+				-59900
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				1500,
+				-27000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				1500,
+				-24900
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				10,
+				-100000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				10,
+				-95000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				10,
+				40000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				10,
+				45000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				10,
+				60000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_car",
+			"pos": [
+				100000,
+				10,
+				65000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_set",
+			"pos": [
+				100000,
+				10,
+				-106000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_train_set",
+			"pos": [
+				100000,
+				10,
+				95000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				108000,
+				4,
+				-108000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				116000,
+				4,
+				-99000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				124000,
+				4,
+				-108000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				132000,
+				4,
+				-99000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_tree",
+			"pos": [
+				140000,
+				4,
+				-108000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_pavilion",
+			"pos": [
+				125000,
+				4,
+				-88000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tower",
+			"pos": [
+				125000,
+				4,
+				-30000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_tall_hotel",
+			"pos": [
+				132000,
+				4,
+				-60000
+			],
+			"rot": 0
+		},
+		{
+			"item": "sn_big_factory",
+			"pos": [
+				125000,
+				4,
+				-12000
+			],
+			"rot": 90
+		}
+	],
+	"spawns": [
+		{
+			"zone": "town_core",
+			"rect": [
+				-126000,
+				46000,
+				30000,
+				28000
+			],
+			"y": 5,
+			"items": {
+				"sn_car": 14,
+				"sn_taxi": 3,
+				"sn_minitruck": 6,
+				"sn_bus": 5,
+				"sn_truck": 6,
+				"sn_container": 6,
+				"sn_tin_house": 5,
+				"sn_stall_row": 6,
+				"sn_shade_tree": 5,
+				"sn_street_tree": 6,
+				"sn_vendor_cart": 3,
+				"sn_scooter": 5,
+				"sn_bicycle": 3,
+				"sn_kumquat": 3,
+				"sn_vending": 2,
+				"sn_bus_stop": 2,
+				"sn_firetruck": 1,
+				"sn_garbage_truck": 1,
+				"sn_mailbox": 1,
+				"sn_shed": 3
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					-114500,
+					57500,
+					5000,
+					5000
+				]
+			]
+		},
+		{
+			"zone": "town_outer",
+			"rect": [
+				-140000,
+				34000,
+				72000,
+				64000
+			],
+			"y": 5,
+			"items": {
+				"sn_car": 3,
+				"sn_bus": 2,
+				"sn_truck": 3,
+				"sn_container": 3,
+				"sn_tin_house": 4,
+				"sn_bamboo": 3,
+				"sn_shade_tree": 3,
+				"sn_street_tree": 2,
+				"sn_stall_row": 2,
+				"sn_minitruck": 1,
+				"sn_scooter": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					-126000,
+					46000,
+					30000,
+					28000
+				]
+			]
+		},
+		{
+			"zone": "paddy_west",
+			"rect": [
+				-55000,
+				30000,
+				36000,
+				85000
+			],
+			"y": 3,
+			"items": {
+				"sn_haystack": 3,
+				"sn_scarecrow": 2,
+				"sn_egret": 3,
+				"sn_tractor": 2,
+				"sn_utility_pole": 2,
+				"sn_minitruck": 1,
+				"sn_shed": 1,
+				"sn_car": 2,
+				"sn_scooter": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "paddy_east",
+			"rect": [
+				-17000,
+				30000,
+				112000,
+				85000
+			],
+			"y": 3,
+			"items": {
+				"sn_haystack": 3,
+				"sn_scarecrow": 2,
+				"sn_egret": 3,
+				"sn_tractor": 2,
+				"sn_utility_pole": 2,
+				"sn_minitruck": 2,
+				"sn_shed": 2,
+				"sn_greenhouse": 4,
+				"sn_car": 2,
+				"sn_street_tree": 2
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "orchard",
+			"rect": [
+				103000,
+				28000,
+				42000,
+				87000
+			],
+			"y": 4,
+			"items": {
+				"sn_greenhouse": 3,
+				"sn_shed": 2,
+				"sn_minitruck": 1,
+				"sn_tractor": 1,
+				"sn_kumquat": 1,
+				"sn_scooter": 1,
+				"sn_haystack": 1,
+				"sn_water_tower": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "riverside",
+			"rect": [
+				-145000,
+				3000,
+				290000,
+				9000
+			],
+			"y": 4,
+			"items": {
+				"sn_gazebo": 5,
+				"sn_bicycle": 2,
+				"sn_street_tree": 4,
+				"sn_scooter": 1,
+				"sn_car": 3,
+				"sn_vendor_cart": 1,
+				"sn_bus_stop": 1,
+				"sn_kumquat": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					-10000,
+					4000,
+					8000,
+					8000
+				],
+				[
+					98400,
+					0,
+					3200,
+					15000
+				]
+			]
+		},
+		{
+			"zone": "factory_yard",
+			"rect": [
+				-145000,
+				-115000,
+				85000,
+				112000
+			],
+			"y": 4,
+			"items": {
+				"sn_container": 12,
+				"sn_tanker": 3,
+				"sn_excavator": 3,
+				"sn_minitruck": 2,
+				"sn_car": 3,
+				"sn_shed": 2,
+				"sn_street_tree": 2,
+				"sn_scooter": 1,
+				"sn_utility_pole": 2,
+				"sn_bus": 2,
+				"sn_billboard": 2,
+				"sn_greenhouse": 2
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "neighborhood_a",
+			"rect": [
+				-55000,
+				-115000,
+				70000,
+				112000
+			],
+			"y": 5,
+			"items": {
+				"sn_car": 4,
+				"sn_scooter": 2,
+				"sn_street_tree": 3,
+				"sn_bicycle": 1,
+				"sn_vendor_cart": 1,
+				"sn_utility_pole": 2,
+				"sn_bus": 2,
+				"sn_taxi": 1,
+				"sn_shrine": 1,
+				"sn_garbage_truck": 1,
+				"sn_billboard": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "neighborhood_b",
+			"rect": [
+				15000,
+				-115000,
+				73000,
+				112000
+			],
+			"y": 5,
+			"items": {
+				"sn_car": 4,
+				"sn_scooter": 2,
+				"sn_street_tree": 3,
+				"sn_bicycle": 1,
+				"sn_minitruck": 1,
+				"sn_utility_pole": 2,
+				"sn_bus": 2,
+				"sn_shed": 1,
+				"sn_firetruck": 1,
+				"sn_container": 2,
+				"sn_billboard": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "station_plaza",
+			"rect": [
+				84000,
+				-60000,
+				14500,
+				30000
+			],
+			"y": 6,
+			"items": {
+				"sn_bus": 4,
+				"sn_taxi": 2,
+				"sn_car": 3,
+				"sn_scooter": 2,
+				"sn_bicycle": 2,
+				"sn_bus_stop": 1,
+				"sn_vending": 1,
+				"sn_vendor_cart": 1,
+				"sn_street_tree": 2,
+				"sn_mailbox": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "station_east",
+			"rect": [
+				103000,
+				-75000,
+				42000,
+				72000
+			],
+			"y": 4,
+			"items": {
+				"sn_car": 3,
+				"sn_scooter": 1,
+				"sn_street_tree": 3,
+				"sn_container": 4,
+				"sn_gazebo": 2,
+				"sn_shed": 1,
+				"sn_minitruck": 1,
+				"sn_slide": 1,
+				"sn_utility_pole": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					98400,
+					-120000,
+					3200,
+					120000
+				]
+			]
+		},
+		{
+			"zone": "forest_park",
+			"rect": [
+				103000,
+				-115000,
+				42000,
+				40000
+			],
+			"y": 4,
+			"items": {
+				"sn_gazebo": 2,
+				"sn_street_tree": 3,
+				"sn_bicycle": 1,
+				"sn_slide": 1
+			},
+			"avoid_furniture": true
+		}
+	],
+	"gates": [],
+	"rescue": {
+		"pos": [
+			-6000,
+			4,
+			8000
+		],
+		"yaw_deg": 0
+	},
+	"env": {
+		"sky": "#bfe0f5",
+		"fog_color": "#cfe3ec",
+		"fog_per_d": 0.006
+	},
+	"stage": {
+		"start_cm": 1000,
+		"goal_cm": 10000,
+		"time_sec": 600,
+		"comet_sec": 330,
+		"seed": 4004,
+		"music": "station",
+		"intro": "從冬山的小鎮出發，一路滾到冬山火車站！長到 100 公尺吧",
+		"zones": [],
+		"gates": {},
+		"tuning": {},
+		"grades": [
+			{
+				"min_ratio": 0.0,
+				"text": "星婆婆：車站好遠喔，再滾一次，這次一定到得了！"
+			},
+			{
+				"min_ratio": 1.0,
+				"text": "星婆婆：做到了！整個冬山都變成星星的一部分了。"
+			},
+			{
+				"min_ratio": 1.3,
+				"text": "星婆婆：連冬山河的大橋都滾起來了！"
+			},
+			{
+				"min_ratio": 1.6,
+				"text": "星婆婆：哇，連車站的大瓜棚都黏起來了嗎？"
+			},
+			{
+				"min_ratio": 1.9,
+				"text": "星婆婆：太厲害了！這顆星星大到從龜山島那邊都看得到吧！"
+			}
+		]
+	}
+}
