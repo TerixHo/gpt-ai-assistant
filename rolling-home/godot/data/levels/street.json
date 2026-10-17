@@ -1,0 +1,3390 @@
+{
+	"_note": "第 2 關：宜蘭冬山鄉間的上學路。從槿寶家門口沿著農路往東，經過稻田、水圳、農舍、土地公小廟、柑仔店、文旦園與鴨寮，終點是小學大門。單位公分。",
+	"id": "street",
+	"name": "上學的路",
+	"areas": [
+		{
+			"name": "槿寶家門口",
+			"rect": [
+				-3600,
+				-4200,
+				3000,
+				4500
+			]
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				-3600,
+				-7000,
+				12600,
+				14000
+			]
+		},
+		{
+			"name": "鴨寮",
+			"rect": [
+				5600,
+				-6400,
+				3000,
+				2400
+			]
+		},
+		{
+			"name": "村子",
+			"rect": [
+				8600,
+				-4200,
+				6800,
+				4500
+			]
+		},
+		{
+			"name": "文旦園",
+			"rect": [
+				9000,
+				600,
+				12500,
+				6400
+			]
+		},
+		{
+			"name": "稻田",
+			"rect": [
+				15400,
+				-7000,
+				10600,
+				14000
+			]
+		},
+		{
+			"name": "學校大門",
+			"rect": [
+				26000,
+				-3600,
+				4000,
+				7000
+			]
+		}
+	],
+	"start": {
+		"pos": [
+			-2050,
+			0.5,
+			100
+		],
+		"yaw_deg": 270
+	},
+	"floors": [
+		{
+			"name": "底層",
+			"rect": [
+				-6600,
+				-10000,
+				39600,
+				20000
+			],
+			"y": -200,
+			"pattern": "soil",
+			"color": "#8d6e4f",
+			"repeat": 200,
+			"thickness": 20
+		},
+		{
+			"name": "主路",
+			"rect": [
+				-3600,
+				-300,
+				33600,
+				600
+			],
+			"y": 0,
+			"pattern": "asphalt",
+			"color": "#5a5f66",
+			"repeat": 300,
+			"thickness": 200
+		},
+		{
+			"name": "北側路肩",
+			"rect": [
+				-3600,
+				-380,
+				33600,
+				80
+			],
+			"y": -8,
+			"pattern": "grass",
+			"color": "#86b35a",
+			"repeat": 200,
+			"thickness": 200
+		},
+		{
+			"name": "南側水圳邊",
+			"rect": [
+				-3600,
+				300,
+				33600,
+				80
+			],
+			"y": 0,
+			"pattern": "concrete",
+			"color": "#aba79c",
+			"repeat": 300,
+			"thickness": 200
+		},
+		{
+			"name": "灌溉水圳",
+			"rect": [
+				-3600,
+				380,
+				33600,
+				220
+			],
+			"y": -38,
+			"pattern": "water",
+			"color": "#2f7f9f",
+			"repeat": 200,
+			"thickness": 60
+		},
+		{
+			"name": "北田零",
+			"rect": [
+				-3600,
+				-7000,
+				3000,
+				2800
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "北田一",
+			"rect": [
+				-600,
+				-7000,
+				5600,
+				6620
+			],
+			"y": -18,
+			"pattern": "paddy",
+			"color": "#3f7f2a",
+			"repeat": 260,
+			"thickness": 200
+		},
+		{
+			"name": "北田二",
+			"rect": [
+				5600,
+				-4000,
+				3000,
+				3620
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "北田二北",
+			"rect": [
+				5600,
+				-7000,
+				3000,
+				600
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "北田三",
+			"rect": [
+				8600,
+				-7000,
+				6800,
+				2800
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "北田四",
+			"rect": [
+				15400,
+				-7000,
+				5600,
+				6620
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "北田五",
+			"rect": [
+				21000,
+				-7000,
+				5000,
+				6620
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "南田一",
+			"rect": [
+				-3600,
+				600,
+				6600,
+				6400
+			],
+			"y": -18,
+			"pattern": "paddy",
+			"color": "#3f7f2a",
+			"repeat": 260,
+			"thickness": 200
+		},
+		{
+			"name": "南田二",
+			"rect": [
+				3000,
+				600,
+				6000,
+				6400
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "南田三",
+			"rect": [
+				21500,
+				600,
+				4500,
+				6400
+			],
+			"y": -18,
+			"pattern": "grass",
+			"color": "#6aa63c",
+			"repeat": 240,
+			"thickness": 200
+		},
+		{
+			"name": "槿寶家前院",
+			"rect": [
+				-3600,
+				-4200,
+				3000,
+				3820
+			],
+			"y": 0,
+			"pattern": "concrete",
+			"color": "#b3ada2",
+			"repeat": 200,
+			"thickness": 200
+		},
+		{
+			"name": "村子空地",
+			"rect": [
+				8600,
+				-4200,
+				6800,
+				3820
+			],
+			"y": 0,
+			"pattern": "concrete",
+			"color": "#b0a998",
+			"repeat": 300,
+			"thickness": 200
+		},
+		{
+			"name": "北農路",
+			"rect": [
+				5000,
+				-7000,
+				600,
+				6620
+			],
+			"y": 0,
+			"pattern": "concrete",
+			"color": "#aba79c",
+			"repeat": 300,
+			"thickness": 200
+		},
+		{
+			"name": "鴨寮空地",
+			"rect": [
+				5600,
+				-6400,
+				3000,
+				2400
+			],
+			"y": 0,
+			"pattern": "soil",
+			"color": "#a98467",
+			"repeat": 200,
+			"thickness": 200
+		},
+		{
+			"name": "鴨池",
+			"rect": [
+				6000,
+				-6100,
+				1200,
+				900
+			],
+			"y": -45,
+			"pattern": "water",
+			"color": "#3f8fae",
+			"repeat": 200,
+			"thickness": 60
+		},
+		{
+			"name": "文旦園",
+			"rect": [
+				9000,
+				600,
+				12500,
+				6400
+			],
+			"y": -15,
+			"pattern": "grass",
+			"color": "#7f9f45",
+			"repeat": 200,
+			"thickness": 200
+		},
+		{
+			"name": "學校前廣場",
+			"rect": [
+				26000,
+				-3600,
+				4000,
+				3220
+			],
+			"y": 0,
+			"pattern": "paving",
+			"color": "#c49a76",
+			"repeat": 120,
+			"thickness": 200
+		},
+		{
+			"name": "學校前北側草地",
+			"rect": [
+				26000,
+				-7000,
+				4000,
+				3400
+			],
+			"y": -10,
+			"pattern": "grass",
+			"color": "#86b35a",
+			"repeat": 200,
+			"thickness": 200
+		},
+		{
+			"name": "學校前南側",
+			"rect": [
+				26000,
+				600,
+				4000,
+				2800
+			],
+			"y": 0,
+			"pattern": "paving",
+			"color": "#c49a76",
+			"repeat": 120,
+			"thickness": 200
+		},
+		{
+			"name": "學校前南側草地",
+			"rect": [
+				26000,
+				3400,
+				4000,
+				3600
+			],
+			"y": -10,
+			"pattern": "grass",
+			"color": "#86b35a",
+			"repeat": 200,
+			"thickness": 200
+		}
+	],
+	"walls": [
+		{
+			"from": [
+				-3600,
+				-420
+			],
+			"to": [
+				-600,
+				-420
+			],
+			"height": 150,
+			"thickness": 24,
+			"gaps": [
+				[
+					1200.0,
+					1800.0,
+					999
+				]
+			],
+			"color": "#e9d8c4"
+		},
+		{
+			"from": [
+				-600,
+				-4200
+			],
+			"to": [
+				-600,
+				-420
+			],
+			"height": 150,
+			"thickness": 24,
+			"color": "#e9d8c4"
+		},
+		{
+			"from": [
+				29200,
+				-3600
+			],
+			"to": [
+				29200,
+				-700
+			],
+			"height": 200,
+			"thickness": 40,
+			"color": "#f1e3c6"
+		},
+		{
+			"from": [
+				29200,
+				700
+			],
+			"to": [
+				29200,
+				3400
+			],
+			"height": 200,
+			"thickness": 40,
+			"color": "#f1e3c6"
+		},
+		{
+			"from": [
+				-3600,
+				-7000
+			],
+			"to": [
+				30000,
+				-7000
+			],
+			"height": 700,
+			"thickness": 200,
+			"color": "#4f772d",
+			"y": -30
+		},
+		{
+			"from": [
+				-3600,
+				7000
+			],
+			"to": [
+				30000,
+				7000
+			],
+			"height": 700,
+			"thickness": 200,
+			"color": "#4f772d",
+			"y": -30
+		},
+		{
+			"from": [
+				-3600,
+				-7000
+			],
+			"to": [
+				-3600,
+				7000
+			],
+			"height": 700,
+			"thickness": 200,
+			"color": "#4f772d",
+			"y": -30
+		},
+		{
+			"from": [
+				30000,
+				-7000
+			],
+			"to": [
+				30000,
+				7000
+			],
+			"height": 700,
+			"thickness": 200,
+			"color": "#4f772d",
+			"y": -30
+		}
+	],
+	"blocks": [
+		{
+			"name": "中線",
+			"pos": [
+				-3250,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				-2450,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				-1650,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				-850,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				-50,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				1550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				2350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				3150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				3950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				4750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				5550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				6350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				7150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				7950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				8750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				9550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				10350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				11150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				11950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				12750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				13550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				14350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				15150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				15950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				16750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				17550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				18350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				19150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				19950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				20750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				21550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				22350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				23150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				23950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				24750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				25550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				26350,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				27150,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				27950,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				28750,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "中線",
+			"pos": [
+				29550,
+				0,
+				0
+			],
+			"size": [
+				300,
+				0.6,
+				14
+			],
+			"color": "#f8f9fa"
+		},
+		{
+			"name": "北田零田埂",
+			"pos": [
+				-2100.0,
+				-18,
+				-5000
+			],
+			"size": [
+				3000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田一田埂",
+			"pos": [
+				2400,
+				-18,
+				-3690.0
+			],
+			"size": [
+				50,
+				22,
+				6620
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田一田埂",
+			"pos": [
+				2200.0,
+				-18,
+				-5000
+			],
+			"size": [
+				5600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田一田埂",
+			"pos": [
+				2200.0,
+				-18,
+				-3000
+			],
+			"size": [
+				5600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田一田埂",
+			"pos": [
+				2200.0,
+				-18,
+				-1000
+			],
+			"size": [
+				5600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田二田埂",
+			"pos": [
+				7100.0,
+				-18,
+				-2000
+			],
+			"size": [
+				3000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田三田埂",
+			"pos": [
+				11600,
+				-18,
+				-5600.0
+			],
+			"size": [
+				50,
+				22,
+				2800
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田三田埂",
+			"pos": [
+				14600,
+				-18,
+				-5600.0
+			],
+			"size": [
+				50,
+				22,
+				2800
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田三田埂",
+			"pos": [
+				12000.0,
+				-18,
+				-5000
+			],
+			"size": [
+				6800,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田四田埂",
+			"pos": [
+				18400,
+				-18,
+				-3690.0
+			],
+			"size": [
+				50,
+				22,
+				6620
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田四田埂",
+			"pos": [
+				18200.0,
+				-18,
+				-5000
+			],
+			"size": [
+				5600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田四田埂",
+			"pos": [
+				18200.0,
+				-18,
+				-3000
+			],
+			"size": [
+				5600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田四田埂",
+			"pos": [
+				18200.0,
+				-18,
+				-1000
+			],
+			"size": [
+				5600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田五田埂",
+			"pos": [
+				24000,
+				-18,
+				-3690.0
+			],
+			"size": [
+				50,
+				22,
+				6620
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田五田埂",
+			"pos": [
+				23500.0,
+				-18,
+				-5000
+			],
+			"size": [
+				5000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田五田埂",
+			"pos": [
+				23500.0,
+				-18,
+				-3000
+			],
+			"size": [
+				5000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "北田五田埂",
+			"pos": [
+				23500.0,
+				-18,
+				-1000
+			],
+			"size": [
+				5000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田一田埂",
+			"pos": [
+				-600,
+				-18,
+				3800.0
+			],
+			"size": [
+				50,
+				22,
+				6400
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田一田埂",
+			"pos": [
+				2400,
+				-18,
+				3800.0
+			],
+			"size": [
+				50,
+				22,
+				6400
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田一田埂",
+			"pos": [
+				-300.0,
+				-18,
+				2600
+			],
+			"size": [
+				6600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田一田埂",
+			"pos": [
+				-300.0,
+				-18,
+				4600
+			],
+			"size": [
+				6600,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田二田埂",
+			"pos": [
+				6000,
+				-18,
+				3800.0
+			],
+			"size": [
+				50,
+				22,
+				6400
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田二田埂",
+			"pos": [
+				6000.0,
+				-18,
+				2600
+			],
+			"size": [
+				6000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田二田埂",
+			"pos": [
+				6000.0,
+				-18,
+				4600
+			],
+			"size": [
+				6000,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田三田埂",
+			"pos": [
+				24500,
+				-18,
+				3800.0
+			],
+			"size": [
+				50,
+				22,
+				6400
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田三田埂",
+			"pos": [
+				23750.0,
+				-18,
+				2600
+			],
+			"size": [
+				4500,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "南田三田埂",
+			"pos": [
+				23750.0,
+				-18,
+				4600
+			],
+			"size": [
+				4500,
+				22,
+				50
+			],
+			"color": "#7a9a4a"
+		},
+		{
+			"name": "學校前水圳蓋板",
+			"pos": [
+				28000.0,
+				-20,
+				490.0
+			],
+			"size": [
+				4000,
+				20,
+				220
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				-2000,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				2200,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				6000,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				9800,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				13600,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				17400,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				21200,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		},
+		{
+			"name": "水圳小橋",
+			"pos": [
+				25000,
+				-20,
+				490.0
+			],
+			"size": [
+				420,
+				20,
+				260
+			],
+			"color": "#b8b3a7"
+		}
+	],
+	"ramps": [],
+	"stairs": [
+		{
+			"name": "鴨池樓梯",
+			"from": [
+				6600.0,
+				-45,
+				-5088.6
+			],
+			"to": [
+				6600,
+				0,
+				-5200
+			],
+			"width": 300,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7"
+			]
+		},
+		{
+			"name": "鴨池樓梯",
+			"from": [
+				6600.0,
+				-45,
+				-6211.4
+			],
+			"to": [
+				6600,
+				0,
+				-6100
+			],
+			"width": 300,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				-2295.3,
+				-38,
+				490.0
+			],
+			"to": [
+				-2210,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				-1704.7,
+				-38,
+				490.0
+			],
+			"to": [
+				-1790,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				1904.7,
+				-38,
+				490.0
+			],
+			"to": [
+				1990,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				2495.3,
+				-38,
+				490.0
+			],
+			"to": [
+				2410,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				5704.7,
+				-38,
+				490.0
+			],
+			"to": [
+				5790,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				6295.3,
+				-38,
+				490.0
+			],
+			"to": [
+				6210,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				9504.7,
+				-38,
+				490.0
+			],
+			"to": [
+				9590,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				10095.3,
+				-38,
+				490.0
+			],
+			"to": [
+				10010,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				13304.7,
+				-38,
+				490.0
+			],
+			"to": [
+				13390,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				13895.3,
+				-38,
+				490.0
+			],
+			"to": [
+				13810,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				17104.7,
+				-38,
+				490.0
+			],
+			"to": [
+				17190,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				17695.3,
+				-38,
+				490.0
+			],
+			"to": [
+				17610,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				20904.7,
+				-38,
+				490.0
+			],
+			"to": [
+				20990,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				21495.3,
+				-38,
+				490.0
+			],
+			"to": [
+				21410,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				24704.7,
+				-38,
+				490.0
+			],
+			"to": [
+				24790,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "水圳出口",
+			"from": [
+				25295.3,
+				-38,
+				490.0
+			],
+			"to": [
+				25210,
+				0,
+				490.0
+			],
+			"width": 200,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#c9c6bd",
+				"#b8b3a7",
+				"#d6d3cb"
+			]
+		}
+	],
+	"decor": [
+		{
+			"name": "遠山1",
+			"shape": "cone",
+			"pos": [
+				2000,
+				-200,
+				-26000
+			],
+			"size": [
+				16000,
+				5200,
+				9600.0
+			],
+			"color": "#5f8f6a",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山2",
+			"shape": "cone",
+			"pos": [
+				16000,
+				-200,
+				-30000
+			],
+			"size": [
+				22000,
+				7600,
+				13200.0
+			],
+			"color": "#4f7d5c",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山3",
+			"shape": "cone",
+			"pos": [
+				30000,
+				-200,
+				-25000
+			],
+			"size": [
+				14000,
+				4800,
+				8400.0
+			],
+			"color": "#6a9a72",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山4",
+			"shape": "cone",
+			"pos": [
+				-12000,
+				-200,
+				-18000
+			],
+			"size": [
+				14000,
+				6200,
+				8400.0
+			],
+			"color": "#5a8865",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山5",
+			"shape": "cone",
+			"pos": [
+				-14000,
+				-200,
+				6000
+			],
+			"size": [
+				12000,
+				5000,
+				7200.0
+			],
+			"color": "#62906b",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山6",
+			"shape": "cone",
+			"pos": [
+				12000,
+				-200,
+				24000
+			],
+			"size": [
+				20000,
+				4200,
+				12000.0
+			],
+			"color": "#6f9c76",
+			"rot": 0,
+			"no_shadow": true
+		}
+	],
+	"petals": [
+		{
+			"name": "山櫻花",
+			"pos": [
+				-1100,
+				0,
+				-840
+			],
+			"size": [
+				800,
+				520,
+				800
+			],
+			"color": "#ffafcc",
+			"amount": 70,
+			"petal": 7.0,
+			"fall": 60.0
+		}
+	],
+	"placements": [
+		{
+			"item": "st_home_house",
+			"pos": [
+				-2100.0,
+				0,
+				-3000
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_car",
+			"pos": [
+				-2900,
+				0,
+				-840
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_cherry_tree",
+			"pos": [
+				-1100,
+				0,
+				-840
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_grocery",
+			"pos": [
+				10000,
+				0,
+				-1300
+			],
+			"rot": 180
+		},
+		{
+			"item": "st_farmhouse",
+			"pos": [
+				13700,
+				0,
+				-3000
+			],
+			"rot": 180
+		},
+		{
+			"item": "st_farmhouse",
+			"pos": [
+				9200,
+				0,
+				-3500
+			],
+			"rot": 90
+		},
+		{
+			"item": "st_shrine",
+			"pos": [
+				12000,
+				0,
+				-1050
+			],
+			"rot": 180
+		},
+		{
+			"item": "st_banyan",
+			"pos": [
+				12100,
+				0,
+				-2500
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_chess_table",
+			"pos": [
+				11500,
+				0,
+				-1900
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_chess_table",
+			"pos": [
+				12700,
+				0,
+				-2000
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_bus_stop",
+			"pos": [
+				11300,
+				0,
+				-560
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_mailbox_pair",
+			"pos": [
+				9300,
+				0,
+				-650
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_vending",
+			"pos": [
+				10750,
+				0,
+				-700
+			],
+			"rot": 180
+		},
+		{
+			"item": "st_ice_box",
+			"pos": [
+				9550,
+				0,
+				-800
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				9700,
+				-15,
+				1900
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				10100,
+				-15,
+				3600
+			],
+			"rot": 53
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				9700,
+				-15,
+				5300
+			],
+			"rot": 106
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				10800,
+				-15,
+				1900
+			],
+			"rot": 37
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				11200,
+				-15,
+				3600
+			],
+			"rot": 90
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				10800,
+				-15,
+				5300
+			],
+			"rot": 143
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				11900,
+				-15,
+				1900
+			],
+			"rot": 74
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				12300,
+				-15,
+				3600
+			],
+			"rot": 127
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				11900,
+				-15,
+				5300
+			],
+			"rot": 180
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				13000,
+				-15,
+				1900
+			],
+			"rot": 111
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				13400,
+				-15,
+				3600
+			],
+			"rot": 164
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				13000,
+				-15,
+				5300
+			],
+			"rot": 217
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				14100,
+				-15,
+				1900
+			],
+			"rot": 148
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				14500,
+				-15,
+				3600
+			],
+			"rot": 201
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				14100,
+				-15,
+				5300
+			],
+			"rot": 254
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				15200,
+				-15,
+				1900
+			],
+			"rot": 185
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				15600,
+				-15,
+				3600
+			],
+			"rot": 238
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				15200,
+				-15,
+				5300
+			],
+			"rot": 291
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				16300,
+				-15,
+				1900
+			],
+			"rot": 222
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				16700,
+				-15,
+				3600
+			],
+			"rot": 275
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				16300,
+				-15,
+				5300
+			],
+			"rot": 328
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				17400,
+				-15,
+				1900
+			],
+			"rot": 259
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				17800,
+				-15,
+				3600
+			],
+			"rot": 312
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				17400,
+				-15,
+				5300
+			],
+			"rot": 5
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				18500,
+				-15,
+				1900
+			],
+			"rot": 296
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				18900,
+				-15,
+				3600
+			],
+			"rot": 349
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				18500,
+				-15,
+				5300
+			],
+			"rot": 42
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				19600,
+				-15,
+				1900
+			],
+			"rot": 333
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				20000,
+				-15,
+				3600
+			],
+			"rot": 26
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				19600,
+				-15,
+				5300
+			],
+			"rot": 79
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				20700,
+				-15,
+				1900
+			],
+			"rot": 10
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				21100,
+				-15,
+				3600
+			],
+			"rot": 63
+		},
+		{
+			"item": "st_pomelo_tree",
+			"pos": [
+				20700,
+				-15,
+				5300
+			],
+			"rot": 116
+		},
+		{
+			"item": "st_school_gate",
+			"pos": [
+				29200,
+				0,
+				0
+			],
+			"rot": 90
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				-200,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				2800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				5800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				8800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				11800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				14800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				17800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				20800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				23800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_electric_pole",
+			"pos": [
+				26800,
+				-8,
+				-340
+			],
+			"rot": 0
+		},
+		{
+			"item": "st_duck",
+			"pos": [
+				5900,
+				0,
+				-5000
+			],
+			"rot": 0,
+			"roam": [
+				5700,
+				-6300,
+				2800,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_duck",
+			"pos": [
+				7500,
+				0,
+				-5100
+			],
+			"rot": 0,
+			"roam": [
+				5700,
+				-6300,
+				2800,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_duck",
+			"pos": [
+				7700,
+				0,
+				-4700
+			],
+			"rot": 0,
+			"roam": [
+				5700,
+				-6300,
+				2800,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_duck",
+			"pos": [
+				8100,
+				0,
+				-5600
+			],
+			"rot": 0,
+			"roam": [
+				5700,
+				-6300,
+				2800,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_duck",
+			"pos": [
+				5800,
+				0,
+				-4500
+			],
+			"rot": 0,
+			"roam": [
+				5700,
+				-6300,
+				2800,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_chicken",
+			"pos": [
+				7900,
+				0,
+				-4500
+			],
+			"rot": 0,
+			"roam": [
+				7400,
+				-6300,
+				1100,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_chicken",
+			"pos": [
+				8100,
+				0,
+				-5300
+			],
+			"rot": 0,
+			"roam": [
+				7400,
+				-6300,
+				1100,
+				2200
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_chicken",
+			"pos": [
+				11300,
+				0,
+				-1800
+			],
+			"rot": 0,
+			"roam": [
+				10600,
+				-2600,
+				1600,
+				1600
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_egret",
+			"pos": [
+				1800,
+				-18,
+				-3000
+			],
+			"rot": 0,
+			"roam": [
+				-500,
+				-6800,
+				5300,
+				6300
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_egret",
+			"pos": [
+				6000,
+				-18,
+				3000
+			],
+			"rot": 0,
+			"roam": [
+				3100,
+				800,
+				5800,
+				5000
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_egret",
+			"pos": [
+				18000,
+				-18,
+				-4000
+			],
+			"rot": 0,
+			"roam": [
+				15500,
+				-6800,
+				5300,
+				6300
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_egret",
+			"pos": [
+				23500,
+				-18,
+				3500
+			],
+			"rot": 0,
+			"roam": [
+				21600,
+				800,
+				4300,
+				5000
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_dog_local",
+			"pos": [
+				10500,
+				0,
+				-2000
+			],
+			"rot": 0,
+			"roam": [
+				8800,
+				-4000,
+				6400,
+				3400
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_dog_local",
+			"pos": [
+				27500,
+				0,
+				-1500
+			],
+			"rot": 0,
+			"roam": [
+				26100,
+				-3400,
+				2900,
+				3000
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_cat_local",
+			"pos": [
+				9800,
+				0,
+				-900
+			],
+			"rot": 0,
+			"roam": [
+				9000,
+				-2400,
+				2400,
+				1900
+			],
+			"blocks_spawn": false
+		},
+		{
+			"item": "st_cat_local",
+			"pos": [
+				-1200,
+				0,
+				-1500
+			],
+			"rot": 0,
+			"roam": [
+				-3400,
+				-2300,
+				2700,
+				1800
+			],
+			"blocks_spawn": false
+		}
+	],
+	"spawns": [
+		{
+			"zone": "家門口",
+			"rect": [
+				-3300,
+				-1720,
+				2400,
+				1150
+			],
+			"y": 0,
+			"items": {
+				"st_bucket": 6,
+				"st_helmet": 5,
+				"st_rain_boots": 4,
+				"st_potted_plant": 6,
+				"st_stool": 6,
+				"st_plastic_chair": 4,
+				"st_cabbage": 4,
+				"st_pomelo_box": 3,
+				"st_brick_stack": 4,
+				"st_hose": 2,
+				"st_crate": 4,
+				"st_tire": 3,
+				"st_kick_scooter": 2,
+				"flower_pot": 4,
+				"watering_can": 2,
+				"trash_can": 2,
+				"soccer_ball": 2,
+				"laundry_basket": 2
+			}
+		},
+		{
+			"zone": "主路西段",
+			"rect": [
+				-3400,
+				-260,
+				9000,
+				520
+			],
+			"y": 0,
+			"items": {
+				"st_traffic_cone": 6,
+				"st_bucket": 3,
+				"st_helmet": 3,
+				"st_crate": 4,
+				"st_tire": 3,
+				"st_stool": 3,
+				"st_brick_stack": 3,
+				"st_gas_tank": 3,
+				"st_cabbage": 3,
+				"st_watermelon": 2,
+				"st_potted_plant": 4,
+				"st_trash_bin": 3,
+				"st_rice_sack": 3,
+				"st_bamboo_basket": 4,
+				"st_signboard": 2,
+				"st_wheelbarrow": 2,
+				"st_water_jar": 2,
+				"st_stone_bench": 2,
+				"st_oil_drum": 3,
+				"st_ice_box": 1,
+				"st_kick_scooter": 2
+			}
+		},
+		{
+			"zone": "水圳邊西段",
+			"rect": [
+				-3400,
+				310,
+				9000,
+				60
+			],
+			"y": 0,
+			"items": {
+				"st_bucket": 4,
+				"st_stool": 3,
+				"st_bamboo_hat": 4,
+				"st_hose": 3,
+				"st_rain_boots": 3
+			}
+		},
+		{
+			"zone": "主路中段",
+			"rect": [
+				8600,
+				-260,
+				9000,
+				520
+			],
+			"y": 0,
+			"items": {
+				"st_traffic_cone": 8,
+				"st_trash_bin": 4,
+				"st_oil_drum": 6,
+				"st_tire": 4,
+				"st_wheelbarrow": 4,
+				"st_bike": 3,
+				"st_scooter": 2,
+				"st_water_jar": 3,
+				"st_ice_box": 2,
+				"st_signboard": 3,
+				"st_crate": 3,
+				"st_plastic_chair": 3,
+				"st_potted_plant": 3,
+				"st_gas_tank": 3,
+				"st_kick_scooter": 2
+			}
+		},
+		{
+			"zone": "主路東段",
+			"rect": [
+				17600,
+				-260,
+				8400,
+				520
+			],
+			"y": 0,
+			"items": {
+				"st_traffic_cone": 8,
+				"st_oil_drum": 6,
+				"st_bike": 3,
+				"st_scooter": 3,
+				"st_wheelbarrow": 4,
+				"st_ladder": 4,
+				"st_scarecrow": 2,
+				"st_water_jar": 3,
+				"st_fruit_stall": 1,
+				"st_small_tree": 2,
+				"st_stone_bench": 3,
+				"st_vending": 2
+			}
+		},
+		{
+			"zone": "村子",
+			"rect": [
+				8800,
+				-4000,
+				6400,
+				3420
+			],
+			"y": 0,
+			"items": {
+				"st_plastic_chair": 6,
+				"st_stool": 6,
+				"st_potted_plant": 5,
+				"st_water_jar": 4,
+				"st_gas_tank": 3,
+				"st_crate": 5,
+				"st_bike": 3,
+				"st_scooter": 3,
+				"st_oil_drum": 4,
+				"st_stone_bench": 4,
+				"st_tire": 4,
+				"st_ladder": 3,
+				"st_wheelbarrow": 3,
+				"st_kick_scooter": 3,
+				"st_signboard": 3,
+				"st_small_tree": 2,
+				"st_vending": 1,
+				"st_fruit_stall": 1,
+				"st_rice_sack": 3,
+				"st_watermelon": 2,
+				"st_bucket": 3
+			}
+		},
+		{
+			"zone": "鴨寮",
+			"rect": [
+				5700,
+				-6300,
+				2800,
+				2200
+			],
+			"y": 0,
+			"items": {
+				"st_feed_sack": 6,
+				"st_bucket": 4,
+				"st_coop": 4,
+				"st_bamboo_basket": 4,
+				"st_crate": 4,
+				"st_wheelbarrow": 2,
+				"st_oil_drum": 2
+			}
+		},
+		{
+			"zone": "北農路",
+			"rect": [
+				5050,
+				-6700,
+				500,
+				6200
+			],
+			"y": 0,
+			"items": {
+				"st_bike": 3,
+				"st_scooter": 2,
+				"st_bamboo_hat": 3,
+				"st_hoe": 4,
+				"st_rice_sack": 4,
+				"st_tire": 2
+			}
+		},
+		{
+			"zone": "北田零田裡",
+			"rect": [
+				-3400,
+				-6800,
+				2600,
+				2400
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 1,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 0
+			}
+		},
+		{
+			"zone": "北田一田裡",
+			"rect": [
+				-400,
+				-6800,
+				5200,
+				6220
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 2,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 1
+			}
+		},
+		{
+			"zone": "北田二田裡",
+			"rect": [
+				5800,
+				-3800,
+				2600,
+				3220
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 1,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 0
+			}
+		},
+		{
+			"zone": "北田三田裡",
+			"rect": [
+				8800,
+				-6800,
+				6400,
+				2400
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 1,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 0
+			}
+		},
+		{
+			"zone": "北田四田裡",
+			"rect": [
+				15600,
+				-6800,
+				5200,
+				6220
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 2,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 1
+			}
+		},
+		{
+			"zone": "北田五田裡",
+			"rect": [
+				21200,
+				-6800,
+				4600,
+				6220
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 1,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 0
+			}
+		},
+		{
+			"zone": "南田一田裡",
+			"rect": [
+				-3400,
+				800,
+				6200,
+				6000
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 2,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 1
+			}
+		},
+		{
+			"zone": "南田二田裡",
+			"rect": [
+				3200,
+				800,
+				5600,
+				6000
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 2,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 1
+			}
+		},
+		{
+			"zone": "南田三田裡",
+			"rect": [
+				21700,
+				800,
+				4100,
+				6000
+			],
+			"y": -18,
+			"items": {
+				"st_frog": 2,
+				"st_seedling_tray": 4,
+				"st_bamboo_hat": 2,
+				"st_hoe": 2,
+				"st_scarecrow": 1,
+				"st_rice_sack": 2,
+				"st_rain_boots": 1,
+				"st_bucket": 1,
+				"st_water_buffalo": 0
+			}
+		},
+		{
+			"zone": "文旦園",
+			"rect": [
+				9200,
+				800,
+				12100,
+				6000
+			],
+			"y": -15,
+			"items": {
+				"st_pomelo": 24,
+				"st_pomelo_box": 12,
+				"st_bamboo_basket": 6,
+				"st_crate": 6,
+				"st_ladder": 5,
+				"st_wheelbarrow": 4,
+				"st_pomelo_sapling": 8,
+				"st_fruit_stall": 2,
+				"st_scooter": 1,
+				"st_oil_drum": 2,
+				"st_water_buffalo": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "學校前",
+			"rect": [
+				26200,
+				-3400,
+				2800,
+				2900
+			],
+			"y": 0,
+			"items": {
+				"st_scooter": 6,
+				"st_bike": 6,
+				"st_kick_scooter": 3,
+				"st_helmet": 3,
+				"st_traffic_cone": 4,
+				"st_signboard": 2,
+				"st_small_tree": 2,
+				"st_stone_bench": 3,
+				"st_vending": 2,
+				"st_trash_bin": 3
+			}
+		},
+		{
+			"zone": "學校前南側",
+			"rect": [
+				26200,
+				800,
+				2800,
+				2400
+			],
+			"y": 0,
+			"items": {
+				"st_scooter": 3,
+				"st_bike": 3,
+				"st_small_tree": 2,
+				"st_fruit_stall": 1,
+				"st_car_red": 1
+			}
+		}
+	],
+	"gates": [],
+	"env": {
+		"sky": "#a9d6f5",
+		"fog_color": "#dcecf5",
+		"fog_per_d": 0.0035
+	},
+	"rescue": {
+		"pos": [
+			12500,
+			0.5,
+			0
+		],
+		"yaw_deg": 270
+	},
+	"stage": {
+		"start_cm": 100,
+		"goal_cm": 300,
+		"time_sec": 480,
+		"comet_sec": 240,
+		"seed": 2201,
+		"music": "street",
+		"intro": "出發上學囉！沿著稻田邊的路，長到 3 公尺就能進學校",
+		"zones": [],
+		"gates": {},
+		"tuning": {},
+		"start": {
+			"pos": [
+				-2050,
+				0.5,
+				100
+			],
+			"yaw_deg": 270
+		},
+		"grades": [
+			{
+				"min_ratio": 0.0,
+				"text": "星婆婆：路還很長，再滾一次吧！"
+			},
+			{
+				"min_ratio": 1.0,
+				"text": "星婆婆：準時到學校了！路上好乾淨。"
+			},
+			{
+				"min_ratio": 1.3,
+				"text": "星婆婆：連文旦攤車都滾起來了？阿伯會嚇一跳！"
+			},
+			{
+				"min_ratio": 1.6,
+				"text": "星婆婆：好大一顆！電線桿都黏在上面了！"
+			},
+			{
+				"min_ratio": 1.9,
+				"text": "星婆婆：太厲害了！整條上學路都變成星星啦！"
+			}
+		]
+	}
+}
