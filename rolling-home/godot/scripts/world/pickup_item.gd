@@ -76,6 +76,7 @@ func launch(impulse: Vector3, cooldown := 0.8) -> void:
 	set_physics_process(true)
 	freeze = false
 	can_sleep = true
+	gravity_scale = KMath.gravity_scale_for(size_cm)
 	apply_central_impulse(impulse * mass)
 	if not sleeping_state_changed.is_connected(_on_sleep):
 		sleeping_state_changed.connect(_on_sleep)

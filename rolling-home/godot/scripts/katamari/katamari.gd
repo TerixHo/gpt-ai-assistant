@@ -652,6 +652,8 @@ func _place_stuck(e: Dictionary) -> void:
 func _apply_size() -> void:
 	diameter = KMath.diameter_from_volume(volume)
 	var r := radius()
+	# 重力隨大小放大：真實重力下 100 公尺的球碰到斜坡會飛好幾秒，看起來輕飄飄；25 公分以下不變
+	gravity_scale = KMath.gravity_scale_for(diameter)
 	_body_shape.radius = r
 	_grab_shape.radius = r * grab_margin + GRAB_EXTRA
 	_core.scale = Vector3.ONE * diameter * 0.9

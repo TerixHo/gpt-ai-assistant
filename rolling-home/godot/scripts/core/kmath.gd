@@ -21,6 +21,12 @@ static func item_volume(size_cm: float, fill: float) -> float:
 	return sphere_volume(size_cm) * fill
 
 
+## 重力倍率：大東西用真實重力會像慢動作（100 公尺的球從斜坡飛出去要好幾秒才落地），
+## 所以超過 25 公分後重力跟著尺寸放大，讓大球、小球的手感差不多。
+static func gravity_scale_for(size_cm: float) -> float:
+	return pow(maxf(1.0, size_cm / 25.0), 0.95)
+
+
 ## 吸附判定：物件尺寸小於「塊球直徑 × 比例」才黏得起來。
 static func can_pick(item_size_cm: float, diameter_cm: float, ratio: float) -> bool:
 	return item_size_cm <= diameter_cm * ratio
