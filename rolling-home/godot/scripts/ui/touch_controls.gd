@@ -2,10 +2,12 @@ class_name TouchControls
 extends Control
 ## 觸控操作（iPad、手機、觸控筆電）：
 ##   左半邊任意位置按住拖曳 = 虛擬搖桿（往上前進、往下後退、左右轉彎）。
-##   按住槿寶（或前面的球）= 集氣，放開衝出去；滑鼠按住槿寶也可以。
+##   搖桿放開後馬上再按住 = 集氣（主角慢慢推、球越轉越快），放開衝出去；集氣時拖曳一樣可以轉向。
 ##   右半邊往上滑 = 衝刺。
-##   右側按鈕 = 跳躍（按住跳更高）、轉身、看遠一點（按住）、視角切換、暫停。
-## 每根手指自己判斷位置，所以一手推搖桿、一手按按鈕或集氣也不會漏掉。
+##   右側圖示按鈕 = 跳躍（空中再按一次二段跳）、轉身、看遠一點（按住）、視角切換、暫停；
+##   卡住時多一顆「回到中間」的房子按鈕。按鈕都只有圖示，不寫字。
+##   電腦用滑鼠按住槿寶也可以集氣。
+## 每根手指自己判斷位置，所以一手推搖桿、一手按按鈕也不會漏掉。
 ## 有觸控螢幕時一開始就顯示；沒有的話，第一次摸到螢幕才出現。
 
 signal shown
@@ -13,14 +15,35 @@ signal shown
 const STICK_RADIUS := 90.0
 const KNOB_RADIUS := 38.0
 const BUTTON_RADIUS := 50.0
+## 搖桿放開後多久內再按住算集氣（秒）
+const DOUBLE_PRESS := 0.35
 ## 往上滑多少距離（畫面單位）、多快（秒）算衝刺
 const SWIPE_DISTANCE := 60.0
 const SWIPE_TIME := 0.45
 const MOUSE_INDEX := -2
+const ICONS := {
+	"jump": preload("res://assets/ui/icons/jump.svg"),
+	"turn": preload("res://assets/ui/icons/turn.svg"),
+	"look": preload("res://assets/ui/icons/look.svg"),
+	"view": preload("res://assets/ui/icons/view.svg"),
+	"pause": preload("res://assets/ui/icons/pause.svg"),
+	"rescue": preload("res://assets/ui/icons/rescue.svg"),
+	"charge": preload("res://assets/ui/icons/charge.svg"),
+	"tap": preload("res://assets/ui/icons/tap.svg"),
+	"swipe": preload("res://assets/ui/icons/swipe.svg"),
+	"move": preload("res://assets/ui/icons/move.svg"),
+}
+
+## 卡住時顯示「回到中間」按鈕（由 Hud 設定）
+var rescue_visible := false:
+	set(v):
+		rescue_visible = v
+		queue_redraw()
 
 var _stick_index := -1
 var _stick_origin := Vector2.ZERO
 var _stick_pos := Vector2.ZERO
+var _stick_released_at := -10.0
 var _look_index := -1
 var _jump_index := -1
 var _charge_index := -1
@@ -29,6 +52,7 @@ var _swipe_start := Vector2.ZERO
 var _swipe_time := 0.0
 var _swipe_flash := 0.0
 var _charged_once := false
+var _clock := 0.0
 var _buttons: Array[Dictionary] = []
 
 
@@ -68,19 +92,21 @@ func _reset() -> void:
 func _layout() -> void:
 	var s := size
 	_buttons = [
-		{"id": "jump", "label": "跳躍", "center": Vector2(s.x - 110.0, s.y - 110.0), "r": BUTTON_RADIUS * 1.25},
-		{"id": "turn", "label": "轉身", "center": Vector2(s.x - 262.0, s.y - 78.0), "r": BUTTON_RADIUS * 0.9},
-		{"id": "look", "label": "看遠", "center": Vector2(s.x - 110.0, s.y - 262.0), "r": BUTTON_RADIUS * 0.8},
-		{"id": "pause", "label": "暫停", "center": Vector2(s.x - 84.0, 214.0), "r": 34.0},
-		{"id": "view", "label": "視角", "center": Vector2(s.x - 84.0, 300.0), "r": 34.0},
+		{"id": "jump", "center": Vector2(s.x - 110.0, s.y - 110.0), "r": BUTTON_RADIUS * 1.25},
+		{"id": "turn", "center": Vector2(s.x - 262.0, s.y - 78.0), "r": BUTTON_RADIUS * 0.9},
+		{"id": "look", "center": Vector2(s.x - 110.0, s.y - 262.0), "r": BUTTON_RADIUS * 0.8},
+		{"id": "pause", "center": Vector2(s.x - 84.0, 214.0), "r": 34.0},
+		{"id": "view", "center": Vector2(s.x - 84.0, 300.0), "r": 34.0},
+		{"id": "rescue", "center": Vector2(s.x - 92.0, 404.0), "r": 46.0},
 	]
 	queue_redraw()
 
 
 func _process(delta: float) -> void:
+	_clock += delta
 	_swipe_time += delta
 	_swipe_flash = maxf(_swipe_flash - delta * 3.0, 0.0)
-	if visible and (not _charged_once or _swipe_flash > 0.0 or _charge_index != -1):
+	if visible and (not _charged_once or _swipe_flash > 0.0 or _charge_index != -1 or rescue_visible):
 		queue_redraw()
 
 
@@ -114,6 +140,8 @@ func _input(event: InputEvent) -> void:
 
 func _press(index: int, pos: Vector2) -> void:
 	for b in _buttons:
+		if b["id"] == "rescue" and not rescue_visible:
+			continue
 		if pos.distance_to(b["center"]) <= float(b["r"]) * 1.25:
 			match b["id"]:
 				"jump":
@@ -129,11 +157,10 @@ func _press(index: int, pos: Vector2) -> void:
 					_send_pause()
 				"view":
 					Controls.touch_view_cycle = true
+				"rescue":
+					Controls.touch_rescue = true
 			queue_redraw()
 			return
-	if _charge_index == -1 and _character_hit(pos):
-		_start_charge(index)
-		return
 	if pos.x >= size.x * 0.55:
 		# 右半邊：可能是往上滑（衝刺）
 		_swipe_index = index
@@ -144,6 +171,9 @@ func _press(index: int, pos: Vector2) -> void:
 		_stick_index = index
 		_stick_origin = pos
 		_move_stick(pos)
+		# 搖桿剛放開又馬上按住：集氣（這根手指同時還是搖桿，可以轉向）
+		if _clock - _stick_released_at <= DOUBLE_PRESS and _charge_index == -1:
+			_start_charge(index)
 
 
 func _start_charge(index: int) -> void:
@@ -156,6 +186,7 @@ func _start_charge(index: int) -> void:
 func _release(index: int) -> void:
 	if index == _stick_index:
 		_stick_index = -1
+		_stick_released_at = _clock
 		Controls.touch_stick = Vector2.ZERO
 	if index == _look_index:
 		_look_index = -1
@@ -166,6 +197,8 @@ func _release(index: int) -> void:
 	if index == _charge_index:
 		_charge_index = -1
 		Controls.touch_charge_held = false
+		# 集氣放開不算一次「放開搖桿」，免得接著按又變集氣
+		_stick_released_at = -10.0
 	if index == _swipe_index:
 		_swipe_index = -1
 	queue_redraw()
@@ -195,7 +228,7 @@ func _move_stick(pos: Vector2) -> void:
 	queue_redraw()
 
 
-## 槿寶與前面的球在畫面上的位置；按在這個範圍裡就是集氣。
+## 槿寶與前面的球在畫面上的位置（電腦用滑鼠按住槿寶集氣）。
 func _character_screen() -> Dictionary:
 	var cam := get_viewport().get_camera_3d()
 	var p := get_tree().get_first_node_in_group("pusher") as Pusher
@@ -230,46 +263,72 @@ func _send_pause() -> void:
 	Input.parse_input_event.call_deferred(up)
 
 
+func button_center(id: String) -> Vector2:
+	for b in _buttons:
+		if b["id"] == id:
+			return b["center"]
+	return Vector2.ZERO
+
+
 func _draw() -> void:
-	var font := get_theme_default_font()
+	var charging := _charge_index >= 0 and _charge_index != MOUSE_INDEX
 	if _stick_index >= 0:
+		var ring := Color(1.0, 0.75, 0.3, 0.75) if charging else Color(1, 1, 1, 0.5)
 		draw_circle(_stick_origin, STICK_RADIUS, Color(1, 1, 1, 0.14))
-		draw_arc(_stick_origin, STICK_RADIUS, 0.0, TAU, 48, Color(1, 1, 1, 0.5), 3.0, true)
+		draw_arc(_stick_origin, STICK_RADIUS, 0.0, TAU, 48, ring, 4.0 if charging else 3.0, true)
 		var knob := _stick_origin + (_stick_pos - _stick_origin).limit_length(STICK_RADIUS)
 		draw_circle(knob, KNOB_RADIUS, Color(1, 1, 1, 0.6))
+		if charging:
+			_icon("charge", knob, 46.0, Color(1.0, 0.6, 0.2, 0.95))
 	else:
-		# 沒按住時，在左下角畫一個淡淡的提示
+		# 沒按住時，左下角畫一個淡淡的搖桿提示
 		var c := Vector2(170.0, size.y - 170.0)
 		draw_arc(c, STICK_RADIUS, 0.0, TAU, 48, Color(1, 1, 1, 0.22), 3.0, true)
 		draw_circle(c, KNOB_RADIUS, Color(1, 1, 1, 0.16))
-		_text(font, c + Vector2(0, -STICK_RADIUS - 26.0), "按住拖曳", 22, Color(1, 1, 1, 0.7))
+		_icon("move", c, 46.0, Color(1, 1, 1, 0.55))
+		# 第一次集氣前：在搖桿上方提示「點兩下按住 → 火焰」
+		if not _charged_once:
+			var pulse := 0.5 + 0.5 * sin(_clock * 6.0)
+			var hint := c + Vector2(0, -STICK_RADIUS - 46.0)
+			_icon("tap", hint + Vector2(-46, 0), 40.0, Color(1, 1, 1, 0.75))
+			_icon("tap", hint + Vector2(-12, -6), 40.0, Color(1, 1, 1, 0.45 + 0.4 * pulse))
+			_chevron(hint + Vector2(22, 0), Color(1, 1, 1, 0.7))
+			_icon("charge", hint + Vector2(56, 0), 44.0 + 6.0 * pulse, Color(1.0, 0.65, 0.2, 0.9))
 	# 右半邊「往上滑：衝刺」提示；滑出衝刺時亮一下
-	var sw := Vector2(size.x * 0.78, size.y * 0.42)
-	var a := 0.6 + 0.4 * _swipe_flash
-	for i in 3:
-		var y := sw.y - 24.0 * i - 50.0 * _swipe_flash
-		var pts := PackedVector2Array([sw + Vector2(-22, y - sw.y + 12), sw + Vector2(0, y - sw.y - 10), sw + Vector2(22, y - sw.y + 12)])
-		draw_polyline(pts, Color(0.1, 0.07, 0.05, 0.45 * a), 9.0, true)
-		draw_polyline(pts, Color(1, 1, 1, a * (1.0 - 0.2 * i)), 5.0, true)
-	_text(font, sw + Vector2(0, 48), "往上滑 衝刺", 24, Color(1, 1, 1, a))
-	# 第一次集氣前，在槿寶旁邊提示
-	if not _charged_once:
-		var info := _character_screen()
-		if not info.is_empty():
-			var pulse := 0.5 + 0.5 * sin(Time.get_ticks_msec() * 0.006)
-			var c2: Vector2 = info["center"]
-			draw_arc(c2, float(info["radius"]) * (0.85 + 0.1 * pulse), 0.0, TAU, 48, Color(1, 0.9, 0.4, 0.35 + 0.35 * pulse), 4.0, true)
-			_text(font, c2 + Vector2(0, -float(info["radius"]) - 22.0), "按住槿寶 集氣", 24, Color(1, 0.95, 0.6, 0.85))
+	var sw := Vector2(size.x * 0.74, size.y * 0.5)
+	var a := 0.55 + 0.45 * _swipe_flash
+	_icon("swipe", sw + Vector2(0, -60.0 * _swipe_flash), 64.0, Color(1, 1, 1, a))
 	for b in _buttons:
-		var held: bool = (b["id"] == "look" and _look_index >= 0) or (b["id"] == "jump" and _jump_index >= 0)
+		var id: String = b["id"]
+		if id == "rescue" and not rescue_visible:
+			continue
+		var held: bool = (id == "look" and _look_index >= 0) or (id == "jump" and _jump_index >= 0)
 		var r := float(b["r"])
-		draw_circle(b["center"], r, Color(0.16, 0.12, 0.1, 0.62 if held else 0.38))
-		draw_arc(b["center"], r, 0.0, TAU, 40, Color(1, 1, 1, 0.65), 3.0, true)
-		_text(font, b["center"], str(b["label"]), 26 if r >= 40.0 else 20, Color.WHITE)
+		var center: Vector2 = b["center"]
+		var fill := Color(0.16, 0.12, 0.1, 0.62 if held else 0.38)
+		var edge := Color(1, 1, 1, 0.65)
+		if id == "rescue":
+			# 卡住時才出現：金黃色、一閃一閃，提醒可以按
+			var p := 0.5 + 0.5 * sin(_clock * 5.0)
+			fill = Color(1.0, 0.72, 0.2, 0.55 + 0.25 * p)
+			edge = Color(1, 1, 1, 0.9)
+			r *= 1.0 + 0.06 * p
+		draw_circle(center, r, fill)
+		draw_arc(center, r, 0.0, TAU, 40, edge, 3.0, true)
+		_icon(id, center, r * 1.1, Color.WHITE)
 
 
-func _text(font: Font, center: Vector2, text: String, font_size: int, color: Color) -> void:
-	var w := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
-	var pos := center + Vector2(-w * 0.5, font.get_ascent(font_size) * 0.5 - font.get_descent(font_size) * 0.5)
-	draw_string_outline(font, pos, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 6, Color(0.1, 0.07, 0.05, 0.7))
-	draw_string(font, pos, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, color)
+func _icon(id: String, center: Vector2, px: float, color: Color) -> void:
+	var tex: Texture2D = ICONS.get(id)
+	if tex == null:
+		return
+	var sz := Vector2(px, px)
+	# 圖示外圈淡淡的深色陰影，淺色地板上也看得清楚
+	draw_texture_rect(tex, Rect2(center - sz * 0.5 + Vector2(1.5, 2.0), sz), false, Color(0.1, 0.07, 0.05, color.a * 0.45))
+	draw_texture_rect(tex, Rect2(center - sz * 0.5, sz), false, color)
+
+
+func _chevron(center: Vector2, color: Color) -> void:
+	var pts := PackedVector2Array([center + Vector2(-7, -12), center + Vector2(7, 0), center + Vector2(-7, 12)])
+	draw_polyline(pts, Color(0.1, 0.07, 0.05, color.a * 0.5), 8.0, true)
+	draw_polyline(pts, color, 4.5, true)

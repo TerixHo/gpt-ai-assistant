@@ -7,8 +7,9 @@ extends Node
 ##   兩桿上下快速交替 = 王子衝刺；同時按下兩桿（L3+R3）= 180 度迴轉。
 ## 簡化模式（預設，適合小學生）：鍵盤 W/S 前後、A/D 轉向；手把左桿上下前後、左右轉向，右桿左右也能轉向。
 ## 簡化模式會先轉成同樣的虛擬雙搖桿，後段邏輯完全共用。
-## 其他按鍵：空白鍵跳躍（按住跳比較高）、Shift 輕按衝刺、按住 Shift 集氣（放開衝出去）、連按兩下 Shift 轉身、E 第一人稱環視、
-## 數字鍵 1 到 5 切換視角（1 第一人稱、2 近、3 標準、4 遠、5 正面）、Tab 看遠一點、Esc 暫停。
+## 其他按鍵：空白鍵跳躍（往前小跳，空中再按一次二段跳）、Shift 輕按衝刺、按住 Shift 集氣（放開衝出去）、
+## 連按兩下 Shift 轉身、E 第一人稱環視、數字鍵 1 到 5 切換視角（1 第一人稱、2 近、3 自動、4 遠、5 正面）、
+## Tab 看遠一點、R 回到中間（卡住時）、Esc 暫停。
 
 class Drive:
 	## x 為向右平移、y 為前進（相機座標），長度不超過 1
@@ -25,6 +26,8 @@ class Drive:
 	## 1 到 5：切換到指定視角；-1：切到下一個視角；0：不變
 	var view := 0
 	var free_look_toggle := false
+	## 回到中間（卡住時）
+	var rescue := false
 	## 第一人稱環視時用來看上下左右（x 向右、y 向上）
 	var look := Vector2.ZERO
 	var left := Vector2.ZERO
@@ -54,8 +57,9 @@ var touch_look := false
 var touch_jump := false
 var touch_jump_held := false
 var touch_view_cycle := false
-## 觸控或滑鼠按住槿寶（由 TouchControls 寫入）
+## 觸控：搖桿放開後重新按住、或滑鼠按住槿寶（由 TouchControls 寫入）
 var touch_charge_held := false
+var touch_rescue := false
 
 var _flip_count := 0
 var _flip_timer := 0.0
@@ -91,6 +95,7 @@ func _register_actions() -> void:
 	for i in 5:
 		_add_keys("view_%d" % (i + 1), [KEY_1 + i, KEY_KP_1 + i])
 	_add_keys("pause", [KEY_ESCAPE, KEY_P], [JOY_BUTTON_START])
+	_add_keys("rescue", [KEY_R])
 	_add_keys("toggle_scheme", [KEY_F2])
 
 
@@ -173,6 +178,8 @@ func read(delta: float) -> Drive:
 	d.jump_held = Input.is_action_pressed("jump") or touch_jump_held or touch_jump
 	touch_jump = false
 	d.free_look_toggle = Input.is_action_just_pressed("free_look")
+	d.rescue = Input.is_action_just_pressed("rescue") or touch_rescue
+	touch_rescue = false
 	for i in 5:
 		if Input.is_action_just_pressed("view_%d" % (i + 1)):
 			d.view = i + 1

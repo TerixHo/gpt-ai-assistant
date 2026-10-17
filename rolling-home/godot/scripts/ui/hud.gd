@@ -6,6 +6,8 @@ signal resume_requested
 signal restart_requested
 signal quit_requested
 signal finish_requested
+## 卡住時按「回到中間」
+signal rescue_requested
 
 var gauge: SizeGauge
 var clock: ClockDial
@@ -20,6 +22,11 @@ var _pause: PanelContainer
 var _banner_tween: Tween
 var _speed: ColorRect
 var _speed_mat: ShaderMaterial
+var _touch: TouchControls
+## 電腦版的「回到中間」按鈕（觸控版由 TouchControls 畫）
+var _rescue_btn: Button
+var _milestone: Label
+var _milestone_tween: Tween
 ## 示範模式（標題畫面背景）不需要觸控按鈕
 var with_touch := true
 
@@ -83,10 +90,39 @@ func _ready() -> void:
 	root.add_child(_hint)
 	refresh_hint()
 
+	_milestone = _label(64, HORIZONTAL_ALIGNMENT_CENTER)
+	_milestone.set_anchors_preset(Control.PRESET_CENTER)
+	_milestone.position = Vector2(-300, -230)
+	_milestone.size = Vector2(600, 90)
+	_milestone.add_theme_color_override("font_color", Color(1.0, 0.86, 0.3))
+	_milestone.modulate.a = 0.0
+	root.add_child(_milestone)
+
+	_rescue_btn = Button.new()
+	_rescue_btn.icon = preload("res://assets/ui/icons/rescue.svg")
+	_rescue_btn.expand_icon = true
+	_rescue_btn.text = "R"
+	_rescue_btn.tooltip_text = "回到中間"
+	_rescue_btn.add_theme_font_size_override("font_size", 22)
+	_rescue_btn.custom_minimum_size = Vector2(120, 84)
+	_rescue_btn.set_anchors_preset(Control.PRESET_CENTER_RIGHT)
+	_rescue_btn.position = Vector2(-150, -42)
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(1.0, 0.72, 0.2, 0.85)
+	sb.set_corner_radius_all(42)
+	sb.border_color = Color.WHITE
+	sb.set_border_width_all(3)
+	for st in ["normal", "hover", "pressed", "focus"]:
+		_rescue_btn.add_theme_stylebox_override(st, sb)
+	_rescue_btn.focus_mode = Control.FOCUS_NONE
+	_rescue_btn.visible = false
+	_rescue_btn.pressed.connect(func(): rescue_requested.emit())
+	root.add_child(_rescue_btn)
+
 	if with_touch:
-		var touch := TouchControls.new()
-		root.add_child(touch)
-		touch.shown.connect(refresh_hint)
+		_touch = TouchControls.new()
+		root.add_child(_touch)
+		_touch.shown.connect(refresh_hint)
 	refresh_hint()
 
 	_pause = _build_pause()
@@ -107,13 +143,15 @@ func _label(font_size: int, align: HorizontalAlignment) -> Label:
 func refresh_hint() -> void:
 	# 觸控時左下角是搖桿，撿到東西的通知往上移，免得疊在一起
 	_toasts.position.y = -390.0 if Controls.touch_active else -170.0
-	var common := "按住 Shift 或滑鼠按住槿寶：集氣　E 第一人稱環視　1 到 5 切換視角　Esc 暫停"
+	var common := "按住 Shift 或滑鼠按住槿寶：集氣　E 第一人稱環視　1 到 5 切換視角　R 回到中間　Esc 暫停"
 	if Controls.touch_active:
 		_hint.text = ""
 	elif Controls.is_simple():
-		_hint.text = "W/S 前進後退　A/D 轉彎　空白鍵 跳躍（按住跳更高）　Shift 衝刺　Shift 按兩下 轉身\n" + common
+		_hint.text = "W/S 前進後退　A/D 轉彎　空白鍵 跳躍（空中再按一次：二段跳）　Shift 衝刺　Shift 按兩下 轉身\n" + common
 	else:
 		_hint.text = "左桿 WASD　右桿 方向鍵　兩桿交替 衝刺　空白鍵 跳躍　Shift 按兩下 轉身\n" + common
+	if _rescue_btn != null and _rescue_btn.visible and Controls.touch_active:
+		_rescue_btn.visible = false
 
 
 func set_status(diameter: float, goal: float, time_left: float, time_total: float, count: int, elapsed := -1.0) -> void:
@@ -187,6 +225,28 @@ func toast(text: String, big := false) -> void:
 	t.tween_callback(l.queue_free)
 
 
+## 卡住時在右邊顯示「回到中間」按鈕（觸控是房子圖示的圓鈕，電腦是有 R 字的按鈕）。
+func show_rescue(on: bool) -> void:
+	if _touch != null:
+		_touch.rescue_visible = on
+	_rescue_btn.visible = on and not Controls.touch_active
+
+
+## 成長里程碑：畫面上方彈出目前尺寸（配合 Yooo Gin Gin 的歡呼）。
+func milestone(text: String) -> void:
+	_milestone.text = text + "！"
+	_milestone.pivot_offset = _milestone.size * 0.5
+	if _milestone_tween != null and _milestone_tween.is_valid():
+		_milestone_tween.kill()
+	_milestone.modulate.a = 1.0
+	_milestone.scale = Vector2(0.3, 0.3)
+	_milestone_tween = create_tween()
+	_milestone_tween.tween_property(_milestone, "scale", Vector2(1.25, 1.25), 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_milestone_tween.tween_property(_milestone, "scale", Vector2.ONE, 0.12)
+	_milestone_tween.tween_interval(0.9)
+	_milestone_tween.tween_property(_milestone, "modulate:a", 0.0, 0.4)
+
+
 func clear_banner() -> void:
 	if _banner_tween != null and _banner_tween.is_valid():
 		_banner_tween.kill()
@@ -222,8 +282,8 @@ func set_paused(paused: bool) -> void:
 func _build_pause() -> PanelContainer:
 	var panel := PanelContainer.new()
 	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.position = Vector2(-190, -190)
-	panel.size = Vector2(380, 380)
+	panel.position = Vector2(-190, -220)
+	panel.size = Vector2(380, 440)
 	panel.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 14)
@@ -231,7 +291,7 @@ func _build_pause() -> PanelContainer:
 	var title := _label(34, HORIZONTAL_ALIGNMENT_CENTER)
 	title.text = "暫停"
 	box.add_child(title)
-	for spec in [["Resume", "繼續", resume_requested], ["Finish", "結束這一局，看成績", finish_requested], ["Restart", "重新開始", restart_requested], ["Quit", "回到標題", quit_requested]]:
+	for spec in [["Resume", "繼續", resume_requested], ["Rescue", "回到中間（卡住時）", rescue_requested], ["Finish", "結束這一局，看成績", finish_requested], ["Restart", "重新開始", restart_requested], ["Quit", "回到標題", quit_requested]]:
 		var b := Button.new()
 		b.name = spec[0]
 		b.text = spec[1]

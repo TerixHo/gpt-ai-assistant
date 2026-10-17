@@ -17,11 +17,27 @@ var _air := 0.0
 var _root: Node3D
 var _parts: Dictionary = {}
 var _ray := PhysicsRayQueryParameters3D.new()
+## 二段跳的前空翻（剩餘秒數）與成長歡呼（剩餘秒數）
+var _flip_left := 0.0
+var _cheer_left := 0.0
+
+const FLIP_TIME := 0.5
+const CHEER_TIME := 0.8
 
 
-## 主角身高（公分）隨塊球直徑放大：小球時比球矮（鏡頭才看得到球），大球時最高 8 公分仍看得到角色。
+## 主角身高（公分）隨塊球直徑放大：一直比球矮，大約是直徑的六成（小球）到四分之一（100 公尺的球）。
 static func height_for(diameter: float) -> float:
-	return clampf(0.8 * pow(diameter, 0.8), 0.9, 8.0)
+	return maxf(0.62 * pow(diameter, 0.9), 0.9)
+
+
+## 二段跳：往前空翻一圈
+func flip() -> void:
+	_flip_left = FLIP_TIME
+
+
+## 成長里程碑：舉手跳一下歡呼
+func cheer() -> void:
+	_cheer_left = CHEER_TIME
 
 
 func _ready() -> void:
@@ -104,7 +120,7 @@ func _process(delta: float) -> void:
 	var pos := Vector3(k.x, k.y, k.z) - fwd * (r + h * 0.40)
 	# 腳底貼地：往下找最近的地面；球跳起來時跟著一起跳
 	_ray.from = pos + Vector3.UP * r
-	_ray.to = pos - Vector3.UP * (r + 80.0)
+	_ray.to = pos - Vector3.UP * (r + 80.0 + h)
 	_ray.exclude = [katamari.get_rid()]
 	var hit := get_world_3d().direct_space_state.intersect_ray(_ray)
 	var ground := (hit["position"] as Vector3).y if not hit.is_empty() else k.y - r
@@ -114,6 +130,24 @@ func _process(delta: float) -> void:
 	global_position = pos
 	rotation.y = cam.yaw
 	_animate(delta, airborne)
+	_special(delta)
+
+
+## 前空翻與歡呼：疊加在一般動畫之上（以身體中心為軸翻轉）。
+func _special(delta: float) -> void:
+	if _flip_left > 0.0:
+		_flip_left = maxf(_flip_left - delta, 0.0)
+		var t := 1.0 - _flip_left / FLIP_TIME
+		var angle := -TAU * ease(t, -1.8)
+		var pivot := Vector3(0, HEIGHT * 0.5, 0)
+		var b := Basis(Vector3.RIGHT, angle)
+		_root.transform = Transform3D(b, pivot - b * pivot + Vector3(0, sin(t * PI) * 0.8, 0))
+	elif _cheer_left > 0.0:
+		_cheer_left = maxf(_cheer_left - delta, 0.0)
+		var t := 1.0 - _cheer_left / CHEER_TIME
+		_root.position.y += absf(sin(t * TAU)) * 0.9
+		_rot_x("arm_l", 2.8)
+		_rot_x("arm_r", 2.8)
 
 
 func _animate(delta: float, airborne: bool) -> void:

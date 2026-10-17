@@ -1,13 +1,13 @@
 class_name KatamariCamera
 extends Node3D
 ## 追蹤塊球的攝影機。左右轉向由雙搖桿差值控制（原作的「繞球轉身」）。
-## 距離與高度隨塊球直徑放大，並避免穿牆。
-## 視角（數字鍵 1 到 5）：1 第一人稱、2 近、3 標準（預設）、4 遠、5 正面（面對主角，看到後方）。
+## 自動視角：距離與高度跟著「含外圍突出物的球大小」慢慢往後退（球長大時看得出鏡頭在拉遠），並避免穿牆。
+## 視角（數字鍵 1 到 5）：1 第一人稱、2 近、3 自動（預設）、4 遠、5 正面（面對主角，看到後方）。
 ## 第一人稱環視（E）：球停下來，用 WASD 看上下左右，再按一次 E 回到原本的視角。
 
 signal view_changed(label: String)
 
-const VIEW_NAMES := ["", "第一人稱", "近距離", "標準", "遠距離", "正面"]
+const VIEW_NAMES := ["", "第一人稱", "近距離", "自動", "遠距離", "正面"]
 
 @export var turn_speed := 2.2
 @export var quick_turn_time := 0.32
@@ -31,6 +31,10 @@ var _shake := 0.0
 var _focus := Vector3.ZERO
 var _has_focus := false
 var _boost_shown := 0.0
+## 鏡頭用的球大小（含外圍突出物），慢慢跟上實際大小
+var _size := 0.0
+## 成長里程碑時鏡頭往後彈一下
+var _pulse := 0.0
 var _ray := PhysicsRayQueryParameters3D.new()
 # 震動用自己的亂數，避免每秒畫面數不同時打亂遊戲邏輯共用的亂數序列（自動測試需要可重現）
 var _rng := RandomNumberGenerator.new()
@@ -94,6 +98,11 @@ func shake(amount: float) -> void:
 	_shake = maxf(_shake, amount)
 
 
+## 成長里程碑：鏡頭往後拉一下再回來
+func pulse_zoom() -> void:
+	_pulse = 1.0
+
+
 func snap() -> void:
 	_update(1.0, true)
 
@@ -106,7 +115,17 @@ func _process(delta: float) -> void:
 
 func _update(delta: float, instant: bool) -> void:
 	var t := target.get_global_transform_interpolated().origin
-	var dm := target.diameter
+	# 自動視角：以含突出物的外觀大小決定距離，變大時慢慢跟上（看得出鏡頭在往後退），變小時快一點
+	var want := target.visual_radius() * 2.0
+	if instant or _size <= 0.0:
+		_size = want
+	else:
+		_size = lerpf(_size, want, 1.0 - exp(-(1.2 if want > _size else 3.0) * delta))
+	_pulse = move_toward(_pulse, 0.0, delta * 1.4)
+	var dm := _size * (1.0 + 0.18 * sin(_pulse * PI))
+	# 遠近裁切面跟著尺寸：小球時近一點才看得到珠子，大球時要看得到遠方
+	camera.near = clampf(dm * 0.01, 0.05, 50.0)
+	camera.far = maxf(8000.0, dm * 400.0)
 	# 衝出去的瞬間視野一下子拉寬，之後慢慢收回
 	_boost_shown = boost if boost > _boost_shown else move_toward(_boost_shown, boost, delta * 1.5)
 	camera.fov = 64.0 + 26.0 * _boost_shown - 7.0 * charge
