@@ -1,0 +1,5803 @@
+{
+	"_note": "第 4 關「滾到冬山火車站」的物件（10 到 100 公尺）。由 tools/levels/build_station.py 產生，請改腳本再重新產生。",
+	"items": [
+		{
+			"id": "sn_car",
+			"name": "汽車",
+			"name_en": "Car",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				180,
+				150,
+				450
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						180,
+						70,
+						450
+					],
+					"pos": [
+						0,
+						55,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160,
+						55,
+						240
+					],
+					"pos": [
+						0,
+						117,
+						-20
+					],
+					"color": "#a8dadc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						8,
+						200
+					],
+					"pos": [
+						0,
+						148,
+						-20
+					],
+					"color": "#e63946",
+					"collide": false,
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64,
+						186,
+						64
+					],
+					"pos": [
+						0,
+						32,
+						140
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64,
+						186,
+						64
+					],
+					"pos": [
+						0,
+						32,
+						-140
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "鎮上的小汽車。",
+			"colors": [
+				"#e63946",
+				"#f1faee",
+				"#457b9d",
+				"#ffd166",
+				"#2a9d8f",
+				"#adb5bd",
+				"#1d3557",
+				"#f4a261"
+			]
+		},
+		{
+			"id": "sn_taxi",
+			"name": "計程車",
+			"name_en": "Taxi",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				180,
+				160,
+				450
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						180,
+						70,
+						450
+					],
+					"pos": [
+						0,
+						55,
+						0
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160,
+						55,
+						240
+					],
+					"pos": [
+						0,
+						117,
+						-20
+					],
+					"color": "#a8dadc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						14,
+						60
+					],
+					"pos": [
+						0,
+						152,
+						-20
+					],
+					"color": "#f8f9fa",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64,
+						186,
+						64
+					],
+					"pos": [
+						0,
+						32,
+						140
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64,
+						186,
+						64
+					],
+					"pos": [
+						0,
+						32,
+						-140
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "黃色計程車，黏到時會叭叭叫。",
+			"sfx": "car_horn"
+		},
+		{
+			"id": "sn_scooter",
+			"name": "機車",
+			"name_en": "Scooter",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				70,
+				115,
+				190
+			],
+			"fill": 0.4,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						50,
+						120
+					],
+					"pos": [
+						0,
+						55,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						35,
+						12,
+						70
+					],
+					"pos": [
+						0,
+						88,
+						-20
+					],
+					"color": "#212529"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						45,
+						15
+					],
+					"pos": [
+						0,
+						100,
+						62
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						50,
+						12,
+						50
+					],
+					"pos": [
+						0,
+						25,
+						70
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						50,
+						12,
+						50
+					],
+					"pos": [
+						0,
+						25,
+						-65
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "上班上學都靠它。",
+			"colors": [
+				"#e63946",
+				"#f8f9fa",
+				"#3a86ff",
+				"#ffbe0b",
+				"#8338ec",
+				"#2b2d42"
+			]
+		},
+		{
+			"id": "sn_bicycle",
+			"name": "腳踏車",
+			"name_en": "Bicycle",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				55,
+				105,
+				175
+			],
+			"fill": 0.25,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						66,
+						6,
+						66
+					],
+					"pos": [
+						0,
+						33,
+						55
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						66,
+						6,
+						66
+					],
+					"pos": [
+						0,
+						33,
+						-55
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						5,
+						110
+					],
+					"pos": [
+						0,
+						60,
+						0
+					],
+					"color": "#3a86ff",
+					"rot": [
+						12,
+						0,
+						0
+					],
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12,
+						6,
+						24
+					],
+					"pos": [
+						0,
+						90,
+						-25
+					],
+					"color": "#212529"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						55,
+						4,
+						4
+					],
+					"pos": [
+						0,
+						100,
+						45
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "叮叮！騎去冬山河邊吹風。",
+			"colors": [
+				"#3a86ff",
+				"#e63946",
+				"#06d6a0",
+				"#ffbe0b"
+			],
+			"sfx": "bike_bell"
+		},
+		{
+			"id": "sn_minitruck",
+			"name": "小貨車",
+			"name_en": "Mini Truck",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				170,
+				190,
+				480
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						170,
+						150,
+						140
+					],
+					"pos": [
+						0,
+						105,
+						170
+					],
+					"color": "#f1faee",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						50,
+						10
+					],
+					"pos": [
+						0,
+						140,
+						241
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						170,
+						60,
+						330
+					],
+					"pos": [
+						0,
+						70,
+						-70
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						50,
+						200
+					],
+					"pos": [
+						0,
+						125,
+						-60
+					],
+					"color": "#d9ed92",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						70,
+						176,
+						70
+					],
+					"pos": [
+						0,
+						35,
+						160
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						70,
+						176,
+						70
+					],
+					"pos": [
+						0,
+						35,
+						-120
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "載著剛採的文旦，要送去市場。",
+			"colors": [
+				"#f1faee",
+				"#3a86ff",
+				"#e63946"
+			]
+		},
+		{
+			"id": "sn_tractor",
+			"name": "曳引機",
+			"name_en": "Tractor",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				180,
+				280,
+				330
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						90,
+						100,
+						200
+					],
+					"pos": [
+						0,
+						120,
+						40
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						140,
+						110,
+						120
+					],
+					"pos": [
+						0,
+						210,
+						-60
+					],
+					"color": "#a8dadc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						12,
+						130
+					],
+					"pos": [
+						0,
+						272,
+						-60
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						160,
+						180,
+						160
+					],
+					"pos": [
+						0,
+						80,
+						-90
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						90,
+						150,
+						90
+					],
+					"pos": [
+						0,
+						45,
+						120
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						10,
+						80,
+						10
+					],
+					"pos": [
+						30,
+						200,
+						110
+					],
+					"color": "#495057",
+					"collide": false
+				}
+			],
+			"flavor": "田裡耕田的大紅曳引機。"
+		},
+		{
+			"id": "sn_bus",
+			"name": "公車",
+			"name_en": "Bus",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				250,
+				320,
+				1100
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						260,
+						1100
+					],
+					"pos": [
+						0,
+						160,
+						0
+					],
+					"color": "#2a9d8f",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						254,
+						70,
+						1000
+					],
+					"pos": [
+						0,
+						210,
+						0
+					],
+					"color": "#3d5a80",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						230,
+						20,
+						1000
+					],
+					"pos": [
+						0,
+						300,
+						0
+					],
+					"color": "#e9ecef",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						350
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						-350
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "往車站的公車。",
+			"colors": [
+				"#2a9d8f",
+				"#f1faee",
+				"#3a86ff",
+				"#e9c46a"
+			]
+		},
+		{
+			"id": "sn_firetruck",
+			"name": "消防車",
+			"name_en": "Fire Truck",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				250,
+				330,
+				900
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						220,
+						900
+					],
+					"pos": [
+						0,
+						140,
+						0
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						240,
+						60,
+						10
+					],
+					"pos": [
+						0,
+						200,
+						452
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						30,
+						700
+					],
+					"pos": [
+						0,
+						265,
+						-80
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						15,
+						30
+					],
+					"pos": [
+						0,
+						257,
+						400
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						300
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						-300
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "紅色消防車，喔咿喔咿！",
+			"sfx": "car_horn"
+		},
+		{
+			"id": "sn_tanker",
+			"name": "油罐車",
+			"name_en": "Tanker Truck",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				250,
+				350,
+				1100
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						260,
+						220
+					],
+					"pos": [
+						0,
+						160,
+						440
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						240,
+						880,
+						240
+					],
+					"pos": [
+						0,
+						210,
+						-100
+					],
+					"color": "#ced4da",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						240,
+						40,
+						900
+					],
+					"pos": [
+						0,
+						70,
+						-100
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						420
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						-350
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "要開去加油站的油罐車。"
+		},
+		{
+			"id": "sn_garbage_truck",
+			"name": "垃圾車",
+			"name_en": "Garbage Truck",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				250,
+				320,
+				800
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						230,
+						200
+					],
+					"pos": [
+						0,
+						150,
+						300
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						280,
+						580
+					],
+					"pos": [
+						0,
+						170,
+						-100
+					],
+					"color": "#ffd166"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						280
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						-250
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "每天晚上來收垃圾的黃色垃圾車。"
+		},
+		{
+			"id": "sn_excavator",
+			"name": "怪手",
+			"name_en": "Excavator",
+			"category": "工程",
+			"shape": "parts",
+			"dims": [
+				300,
+				380,
+				800
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						90,
+						450
+					],
+					"pos": [
+						0,
+						45,
+						0
+					],
+					"color": "#343a40"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						160,
+						300
+					],
+					"pos": [
+						0,
+						170,
+						-40
+					],
+					"color": "#ffbe0b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						150,
+						120
+					],
+					"pos": [
+						70,
+						300,
+						40
+					],
+					"color": "#a8dadc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						60,
+						450
+					],
+					"pos": [
+						-50,
+						300,
+						250
+					],
+					"color": "#ffbe0b",
+					"rot": [
+						-30,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						80,
+						80
+					],
+					"pos": [
+						-50,
+						120,
+						400
+					],
+					"color": "#495057"
+				}
+			],
+			"flavor": "工地的黃色怪手。"
+		},
+		{
+			"id": "sn_container",
+			"name": "貨櫃",
+			"name_en": "Shipping Container",
+			"category": "工業",
+			"shape": "parts",
+			"dims": [
+				244,
+				260,
+				1200
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						244,
+						260,
+						1200
+					],
+					"pos": [
+						0,
+						130,
+						0
+					],
+					"color": "#e76f51",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						248,
+						20,
+						1204
+					],
+					"pos": [
+						0,
+						250,
+						0
+					],
+					"color": "#495057",
+					"collide": false
+				}
+			],
+			"flavor": "工廠旁邊堆著的大貨櫃。",
+			"colors": [
+				"#e76f51",
+				"#2a9d8f",
+				"#264653",
+				"#e9c46a",
+				"#3a86ff"
+			]
+		},
+		{
+			"id": "sn_street_tree",
+			"name": "行道樹",
+			"name_en": "Street Tree",
+			"category": "植物",
+			"shape": "parts",
+			"dims": [
+				350,
+				650,
+				350
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						50,
+						300,
+						50
+					],
+					"pos": [
+						0,
+						150,
+						0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						350,
+						330,
+						350
+					],
+					"pos": [
+						0,
+						470,
+						0
+					],
+					"color": "#52b788",
+					"tint": true
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						250,
+						220,
+						250
+					],
+					"pos": [
+						60,
+						590,
+						30
+					],
+					"color": "#52b788",
+					"collide": false,
+					"tint": true
+				}
+			],
+			"flavor": "路邊的樹，夏天給大家遮陽。",
+			"colors": [
+				"#52b788",
+				"#40916c",
+				"#74c69d",
+				"#2d6a4f"
+			]
+		},
+		{
+			"id": "sn_pomelo_tree",
+			"name": "文旦樹（披白紗）",
+			"name_en": "Pomelo Tree in Net",
+			"category": "植物",
+			"shape": "parts",
+			"dims": [
+				450,
+				420,
+				450
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						50,
+						150,
+						50
+					],
+					"pos": [
+						0,
+						75,
+						0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						450,
+						300,
+						450
+					],
+					"pos": [
+						0,
+						270,
+						0
+					],
+					"color": "#40916c"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						470,
+						310,
+						470
+					],
+					"pos": [
+						0,
+						275,
+						0
+					],
+					"color": "#f1f3f5",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						45,
+						45,
+						45
+					],
+					"pos": [
+						150,
+						160,
+						140
+					],
+					"color": "#d9ed92",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						45,
+						45,
+						45
+					],
+					"pos": [
+						-160,
+						190,
+						-60
+					],
+					"color": "#d9ed92",
+					"collide": false
+				}
+			],
+			"flavor": "冬山是宜蘭縣文旦最大的產地。快採收時，果農會幫文旦樹罩上白色的網子保護果實。",
+			"sfx": "orange"
+		},
+		{
+			"id": "sn_kumquat",
+			"name": "金桔盆栽",
+			"name_en": "Kumquat Pot",
+			"category": "植物",
+			"shape": "parts",
+			"dims": [
+				120,
+				160,
+				120
+			],
+			"fill": 0.4,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						90,
+						60,
+						90
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#bc6c25"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						120,
+						100,
+						120
+					],
+					"pos": [
+						0,
+						110,
+						0
+					],
+					"color": "#2d6a4f"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						25,
+						25,
+						25
+					],
+					"pos": [
+						40,
+						120,
+						35
+					],
+					"color": "#f77f00",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						25,
+						25,
+						25
+					],
+					"pos": [
+						-35,
+						135,
+						-30
+					],
+					"color": "#f77f00",
+					"collide": false
+				}
+			],
+			"flavor": "冬山也種金桔，小小的橘色果子好可愛。",
+			"sfx": "orange"
+		},
+		{
+			"id": "sn_tea_row",
+			"name": "茶樹",
+			"name_en": "Tea Bushes",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				150,
+				90,
+				600
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						70,
+						600
+					],
+					"pos": [
+						0,
+						35,
+						0
+					],
+					"color": "#2d6a4f"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						150,
+						600,
+						150
+					],
+					"pos": [
+						0,
+						70,
+						0
+					],
+					"color": "#52b788",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"flavor": "山腳下一排一排的茶樹。"
+		},
+		{
+			"id": "sn_bus_stop",
+			"name": "公車亭",
+			"name_en": "Bus Shelter",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				170,
+				260,
+				420
+			],
+			"fill": 0.25,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						170,
+						15,
+						420
+					],
+					"pos": [
+						0,
+						252,
+						0
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						200,
+						400
+					],
+					"pos": [
+						-75,
+						140,
+						0
+					],
+					"color": "#caf0f8"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						10,
+						300
+					],
+					"pos": [
+						-35,
+						45,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						245,
+						10
+					],
+					"pos": [
+						75,
+						122,
+						195
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						245,
+						10
+					],
+					"pos": [
+						75,
+						122,
+						-195
+					],
+					"color": "#6c757d"
+				}
+			],
+			"flavor": "等公車去車站。"
+		},
+		{
+			"id": "sn_utility_pole",
+			"name": "電線桿",
+			"name_en": "Utility Pole",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				200,
+				1000,
+				60
+			],
+			"fill": 0.2,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30,
+						1000,
+						30
+					],
+					"pos": [
+						0,
+						500,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						200,
+						15,
+						15
+					],
+					"pos": [
+						0,
+						920,
+						0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						50,
+						80,
+						50
+					],
+					"pos": [
+						25,
+						800,
+						0
+					],
+					"color": "#6c757d",
+					"collide": false
+				}
+			],
+			"flavor": "田邊一根一根的電線桿。"
+		},
+		{
+			"id": "sn_scarecrow",
+			"name": "稻草人",
+			"name_en": "Scarecrow",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				120,
+				190,
+				40
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						180,
+						8
+					],
+					"pos": [
+						0,
+						90,
+						0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						8,
+						8
+					],
+					"pos": [
+						0,
+						130,
+						0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						60,
+						25
+					],
+					"pos": [
+						0,
+						110,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						35,
+						35,
+						35
+					],
+					"pos": [
+						0,
+						160,
+						0
+					],
+					"color": "#e9c46a"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						60,
+						25,
+						60
+					],
+					"pos": [
+						0,
+						182,
+						0
+					],
+					"color": "#bc6c25"
+				}
+			],
+			"flavor": "幫稻田趕麻雀的稻草人。",
+			"colors": [
+				"#e63946",
+				"#3a86ff",
+				"#06d6a0"
+			]
+		},
+		{
+			"id": "sn_haystack",
+			"name": "稻草捆",
+			"name_en": "Haystack",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				160,
+				180,
+				160
+			],
+			"fill": 0.6,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						160,
+						140,
+						160
+					],
+					"pos": [
+						0,
+						70,
+						0
+					],
+					"color": "#e9c46a"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						170,
+						40,
+						170
+					],
+					"pos": [
+						0,
+						160,
+						0
+					],
+					"color": "#d4a373"
+				}
+			],
+			"flavor": "割完稻子綁起來的稻草。"
+		},
+		{
+			"id": "sn_egret",
+			"name": "白鷺鷥",
+			"name_en": "Egret",
+			"category": "動物",
+			"shape": "parts",
+			"dims": [
+				30,
+				90,
+				70
+			],
+			"fill": 0.4,
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						30,
+						30,
+						50
+					],
+					"pos": [
+						0,
+						55,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						30,
+						10
+					],
+					"pos": [
+						0,
+						80,
+						18
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						40,
+						4
+					],
+					"pos": [
+						0,
+						20,
+						0
+					],
+					"color": "#343a40",
+					"collide": false
+				}
+			],
+			"flavor": "在稻田裡踩來踩去找小蟲吃的白鷺鷥。"
+		},
+		{
+			"id": "sn_buffalo",
+			"name": "水牛",
+			"name_en": "Water Buffalo",
+			"category": "動物",
+			"shape": "parts",
+			"dims": [
+				130,
+				160,
+				280
+			],
+			"fill": 0.4,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						110,
+						220
+					],
+					"pos": [
+						0,
+						100,
+						0
+					],
+					"color": "#4a4e69"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						60,
+						70
+					],
+					"pos": [
+						0,
+						120,
+						140
+					],
+					"color": "#4a4e69",
+					"name": "head"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						140,
+						10,
+						15
+					],
+					"pos": [
+						0,
+						160,
+						150
+					],
+					"color": "#e9ecef",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						50,
+						180
+					],
+					"pos": [
+						0,
+						25,
+						0
+					],
+					"color": "#3d405b"
+				}
+			],
+			"flavor": "慢慢走的水牛，脖子上的鈴鐺叮叮響。",
+			"size": 205.0,
+			"critter": {
+				"kind": "dog",
+				"walk": 60,
+				"run": 160,
+				"sight": 1500,
+				"paw_cooldown": 8.0,
+				"sound": "bell"
+			}
+		},
+		{
+			"id": "sn_duck",
+			"name": "鴨子",
+			"name_en": "Duck",
+			"category": "動物",
+			"shape": "parts",
+			"dims": [
+				30,
+				35,
+				45
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						30,
+						25,
+						40
+					],
+					"pos": [
+						0,
+						15,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						16,
+						16,
+						16
+					],
+					"pos": [
+						0,
+						30,
+						15
+					],
+					"color": "#f8f9fa",
+					"name": "head"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						4,
+						10
+					],
+					"pos": [
+						0,
+						30,
+						25
+					],
+					"color": "#f77f00",
+					"collide": false
+				}
+			],
+			"flavor": "在冬山河游來游去的鴨子，呱呱！",
+			"critter": {
+				"kind": "dog",
+				"walk": 40,
+				"run": 120,
+				"sight": 800,
+				"paw_cooldown": 8.0,
+				"sound": "duck"
+			}
+		},
+		{
+			"id": "sn_dragon_boat",
+			"name": "龍舟",
+			"name_en": "Dragon Boat",
+			"category": "河",
+			"shape": "parts",
+			"dims": [
+				150,
+				150,
+				1800
+			],
+			"fill": 0.35,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						60,
+						1700
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						154,
+						10,
+						1700
+					],
+					"pos": [
+						0,
+						55,
+						0
+					],
+					"color": "#ffd166",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						100,
+						80
+					],
+					"pos": [
+						0,
+						90,
+						880
+					],
+					"color": "#ffd166"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						80,
+						60
+					],
+					"pos": [
+						0,
+						70,
+						-870
+					],
+					"color": "#ffd166"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						50,
+						40,
+						50
+					],
+					"pos": [
+						0,
+						80,
+						0
+					],
+					"color": "#9d0208",
+					"collide": false
+				}
+			],
+			"flavor": "冬山河是宜蘭龍舟比賽的場地，咚咚咚划起來！",
+			"colors": [
+				"#e63946",
+				"#2a9d8f",
+				"#3a86ff",
+				"#f77f00"
+			]
+		},
+		{
+			"id": "sn_gazebo",
+			"name": "涼亭",
+			"name_en": "Gazebo",
+			"category": "公園",
+			"shape": "parts",
+			"dims": [
+				520,
+				450,
+				520
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						500,
+						40,
+						500
+					],
+					"pos": [
+						0,
+						20,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						300,
+						30
+					],
+					"pos": [
+						220,
+						190,
+						220
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						300,
+						30
+					],
+					"pos": [
+						-220,
+						190,
+						-220
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						300,
+						30
+					],
+					"pos": [
+						220,
+						190,
+						-220
+					],
+					"color": "#9c6644",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						300,
+						30
+					],
+					"pos": [
+						-220,
+						190,
+						220
+					],
+					"color": "#9c6644",
+					"collide": false
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						620,
+						200,
+						620
+					],
+					"pos": [
+						0,
+						350,
+						0
+					],
+					"color": "#bc4749"
+				}
+			],
+			"flavor": "河邊的涼亭，可以坐下來休息。"
+		},
+		{
+			"id": "sn_slide",
+			"name": "溜滑梯",
+			"name_en": "Playground Slide",
+			"category": "公園",
+			"shape": "parts",
+			"dims": [
+				250,
+				330,
+				600
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						200,
+						250,
+						200
+					],
+					"pos": [
+						0,
+						125,
+						-180
+					],
+					"color": "#ffbe0b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						10,
+						450
+					],
+					"pos": [
+						0,
+						140,
+						100
+					],
+					"color": "#3a86ff",
+					"rot": [
+						32,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						260,
+						80,
+						260
+					],
+					"pos": [
+						0,
+						290,
+						-180
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						200,
+						30
+					],
+					"pos": [
+						0,
+						100,
+						-300
+					],
+					"color": "#06d6a0"
+				}
+			],
+			"flavor": "公園裡的溜滑梯，咻～",
+			"sfx": "squeak"
+		},
+		{
+			"id": "sn_shed",
+			"name": "鐵皮工具間",
+			"name_en": "Tin Shed",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				440,
+				320,
+				540
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						400,
+						260,
+						500
+					],
+					"pos": [
+						0,
+						130,
+						0
+					],
+					"color": "#ced4da",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						440,
+						40,
+						540
+					],
+					"pos": [
+						0,
+						280,
+						0
+					],
+					"color": "#219ebc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						200,
+						10
+					],
+					"pos": [
+						0,
+						100,
+						252
+					],
+					"color": "#6c757d",
+					"collide": false
+				}
+			],
+			"flavor": "放鋤頭和肥料的小鐵皮屋。",
+			"colors": [
+				"#ced4da",
+				"#f1faee",
+				"#bde0fe"
+			]
+		},
+		{
+			"id": "sn_shrine",
+			"name": "土地公廟",
+			"name_en": "Tudigong Shrine",
+			"category": "廟",
+			"shape": "parts",
+			"dims": [
+				460,
+				420,
+				420
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						400,
+						60,
+						400
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						250,
+						300
+					],
+					"pos": [
+						0,
+						185,
+						0
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						420,
+						50,
+						420
+					],
+					"pos": [
+						0,
+						335,
+						0
+					],
+					"color": "#ffbe0b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						460,
+						30,
+						60
+					],
+					"pos": [
+						0,
+						375,
+						0
+					],
+					"color": "#ffbe0b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						30,
+						60
+					],
+					"pos": [
+						220,
+						392,
+						0
+					],
+					"color": "#2a9d8f",
+					"rot": [
+						0,
+						0,
+						30
+					],
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						30,
+						60
+					],
+					"pos": [
+						-220,
+						392,
+						0
+					],
+					"color": "#2a9d8f",
+					"rot": [
+						0,
+						0,
+						-30
+					],
+					"collide": false
+				}
+			],
+			"flavor": "田邊的土地公廟，保佑大家平安。",
+			"sfx": "bell"
+		},
+		{
+			"id": "sn_vendor_cart",
+			"name": "攤車",
+			"name_en": "Food Cart",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				150,
+				220,
+				250
+			],
+			"fill": 0.4,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						90,
+						250
+					],
+					"pos": [
+						0,
+						75,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						170,
+						10,
+						270
+					],
+					"pos": [
+						0,
+						212,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						120,
+						10
+					],
+					"pos": [
+						70,
+						150,
+						120
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						60,
+						160,
+						60
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "賣烤玉米和三星蔥餅的小攤車。",
+			"colors": [
+				"#e63946",
+				"#f77f00",
+				"#3a86ff",
+				"#06d6a0"
+			]
+		},
+		{
+			"id": "sn_vending",
+			"name": "自動販賣機",
+			"name_en": "Vending Machine",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				100,
+				190,
+				80
+			],
+			"fill": 0.6,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						190,
+						80
+					],
+					"pos": [
+						0,
+						95,
+						0
+					],
+					"color": "#3a86ff",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						90,
+						4
+					],
+					"pos": [
+						0,
+						120,
+						41
+					],
+					"color": "#caf0f8",
+					"collide": false
+				}
+			],
+			"flavor": "投錢就會掉出飲料。",
+			"colors": [
+				"#3a86ff",
+				"#e63946",
+				"#f8f9fa"
+			]
+		},
+		{
+			"id": "sn_mailbox",
+			"name": "郵筒",
+			"name_en": "Mailboxes",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				120,
+				130,
+				50
+			],
+			"fill": 0.6,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						55,
+						110,
+						45
+					],
+					"pos": [
+						-30,
+						55,
+						0
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						55,
+						110,
+						45
+					],
+					"pos": [
+						30,
+						55,
+						0
+					],
+					"color": "#2d6a4f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						12,
+						50
+					],
+					"pos": [
+						0,
+						116,
+						0
+					],
+					"color": "#495057",
+					"collide": false
+				}
+			],
+			"flavor": "紅色和綠色的郵筒，一個寄急件、一個寄平信。"
+		},
+		{
+			"id": "sn_truck",
+			"name": "大貨車",
+			"name_en": "Lorry",
+			"category": "交通",
+			"shape": "parts",
+			"dims": [
+				250,
+				360,
+				900
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						250,
+						220
+					],
+					"pos": [
+						0,
+						165,
+						340
+					],
+					"color": "#3a86ff",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						240,
+						60,
+						10
+					],
+					"pos": [
+						0,
+						230,
+						452
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						250,
+						280,
+						640
+					],
+					"pos": [
+						0,
+						180,
+						-120
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						230,
+						40,
+						860
+					],
+					"pos": [
+						0,
+						50,
+						-20
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						320
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100,
+						260,
+						100
+					],
+					"pos": [
+						0,
+						50,
+						-300
+					],
+					"color": "#2b2d42",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"flavor": "載滿貨物的大貨車。",
+			"colors": [
+				"#3a86ff",
+				"#e63946",
+				"#2a9d8f",
+				"#f77f00"
+			]
+		},
+		{
+			"id": "sn_tin_house",
+			"name": "鐵皮小屋",
+			"name_en": "Tin House",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				720,
+				460,
+				920
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						700,
+						330,
+						900
+					],
+					"pos": [
+						0,
+						165,
+						0
+					],
+					"color": "#bde0fe",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						720,
+						60,
+						920
+					],
+					"pos": [
+						0,
+						360,
+						0
+					],
+					"color": "#219ebc",
+					"rot": [
+						0,
+						0,
+						5
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						200,
+						220,
+						10
+					],
+					"pos": [
+						100,
+						110,
+						452
+					],
+					"color": "#6c757d",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						200,
+						100,
+						10
+					],
+					"pos": [
+						-200,
+						200,
+						452
+					],
+					"color": "#a8dadc",
+					"collide": false
+				}
+			],
+			"flavor": "田邊的鐵皮小屋，下雨時叮叮咚咚響。",
+			"colors": [
+				"#bde0fe",
+				"#f1faee",
+				"#ffe5d9",
+				"#d8f3dc"
+			]
+		},
+		{
+			"id": "sn_bamboo",
+			"name": "竹叢",
+			"name_en": "Bamboo Clump",
+			"category": "植物",
+			"shape": "parts",
+			"dims": [
+				500,
+				900,
+				500
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						300,
+						700,
+						300
+					],
+					"pos": [
+						0,
+						350,
+						0
+					],
+					"color": "#6a994e"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						500,
+						400,
+						500
+					],
+					"pos": [
+						0,
+						700,
+						0
+					],
+					"color": "#90be6d"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						40,
+						900,
+						40
+					],
+					"pos": [
+						120,
+						450,
+						80
+					],
+					"color": "#a7c957",
+					"collide": false
+				}
+			],
+			"flavor": "農舍後面的竹叢，風一吹沙沙響。"
+		},
+		{
+			"id": "sn_shade_tree",
+			"name": "遮蔭大樹",
+			"name_en": "Shade Tree",
+			"category": "植物",
+			"shape": "parts",
+			"dims": [
+				650,
+				850,
+				650
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						80,
+						400,
+						80
+					],
+					"pos": [
+						0,
+						200,
+						0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						650,
+						450,
+						650
+					],
+					"pos": [
+						0,
+						600,
+						0
+					],
+					"color": "#40916c",
+					"tint": true
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						420,
+						300,
+						420
+					],
+					"pos": [
+						-80,
+						770,
+						60
+					],
+					"color": "#52b788",
+					"collide": false,
+					"tint": true
+				}
+			],
+			"flavor": "廟口和路口常見的大樹，阿公阿嬤在樹下聊天。",
+			"colors": [
+				"#40916c",
+				"#2d6a4f",
+				"#52b788"
+			]
+		},
+		{
+			"id": "sn_stall_row",
+			"name": "市集攤棚",
+			"name_en": "Market Stalls",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				400,
+				300,
+				900
+			],
+			"fill": 0.35,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						380,
+						90,
+						880
+					],
+					"pos": [
+						0,
+						45,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						400,
+						10,
+						900
+					],
+					"pos": [
+						0,
+						290,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						200,
+						10
+					],
+					"pos": [
+						190,
+						190,
+						440
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						360,
+						40,
+						860
+					],
+					"pos": [
+						0,
+						110,
+						0
+					],
+					"color": "#ffd166",
+					"collide": false
+				}
+			],
+			"flavor": "早市的攤棚，擺滿青菜和水果。",
+			"colors": [
+				"#e63946",
+				"#f77f00",
+				"#3a86ff",
+				"#06d6a0"
+			]
+		},
+		{
+			"id": "sn_farmhouse",
+			"name": "紅磚農舍",
+			"name_en": "Brick Farmhouse",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				1300,
+				600,
+				1000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1200,
+						380,
+						900
+					],
+					"pos": [
+						0,
+						190,
+						0
+					],
+					"color": "#b5523b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1300,
+						60,
+						1000
+					],
+					"pos": [
+						0,
+						410,
+						0
+					],
+					"color": "#8d99ae"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						150,
+						150,
+						150
+					],
+					"pos": [
+						350,
+						515,
+						200
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						230,
+						10
+					],
+					"pos": [
+						0,
+						115,
+						452
+					],
+					"color": "#6c584c",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						120,
+						10
+					],
+					"pos": [
+						0,
+						240,
+						452
+					],
+					"color": "#a8dadc",
+					"collide": false
+				}
+			],
+			"flavor": "田中央的紅磚農舍，屋頂上有水塔。"
+		},
+		{
+			"id": "sn_sanheyuan",
+			"name": "紅磚三合院",
+			"name_en": "Courtyard House",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				2600,
+				700,
+				2200
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2600,
+						450,
+						700
+					],
+					"pos": [
+						0,
+						225,
+						-750
+					],
+					"color": "#b5523b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2700,
+						120,
+						800
+					],
+					"pos": [
+						0,
+						510,
+						-750
+					],
+					"color": "#9d0208"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						400,
+						1500
+					],
+					"pos": [
+						-1000,
+						200,
+						350
+					],
+					"color": "#b5523b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						400,
+						1500
+					],
+					"pos": [
+						1000,
+						200,
+						350
+					],
+					"color": "#b5523b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						700,
+						100,
+						1600
+					],
+					"pos": [
+						-1000,
+						450,
+						350
+					],
+					"color": "#9d0208"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						700,
+						100,
+						1600
+					],
+					"pos": [
+						1000,
+						450,
+						350
+					],
+					"color": "#9d0208"
+				}
+			],
+			"flavor": "紅磚三合院，中間的大空地可以曬稻穀。"
+		},
+		{
+			"id": "sn_townhouse",
+			"name": "透天厝",
+			"name_en": "Townhouse",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				500,
+				1300,
+				1500
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						500,
+						1200,
+						1500
+					],
+					"pos": [
+						0,
+						600,
+						0
+					],
+					"color": "#e9ecef",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						120,
+						120,
+						120
+					],
+					"pos": [
+						100,
+						1260,
+						-400
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						420,
+						300,
+						10
+					],
+					"pos": [
+						0,
+						150,
+						752
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						440,
+						150,
+						10
+					],
+					"pos": [
+						0,
+						520,
+						752
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						440,
+						150,
+						10
+					],
+					"pos": [
+						0,
+						860,
+						752
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						480,
+						20,
+						100
+					],
+					"pos": [
+						0,
+						400,
+						800
+					],
+					"color": "#8d99ae",
+					"collide": false
+				}
+			],
+			"flavor": "一樓開店、樓上住人的透天厝。",
+			"model": "sn_townhouse",
+			"colors": [
+				"#e9ecef",
+				"#f8edeb",
+				"#dde5b6",
+				"#cddafd",
+				"#ffe5d9",
+				"#fde2e4"
+			]
+		},
+		{
+			"id": "sn_shophouse",
+			"name": "店面透天厝",
+			"name_en": "Shop House",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				600,
+				1000,
+				1200
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						500,
+						950,
+						1100
+					],
+					"pos": [
+						0,
+						475,
+						0
+					],
+					"color": "#f8edeb",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						20,
+						200
+					],
+					"pos": [
+						0,
+						330,
+						630
+					],
+					"color": "#e63946",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						420,
+						280,
+						10
+					],
+					"pos": [
+						0,
+						140,
+						552
+					],
+					"color": "#ffd166",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						440,
+						150,
+						10
+					],
+					"pos": [
+						0,
+						600,
+						552
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						120,
+						120,
+						120
+					],
+					"pos": [
+						-100,
+						1010,
+						-300
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "一樓是小吃店的透天厝，聞起來好香。",
+			"colors": [
+				"#f8edeb",
+				"#e9ecef",
+				"#fff3b0",
+				"#d8f3dc"
+			]
+		},
+		{
+			"id": "sn_two_story",
+			"name": "兩層樓平房",
+			"name_en": "Two-Story House",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				820,
+				720,
+				1000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						640,
+						1000
+					],
+					"pos": [
+						0,
+						320,
+						0
+					],
+					"color": "#ffe5d9",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						820,
+						60,
+						1020
+					],
+					"pos": [
+						0,
+						670,
+						0
+					],
+					"color": "#8d99ae"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						120,
+						10
+					],
+					"pos": [
+						0,
+						420,
+						502
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160,
+						230,
+						10
+					],
+					"pos": [
+						-200,
+						115,
+						502
+					],
+					"color": "#6c584c",
+					"collide": false
+				}
+			],
+			"flavor": "巷子裡的兩層樓小房子。",
+			"colors": [
+				"#ffe5d9",
+				"#f8edeb",
+				"#dde5b6",
+				"#e9ecef"
+			]
+		},
+		{
+			"id": "sn_train_car",
+			"name": "電聯車車廂",
+			"name_en": "Commuter Train Car",
+			"category": "鐵路",
+			"shape": "parts",
+			"dims": [
+				300,
+				420,
+				2000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						340,
+						2000
+					],
+					"pos": [
+						0,
+						230,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						304,
+						90,
+						1800
+					],
+					"pos": [
+						0,
+						290,
+						0
+					],
+					"color": "#3d5a80",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						304,
+						30,
+						2000
+					],
+					"pos": [
+						0,
+						200,
+						0
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						260,
+						30,
+						1900
+					],
+					"pos": [
+						0,
+						415,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						260,
+						60,
+						1600
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#343a40"
+				}
+			],
+			"flavor": "往宜蘭、羅東方向的通勤電聯車。",
+			"model": "sn_train_car",
+			"sfx": "train_horn"
+		},
+		{
+			"id": "sn_train_set",
+			"name": "一整列電聯車",
+			"name_en": "Commuter Train (4 cars)",
+			"category": "鐵路",
+			"shape": "parts",
+			"dims": [
+				300,
+				420,
+				8200
+			],
+			"fill": 0.45,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						340,
+						8200
+					],
+					"pos": [
+						0,
+						230,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						304,
+						90,
+						8000
+					],
+					"pos": [
+						0,
+						290,
+						0
+					],
+					"color": "#3d5a80",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						304,
+						30,
+						8200
+					],
+					"pos": [
+						0,
+						200,
+						0
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						260,
+						30,
+						8100
+					],
+					"pos": [
+						0,
+						415,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						260,
+						60,
+						7800
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#343a40"
+				}
+			],
+			"flavor": "四節車廂連在一起的火車，長長的一條。",
+			"sfx": "train_horn"
+		},
+		{
+			"id": "sn_big_tree",
+			"name": "大榕樹",
+			"name_en": "Banyan Tree",
+			"category": "植物",
+			"shape": "parts",
+			"dims": [
+				1600,
+				1300,
+				1600
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						250,
+						600,
+						250
+					],
+					"pos": [
+						0,
+						300,
+						0
+					],
+					"color": "#6f4e37"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1600,
+						700,
+						1600
+					],
+					"pos": [
+						0,
+						850,
+						0
+					],
+					"color": "#40916c"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1000,
+						500,
+						1000
+					],
+					"pos": [
+						300,
+						1050,
+						200
+					],
+					"color": "#52b788",
+					"collide": false
+				}
+			],
+			"flavor": "廟口的老榕樹，樹下很涼快。"
+		},
+		{
+			"id": "sn_water_tower",
+			"name": "水塔",
+			"name_en": "Water Tower",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				800,
+				2500,
+				800
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						500,
+						1500,
+						500
+					],
+					"pos": [
+						0,
+						750,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						800,
+						800,
+						800
+					],
+					"pos": [
+						0,
+						1900,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						820,
+						200,
+						820
+					],
+					"pos": [
+						0,
+						2400,
+						0
+					],
+					"color": "#d62828"
+				}
+			],
+			"flavor": "高高的水塔。"
+		},
+		{
+			"id": "sn_greenhouse",
+			"name": "溫室",
+			"name_en": "Greenhouse",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				820,
+				400,
+				2000
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						300,
+						2000
+					],
+					"pos": [
+						0,
+						150,
+						0
+					],
+					"color": "#e0fbfc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						820,
+						100,
+						2000
+					],
+					"pos": [
+						0,
+						350,
+						0
+					],
+					"color": "#f1faee"
+				}
+			],
+			"flavor": "種菜苗的溫室。"
+		},
+		{
+			"id": "sn_rice_silo",
+			"name": "穀倉",
+			"name_en": "Grain Silo",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				640,
+				1500,
+				640
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						600,
+						1300,
+						600
+					],
+					"pos": [
+						0,
+						650,
+						0
+					],
+					"color": "#ced4da"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						640,
+						220,
+						640
+					],
+					"pos": [
+						0,
+						1410,
+						0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "存放稻穀的大圓筒。"
+		},
+		{
+			"id": "sn_pavilion",
+			"name": "河濱大涼亭",
+			"name_en": "Riverside Pavilion",
+			"category": "公園",
+			"shape": "parts",
+			"dims": [
+				1000,
+				700,
+				1000
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1000,
+						60,
+						1000
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						400,
+						60
+					],
+					"pos": [
+						420,
+						260,
+						420
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						400,
+						60
+					],
+					"pos": [
+						-420,
+						260,
+						-420
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						400,
+						60
+					],
+					"pos": [
+						420,
+						260,
+						-420
+					],
+					"color": "#9c6644",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						400,
+						60
+					],
+					"pos": [
+						-420,
+						260,
+						420
+					],
+					"color": "#9c6644",
+					"collide": false
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						1200,
+						280,
+						1200
+					],
+					"pos": [
+						0,
+						560,
+						0
+					],
+					"color": "#bc4749"
+				}
+			],
+			"flavor": "河邊的大涼亭。"
+		},
+		{
+			"id": "sn_billboard",
+			"name": "大看板",
+			"name_en": "Billboard",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				100,
+				850,
+				1000
+			],
+			"fill": 0.2,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						500,
+						60
+					],
+					"pos": [
+						0,
+						250,
+						0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						400,
+						1000
+					],
+					"pos": [
+						0,
+						650,
+						0
+					],
+					"color": "#ffbe0b",
+					"tint": true
+				}
+			],
+			"flavor": "還沒貼上廣告的大看板。",
+			"colors": [
+				"#ffbe0b",
+				"#06d6a0",
+				"#ff006e",
+				"#3a86ff"
+			]
+		},
+		{
+			"id": "sn_power_tower",
+			"name": "高壓電塔",
+			"name_en": "Power Pylon",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				2000,
+				5000,
+				1000
+			],
+			"fill": 0.12,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1000,
+						1500,
+						1000
+					],
+					"pos": [
+						0,
+						750,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						2500,
+						600
+					],
+					"pos": [
+						0,
+						2750,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						1000,
+						300
+					],
+					"pos": [
+						0,
+						4500,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2000,
+						60,
+						100
+					],
+					"pos": [
+						0,
+						4000,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1600,
+						60,
+						100
+					],
+					"pos": [
+						0,
+						3400,
+						0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				}
+			],
+			"flavor": "田中央的高壓電塔，電線一路連到遠方。"
+		},
+		{
+			"id": "sn_row_houses",
+			"name": "連棟透天",
+			"name_en": "Row Houses",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				2000,
+				1300,
+				1500
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2000,
+						1200,
+						1500
+					],
+					"pos": [
+						0,
+						600,
+						0
+					],
+					"color": "#e9ecef",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2004,
+						150,
+						1504
+					],
+					"pos": [
+						0,
+						520,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2004,
+						150,
+						1504
+					],
+					"pos": [
+						0,
+						860,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1960,
+						300,
+						10
+					],
+					"pos": [
+						0,
+						150,
+						752
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						150,
+						150,
+						150
+					],
+					"pos": [
+						600,
+						1275,
+						-300
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "四間連在一起的透天厝。",
+			"colors": [
+				"#e9ecef",
+				"#f8edeb",
+				"#dde5b6",
+				"#cddafd"
+			]
+		},
+		{
+			"id": "sn_fire_station",
+			"name": "消防分隊",
+			"name_en": "Fire Station",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				1800,
+				1000,
+				2000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1800,
+						900,
+						2000
+					],
+					"pos": [
+						0,
+						450,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1820,
+						100,
+						2020
+					],
+					"pos": [
+						0,
+						950,
+						0
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1500,
+						400,
+						10
+					],
+					"pos": [
+						0,
+						200,
+						1002
+					],
+					"color": "#d62828",
+					"collide": false
+				}
+			],
+			"flavor": "消防車住的地方。"
+		},
+		{
+			"id": "sn_supermarket",
+			"name": "超市",
+			"name_en": "Supermarket",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				2000,
+				700,
+				2500
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2000,
+						600,
+						2500
+					],
+					"pos": [
+						0,
+						300,
+						0
+					],
+					"color": "#fefae0"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2050,
+						100,
+						2550
+					],
+					"pos": [
+						0,
+						650,
+						0
+					],
+					"color": "#06d6a0"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1800,
+						250,
+						10
+					],
+					"pos": [
+						0,
+						130,
+						1252
+					],
+					"color": "#a8dadc",
+					"collide": false
+				}
+			],
+			"flavor": "大家買菜的超市（沒有招牌，是遊戲裡的店）。"
+		},
+		{
+			"id": "sn_temple",
+			"name": "廟",
+			"name_en": "Temple",
+			"category": "廟",
+			"shape": "parts",
+			"dims": [
+				2500,
+				1800,
+				3500
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2500,
+						150,
+						3500
+					],
+					"pos": [
+						0,
+						75,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2200,
+						900,
+						3000
+					],
+					"pos": [
+						0,
+						600,
+						0
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2600,
+						300,
+						3400
+					],
+					"pos": [
+						0,
+						1200,
+						0
+					],
+					"color": "#e09f3e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2000,
+						150,
+						300
+					],
+					"pos": [
+						0,
+						1425,
+						0
+					],
+					"color": "#2a9d8f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						400,
+						200,
+						300
+					],
+					"pos": [
+						1100,
+						1550,
+						0
+					],
+					"color": "#2a9d8f",
+					"rot": [
+						0,
+						0,
+						25
+					],
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						400,
+						200,
+						300
+					],
+					"pos": [
+						-1100,
+						1550,
+						0
+					],
+					"color": "#2a9d8f",
+					"rot": [
+						0,
+						0,
+						-25
+					],
+					"collide": false
+				}
+			],
+			"flavor": "鎮上的廟，屋頂翹翹的燕尾好漂亮。",
+			"model": "sn_temple",
+			"sfx": "bell"
+		},
+		{
+			"id": "sn_temple_big",
+			"name": "大廟",
+			"name_en": "Grand Temple",
+			"category": "廟",
+			"shape": "parts",
+			"dims": [
+				4000,
+				2600,
+				5000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						4000,
+						200,
+						5000
+					],
+					"pos": [
+						0,
+						100,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3500,
+						1300,
+						4300
+					],
+					"pos": [
+						0,
+						850,
+						0
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4200,
+						450,
+						4800
+					],
+					"pos": [
+						0,
+						1725,
+						0
+					],
+					"color": "#e09f3e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3200,
+						200,
+						400
+					],
+					"pos": [
+						0,
+						2050,
+						0
+					],
+					"color": "#2a9d8f"
+				}
+			],
+			"flavor": "大大的廟，逢年過節好熱鬧。",
+			"model": "sn_temple",
+			"sfx": "bell"
+		},
+		{
+			"id": "sn_apartment",
+			"name": "公寓大樓",
+			"name_en": "Apartment Block",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				2000,
+				2800,
+				1500
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2000,
+						2700,
+						1500
+					],
+					"pos": [
+						0,
+						1350,
+						0
+					],
+					"color": "#e9ecef",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2004,
+						200,
+						1504
+					],
+					"pos": [
+						0,
+						700,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2004,
+						200,
+						1504
+					],
+					"pos": [
+						0,
+						1500,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2004,
+						200,
+						1504
+					],
+					"pos": [
+						0,
+						2300,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						200,
+						600
+					],
+					"pos": [
+						0,
+						2800,
+						0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "八層樓的公寓。",
+			"colors": [
+				"#e9ecef",
+				"#f8edeb",
+				"#dde5b6",
+				"#cddafd",
+				"#ffe5d9"
+			]
+		},
+		{
+			"id": "sn_tower",
+			"name": "十五樓大樓",
+			"name_en": "Tower Block",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				3000,
+				5000,
+				3000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						3000,
+						4800,
+						3000
+					],
+					"pos": [
+						0,
+						2400,
+						0
+					],
+					"color": "#dee2e6",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3004,
+						250,
+						3004
+					],
+					"pos": [
+						0,
+						1300,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3004,
+						250,
+						3004
+					],
+					"pos": [
+						0,
+						2600,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3004,
+						250,
+						3004
+					],
+					"pos": [
+						0,
+						3900,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						900,
+						300,
+						900
+					],
+					"pos": [
+						0,
+						4950,
+						0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "從頂樓可以看到整片蘭陽平原。",
+			"colors": [
+				"#dee2e6",
+				"#e9ecef",
+				"#f8edeb",
+				"#cddafd"
+			]
+		},
+		{
+			"id": "sn_tall_hotel",
+			"name": "大飯店",
+			"name_en": "Hotel Tower",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				3500,
+				6000,
+				3000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						3500,
+						5800,
+						3000
+					],
+					"pos": [
+						0,
+						2900,
+						0
+					],
+					"color": "#f8edeb",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3504,
+						300,
+						3004
+					],
+					"pos": [
+						0,
+						1500,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3504,
+						300,
+						3004
+					],
+					"pos": [
+						0,
+						3000,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3504,
+						300,
+						3004
+					],
+					"pos": [
+						0,
+						4500,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1200,
+						300,
+						1200
+					],
+					"pos": [
+						0,
+						5950,
+						0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "來宜蘭玩的人住的大飯店。",
+			"colors": [
+				"#f8edeb",
+				"#fff3b0",
+				"#e9ecef"
+			]
+		},
+		{
+			"id": "sn_factory",
+			"name": "工廠",
+			"name_en": "Factory",
+			"category": "工業",
+			"shape": "parts",
+			"dims": [
+				4000,
+				1200,
+				3000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						4000,
+						900,
+						3000
+					],
+					"pos": [
+						0,
+						450,
+						0
+					],
+					"color": "#dee2e6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4100,
+						150,
+						3100
+					],
+					"pos": [
+						0,
+						975,
+						0
+					],
+					"color": "#8ecae6"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						300,
+						1200,
+						300
+					],
+					"pos": [
+						1500,
+						600,
+						-1000
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						500,
+						10
+					],
+					"pos": [
+						0,
+						250,
+						1502
+					],
+					"color": "#6c757d",
+					"collide": false
+				}
+			],
+			"flavor": "做食品罐頭的工廠。"
+		},
+		{
+			"id": "sn_warehouse",
+			"name": "倉庫",
+			"name_en": "Warehouse",
+			"category": "工業",
+			"shape": "parts",
+			"dims": [
+				2000,
+				1200,
+				3000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2000,
+						600,
+						3000
+					],
+					"pos": [
+						0,
+						300,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						1600,
+						3000,
+						1600
+					],
+					"pos": [
+						0,
+						400,
+						0
+					],
+					"color": "#8ecae6",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				}
+			],
+			"flavor": "圓圓屋頂的大倉庫。"
+		},
+		{
+			"id": "sn_gas_station",
+			"name": "加油站",
+			"name_en": "Gas Station",
+			"category": "街道",
+			"shape": "parts",
+			"dims": [
+				2500,
+				600,
+				1800
+			],
+			"fill": 0.3,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2500,
+						100,
+						1800
+					],
+					"pos": [
+						0,
+						550,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2520,
+						40,
+						1820
+					],
+					"pos": [
+						0,
+						480,
+						0
+					],
+					"color": "#06d6a0",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						500,
+						100
+					],
+					"pos": [
+						800,
+						250,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						500,
+						100
+					],
+					"pos": [
+						-800,
+						250,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						180,
+						120
+					],
+					"pos": [
+						500,
+						90,
+						0
+					],
+					"color": "#2a9d8f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						180,
+						120
+					],
+					"pos": [
+						-500,
+						90,
+						0
+					],
+					"color": "#2a9d8f"
+				}
+			],
+			"flavor": "加油站（沒有招牌，是遊戲裡自己的加油站）。"
+		},
+		{
+			"id": "sn_rice_mill",
+			"name": "碾米廠",
+			"name_en": "Rice Mill",
+			"category": "農業",
+			"shape": "parts",
+			"dims": [
+				2500,
+				1600,
+				3000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2500,
+						900,
+						2000
+					],
+					"pos": [
+						0,
+						450,
+						500
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2600,
+						120,
+						2100
+					],
+					"pos": [
+						0,
+						960,
+						500
+					],
+					"color": "#219ebc"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						700,
+						1500,
+						700
+					],
+					"pos": [
+						-700,
+						750,
+						-1100
+					],
+					"color": "#ced4da"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						700,
+						1500,
+						700
+					],
+					"pos": [
+						700,
+						750,
+						-1100
+					],
+					"color": "#ced4da"
+				}
+			],
+			"flavor": "把稻穀變成白米的碾米廠。"
+		},
+		{
+			"id": "sn_market",
+			"name": "傳統市場",
+			"name_en": "Market Hall",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				3000,
+				900,
+				4000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						3000,
+						700,
+						4000
+					],
+					"pos": [
+						0,
+						350,
+						0
+					],
+					"color": "#ffe8d6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3200,
+						150,
+						4200
+					],
+					"pos": [
+						0,
+						775,
+						0
+					],
+					"color": "#e76f51"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3100,
+						20,
+						400
+					],
+					"pos": [
+						0,
+						350,
+						2200
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"flavor": "早上好熱鬧的傳統市場。"
+		},
+		{
+			"id": "sn_footbridge",
+			"name": "人行橋",
+			"name_en": "Footbridge",
+			"category": "河",
+			"shape": "parts",
+			"dims": [
+				1200,
+				1300,
+				11000
+			],
+			"fill": 0.25,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1200,
+						100,
+						11000
+					],
+					"pos": [
+						0,
+						50,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						120,
+						11000
+					],
+					"pos": [
+						580,
+						160,
+						0
+					],
+					"color": "#ced4da"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						120,
+						11000
+					],
+					"pos": [
+						-580,
+						160,
+						0
+					],
+					"color": "#ced4da"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						100,
+						5800
+					],
+					"pos": [
+						0,
+						1000,
+						-2700
+					],
+					"color": "#f1faee",
+					"rot": [
+						18,
+						0,
+						0
+					],
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						100,
+						5800
+					],
+					"pos": [
+						0,
+						1000,
+						2700
+					],
+					"color": "#f1faee",
+					"rot": [
+						-18,
+						0,
+						0
+					],
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600,
+						500,
+						600
+					],
+					"pos": [
+						0,
+						-250,
+						0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"flavor": "跨過冬山河的人行橋，上面有白色的拱。"
+		},
+		{
+			"id": "sn_road_bridge",
+			"name": "冬山河大橋",
+			"name_en": "River Bridge",
+			"category": "河",
+			"shape": "parts",
+			"dims": [
+				2400,
+				800,
+				11000
+			],
+			"fill": 0.25,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2400,
+						150,
+						11000
+					],
+					"pos": [
+						0,
+						75,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						4,
+						10000
+					],
+					"pos": [
+						0,
+						152,
+						0
+					],
+					"color": "#ffffff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						120,
+						11000
+					],
+					"pos": [
+						1160,
+						210,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						120,
+						11000
+					],
+					"pos": [
+						-1160,
+						210,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						600,
+						800
+					],
+					"pos": [
+						0,
+						-300,
+						2500
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						600,
+						800
+					],
+					"pos": [
+						0,
+						-300,
+						-2500
+					],
+					"color": "#6c757d"
+				}
+			],
+			"flavor": "車子開過冬山河的大橋。"
+		},
+		{
+			"id": "sn_hospital",
+			"name": "醫院大樓",
+			"name_en": "Hospital",
+			"category": "建築",
+			"shape": "parts",
+			"dims": [
+				3500,
+				4000,
+				5000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						3500,
+						3800,
+						5000
+					],
+					"pos": [
+						0,
+						1900,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3504,
+						300,
+						5004
+					],
+					"pos": [
+						0,
+						1300,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3504,
+						300,
+						5004
+					],
+					"pos": [
+						0,
+						2600,
+						0
+					],
+					"color": "#a8dadc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1000,
+						300,
+						1000
+					],
+					"pos": [
+						0,
+						3950,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						800,
+						800,
+						60
+					],
+					"pos": [
+						0,
+						3300,
+						2530
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"flavor": "白色的醫院大樓，頂樓有直升機停機坪。"
+		},
+		{
+			"id": "sn_logistics",
+			"name": "物流中心",
+			"name_en": "Logistics Center",
+			"category": "工業",
+			"shape": "parts",
+			"dims": [
+				5000,
+				1500,
+				5000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						5000,
+						1300,
+						5000
+					],
+					"pos": [
+						0,
+						650,
+						0
+					],
+					"color": "#dee2e6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5100,
+						200,
+						5100
+					],
+					"pos": [
+						0,
+						1400,
+						0
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4000,
+						500,
+						10
+					],
+					"pos": [
+						0,
+						250,
+						2502
+					],
+					"color": "#6c757d",
+					"collide": false
+				}
+			],
+			"flavor": "貨車進進出出的大倉庫。"
+		},
+		{
+			"id": "sn_big_factory",
+			"name": "大工廠",
+			"name_en": "Large Factory",
+			"category": "工業",
+			"shape": "parts",
+			"dims": [
+				6000,
+				1800,
+				5000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						6000,
+						1300,
+						5000
+					],
+					"pos": [
+						0,
+						650,
+						0
+					],
+					"color": "#dee2e6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6100,
+						200,
+						5100
+					],
+					"pos": [
+						0,
+						1400,
+						0
+					],
+					"color": "#8ecae6"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						500,
+						1800,
+						500
+					],
+					"pos": [
+						2200,
+						900,
+						-1800
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						500,
+						1800,
+						500
+					],
+					"pos": [
+						1400,
+						900,
+						-1800
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						1200,
+						900,
+						1200
+					],
+					"pos": [
+						-2000,
+						1750,
+						1200
+					],
+					"color": "#f1faee"
+				}
+			],
+			"flavor": "工業區裡最大的工廠。"
+		},
+		{
+			"id": "sn_sports_park",
+			"name": "運動公園看台",
+			"name_en": "Stadium Stand",
+			"category": "公園",
+			"shape": "parts",
+			"dims": [
+				6000,
+				1500,
+				4000
+			],
+			"fill": 0.35,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						6000,
+						300,
+						4000
+					],
+					"pos": [
+						0,
+						150,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6000,
+						900,
+						1500
+					],
+					"pos": [
+						0,
+						750,
+						-1200
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6200,
+						100,
+						1800
+					],
+					"pos": [
+						0,
+						1450,
+						-1200
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5000,
+						20,
+						2000
+					],
+					"pos": [
+						0,
+						310,
+						800
+					],
+					"color": "#52b788",
+					"collide": false
+				}
+			],
+			"flavor": "開運動會的看台。"
+		},
+		{
+			"id": "sn_station",
+			"name": "冬山車站",
+			"name_en": "Dongshan Station",
+			"category": "鐵路",
+			"shape": "parts",
+			"dims": [
+				3600,
+				2200,
+				11000
+			],
+			"fill": 0.5,
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						3600,
+						1200,
+						5000
+					],
+					"pos": [
+						0,
+						600,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1000,
+						150,
+						11000
+					],
+					"pos": [
+						-1200,
+						1425,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1000,
+						150,
+						11000
+					],
+					"pos": [
+						1200,
+						1425,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3600,
+						120,
+						11000
+					],
+					"pos": [
+						0,
+						2140,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3640,
+						400,
+						200
+					],
+					"pos": [
+						0,
+						1900,
+						5400
+					],
+					"color": "#52b788",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3640,
+						400,
+						200
+					],
+					"pos": [
+						0,
+						1900,
+						-5400
+					],
+					"color": "#52b788",
+					"collide": false
+				}
+			],
+			"flavor": "冬山車站是高架車站，月台上的白色棚架一圈一圈，像農場裡的大瓜棚。長到 90 公尺以上才黏得起來！",
+			"model": "sn_station",
+			"sfx": "train_horn"
+		}
+	]
+}
