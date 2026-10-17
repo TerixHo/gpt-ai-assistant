@@ -1,0 +1,3649 @@
+{
+	"_note": "原創場景：宜蘭冬山鄉的單層平房與前院。由 tools/levels/build_dongshan_home.py 產生，請改腳本後重新執行，不要直接改這個檔案。單位公分；x 往東、z 往南（南邊是門口與前院）。",
+	"id": "dongshan_home",
+	"name": "槿寶的家（宜蘭冬山）",
+	"areas": [
+		{
+			"name": "哥哥的房間",
+			"rect": [
+				0,
+				0,
+				380,
+				450
+			]
+		},
+		{
+			"name": "姐姐的房間",
+			"rect": [
+				380,
+				0,
+				380,
+				450
+			]
+		},
+		{
+			"name": "妹妹的房間",
+			"rect": [
+				760,
+				0,
+				340,
+				450
+			]
+		},
+		{
+			"name": "廁所",
+			"rect": [
+				1100,
+				0,
+				180,
+				450
+			]
+		},
+		{
+			"name": "浴室",
+			"rect": [
+				1280,
+				0,
+				220,
+				450
+			]
+		},
+		{
+			"name": "走廊",
+			"rect": [
+				0,
+				450,
+				1500,
+				150
+			]
+		},
+		{
+			"name": "書房",
+			"rect": [
+				0,
+				600,
+				400,
+				500
+			]
+		},
+		{
+			"name": "客廳",
+			"rect": [
+				400,
+				600,
+				550,
+				500
+			]
+		},
+		{
+			"name": "廚房和餐廳",
+			"rect": [
+				950,
+				600,
+				550,
+				500
+			]
+		},
+		{
+			"name": "門口",
+			"rect": [
+				0,
+				1100,
+				1500,
+				150
+			]
+		},
+		{
+			"name": "前院",
+			"rect": [
+				0,
+				1250,
+				950,
+				560
+			]
+		},
+		{
+			"name": "小花園",
+			"rect": [
+				950,
+				1250,
+				550,
+				560
+			]
+		}
+	],
+	"start": {
+		"pos": [
+			600,
+			1.0,
+			800
+		],
+		"yaw_deg": 180
+	},
+	"floors": [
+		{
+			"name": "田野",
+			"rect": [
+				-5000,
+				-4000,
+				11500,
+				9500
+			],
+			"y": -14,
+			"pattern": "paddy",
+			"color": "#86c45a",
+			"repeat": 140,
+			"thickness": 4
+		},
+		{
+			"name": "鄉間小路",
+			"rect": [
+				-5000,
+				1815,
+				11500,
+				700
+			],
+			"y": -13,
+			"pattern": "asphalt",
+			"color": "#5c5f66",
+			"repeat": 300,
+			"thickness": 3
+		},
+		{
+			"name": "走廊",
+			"rect": [
+				0,
+				450,
+				1500,
+				150
+			],
+			"y": 0.0,
+			"pattern": "tile",
+			"color": "#eee6d8",
+			"repeat": 80,
+			"thickness": 14
+		},
+		{
+			"name": "客廳",
+			"rect": [
+				400,
+				600,
+				550,
+				500
+			],
+			"y": 0.0,
+			"pattern": "tile",
+			"color": "#f0e9dc",
+			"repeat": 80,
+			"thickness": 14
+		},
+		{
+			"name": "書房",
+			"rect": [
+				0,
+				600,
+				400,
+				500
+			],
+			"y": 0.0,
+			"pattern": "wood",
+			"color": "#d9b98c",
+			"repeat": 90,
+			"thickness": 14
+		},
+		{
+			"name": "廚房",
+			"rect": [
+				950,
+				600,
+				550,
+				500
+			],
+			"y": 0.0,
+			"pattern": "tile",
+			"color": "#efe9df",
+			"repeat": 40,
+			"thickness": 14
+		},
+		{
+			"name": "哥哥的房間",
+			"rect": [
+				0,
+				0,
+				380,
+				450
+			],
+			"y": 0.0,
+			"pattern": "wood",
+			"color": "#cfa77a",
+			"repeat": 90,
+			"thickness": 14
+		},
+		{
+			"name": "姐姐的房間",
+			"rect": [
+				380,
+				0,
+				380,
+				450
+			],
+			"y": 0.0,
+			"pattern": "wood",
+			"color": "#e0c097",
+			"repeat": 90,
+			"thickness": 14
+		},
+		{
+			"name": "妹妹的房間",
+			"rect": [
+				760,
+				0,
+				340,
+				450
+			],
+			"y": 0.0,
+			"pattern": "wood",
+			"color": "#e8cfa9",
+			"repeat": 90,
+			"thickness": 14
+		},
+		{
+			"name": "廁所",
+			"rect": [
+				1100,
+				0,
+				180,
+				450
+			],
+			"y": 0.0,
+			"pattern": "mosaic",
+			"color": "#8ecfc9",
+			"repeat": 40,
+			"thickness": 14
+		},
+		{
+			"name": "浴室",
+			"rect": [
+				1280,
+				0,
+				220,
+				450
+			],
+			"y": 0.0,
+			"pattern": "mosaic",
+			"color": "#7fb7e0",
+			"repeat": 40,
+			"thickness": 14
+		},
+		{
+			"name": "門口",
+			"rect": [
+				0,
+				1100,
+				1500,
+				150
+			],
+			"y": 0.0,
+			"pattern": "terrazzo",
+			"color": "#cfc3b1",
+			"repeat": 50,
+			"thickness": 12
+		},
+		{
+			"name": "前院",
+			"rect": [
+				0,
+				1250,
+				950,
+				550
+			],
+			"y": -12,
+			"pattern": "concrete",
+			"color": "#a9aba3",
+			"repeat": 200,
+			"thickness": 4
+		},
+		{
+			"name": "小花園",
+			"rect": [
+				950,
+				1250,
+				550,
+				550
+			],
+			"y": -12,
+			"pattern": "grass",
+			"color": "#7cb867",
+			"repeat": 120,
+			"thickness": 4
+		}
+	],
+	"walls": [
+		{
+			"from": [
+				0,
+				0
+			],
+			"to": [
+				1500,
+				0
+			],
+			"height": 240,
+			"thickness": 14,
+			"color": "#dcc8a6"
+		},
+		{
+			"from": [
+				0,
+				0
+			],
+			"to": [
+				0,
+				1100
+			],
+			"height": 240,
+			"thickness": 14,
+			"color": "#dcc8a6"
+		},
+		{
+			"from": [
+				1500,
+				0
+			],
+			"to": [
+				1500,
+				1100
+			],
+			"height": 240,
+			"thickness": 14,
+			"color": "#dcc8a6"
+		},
+		{
+			"from": [
+				0,
+				1100
+			],
+			"to": [
+				1500,
+				1100
+			],
+			"height": 240,
+			"thickness": 14,
+			"gaps": [
+				[
+					470,
+					670,
+					215
+				],
+				[
+					1300,
+					1420,
+					205
+				]
+			],
+			"color": "#dcc8a6"
+		},
+		{
+			"from": [
+				0,
+				450
+			],
+			"to": [
+				1500,
+				450
+			],
+			"height": 240,
+			"thickness": 10,
+			"gaps": [
+				[
+					120,
+					270
+				],
+				[
+					500,
+					650
+				],
+				[
+					870,
+					1020
+				],
+				[
+					1110,
+					1270
+				],
+				[
+					1310,
+					1470
+				]
+			],
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				380,
+				0
+			],
+			"to": [
+				380,
+				450
+			],
+			"height": 240,
+			"thickness": 10,
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				760,
+				0
+			],
+			"to": [
+				760,
+				450
+			],
+			"height": 240,
+			"thickness": 10,
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				1100,
+				0
+			],
+			"to": [
+				1100,
+				450
+			],
+			"height": 240,
+			"thickness": 10,
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				1280,
+				0
+			],
+			"to": [
+				1280,
+				450
+			],
+			"height": 240,
+			"thickness": 10,
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				0,
+				600
+			],
+			"to": [
+				1500,
+				600
+			],
+			"height": 240,
+			"thickness": 10,
+			"gaps": [
+				[
+					140,
+					260
+				],
+				[
+					470,
+					670
+				]
+			],
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				400,
+				600
+			],
+			"to": [
+				400,
+				1100
+			],
+			"height": 240,
+			"thickness": 10,
+			"gaps": [
+				[
+					40,
+					160
+				]
+			],
+			"color": "#e6d9c0"
+		},
+		{
+			"from": [
+				950,
+				600
+			],
+			"to": [
+				950,
+				1100
+			],
+			"height": 240,
+			"thickness": 10,
+			"gaps": [
+				[
+					50,
+					270,
+					215
+				]
+			],
+			"color": "#e6d9c0"
+		}
+	],
+	"blocks": [
+		{
+			"name": "西側圍牆",
+			"pos": [
+				0,
+				-12,
+				1450
+			],
+			"size": [
+				14,
+				162,
+				700
+			],
+			"color": "#b5523b",
+			"pattern": "brick",
+			"repeat": 60
+		},
+		{
+			"name": "東側圍牆",
+			"pos": [
+				1500,
+				-12,
+				1450
+			],
+			"size": [
+				14,
+				162,
+				700
+			],
+			"color": "#b5523b",
+			"pattern": "brick",
+			"repeat": 60
+		},
+		{
+			"name": "南側圍牆西段",
+			"pos": [
+				61.5,
+				-12,
+				1800
+			],
+			"size": [
+				137,
+				162,
+				14
+			],
+			"color": "#b5523b",
+			"pattern": "brick",
+			"repeat": 60
+		},
+		{
+			"name": "南側圍牆東段",
+			"pos": [
+				1018.5,
+				-12,
+				1800
+			],
+			"size": [
+				977,
+				162,
+				14
+			],
+			"color": "#b5523b",
+			"pattern": "brick",
+			"repeat": 60
+		},
+		{
+			"name": "門柱西",
+			"pos": [
+				130,
+				-12,
+				1800
+			],
+			"size": [
+				26,
+				182,
+				26
+			],
+			"color": "#c9b8a6"
+		},
+		{
+			"name": "門柱東",
+			"pos": [
+				530,
+				-12,
+				1800
+			],
+			"size": [
+				26,
+				182,
+				26
+			],
+			"color": "#c9b8a6"
+		},
+		{
+			"name": "鐵門",
+			"pos": [
+				330,
+				-12,
+				1800
+			],
+			"size": [
+				374,
+				150,
+				6
+			],
+			"color": "#3d405b"
+		},
+		{
+			"name": "鐵門欄杆0",
+			"pos": [
+				170,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆1",
+			"pos": [
+				210,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆2",
+			"pos": [
+				250,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆3",
+			"pos": [
+				290,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆4",
+			"pos": [
+				330,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆5",
+			"pos": [
+				370,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆6",
+			"pos": [
+				410,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆7",
+			"pos": [
+				450,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "鐵門欄杆8",
+			"pos": [
+				490,
+				-12,
+				1800
+			],
+			"size": [
+				4,
+				150,
+				9
+			],
+			"color": "#2b2d42"
+		},
+		{
+			"name": "客廳地毯",
+			"pos": [
+				770,
+				0,
+				959
+			],
+			"size": [
+				180,
+				0.6,
+				258
+			],
+			"color": "#cdb4db",
+			"pattern": "carpet",
+			"repeat": 120
+		},
+		{
+			"name": "姐姐的地毯",
+			"pos": [
+				555,
+				0,
+				330
+			],
+			"size": [
+				170,
+				0.6,
+				180
+			],
+			"color": "#ffc8dd",
+			"pattern": "carpet",
+			"repeat": 120
+		},
+		{
+			"name": "巧拼地墊",
+			"pos": [
+				900,
+				0,
+				350
+			],
+			"size": [
+				200,
+				1.0,
+				180
+			],
+			"color": "#ffadad",
+			"pattern": "jointmat",
+			"repeat": 60
+		},
+		{
+			"name": "浴缸北緣",
+			"pos": [
+				1389,
+				0,
+				14
+			],
+			"size": [
+				198,
+				45,
+				8
+			],
+			"color": "#5fa8d3",
+			"pattern": "mosaic",
+			"repeat": 40
+		},
+		{
+			"name": "浴缸南緣",
+			"pos": [
+				1389,
+				0,
+				86
+			],
+			"size": [
+				198,
+				45,
+				8
+			],
+			"color": "#5fa8d3",
+			"pattern": "mosaic",
+			"repeat": 40
+		},
+		{
+			"name": "浴缸西緣",
+			"pos": [
+				1294,
+				0,
+				50
+			],
+			"size": [
+				8,
+				45,
+				64
+			],
+			"color": "#5fa8d3",
+			"pattern": "mosaic",
+			"repeat": 40
+		},
+		{
+			"name": "浴缸東緣",
+			"pos": [
+				1484,
+				0,
+				50
+			],
+			"size": [
+				8,
+				45,
+				64
+			],
+			"color": "#5fa8d3",
+			"pattern": "mosaic",
+			"repeat": 40
+		},
+		{
+			"name": "浴缸底",
+			"pos": [
+				1389,
+				0,
+				50
+			],
+			"size": [
+				182,
+				6,
+				64
+			],
+			"color": "#74c0e3"
+		},
+		{
+			"name": "花圃",
+			"pos": [
+				1095,
+				-12,
+				1700
+			],
+			"size": [
+				210,
+				12,
+				120
+			],
+			"color": "#8d6e4f",
+			"pattern": "soil",
+			"repeat": 80
+		},
+		{
+			"name": "菜園",
+			"pos": [
+				1370,
+				-12,
+				1700
+			],
+			"size": [
+				220,
+				12,
+				120
+			],
+			"color": "#7f5f43",
+			"pattern": "soil",
+			"repeat": 80
+		}
+	],
+	"ramps": [],
+	"stairs": [
+		{
+			"name": "電視櫃樓梯",
+			"from": [
+				428.0,
+				0.0,
+				762.4
+			],
+			"to": [
+				428,
+				50,
+				849
+			],
+			"width": 26,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "沙發樓梯",
+			"from": [
+				783.1,
+				0.0,
+				975.0
+			],
+			"to": [
+				861,
+				45,
+				975
+			],
+			"width": 30,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "茶几樓梯",
+			"from": [
+				730.0,
+				0.0,
+				839.7
+			],
+			"to": [
+				730,
+				40,
+				909
+			],
+			"width": 28,
+			"step": 3.0,
+			"style": "books"
+		},
+		{
+			"name": "書桌樓梯",
+			"from": [
+				197.9,
+				0.0,
+				930.0
+			],
+			"to": [
+				68,
+				75,
+				930
+			],
+			"width": 32,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "流理台樓梯",
+			"from": [
+				1150.0,
+				0.0,
+				804.0
+			],
+			"to": [
+				1150,
+				85,
+				668
+			],
+			"width": 36,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "餐桌樓梯",
+			"from": [
+				1044.1,
+				0.0,
+				960.0
+			],
+			"to": [
+				1174,
+				75,
+				960
+			],
+			"width": 32,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "哥哥床樓梯",
+			"from": [
+				185.9,
+				0.0,
+				160.0
+			],
+			"to": [
+				108,
+				45,
+				160
+			],
+			"width": 40,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "哥哥書桌樓梯",
+			"from": [
+				262.0,
+				0.0,
+				187.7
+			],
+			"to": [
+				262,
+				72,
+				63
+			],
+			"width": 40,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "姐姐床樓梯",
+			"from": [
+				576.1,
+				0.0,
+				160.0
+			],
+			"to": [
+				654,
+				45,
+				160
+			],
+			"width": 40,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "姐姐書桌樓梯",
+			"from": [
+				470.0,
+				0.0,
+				187.7
+			],
+			"to": [
+				470,
+				72,
+				63
+			],
+			"width": 40,
+			"step": 3.0,
+			"style": "books"
+		},
+		{
+			"name": "妹妹床樓梯",
+			"from": [
+				948.6,
+				0.0,
+				130.0
+			],
+			"to": [
+				1004,
+				32,
+				130
+			],
+			"width": 36,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#ffadad",
+				"#fdffb6",
+				"#caffbf",
+				"#a0c4ff"
+			]
+		},
+		{
+			"name": "小桌樓梯",
+			"from": [
+				860.0,
+				0.0,
+				223.9
+			],
+			"to": [
+				860,
+				45,
+				146
+			],
+			"width": 34,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "洗手台樓梯",
+			"from": [
+				1114.7,
+				0.0,
+				280.0
+			],
+			"to": [
+				1229,
+				80,
+				280
+			],
+			"width": 30,
+			"step": 3.0,
+			"style": "lego"
+		},
+		{
+			"name": "浴缸外樓梯",
+			"from": [
+				1340.0,
+				0.0,
+				168.9
+			],
+			"to": [
+				1340,
+				45,
+				91
+			],
+			"width": 40,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#90e0ef",
+				"#caf0f8",
+				"#ade8f4"
+			]
+		},
+		{
+			"name": "浴缸內樓梯",
+			"from": [
+				1440.0,
+				6,
+				20.9
+			],
+			"to": [
+				1440,
+				45,
+				81
+			],
+			"width": 34,
+			"step": 3.0,
+			"style": "blocks",
+			"colors": [
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf"
+			]
+		},
+		{
+			"name": "機車斜坡西",
+			"from": [
+				570.0,
+				-12,
+				1307.5
+			],
+			"to": [
+				570,
+				0,
+				1251
+			],
+			"width": 180,
+			"step": 1.5,
+			"style": "blocks",
+			"colors": [
+				"#bdbdb5",
+				"#c9c9c4"
+			]
+		},
+		{
+			"name": "機車斜坡東",
+			"from": [
+				1180.0,
+				-12,
+				1307.5
+			],
+			"to": [
+				1180,
+				0,
+				1251
+			],
+			"width": 180,
+			"step": 1.5,
+			"style": "blocks",
+			"colors": [
+				"#bdbdb5",
+				"#c9c9c4"
+			]
+		}
+	],
+	"decor": [
+		{
+			"name": "電線桿",
+			"shape": "cylinder",
+			"pos": [
+				-300,
+				-14,
+				1870
+			],
+			"size": [
+				26,
+				850,
+				26
+			],
+			"color": "#9a9a96",
+			"rot": 0
+		},
+		{
+			"name": "電線桿",
+			"shape": "cylinder",
+			"pos": [
+				700,
+				-14,
+				1870
+			],
+			"size": [
+				26,
+				850,
+				26
+			],
+			"color": "#9a9a96",
+			"rot": 0
+		},
+		{
+			"name": "電線桿",
+			"shape": "cylinder",
+			"pos": [
+				1700,
+				-14,
+				1870
+			],
+			"size": [
+				26,
+				850,
+				26
+			],
+			"color": "#9a9a96",
+			"rot": 0
+		},
+		{
+			"name": "樹幹0",
+			"shape": "cylinder",
+			"pos": [
+				-700,
+				-14,
+				300
+			],
+			"size": [
+				30,
+				160,
+				30
+			],
+			"color": "#6f4518",
+			"rot": 0
+		},
+		{
+			"name": "樹冠0",
+			"shape": "sphere",
+			"pos": [
+				-700,
+				110,
+				300
+			],
+			"size": [
+				260,
+				220,
+				260
+			],
+			"color": "#55a630",
+			"rot": 0
+		},
+		{
+			"name": "樹幹1",
+			"shape": "cylinder",
+			"pos": [
+				-650,
+				-14,
+				900
+			],
+			"size": [
+				30,
+				160,
+				30
+			],
+			"color": "#6f4518",
+			"rot": 0
+		},
+		{
+			"name": "樹冠1",
+			"shape": "sphere",
+			"pos": [
+				-650,
+				110,
+				900
+			],
+			"size": [
+				260,
+				220,
+				260
+			],
+			"color": "#55a630",
+			"rot": 0
+		},
+		{
+			"name": "樹幹2",
+			"shape": "cylinder",
+			"pos": [
+				2200,
+				-14,
+				200
+			],
+			"size": [
+				30,
+				160,
+				30
+			],
+			"color": "#6f4518",
+			"rot": 0
+		},
+		{
+			"name": "樹冠2",
+			"shape": "sphere",
+			"pos": [
+				2200,
+				110,
+				200
+			],
+			"size": [
+				260,
+				220,
+				260
+			],
+			"color": "#55a630",
+			"rot": 0
+		},
+		{
+			"name": "樹幹3",
+			"shape": "cylinder",
+			"pos": [
+				2300,
+				-14,
+				1000
+			],
+			"size": [
+				30,
+				160,
+				30
+			],
+			"color": "#6f4518",
+			"rot": 0
+		},
+		{
+			"name": "樹冠3",
+			"shape": "sphere",
+			"pos": [
+				2300,
+				110,
+				1000
+			],
+			"size": [
+				260,
+				220,
+				260
+			],
+			"color": "#55a630",
+			"rot": 0
+		},
+		{
+			"name": "樹幹4",
+			"shape": "cylinder",
+			"pos": [
+				2100,
+				-14,
+				2700
+			],
+			"size": [
+				30,
+				160,
+				30
+			],
+			"color": "#6f4518",
+			"rot": 0
+		},
+		{
+			"name": "樹冠4",
+			"shape": "sphere",
+			"pos": [
+				2100,
+				110,
+				2700
+			],
+			"size": [
+				260,
+				220,
+				260
+			],
+			"color": "#55a630",
+			"rot": 0
+		},
+		{
+			"name": "鄰居家",
+			"shape": "box",
+			"pos": [
+				-1300,
+				-14,
+				600
+			],
+			"size": [
+				650,
+				320,
+				520
+			],
+			"color": "#e9d8c4",
+			"rot": 0
+		},
+		{
+			"name": "鄰居家屋頂",
+			"shape": "box",
+			"pos": [
+				-1300,
+				306,
+				600
+			],
+			"size": [
+				690,
+				30,
+				560
+			],
+			"color": "#c4553b",
+			"rot": 0,
+			"pattern": "roof_tile"
+		},
+		{
+			"name": "鄰居家2",
+			"shape": "box",
+			"pos": [
+				2800,
+				-14,
+				1300
+			],
+			"size": [
+				600,
+				300,
+				500
+			],
+			"color": "#f1e3c8",
+			"rot": 0
+		},
+		{
+			"name": "鄰居家2屋頂",
+			"shape": "box",
+			"pos": [
+				2800,
+				286,
+				1300
+			],
+			"size": [
+				640,
+				30,
+				540
+			],
+			"color": "#8d99ae",
+			"rot": 0,
+			"pattern": "roof_tile"
+		},
+		{
+			"name": "遠山北",
+			"shape": "cone",
+			"pos": [
+				-1500,
+				-14,
+				-4200
+			],
+			"size": [
+				5200,
+				1400,
+				2400
+			],
+			"color": "#6a994e",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山東北",
+			"shape": "cone",
+			"pos": [
+				3200,
+				-14,
+				-4600
+			],
+			"size": [
+				6000,
+				1800,
+				3000
+			],
+			"color": "#588157",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山西",
+			"shape": "cone",
+			"pos": [
+				-4600,
+				-14,
+				600
+			],
+			"size": [
+				2600,
+				1100,
+				4200
+			],
+			"color": "#7aa37a",
+			"rot": 0,
+			"no_shadow": true
+		},
+		{
+			"name": "遠山南",
+			"shape": "cone",
+			"pos": [
+				1500,
+				-14,
+				6200
+			],
+			"size": [
+				7000,
+				1600,
+				2600
+			],
+			"color": "#6b9a8b",
+			"rot": 0,
+			"no_shadow": true
+		}
+	],
+	"petals": [
+		{
+			"name": "山櫻花",
+			"pos": [
+				760,
+				-12,
+				1600
+			],
+			"size": [
+				560,
+				420,
+				480
+			],
+			"color": "#ff8fab",
+			"amount": 110,
+			"petal": 2.4,
+			"fall": 20
+		}
+	],
+	"placements": [
+		{
+			"item": "hm_tv_cabinet",
+			"pos": [
+				427.5,
+				0,
+				940
+			],
+			"rot": -90
+		},
+		{
+			"item": "hm_tv",
+			"pos": [
+				414,
+				50,
+				940
+			],
+			"rot": -90
+		},
+		{
+			"item": "hm_sofa",
+			"pos": [
+				902.5,
+				0,
+				980
+			],
+			"rot": 90
+		},
+		{
+			"item": "hm_coffee_table",
+			"pos": [
+				730,
+				0,
+				965
+			],
+			"rot": 90
+		},
+		{
+			"item": "house_plant",
+			"pos": [
+				440,
+				0,
+				1062
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_fan",
+			"pos": [
+				430,
+				0,
+				815
+			],
+			"rot": -90
+		},
+		{
+			"item": "hm_floor_cushion",
+			"pos": [
+				820,
+				0.6,
+				1060
+			],
+			"rot": 0,
+			"color": "#f4a261"
+		},
+		{
+			"item": "cat",
+			"pos": [
+				700,
+				0,
+				760
+			],
+			"rot": 45,
+			"roam": [
+				410,
+				610,
+				530,
+				480
+			]
+		},
+		{
+			"item": "hm_desk_study",
+			"pos": [
+				37,
+				0,
+				930
+			],
+			"rot": -90
+		},
+		{
+			"item": "desk_lamp",
+			"pos": [
+				25,
+				75,
+				885
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_bookshelf",
+			"pos": [
+				300,
+				0,
+				1078
+			],
+			"rot": 0
+		},
+		{
+			"item": "toy_box",
+			"pos": [
+				377,
+				0,
+				840
+			],
+			"rot": 90
+		},
+		{
+			"item": "hm_knit_basket",
+			"pos": [
+				23,
+				0,
+				1040
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_globe",
+			"pos": [
+				250,
+				0,
+				780
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_counter",
+			"pos": [
+				1150,
+				0,
+				636
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_curry_pot",
+			"pos": [
+				1040,
+				85,
+				636
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_electric_pot",
+			"pos": [
+				1105,
+				85,
+				634
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_cutting_board",
+			"pos": [
+				1165,
+				85,
+				640
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_fridge",
+			"pos": [
+				1350,
+				0,
+				640
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_cupboard",
+			"pos": [
+				1470.5,
+				0,
+				760
+			],
+			"rot": 90
+		},
+		{
+			"item": "hm_dining_table",
+			"pos": [
+				1250,
+				0,
+				960
+			],
+			"rot": 0
+		},
+		{
+			"item": "dining_chair",
+			"pos": [
+				1470,
+				0,
+				960
+			],
+			"rot": 90
+		},
+		{
+			"item": "dining_chair",
+			"pos": [
+				1470,
+				0,
+				1030
+			],
+			"rot": 90
+		},
+		{
+			"item": "dining_chair",
+			"pos": [
+				1060,
+				0,
+				1065
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_orange_basket",
+			"pos": [
+				1290,
+				75,
+				940
+			],
+			"rot": 0
+		},
+		{
+			"item": "trash_can",
+			"pos": [
+				969,
+				0,
+				1079
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_rice_bag",
+			"pos": [
+				1485,
+				0,
+				880
+			],
+			"rot": 90
+		},
+		{
+			"item": "small_pot",
+			"pos": [
+				1475,
+				0,
+				525
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_bed",
+			"pos": [
+				57,
+				0,
+				112
+			],
+			"rot": 0,
+			"color": "#a0c4ff"
+		},
+		{
+			"item": "hm_desk_kid",
+			"pos": [
+				262,
+				0,
+				34.5
+			],
+			"rot": 180,
+			"color": "#a0c4ff"
+		},
+		{
+			"item": "hm_wardrobe",
+			"pos": [
+				345,
+				0,
+				300
+			],
+			"rot": 90
+		},
+		{
+			"item": "chair_boy",
+			"pos": [
+				190,
+				0,
+				300
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_bed",
+			"pos": [
+				705,
+				0,
+				112
+			],
+			"rot": 0,
+			"color": "#ffc6ff"
+		},
+		{
+			"item": "hm_desk_kid",
+			"pos": [
+				470,
+				0,
+				34.5
+			],
+			"rot": 180,
+			"color": "#ffafcc"
+		},
+		{
+			"item": "bead_case",
+			"pos": [
+				440,
+				72,
+				28
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_bookshelf",
+			"pos": [
+				400,
+				0,
+				330
+			],
+			"rot": -90
+		},
+		{
+			"item": "chair_girl",
+			"pos": [
+				545,
+				0,
+				100
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_bed_low",
+			"pos": [
+				1050,
+				0,
+				102
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_kids_table",
+			"pos": [
+				860,
+				0,
+				120
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_kids_chair",
+			"pos": [
+				790,
+				0,
+				228
+			],
+			"rot": 0,
+			"color": "#ffadad"
+		},
+		{
+			"item": "hm_kids_chair",
+			"pos": [
+				1050,
+				1.0,
+				402
+			],
+			"rot": 180,
+			"color": "#a0c4ff"
+		},
+		{
+			"item": "hm_toy_kitchen",
+			"pos": [
+				782,
+				0,
+				340
+			],
+			"rot": -90
+		},
+		{
+			"item": "hm_rocking_horse",
+			"pos": [
+				1078,
+				0,
+				330
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_toilet",
+			"pos": [
+				1190,
+				0,
+				45
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_toilet_brush",
+			"pos": [
+				1240,
+				0,
+				30
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_wash_basin",
+			"pos": [
+				1252.5,
+				0,
+				280
+			],
+			"rot": 90
+		},
+		{
+			"item": "hm_red_stool",
+			"pos": [
+				1477,
+				0,
+				300
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_shoe_cabinet",
+			"pos": [
+				380,
+				0,
+				1124.5
+			],
+			"rot": 180
+		},
+		{
+			"item": "umbrella_stand",
+			"pos": [
+				705,
+				0,
+				1125
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_laundry_rack",
+			"pos": [
+				135,
+				0,
+				1180
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_bench",
+			"pos": [
+				1000,
+				0,
+				1130
+			],
+			"rot": 0
+		},
+		{
+			"item": "flower_pot",
+			"pos": [
+				790,
+				0,
+				1130
+			],
+			"rot": 0
+		},
+		{
+			"item": "small_pot",
+			"pos": [
+				1460,
+				0,
+				1130
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_car",
+			"pos": [
+				330,
+				-12,
+				1530
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_cherry_tree",
+			"pos": [
+				760,
+				-12,
+				1640
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_scooter",
+			"pos": [
+				880,
+				-12,
+				1340
+			],
+			"rot": 90
+		},
+		{
+			"item": "kids_bike",
+			"pos": [
+				120,
+				-12,
+				1340
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_mailbox",
+			"pos": [
+				565,
+				-12,
+				1770
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_garden_lamp",
+			"pos": [
+				930,
+				-12,
+				1770
+			],
+			"rot": 0
+		},
+		{
+			"item": "dog",
+			"pos": [
+				600,
+				-12,
+				1450
+			],
+			"rot": 180,
+			"roam": [
+				20,
+				1265,
+				1460,
+				520
+			]
+		},
+		{
+			"item": "hm_tea_table",
+			"pos": [
+				690,
+				-12,
+				1500
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_plastic_chair",
+			"pos": [
+				690,
+				-12,
+				1445
+			],
+			"rot": 0,
+			"color": "#e63946"
+		},
+		{
+			"item": "hm_plastic_chair",
+			"pos": [
+				690,
+				-12,
+				1555
+			],
+			"rot": 180,
+			"color": "#e63946"
+		},
+		{
+			"item": "hm_plastic_chair",
+			"pos": [
+				635,
+				-12,
+				1500
+			],
+			"rot": 90,
+			"color": "#e63946"
+		},
+		{
+			"item": "hm_plastic_chair",
+			"pos": [
+				745,
+				-12,
+				1500
+			],
+			"rot": -90,
+			"color": "#e63946"
+		},
+		{
+			"item": "hm_dog_house",
+			"pos": [
+				1030,
+				-12,
+				1330
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_water_jar",
+			"pos": [
+				1462,
+				-12,
+				1330
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_frog",
+			"pos": [
+				1455,
+				43,
+				1322
+			],
+			"rot": 200
+		},
+		{
+			"item": "hm_sunflower",
+			"pos": [
+				1020,
+				0,
+				1742
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_sunflower",
+			"pos": [
+				1062,
+				0,
+				1750
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_sunflower",
+			"pos": [
+				1172,
+				0,
+				1744
+			],
+			"rot": 180
+		},
+		{
+			"item": "hm_garden_lamp",
+			"pos": [
+				1230,
+				-12,
+				1700
+			],
+			"rot": 0
+		},
+		{
+			"item": "hm_chicken",
+			"pos": [
+				1150,
+				-12,
+				1500
+			],
+			"rot": 30,
+			"roam": [
+				960,
+				1390,
+				530,
+				240
+			]
+		},
+		{
+			"item": "hm_chicken",
+			"pos": [
+				1310,
+				-12,
+				1560
+			],
+			"rot": 210,
+			"roam": [
+				960,
+				1390,
+				530,
+				240
+			]
+		}
+	],
+	"spawns": [
+		{
+			"zone": "lr_rug",
+			"rect": [
+				685,
+				835,
+				170,
+				248
+			],
+			"y": 0.6,
+			"items": {
+				"hm_chip": 14,
+				"hm_popcorn": 12,
+				"hm_gummy": 8,
+				"hm_milk_candy": 6,
+				"konpeito": 5,
+				"candy": 5,
+				"hm_pineapple_cake": 4,
+				"hm_rice_cracker": 3,
+				"hm_egg_roll": 3,
+				"hm_seaweed": 3,
+				"hm_lollipop": 2,
+				"hm_lactic_drink": 2,
+				"cookie": 3,
+				"hm_coin_1": 3,
+				"hm_coin_10": 2,
+				"lego_2x2": 3,
+				"marble": 3,
+				"hm_puzzle": 3,
+				"hm_tea_cup": 1,
+				"hm_guava": 1,
+				"juice_box": 1,
+				"hm_game_pad": 1,
+				"remote": 1,
+				"hm_comic": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					780.1,
+					957.0,
+					83.9,
+					36.0
+				],
+				[
+					713.0,
+					836.7,
+					34.0,
+					75.3
+				]
+			]
+		},
+		{
+			"zone": "lr_table",
+			"rect": [
+				703,
+				913,
+				54,
+				104
+			],
+			"y": 40,
+			"items": {
+				"hm_chips_bag": 1,
+				"hm_fruit_plate": 1,
+				"hm_teapot": 1,
+				"hm_tea_cup": 3,
+				"hm_chip": 6,
+				"hm_popcorn": 6,
+				"hm_guava": 2,
+				"hm_lactic_drink": 2
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "lr_sofa",
+			"rect": [
+				866,
+				896,
+				56,
+				168
+			],
+			"y": 45,
+			"items": {
+				"cushion": 1,
+				"hm_comic": 2,
+				"hm_chip": 5,
+				"remote": 1,
+				"plush_small": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "lr_tv",
+			"rect": [
+				421,
+				858,
+				27,
+				166
+			],
+			"y": 50,
+			"items": {
+				"hm_photo_frame": 2,
+				"mini_figure": 3,
+				"animal_figure": 2,
+				"keychain": 2
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "lr_spill",
+			"rect": [
+				500,
+				690,
+				180,
+				220
+			],
+			"y": 0,
+			"items": {
+				"hm_chip": 24,
+				"hm_pineapple_cake": 6,
+				"hm_egg_roll": 4,
+				"hm_puzzle": 6,
+				"hm_coin_10": 4,
+				"hm_coin_5": 3,
+				"candy": 8,
+				"hm_rice_cracker": 3
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					678,
+					828,
+					184,
+					262
+				]
+			]
+		},
+		{
+			"zone": "lr_floor",
+			"rect": [
+				410,
+				610,
+				530,
+				478
+			],
+			"y": 0,
+			"items": {
+				"hm_chip": 22,
+				"hm_popcorn": 18,
+				"candy": 10,
+				"hm_gummy": 10,
+				"hm_milk_candy": 5,
+				"konpeito": 6,
+				"hm_pineapple_cake": 4,
+				"hm_rice_cracker": 4,
+				"hm_egg_roll": 3,
+				"hm_seaweed": 3,
+				"hm_coin_5": 4,
+				"hm_coin_50": 2,
+				"hm_coin_1": 3,
+				"lego_2x4": 6,
+				"lego_2x2": 3,
+				"hm_puzzle": 8,
+				"marble": 3,
+				"minicar": 3,
+				"bouncy_ball": 4,
+				"hm_juice_bottle": 2,
+				"hm_chips_bag": 3,
+				"hm_popcorn_bucket": 3,
+				"tissue_box": 1,
+				"hm_comic": 4,
+				"hm_slipper": 2,
+				"hm_cat_food_can": 2,
+				"yarn_ball": 2,
+				"cat_teaser": 1,
+				"hm_photo_frame": 1,
+				"hm_lollipop": 2,
+				"hm_lactic_drink": 2,
+				"cookie": 3,
+				"juice_box": 1,
+				"hm_tea_cup": 1,
+				"hm_guava": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					412.0,
+					759.4,
+					32.0,
+					92.6
+				],
+				[
+					780.1,
+					957.0,
+					83.9,
+					36.0
+				],
+				[
+					713.0,
+					836.7,
+					34.0,
+					75.3
+				],
+				[
+					678,
+					828,
+					184,
+					262
+				]
+			]
+		},
+		{
+			"zone": "st_desk",
+			"rect": [
+				9,
+				872,
+				56,
+				116
+			],
+			"y": 75,
+			"items": {
+				"crayon": 8,
+				"hm_crayon_big": 4,
+				"hm_crayon_box": 1,
+				"hm_drawing_paper": 2,
+				"hm_yarn_small": 5,
+				"colored_pencil": 4,
+				"eraser": 2,
+				"sharpener": 1,
+				"minicar": 1,
+				"dinosaur": 1,
+				"hm_puzzle": 2
+			},
+			"avoid_furniture": false,
+			"exclude": [
+				[
+					13,
+					873,
+					24,
+					24
+				]
+			]
+		},
+		{
+			"zone": "st_floor",
+			"rect": [
+				10,
+				612,
+				382,
+				478
+			],
+			"y": 0,
+			"items": {
+				"crayon": 10,
+				"hm_crayon_big": 6,
+				"hm_drawing_paper": 4,
+				"hm_yarn_small": 6,
+				"hm_yarn_ball": 3,
+				"hm_wood_block": 10,
+				"hm_wood_arch": 4,
+				"hm_puzzle": 6,
+				"lego_2x4": 6,
+				"toy_train": 1,
+				"toy_robot": 1,
+				"spinning_top": 2,
+				"picture_book": 3,
+				"hm_zhuyin_book": 2,
+				"colored_pencil": 6,
+				"marker": 4,
+				"hm_crayon_box": 1,
+				"glue_stick": 2,
+				"kids_scissors": 1,
+				"tape_roll": 2,
+				"rubiks_cube": 1,
+				"yoyo": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					65.0,
+					911.0,
+					135.9,
+					38.0
+				]
+			]
+		},
+		{
+			"zone": "kt_counter",
+			"rect": [
+				1002,
+				608,
+				296,
+				57
+			],
+			"y": 85,
+			"items": {
+				"hm_carrot": 3,
+				"hm_carrot_cube": 8,
+				"hm_potato": 3,
+				"hm_potato_cube": 8,
+				"hm_onion": 3,
+				"hm_curry_roux": 6,
+				"hm_ladle": 1,
+				"hm_spoon": 3,
+				"hm_chopsticks": 2,
+				"hm_spice_jar": 3,
+				"hm_orange": 3,
+				"hm_bowl": 2,
+				"hm_dish_soap": 1,
+				"hm_scrub": 1
+			},
+			"avoid_furniture": false,
+			"exclude": [
+				[
+					1022,
+					620,
+					36,
+					32
+				],
+				[
+					1087,
+					617,
+					36,
+					34
+				],
+				[
+					1145,
+					625,
+					40,
+					30
+				],
+				[
+					1212,
+					610,
+					56,
+					46
+				]
+			]
+		},
+		{
+			"zone": "kt_board",
+			"rect": [
+				1151,
+				630,
+				28,
+				20
+			],
+			"y": 87,
+			"items": {
+				"hm_carrot_cube": 4,
+				"hm_potato_cube": 3
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "kt_table",
+			"rect": [
+				1177,
+				917,
+				146,
+				86
+			],
+			"y": 75,
+			"items": {
+				"hm_curry_rice": 3,
+				"hm_plate": 2,
+				"hm_bowl": 2,
+				"hm_spoon": 3,
+				"hm_chopsticks": 3,
+				"hm_tea_cup": 2,
+				"hm_orange": 3,
+				"hm_juice_bottle": 1
+			},
+			"avoid_furniture": false,
+			"exclude": [
+				[
+					1272,
+					925,
+					36,
+					30
+				]
+			]
+		},
+		{
+			"zone": "kt_floor",
+			"rect": [
+				957,
+				607,
+				534,
+				484
+			],
+			"y": 0,
+			"items": {
+				"hm_orange": 14,
+				"hm_carrot": 4,
+				"hm_potato": 5,
+				"hm_onion": 4,
+				"hm_carrot_cube": 4,
+				"hm_potato_cube": 4,
+				"hm_curry_roux": 4,
+				"hm_spoon": 3,
+				"hm_chopsticks": 3,
+				"hm_bowl": 2,
+				"hm_plate": 2,
+				"hm_slipper": 2,
+				"hm_apron": 1,
+				"hm_kettle": 1,
+				"hm_dish_soap": 1,
+				"hm_scrub": 2,
+				"hm_spice_jar": 2,
+				"hm_coin_1": 3,
+				"hm_guava": 3,
+				"cherry_tomato": 6,
+				"hm_cat_food_can": 1,
+				"milk_carton": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					1129.0,
+					665.0,
+					42.0,
+					142.0
+				],
+				[
+					1041.1,
+					941.0,
+					135.9,
+					38.0
+				]
+			]
+		},
+		{
+			"zone": "hall",
+			"rect": [
+				12,
+				460,
+				1476,
+				130
+			],
+			"y": 0,
+			"items": {
+				"hm_schoolbag": 3,
+				"school_hat": 2,
+				"hm_water_bottle": 3,
+				"hm_bento": 2,
+				"hm_slipper": 4,
+				"hm_umbrella": 2,
+				"hm_sneaker": 2,
+				"hm_comic": 2,
+				"hm_zhuyin_book": 2,
+				"picture_book": 2,
+				"hm_coin_10": 4,
+				"marble": 3,
+				"bouncy_ball": 3,
+				"hm_yarn_ball": 1,
+				"hm_baseball": 2,
+				"hm_sock": 3,
+				"hm_rain_boots": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "br_bed",
+			"rect": [
+				12,
+				52,
+				90,
+				156
+			],
+			"y": 45,
+			"items": {
+				"hm_comic": 3,
+				"hm_game_pad": 1,
+				"plush_bear": 1,
+				"hm_baseball": 1,
+				"lego_2x4": 4
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "br_desk",
+			"rect": [
+				214,
+				9,
+				96,
+				51
+			],
+			"y": 72,
+			"items": {
+				"pencil": 3,
+				"eraser": 2,
+				"hm_calculator": 1,
+				"hm_comic": 2,
+				"minicar": 2,
+				"hm_xiangqi": 6,
+				"ruler": 1,
+				"notebook": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "br_floor",
+			"rect": [
+				10,
+				10,
+				362,
+				432
+			],
+			"y": 0,
+			"items": {
+				"hm_basketball": 1,
+				"soccer_ball": 1,
+				"hm_baseball": 2,
+				"hm_baseball_glove": 1,
+				"hm_bat": 1,
+				"hm_model_plane": 1,
+				"rc_car": 1,
+				"toy_robot": 1,
+				"dinosaur": 3,
+				"minicar": 3,
+				"lego_2x4": 6,
+				"lego_2x2": 6,
+				"hm_xiangqi": 6,
+				"hm_comic": 4,
+				"hm_sneaker": 2,
+				"hm_schoolbag": 1,
+				"hm_water_bottle": 1,
+				"spinning_top": 2,
+				"die": 3,
+				"trading_card": 4,
+				"hm_sock": 2,
+				"toy_dino_big": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					105.0,
+					137.0,
+					83.9,
+					46.0
+				],
+				[
+					239.0,
+					60.0,
+					46.0,
+					130.7
+				]
+			]
+		},
+		{
+			"zone": "si_bed",
+			"rect": [
+				660,
+				52,
+				90,
+				156
+			],
+			"y": 45,
+			"items": {
+				"plush_bear": 1,
+				"teddy_small": 2,
+				"hm_diary": 1,
+				"hm_scrunchie": 3,
+				"hm_bracelet": 2
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "si_desk",
+			"rect": [
+				422,
+				9,
+				96,
+				51
+			],
+			"y": 72,
+			"items": {
+				"bead_6": 6,
+				"bead_8": 5,
+				"fuse_bead": 5,
+				"hm_bracelet": 3,
+				"hair_clip": 4,
+				"hair_tie": 4,
+				"star_sticker": 4,
+				"puffy_sticker": 4,
+				"hm_diary": 1,
+				"hm_hand_mirror": 1,
+				"hm_perler_art": 1
+			},
+			"avoid_furniture": false,
+			"exclude": [
+				[
+					430,
+					20,
+					22,
+					16
+				]
+			]
+		},
+		{
+			"zone": "si_rug",
+			"rect": [
+				472,
+				242,
+				166,
+				176
+			],
+			"y": 0.6,
+			"items": {
+				"hm_scrunchie": 4,
+				"hm_bracelet": 4,
+				"fuse_bead": 8,
+				"hm_perler_art": 3,
+				"sticker_book": 1,
+				"hm_hand_mirror": 1,
+				"teddy_small": 1,
+				"plush_small": 1,
+				"doll": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "si_floor",
+			"rect": [
+				390,
+				10,
+				362,
+				432
+			],
+			"y": 0,
+			"items": {
+				"hm_ukulele": 1,
+				"keyboard_harmonica": 1,
+				"recorder": 1,
+				"picture_book": 3,
+				"hm_diary": 1,
+				"jump_rope": 1,
+				"plush_small": 1,
+				"doll": 2,
+				"hm_schoolbag": 1,
+				"hm_water_bottle": 1,
+				"colored_pencil_box": 1,
+				"pencil_case": 1,
+				"hm_scrunchie": 3,
+				"hair_tie": 4,
+				"hm_sock": 2,
+				"hm_slipper": 2,
+				"hm_coin_5": 3,
+				"hm_coin_50": 2
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					573.1,
+					137.0,
+					83.9,
+					46.0
+				],
+				[
+					447.0,
+					60.0,
+					46.0,
+					130.7
+				],
+				[
+					468,
+					238,
+					174,
+					184
+				]
+			]
+		},
+		{
+			"zone": "ys_bed",
+			"rect": [
+				1010,
+				42,
+				80,
+				146
+			],
+			"y": 32,
+			"items": {
+				"plush_small": 1,
+				"hm_unicorn": 1,
+				"teddy_small": 1,
+				"hm_soft_block": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "ys_table",
+			"rect": [
+				827,
+				97,
+				66,
+				46
+			],
+			"y": 45,
+			"items": {
+				"crayon": 4,
+				"hm_stacking_cups": 1,
+				"toy_teacup": 3,
+				"toy_cake": 1,
+				"hm_music_box": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "ys_mat",
+			"rect": [
+				802,
+				262,
+				196,
+				176
+			],
+			"y": 1.0,
+			"items": {
+				"hm_soft_block": 6,
+				"hm_wood_block": 6,
+				"hm_stacking_cups": 2,
+				"toy_teacup": 3,
+				"toy_cake": 2,
+				"doll": 2,
+				"plush_small": 2,
+				"bouncy_ball": 3,
+				"hm_unicorn": 1,
+				"toy_piano": 1,
+				"picture_book": 2,
+				"hm_rubber_duck": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "ys_floor",
+			"rect": [
+				770,
+				10,
+				322,
+				432
+			],
+			"y": 0,
+			"items": {
+				"crayon": 6,
+				"hm_crayon_big": 4,
+				"hm_soft_block": 3,
+				"plush_small": 1,
+				"doll": 1,
+				"gacha_capsule": 3,
+				"hm_lollipop": 2,
+				"picture_book": 2,
+				"hm_slipper": 1,
+				"hm_sock": 2
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					945.6,
+					109.0,
+					61.4,
+					42.0
+				],
+				[
+					840.0,
+					143.0,
+					40.0,
+					83.9
+				],
+				[
+					798,
+					258,
+					204,
+					184
+				]
+			]
+		},
+		{
+			"zone": "to_floor",
+			"rect": [
+				1108,
+				90,
+				164,
+				350
+			],
+			"y": 0,
+			"items": {
+				"hm_ant": 8,
+				"hm_ladybug": 6,
+				"hm_beetle": 5,
+				"hm_cricket": 5,
+				"hm_toilet_paper": 3,
+				"hm_slipper": 2,
+				"hm_air_freshener": 1,
+				"hm_comic": 1,
+				"hm_sock": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					1111.7,
+					262.0,
+					120.3,
+					36.0
+				]
+			]
+		},
+		{
+			"zone": "to_basin",
+			"rect": [
+				1232,
+				253,
+				30,
+				54
+			],
+			"y": 80,
+			"items": {
+				"hm_soap": 1,
+				"hm_tooth_cup": 1,
+				"hm_toothbrush": 2,
+				"hm_toothpaste": 1,
+				"hm_ladybug": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "ba_tub",
+			"rect": [
+				1300,
+				20,
+				118,
+				60
+			],
+			"y": 6,
+			"items": {
+				"hm_rubber_duck": 4,
+				"hm_toy_boat": 1,
+				"hm_water_gun": 1,
+				"hm_bath_puff": 1,
+				"hm_bubble_bottle": 1
+			},
+			"avoid_furniture": false
+		},
+		{
+			"zone": "ba_floor",
+			"rect": [
+				1290,
+				96,
+				200,
+				346
+			],
+			"y": 0,
+			"items": {
+				"hm_basin": 2,
+				"hm_shampoo": 3,
+				"hm_bubble_bottle": 2,
+				"hm_towel": 2,
+				"hm_bath_puff": 1,
+				"hm_rubber_duck": 3,
+				"hm_soap": 2,
+				"hm_toothbrush": 1,
+				"hm_water_gun": 1,
+				"hm_slipper": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					1317.0,
+					88.0,
+					46.0,
+					83.9
+				]
+			]
+		},
+		{
+			"zone": "porch",
+			"rect": [
+				10,
+				1110,
+				1480,
+				136
+			],
+			"y": 0,
+			"items": {
+				"hm_sneaker": 3,
+				"hm_rain_boots": 2,
+				"hm_slipper": 4,
+				"hm_umbrella": 2,
+				"hm_helmet": 2,
+				"hm_schoolbag": 1,
+				"school_hat": 1,
+				"hm_tshirt": 1,
+				"hm_sock": 3,
+				"hm_bamboo_basket": 1,
+				"laundry_basket": 1,
+				"hm_red_stool": 2,
+				"hm_bucket": 1,
+				"hm_basketball": 1,
+				"soccer_ball": 1,
+				"hm_cardboard_box": 1,
+				"hm_coin_10": 3,
+				"pebble": 4
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "yd_petals",
+			"rect": [
+				580,
+				1462,
+				360,
+				316
+			],
+			"y": -12,
+			"items": {
+				"hm_petal": 26
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "yd_floor",
+			"rect": [
+				10,
+				1312,
+				935,
+				476
+			],
+			"y": -12,
+			"items": {
+				"hm_plastic_chair": 1,
+				"hm_red_stool": 5,
+				"hm_bucket": 4,
+				"hm_cardboard_box": 4,
+				"hm_tire": 2,
+				"hm_helmet": 2,
+				"hm_basketball": 2,
+				"soccer_ball": 2,
+				"laundry_basket": 2,
+				"flower_pot": 2,
+				"planter": 2,
+				"watering_can": 1,
+				"hm_bamboo_basket": 2,
+				"hm_kite": 1,
+				"jump_rope": 1,
+				"hm_tshirt": 2,
+				"hm_sock": 3,
+				"hm_sneaker": 2,
+				"toy_box": 1,
+				"trash_can": 2,
+				"hm_floor_cushion": 1,
+				"hm_hose_reel": 1,
+				"pebble": 4,
+				"hm_rice_bag": 1,
+				"hm_schoolbag": 1,
+				"hm_coin_10": 3,
+				"hm_tricycle": 1,
+				"hm_watermelon": 2,
+				"hm_cooler": 2,
+				"hm_quilt": 2,
+				"hm_crate": 2,
+				"hm_soil_bag": 1,
+				"hm_big_pot": 1
+			},
+			"avoid_furniture": true,
+			"exclude": [
+				[
+					230,
+					1745,
+					200,
+					50
+				]
+			]
+		},
+		{
+			"zone": "gd_floor",
+			"rect": [
+				960,
+				1382,
+				530,
+				252
+			],
+			"y": -12,
+			"items": {
+				"hm_hose_reel": 1,
+				"watering_can": 1,
+				"hm_bucket": 2,
+				"hm_trowel": 2,
+				"hm_snail": 5,
+				"hm_butterfly": 3,
+				"hm_frog": 2,
+				"hm_flower": 6,
+				"flower_pot": 3,
+				"small_pot": 3,
+				"planter": 2,
+				"hm_tire": 1,
+				"hm_garden_lamp": 1,
+				"hm_bamboo_basket": 1,
+				"pebble": 3,
+				"hm_cabbage": 1,
+				"hm_red_stool": 2,
+				"hm_plastic_chair": 1,
+				"hm_cardboard_box": 1,
+				"hm_big_pot": 1,
+				"hm_soil_bag": 1,
+				"hm_crate": 1,
+				"hm_watermelon": 1
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "bed_a",
+			"rect": [
+				995,
+				1645,
+				200,
+				110
+			],
+			"y": 0,
+			"items": {
+				"hm_flower": 12,
+				"hm_butterfly": 2,
+				"hm_snail": 2
+			},
+			"avoid_furniture": true
+		},
+		{
+			"zone": "bed_b",
+			"rect": [
+				1265,
+				1645,
+				210,
+				110
+			],
+			"y": 0,
+			"items": {
+				"hm_cabbage": 5,
+				"hm_green_onion": 12,
+				"cherry_tomato": 8,
+				"hm_trowel": 1,
+				"hm_snail": 2
+			},
+			"avoid_furniture": true
+		}
+	],
+	"gates": [
+		{
+			"id": "kitchen_door",
+			"name": "廚房的拉門",
+			"pos": [
+				950,
+				0,
+				760
+			],
+			"size": [
+				6,
+				205,
+				220
+			],
+			"color": "#d6b38a",
+			"open_at_cm": 10,
+			"message": "廚房的門打開了！聞到咖哩的香味了嗎？",
+			"slide": [
+				0,
+				0,
+				220
+			]
+		},
+		{
+			"id": "study_door",
+			"name": "書房的門",
+			"pos": [
+				400,
+				0,
+				700
+			],
+			"size": [
+				6,
+				205,
+				120
+			],
+			"color": "#d6b38a",
+			"open_at_cm": 12,
+			"message": "書房的門打開了！書桌上有人在畫畫喔",
+			"slide": [
+				0,
+				0,
+				120
+			]
+		},
+		{
+			"id": "hall_door",
+			"name": "客廳到走廊的拉門",
+			"pos": [
+				520,
+				0,
+				600
+			],
+			"size": [
+				100,
+				205,
+				6
+			],
+			"color": "#d6b38a",
+			"open_at_cm": 14,
+			"message": "走廊的門打開了！去哥哥姐姐的房間看看",
+			"slide": [
+				-100,
+				0,
+				0
+			]
+		},
+		{
+			"id": "hall_door_b",
+			"name": "客廳到走廊的拉門",
+			"pos": [
+				620,
+				0,
+				600
+			],
+			"size": [
+				100,
+				205,
+				6
+			],
+			"color": "#d6b38a",
+			"open_at_cm": 14,
+			"message": "",
+			"slide": [
+				100,
+				0,
+				0
+			]
+		},
+		{
+			"id": "study_hall_door",
+			"name": "書房到走廊的門",
+			"pos": [
+				200,
+				0,
+				600
+			],
+			"size": [
+				120,
+				205,
+				6
+			],
+			"color": "#d6b38a",
+			"open_at_cm": 14,
+			"message": "",
+			"slide": [
+				-120,
+				0,
+				0
+			]
+		},
+		{
+			"id": "toilet_door",
+			"name": "廁所的門",
+			"pos": [
+				1190,
+				0,
+				450
+			],
+			"size": [
+				160,
+				205,
+				6
+			],
+			"color": "#cde7e5",
+			"open_at_cm": 14,
+			"message": "",
+			"slide": [
+				0,
+				-212,
+				0
+			]
+		},
+		{
+			"id": "sister_door",
+			"name": "姐姐的房門",
+			"pos": [
+				575,
+				0,
+				450
+			],
+			"size": [
+				150,
+				205,
+				6
+			],
+			"color": "#ffc8dd",
+			"open_at_cm": 16,
+			"message": "姐姐的房門打開了！桌上有好多串珠",
+			"slide": [
+				150,
+				0,
+				0
+			]
+		},
+		{
+			"id": "brother_door",
+			"name": "哥哥的房門",
+			"pos": [
+				195,
+				0,
+				450
+			],
+			"size": [
+				150,
+				205,
+				6
+			],
+			"color": "#a0c4ff",
+			"open_at_cm": 18,
+			"message": "哥哥的房門打開了！小心籃球！",
+			"slide": [
+				150,
+				0,
+				0
+			]
+		},
+		{
+			"id": "ysister_door",
+			"name": "妹妹的房門",
+			"pos": [
+				945,
+				0,
+				450
+			],
+			"size": [
+				150,
+				205,
+				6
+			],
+			"color": "#fdffb6",
+			"open_at_cm": 20,
+			"message": "妹妹的房門打開了！到處都是玩具",
+			"slide": [
+				-150,
+				0,
+				0
+			]
+		},
+		{
+			"id": "bath_door",
+			"name": "浴室的門",
+			"pos": [
+				1390,
+				0,
+				450
+			],
+			"size": [
+				160,
+				205,
+				6
+			],
+			"color": "#bfdcf5",
+			"open_at_cm": 22,
+			"message": "浴室的門打開了！浴缸裡有小黃鴨",
+			"slide": [
+				0,
+				-212,
+				0
+			]
+		},
+		{
+			"id": "front_door",
+			"name": "大門",
+			"pos": [
+				570,
+				0,
+				1100
+			],
+			"size": [
+				200,
+				215,
+				6
+			],
+			"color": "#adb5bd",
+			"open_at_cm": 35,
+			"message": "大門打開了！去前院看看車子和櫻花樹",
+			"slide": [
+				-200,
+				0,
+				0
+			]
+		},
+		{
+			"id": "back_door",
+			"name": "廚房後門",
+			"pos": [
+				1360,
+				0,
+				1100
+			],
+			"size": [
+				120,
+				205,
+				6
+			],
+			"color": "#d6b38a",
+			"open_at_cm": 40,
+			"message": "廚房後門也打開了！",
+			"slide": [
+				-120,
+				0,
+				0
+			]
+		}
+	],
+	"rescue": {
+		"pos": [
+			570,
+			1.0,
+			720
+		],
+		"yaw_deg": 180
+	},
+	"env": {
+		"sky": "#cfe8ff",
+		"fog_color": "#e6f2ff",
+		"fog_per_d": 0.0
+	},
+	"stage": {
+		"start_cm": 6,
+		"goal_cm": 100,
+		"time_sec": 720,
+		"comet_sec": 480,
+		"seed": 2026,
+		"music": "home",
+		"intro": "歡迎來到冬山的家！先把客廳的零食黏起來吧",
+		"zones": [],
+		"gates": {},
+		"tuning": {},
+		"grades": [
+			{
+				"min_ratio": 0.0,
+				"text": "星婆婆：家裡好大喔，再滾一次吧！"
+			},
+			{
+				"min_ratio": 1.0,
+				"text": "星婆婆：一公尺！全家都整理好了，連貓咪小狗都抱回來了。"
+			},
+			{
+				"min_ratio": 1.3,
+				"text": "星婆婆：哇，連爸爸的塑膠椅都滾起來了！"
+			},
+			{
+				"min_ratio": 1.6,
+				"text": "星婆婆：你把整個院子都滾成一顆大星星了！"
+			},
+			{
+				"min_ratio": 1.9,
+				"text": "星婆婆：太厲害了！冬山最會滾的小朋友就是你！"
+			}
+		]
+	}
+}

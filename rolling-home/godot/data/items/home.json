@@ -1,0 +1,8239 @@
+{
+	"_note": "第 1 關「槿寶的家」（宜蘭冬山鄉的單層平房）專用物件，由 tools/levels/home_items.py 產生，請改腳本後重新執行 tools/levels/build_dongshan_home.py，不要直接改這個檔案。",
+	"items": [
+		{
+			"id": "hm_chip",
+			"name": "洋芋片",
+			"name_en": "Potato Chip",
+			"category": "零食",
+			"shape": "cylinder",
+			"dims": [
+				3.5,
+				0.4,
+				3.0
+			],
+			"color": "#f6c453",
+			"colors": [
+				"#f6c453",
+				"#f2b134",
+				"#f9d77e"
+			],
+			"fill": 0.5,
+			"sfx": "snack",
+			"flavor": "客廳地上掉了好多片，卡滋卡滋！"
+		},
+		{
+			"id": "hm_chips_bag",
+			"name": "洋芋片袋",
+			"name_en": "Bag of Chips",
+			"category": "零食",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						22,
+						24,
+						7
+					],
+					"pos": [
+						0,
+						12,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						22,
+						3,
+						4
+					],
+					"pos": [
+						0,
+						25.5,
+						0
+					],
+					"color": "#c1121f",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						9,
+						9,
+						1
+					],
+					"pos": [
+						0,
+						13,
+						3.6
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				22,
+				28,
+				7
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#3a86ff",
+				"#2a9d8f"
+			],
+			"fill": 0.35,
+			"sfx": "snack",
+			"flavor": "打開的洋芋片，哥哥說只吃一片。"
+		},
+		{
+			"id": "hm_popcorn",
+			"name": "爆米花",
+			"name_en": "Popcorn",
+			"category": "零食",
+			"shape": "sphere",
+			"dims": [
+				1.6,
+				1.4,
+				1.6
+			],
+			"color": "#fff3c4",
+			"fill": 0.6,
+			"flavor": "從桶子裡跳出來的爆米花。"
+		},
+		{
+			"id": "hm_popcorn_bucket",
+			"name": "爆米花桶",
+			"name_en": "Popcorn Bucket",
+			"category": "零食",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						13,
+						14,
+						13
+					],
+					"pos": [
+						0,
+						7,
+						0
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						13.4,
+						3,
+						13.4
+					],
+					"pos": [
+						0,
+						6,
+						0
+					],
+					"color": "#ffffff",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						13,
+						8,
+						13
+					],
+					"pos": [
+						0,
+						15,
+						0
+					],
+					"color": "#fff3c4",
+					"collide": false
+				}
+			],
+			"dims": [
+				14,
+				18,
+				14
+			],
+			"color": "#cccccc",
+			"fill": 0.45,
+			"sfx": "snack",
+			"flavor": "電影之夜的爆米花，還有一大半。"
+		},
+		{
+			"id": "hm_pineapple_cake",
+			"name": "鳳梨酥",
+			"name_en": "Pineapple Cake",
+			"category": "零食",
+			"shape": "box",
+			"dims": [
+				5,
+				2,
+				4
+			],
+			"color": "#e9b872",
+			"fill": 0.7,
+			"sfx": "snack",
+			"flavor": "阿嬤最愛的點心，酥酥甜甜。"
+		},
+		{
+			"id": "hm_egg_roll",
+			"name": "蛋捲",
+			"name_en": "Egg Roll",
+			"category": "零食",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "capsule",
+					"dims": [
+						1.8,
+						12,
+						1.8
+					],
+					"pos": [
+						0,
+						0.9,
+						0
+					],
+					"color": "#e8a33d",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"dims": [
+				12,
+				1.8,
+				1.8
+			],
+			"color": "#cccccc",
+			"fill": 0.6,
+			"sfx": "snack"
+		},
+		{
+			"id": "hm_rice_cracker",
+			"name": "仙貝",
+			"name_en": "Rice Cracker",
+			"category": "零食",
+			"shape": "cylinder",
+			"dims": [
+				5,
+				0.8,
+				5
+			],
+			"color": "#d9a05b",
+			"fill": 0.6,
+			"sfx": "snack"
+		},
+		{
+			"id": "hm_lollipop",
+			"name": "棒棒糖",
+			"name_en": "Lollipop",
+			"category": "零食",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						1,
+						4
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#ff70a6",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						0.5,
+						8,
+						0.5
+					],
+					"pos": [
+						0,
+						4,
+						0
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				4,
+				12,
+				1
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ff70a6",
+				"#70d6ff",
+				"#ffd670",
+				"#caffbf"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_gummy",
+			"name": "軟糖",
+			"name_en": "Gummy Candy",
+			"category": "零食",
+			"shape": "box",
+			"dims": [
+				1.5,
+				1.5,
+				1.5
+			],
+			"color": "#ff70a6",
+			"colors": [
+				"#e63946",
+				"#f77f00",
+				"#ffd60a",
+				"#2a9d8f",
+				"#3a86ff",
+				"#8338ec",
+				"#ff70a6"
+			],
+			"fill": 0.7
+		},
+		{
+			"id": "hm_milk_candy",
+			"name": "牛奶糖",
+			"name_en": "Milk Caramel",
+			"category": "零食",
+			"shape": "box",
+			"dims": [
+				2,
+				1,
+				1.2
+			],
+			"color": "#f4e1c1",
+			"fill": 0.7
+		},
+		{
+			"id": "hm_seaweed",
+			"name": "海苔片",
+			"name_en": "Seaweed Snack",
+			"category": "零食",
+			"shape": "box",
+			"dims": [
+				6,
+				0.2,
+				4
+			],
+			"color": "#2d4a2b",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_tea_cup",
+			"name": "茶杯",
+			"name_en": "Tea Cup",
+			"category": "餐具",
+			"shape": "cylinder",
+			"dims": [
+				6,
+				6,
+				6
+			],
+			"color": "#f8f4ec",
+			"fill": 0.4
+		},
+		{
+			"id": "hm_teapot",
+			"name": "茶壺",
+			"name_en": "Teapot",
+			"category": "餐具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						12,
+						11,
+						12
+					],
+					"pos": [
+						0,
+						5.5,
+						0
+					],
+					"color": "#8d5a3b"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						3,
+						6,
+						3
+					],
+					"pos": [
+						6.5,
+						7,
+						0
+					],
+					"color": "#8d5a3b",
+					"rot": [
+						0,
+						0,
+						-55
+					],
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						2,
+						5
+					],
+					"pos": [
+						0,
+						11.5,
+						0
+					],
+					"color": "#6f4518",
+					"collide": false
+				}
+			],
+			"dims": [
+				16,
+				14,
+				12
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"flavor": "阿公泡茶的小茶壺。"
+		},
+		{
+			"id": "hm_juice_bottle",
+			"name": "果汁瓶",
+			"name_en": "Juice Bottle",
+			"category": "飲料",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						7,
+						18,
+						7
+					],
+					"pos": [
+						0,
+						9,
+						0
+					],
+					"color": "#ffb703",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						4,
+						3
+					],
+					"pos": [
+						0,
+						20,
+						0
+					],
+					"color": "#ffffff"
+				}
+			],
+			"dims": [
+				7,
+				22,
+				7
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffb703",
+				"#fb8500",
+				"#8ac926"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_lactic_drink",
+			"name": "乳酸飲料",
+			"name_en": "Lactic Drink",
+			"category": "飲料",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						8,
+						4
+					],
+					"pos": [
+						0,
+						4,
+						0
+					],
+					"color": "#fff1e6"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						1,
+						4
+					],
+					"pos": [
+						0,
+						8.5,
+						0
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"dims": [
+				4,
+				9,
+				4
+			],
+			"color": "#cccccc",
+			"fill": 0.6
+		},
+		{
+			"id": "hm_guava",
+			"name": "芭樂",
+			"name_en": "Guava",
+			"category": "水果",
+			"shape": "sphere",
+			"dims": [
+				7,
+				7,
+				7
+			],
+			"color": "#a7c957",
+			"fill": 0.6
+		},
+		{
+			"id": "hm_fruit_plate",
+			"name": "水果盤",
+			"name_en": "Fruit Plate",
+			"category": "餐具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						25,
+						2,
+						25
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						6,
+						4,
+						6
+					],
+					"pos": [
+						-5,
+						3.5,
+						2
+					],
+					"color": "#a7c957",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						6,
+						4,
+						6
+					],
+					"pos": [
+						5,
+						3.5,
+						-2
+					],
+					"color": "#fb8500",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						5,
+						3,
+						5
+					],
+					"pos": [
+						1,
+						3.5,
+						6
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"dims": [
+				25,
+				5,
+				25
+			],
+			"color": "#cccccc",
+			"fill": 0.35
+		},
+		{
+			"id": "hm_game_pad",
+			"name": "遊戲手把",
+			"name_en": "Game Controller",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						15,
+						4,
+						7
+					],
+					"pos": [
+						0,
+						2,
+						0
+					],
+					"color": "#4a4e69"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						4,
+						5
+					],
+					"pos": [
+						-5,
+						2,
+						2
+					],
+					"color": "#4a4e69",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						4,
+						5
+					],
+					"pos": [
+						5,
+						2,
+						2
+					],
+					"color": "#4a4e69",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1.4,
+						1.4,
+						1.4
+					],
+					"pos": [
+						4,
+						4.3,
+						-1
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"dims": [
+				15,
+				5,
+				10
+			],
+			"color": "#cccccc",
+			"fill": 0.45
+		},
+		{
+			"id": "hm_comic",
+			"name": "漫畫書",
+			"name_en": "Comic Book",
+			"category": "書",
+			"shape": "box",
+			"dims": [
+				13,
+				1.5,
+				18
+			],
+			"color": "#3a86ff",
+			"colors": [
+				"#e63946",
+				"#f77f00",
+				"#ffd60a",
+				"#2a9d8f",
+				"#3a86ff",
+				"#8338ec",
+				"#ff70a6"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_floor_cushion",
+			"name": "坐墊",
+			"name_en": "Floor Cushion",
+			"category": "生活",
+			"shape": "box",
+			"dims": [
+				45,
+				8,
+				45
+			],
+			"color": "#f4a261",
+			"colors": [
+				"#f4a261",
+				"#2a9d8f",
+				"#e76f51",
+				"#ffb4a2"
+			],
+			"fill": 0.3
+		},
+		{
+			"id": "hm_photo_frame",
+			"name": "相框",
+			"name_en": "Photo Frame",
+			"category": "擺飾",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						15,
+						20,
+						2
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#b08968"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						11,
+						15,
+						0.4
+					],
+					"pos": [
+						0,
+						10,
+						-1.1
+					],
+					"color": "#a0c4ff",
+					"collide": false
+				}
+			],
+			"dims": [
+				15,
+				20,
+				3
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"flavor": "全家去冬山河玩的照片。"
+		},
+		{
+			"id": "hm_fan",
+			"name": "電風扇",
+			"name_en": "Electric Fan",
+			"category": "電器",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						35,
+						4,
+						35
+					],
+					"pos": [
+						0,
+						2,
+						0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						70,
+						4
+					],
+					"pos": [
+						0,
+						37,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						40,
+						12,
+						40
+					],
+					"pos": [
+						0,
+						90,
+						0
+					],
+					"color": "#a8dadc",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						10,
+						14,
+						10
+					],
+					"pos": [
+						0,
+						90,
+						6
+					],
+					"color": "#f1faee",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				40,
+				110,
+				35
+			],
+			"color": "#cccccc",
+			"fill": 0.15
+		},
+		{
+			"id": "hm_tv",
+			"name": "電視",
+			"name_en": "TV",
+			"category": "電器",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						70,
+						6
+					],
+					"pos": [
+						0,
+						37,
+						0
+					],
+					"color": "#1d1d1f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						112,
+						62,
+						0.5
+					],
+					"pos": [
+						0,
+						37,
+						-3.2
+					],
+					"color": "#264653",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						2,
+						10
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#343a40"
+				}
+			],
+			"dims": [
+				120,
+				72,
+				10
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"pickable": false
+		},
+		{
+			"id": "hm_tv_cabinet",
+			"name": "電視櫃",
+			"name_en": "TV Cabinet",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						180,
+						46,
+						45
+					],
+					"pos": [
+						0,
+						23,
+						0
+					],
+					"color": "#c9a27e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						182,
+						4,
+						46
+					],
+					"pos": [
+						0,
+						48,
+						0
+					],
+					"color": "#a47148"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						0.6,
+						30
+					],
+					"pos": [
+						-40,
+						25,
+						-22.6
+					],
+					"color": "#a47148",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						0.6,
+						30
+					],
+					"pos": [
+						40,
+						25,
+						-22.6
+					],
+					"color": "#a47148",
+					"collide": false
+				}
+			],
+			"dims": [
+				180,
+				50,
+				45
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_sofa",
+			"name": "沙發",
+			"name_en": "Sofa",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						190,
+						32,
+						72
+					],
+					"pos": [
+						0,
+						16,
+						-5
+					],
+					"color": "#7b9e89"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						180,
+						13,
+						66
+					],
+					"pos": [
+						0,
+						38.5,
+						-8
+					],
+					"color": "#93b7a1"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						200,
+						45,
+						16
+					],
+					"pos": [
+						0,
+						62.5,
+						34
+					],
+					"color": "#6b8f7b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14,
+						26,
+						85
+					],
+					"pos": [
+						-93,
+						58,
+						0
+					],
+					"color": "#6b8f7b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14,
+						26,
+						85
+					],
+					"pos": [
+						93,
+						58,
+						0
+					],
+					"color": "#6b8f7b"
+				}
+			],
+			"dims": [
+				200,
+				85,
+				85
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_coffee_table",
+			"name": "客廳茶几",
+			"name_en": "Coffee Table",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						110,
+						4,
+						60
+					],
+					"pos": [
+						0,
+						38,
+						0
+					],
+					"color": "#a47148"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						2,
+						52
+					],
+					"pos": [
+						0,
+						12,
+						0
+					],
+					"color": "#c9a27e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						36,
+						5
+					],
+					"pos": [
+						50,
+						18,
+						24
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						36,
+						5
+					],
+					"pos": [
+						-50,
+						18,
+						24
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						36,
+						5
+					],
+					"pos": [
+						50,
+						18,
+						-24
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						36,
+						5
+					],
+					"pos": [
+						-50,
+						18,
+						-24
+					],
+					"color": "#7f5539"
+				}
+			],
+			"dims": [
+				110,
+				40,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_desk_study",
+			"name": "書房的大書桌",
+			"name_en": "Study Desk",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						4,
+						60
+					],
+					"pos": [
+						0,
+						73,
+						0
+					],
+					"color": "#d4a373"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						71,
+						56
+					],
+					"pos": [
+						-57,
+						35.5,
+						0
+					],
+					"color": "#c08552"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						42,
+						71,
+						56
+					],
+					"pos": [
+						38,
+						35.5,
+						0
+					],
+					"color": "#c08552"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						30,
+						2
+					],
+					"pos": [
+						-15,
+						50,
+						27
+					],
+					"color": "#c08552"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						34,
+						1,
+						1
+					],
+					"pos": [
+						38,
+						50,
+						-28.5
+					],
+					"color": "#f1faee",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						34,
+						1,
+						1
+					],
+					"pos": [
+						38,
+						25,
+						-28.5
+					],
+					"color": "#f1faee",
+					"collide": false
+				}
+			],
+			"dims": [
+				120,
+				75,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_bookshelf",
+			"name": "書櫃",
+			"name_en": "Bookshelf",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						180,
+						30
+					],
+					"pos": [
+						0,
+						90,
+						0
+					],
+					"color": "#b08968"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						30,
+						0.6
+					],
+					"pos": [
+						0,
+						140,
+						-15.2
+					],
+					"color": "#e63946",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						30,
+						0.6
+					],
+					"pos": [
+						0,
+						95,
+						-15.2
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						30,
+						0.6
+					],
+					"pos": [
+						0,
+						50,
+						-15.2
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				80,
+				180,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_drawing_paper",
+			"name": "圖畫紙",
+			"name_en": "Drawing Paper",
+			"category": "文具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						27,
+						0.3,
+						38
+					],
+					"pos": [
+						0,
+						0.15,
+						0
+					],
+					"color": "#fffdf5"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						0.1,
+						8
+					],
+					"pos": [
+						-4,
+						0.35,
+						-6
+					],
+					"color": "#ffd60a",
+					"collide": false,
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14,
+						0.1,
+						3
+					],
+					"pos": [
+						3,
+						0.35,
+						8
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						0.1,
+						12
+					],
+					"pos": [
+						7,
+						0.35,
+						-2
+					],
+					"color": "#2a9d8f",
+					"collide": false
+				}
+			],
+			"dims": [
+				27,
+				0.3,
+				38
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffd60a",
+				"#ff70a6",
+				"#8ac926"
+			],
+			"fill": 0.3,
+			"size": 12,
+			"flavor": "畫了全家人和太陽，還沒畫完。"
+		},
+		{
+			"id": "hm_crayon_box",
+			"name": "蠟筆盒",
+			"name_en": "Crayon Box",
+			"category": "文具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						12,
+						2,
+						9
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						0.6,
+						1
+					],
+					"pos": [
+						0,
+						2.3,
+						-3
+					],
+					"color": "#e63946",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						0.6,
+						1
+					],
+					"pos": [
+						0,
+						2.3,
+						0
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						0.6,
+						1
+					],
+					"pos": [
+						0,
+						2.3,
+						3
+					],
+					"color": "#2a9d8f",
+					"collide": false
+				}
+			],
+			"dims": [
+				12,
+				2,
+				9
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"sfx": "crayon"
+		},
+		{
+			"id": "hm_crayon_big",
+			"name": "粗蠟筆",
+			"name_en": "Jumbo Crayon",
+			"category": "文具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						1.6,
+						10,
+						1.6
+					],
+					"pos": [
+						0,
+						0.8,
+						0
+					],
+					"color": "#e63946",
+					"rot": [
+						0,
+						0,
+						90
+					],
+					"tint": true
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						1.6,
+						1.4,
+						1.6
+					],
+					"pos": [
+						5.6,
+						0.8,
+						0
+					],
+					"color": "#e63946",
+					"rot": [
+						0,
+						0,
+						-90
+					],
+					"collide": false,
+					"tint": true
+				}
+			],
+			"dims": [
+				11,
+				1.6,
+				1.6
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#f77f00",
+				"#ffd60a",
+				"#2a9d8f",
+				"#3a86ff",
+				"#8338ec",
+				"#ff70a6"
+			],
+			"fill": 0.7,
+			"sfx": "crayon",
+			"flavor": "畫畫畫到一半的蠟筆，摸起來滑滑的。"
+		},
+		{
+			"id": "hm_yarn_small",
+			"name": "小毛線球",
+			"name_en": "Little Yarn Ball",
+			"category": "手工藝",
+			"shape": "sphere",
+			"dims": [
+				3.5,
+				3.5,
+				3.5
+			],
+			"color": "#ffadad",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.6,
+			"sfx": "yarn",
+			"flavor": "書桌旁邊小小的毛線球，軟綿綿。"
+		},
+		{
+			"id": "hm_yarn_ball",
+			"name": "毛線球",
+			"name_en": "Yarn Ball",
+			"category": "手工藝",
+			"shape": "sphere",
+			"dims": [
+				8,
+				8,
+				8
+			],
+			"color": "#bdb2ff",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.6,
+			"sfx": "yarn"
+		},
+		{
+			"id": "hm_knit_basket",
+			"name": "毛線籃",
+			"name_en": "Knitting Basket",
+			"category": "手工藝",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30,
+						14,
+						30
+					],
+					"pos": [
+						0,
+						7,
+						0
+					],
+					"color": "#c68b59"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						10,
+						10,
+						10
+					],
+					"pos": [
+						-6,
+						15,
+						2
+					],
+					"color": "#ffadad",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						10,
+						10,
+						10
+					],
+					"pos": [
+						5,
+						15,
+						-4
+					],
+					"color": "#a0c4ff",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						9,
+						9,
+						9
+					],
+					"pos": [
+						3,
+						15,
+						7
+					],
+					"color": "#caffbf",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				18,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.35,
+			"sfx": "yarn",
+			"flavor": "阿嬤的毛線籃，正在織一條圍巾。"
+		},
+		{
+			"id": "hm_globe",
+			"name": "地球儀",
+			"name_en": "Globe",
+			"category": "文具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						16,
+						3,
+						16
+					],
+					"pos": [
+						0,
+						1.5,
+						0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2,
+						10,
+						2
+					],
+					"pos": [
+						0,
+						7,
+						0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						25,
+						25,
+						25
+					],
+					"pos": [
+						0,
+						25,
+						0
+					],
+					"color": "#4ea8de"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						12,
+						10,
+						4
+					],
+					"pos": [
+						4,
+						29,
+						-10
+					],
+					"color": "#8ac926",
+					"collide": false
+				}
+			],
+			"dims": [
+				25,
+				38,
+				25
+			],
+			"color": "#cccccc",
+			"fill": 0.4
+		},
+		{
+			"id": "hm_puzzle",
+			"name": "拼圖片",
+			"name_en": "Puzzle Piece",
+			"category": "玩具",
+			"shape": "box",
+			"dims": [
+				3,
+				0.4,
+				3
+			],
+			"color": "#ffd166",
+			"colors": [
+				"#e63946",
+				"#f77f00",
+				"#ffd60a",
+				"#2a9d8f",
+				"#3a86ff",
+				"#8338ec",
+				"#ff70a6"
+			],
+			"fill": 0.6
+		},
+		{
+			"id": "hm_wood_block",
+			"name": "木頭積木",
+			"name_en": "Wooden Block",
+			"category": "玩具",
+			"shape": "box",
+			"dims": [
+				4,
+				4,
+				4
+			],
+			"color": "#deb887",
+			"colors": [
+				"#deb887",
+				"#e63946",
+				"#3a86ff",
+				"#ffd60a",
+				"#2a9d8f"
+			],
+			"fill": 0.8
+		},
+		{
+			"id": "hm_wood_arch",
+			"name": "拱門積木",
+			"name_en": "Arch Block",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						2.5,
+						4,
+						4
+					],
+					"pos": [
+						-2.75,
+						2,
+						0
+					],
+					"color": "#ffd60a",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2.5,
+						4,
+						4
+					],
+					"pos": [
+						2.75,
+						2,
+						0
+					],
+					"color": "#ffd60a",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						1.5,
+						4
+					],
+					"pos": [
+						0,
+						3.25,
+						0
+					],
+					"color": "#ffd60a",
+					"tint": true
+				}
+			],
+			"dims": [
+				8,
+				4,
+				4
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffd60a",
+				"#e63946",
+				"#3a86ff"
+			],
+			"fill": 0.6
+		},
+		{
+			"id": "hm_counter",
+			"name": "流理台",
+			"name_en": "Kitchen Counter",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						300,
+						81,
+						60
+					],
+					"pos": [
+						0,
+						40.5,
+						1
+					],
+					"color": "#f1ece3"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						302,
+						4,
+						62
+					],
+					"pos": [
+						0,
+						83,
+						0
+					],
+					"color": "#b8b3ad"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						62,
+						0.6,
+						48
+					],
+					"pos": [
+						110,
+						85.3,
+						0
+					],
+					"color": "#2b2d42",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						52,
+						0.6,
+						38
+					],
+					"pos": [
+						-90,
+						85.3,
+						0
+					],
+					"color": "#ced4da",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						280,
+						0.6,
+						1
+					],
+					"pos": [
+						0,
+						60,
+						-30.3
+					],
+					"color": "#bfb6a8",
+					"collide": false
+				}
+			],
+			"dims": [
+				300,
+				85,
+				62
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_fridge",
+			"name": "冰箱",
+			"name_en": "Fridge",
+			"category": "電器",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						175,
+						70
+					],
+					"pos": [
+						0,
+						87.5,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2,
+						30,
+						2
+					],
+					"pos": [
+						28,
+						120,
+						-36
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						6,
+						1
+					],
+					"pos": [
+						-15,
+						140,
+						-35.5
+					],
+					"color": "#ff70a6",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						6,
+						1
+					],
+					"pos": [
+						-5,
+						110,
+						-35.5
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				70,
+				175,
+				70
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_cupboard",
+			"name": "碗櫃",
+			"name_en": "Cupboard",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						180,
+						45
+					],
+					"pos": [
+						0,
+						90,
+						0
+					],
+					"color": "#c9a27e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						90,
+						70,
+						0.6
+					],
+					"pos": [
+						0,
+						135,
+						-22.6
+					],
+					"color": "#caf0f8",
+					"collide": false
+				}
+			],
+			"dims": [
+				100,
+				180,
+				45
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_dining_table",
+			"name": "餐桌",
+			"name_en": "Dining Table",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						4,
+						90
+					],
+					"pos": [
+						0,
+						73,
+						0
+					],
+					"color": "#b5835a"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						71,
+						6
+					],
+					"pos": [
+						68,
+						35.5,
+						38
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						71,
+						6
+					],
+					"pos": [
+						-68,
+						35.5,
+						38
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						71,
+						6
+					],
+					"pos": [
+						68,
+						35.5,
+						-38
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						71,
+						6
+					],
+					"pos": [
+						-68,
+						35.5,
+						-38
+					],
+					"color": "#7f5539"
+				}
+			],
+			"dims": [
+				150,
+				75,
+				90
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_curry_pot",
+			"name": "咖哩鍋",
+			"name_en": "Curry Pot",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						26,
+						16,
+						26
+					],
+					"pos": [
+						0,
+						8,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						24,
+						1,
+						24
+					],
+					"pos": [
+						0,
+						15.5,
+						0
+					],
+					"color": "#c27c0e",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				22,
+				26
+			],
+			"color": "#cccccc",
+			"fill": 0.45,
+			"model": "hm_curry_pot",
+			"sfx": "curry",
+			"flavor": "媽媽正在煮咖哩，咕嘟咕嘟好香喔！"
+		},
+		{
+			"id": "hm_curry_rice",
+			"name": "咖哩飯",
+			"name_en": "Curry Rice",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						24,
+						2,
+						24
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						12,
+						5,
+						14
+					],
+					"pos": [
+						-4,
+						3,
+						0
+					],
+					"color": "#fffdf5",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						12,
+						3,
+						14
+					],
+					"pos": [
+						4,
+						2.8,
+						0
+					],
+					"color": "#c27c0e",
+					"collide": false
+				}
+			],
+			"dims": [
+				24,
+				5,
+				24
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"sfx": "curry",
+			"flavor": "已經盛好的咖哩飯，紅蘿蔔切成星星形狀。"
+		},
+		{
+			"id": "hm_curry_roux",
+			"name": "咖哩塊",
+			"name_en": "Curry Roux",
+			"category": "廚房",
+			"shape": "box",
+			"dims": [
+				6,
+				1.5,
+				4
+			],
+			"color": "#8b5a2b",
+			"fill": 0.7,
+			"sfx": "curry"
+		},
+		{
+			"id": "hm_carrot",
+			"name": "紅蘿蔔",
+			"name_en": "Carrot",
+			"category": "蔬菜",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cone",
+					"dims": [
+						3,
+						14,
+						3
+					],
+					"pos": [
+						1,
+						1.5,
+						0
+					],
+					"color": "#f77f00",
+					"rot": [
+						0,
+						0,
+						-90
+					]
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						2.5,
+						4,
+						2.5
+					],
+					"pos": [
+						-7.5,
+						1.5,
+						0
+					],
+					"color": "#55a630",
+					"rot": [
+						0,
+						0,
+						90
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				16,
+				3,
+				3
+			],
+			"color": "#cccccc",
+			"fill": 0.6
+		},
+		{
+			"id": "hm_carrot_cube",
+			"name": "紅蘿蔔丁",
+			"name_en": "Diced Carrot",
+			"category": "蔬菜",
+			"shape": "box",
+			"dims": [
+				1.5,
+				1.5,
+				1.5
+			],
+			"color": "#f77f00",
+			"fill": 0.8
+		},
+		{
+			"id": "hm_potato",
+			"name": "馬鈴薯",
+			"name_en": "Potato",
+			"category": "蔬菜",
+			"shape": "sphere",
+			"dims": [
+				8,
+				6,
+				6
+			],
+			"color": "#c9a66b",
+			"fill": 0.7
+		},
+		{
+			"id": "hm_potato_cube",
+			"name": "馬鈴薯丁",
+			"name_en": "Diced Potato",
+			"category": "蔬菜",
+			"shape": "box",
+			"dims": [
+				2,
+				2,
+				2
+			],
+			"color": "#f0d9a0",
+			"fill": 0.8
+		},
+		{
+			"id": "hm_onion",
+			"name": "洋蔥",
+			"name_en": "Onion",
+			"category": "蔬菜",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						7.5,
+						8
+					],
+					"pos": [
+						0,
+						3.75,
+						0
+					],
+					"color": "#d4a373"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						2,
+						2.5,
+						2
+					],
+					"pos": [
+						0,
+						8,
+						0
+					],
+					"color": "#b5835a",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				8,
+				8
+			],
+			"color": "#cccccc",
+			"fill": 0.7
+		},
+		{
+			"id": "hm_ladle",
+			"name": "湯勺",
+			"name_en": "Ladle",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						4,
+						8
+					],
+					"pos": [
+						0,
+						2,
+						11
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1.5,
+						1,
+						22
+					],
+					"pos": [
+						0,
+						2,
+						-4
+					],
+					"color": "#6c757d"
+				}
+			],
+			"dims": [
+				8,
+				4,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.3
+		},
+		{
+			"id": "hm_cutting_board",
+			"name": "砧板",
+			"name_en": "Cutting Board",
+			"category": "廚房",
+			"shape": "box",
+			"dims": [
+				35,
+				2,
+				25
+			],
+			"color": "#e3c9a0",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_plate",
+			"name": "盤子",
+			"name_en": "Plate",
+			"category": "餐具",
+			"shape": "cylinder",
+			"dims": [
+				22,
+				2,
+				22
+			],
+			"color": "#ffffff",
+			"colors": [
+				"#ffffff",
+				"#bde0fe",
+				"#ffe5ec"
+			],
+			"fill": 0.4
+		},
+		{
+			"id": "hm_bowl",
+			"name": "碗",
+			"name_en": "Rice Bowl",
+			"category": "餐具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						12,
+						5,
+						12
+					],
+					"pos": [
+						0,
+						3,
+						0
+					],
+					"color": "#f8f9fa",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						7,
+						1,
+						7
+					],
+					"pos": [
+						0,
+						0.5,
+						0
+					],
+					"color": "#f8f9fa",
+					"collide": false
+				}
+			],
+			"dims": [
+				12,
+				6,
+				12
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#f8f9fa",
+				"#a0c4ff",
+				"#ffc6ff"
+			],
+			"fill": 0.4
+		},
+		{
+			"id": "hm_spoon",
+			"name": "湯匙",
+			"name_en": "Spoon",
+			"category": "餐具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						4,
+						1,
+						5
+					],
+					"pos": [
+						0,
+						0.5,
+						5
+					],
+					"color": "#dee2e6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1,
+						0.6,
+						10
+					],
+					"pos": [
+						0,
+						0.5,
+						-2
+					],
+					"color": "#dee2e6"
+				}
+			],
+			"dims": [
+				4,
+				1,
+				15
+			],
+			"color": "#cccccc",
+			"fill": 0.4
+		},
+		{
+			"id": "hm_chopsticks",
+			"name": "筷子",
+			"name_en": "Chopsticks",
+			"category": "餐具",
+			"shape": "box",
+			"dims": [
+				1.5,
+				0.8,
+				23
+			],
+			"color": "#c68b59",
+			"fill": 0.6
+		},
+		{
+			"id": "hm_spice_jar",
+			"name": "調味罐",
+			"name_en": "Spice Jar",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						8,
+						5
+					],
+					"pos": [
+						0,
+						4,
+						0
+					],
+					"color": "#fefae0"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						2,
+						5
+					],
+					"pos": [
+						0,
+						9,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				}
+			],
+			"dims": [
+				5,
+				10,
+				5
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#2a9d8f",
+				"#ffd60a"
+			],
+			"fill": 0.6
+		},
+		{
+			"id": "hm_electric_pot",
+			"name": "電鍋",
+			"name_en": "Rice Steamer",
+			"category": "電器",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						26,
+						22,
+						26
+					],
+					"pos": [
+						0,
+						11,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						24,
+						6,
+						24
+					],
+					"pos": [
+						0,
+						25,
+						0
+					],
+					"color": "#dee2e6",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				28,
+				26
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"model": "hm_electric_pot",
+			"flavor": "家家戶戶都有的電鍋，裡面在蒸飯。"
+		},
+		{
+			"id": "hm_orange",
+			"name": "橘子",
+			"name_en": "Orange",
+			"category": "水果",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						6.5,
+						6,
+						6.5
+					],
+					"pos": [
+						0,
+						3,
+						0
+					],
+					"color": "#fb8500"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1.2,
+						0.4,
+						2
+					],
+					"pos": [
+						0.3,
+						6,
+						0
+					],
+					"color": "#2d6a4f",
+					"collide": false
+				}
+			],
+			"dims": [
+				6.5,
+				6,
+				6.5
+			],
+			"color": "#cccccc",
+			"fill": 0.6,
+			"model": "tangerine",
+			"sfx": "orange",
+			"flavor": "冬天的橘子又甜又多汁，滾來滾去！"
+		},
+		{
+			"id": "hm_orange_basket",
+			"name": "橘子竹籃",
+			"name_en": "Basket of Oranges",
+			"category": "水果",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30,
+						10,
+						24
+					],
+					"pos": [
+						0,
+						5,
+						0
+					],
+					"color": "#c68b59"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						8,
+						8
+					],
+					"pos": [
+						-7,
+						12,
+						0
+					],
+					"color": "#fb8500",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						8,
+						8
+					],
+					"pos": [
+						3,
+						12,
+						-5
+					],
+					"color": "#fb8500",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						8,
+						8
+					],
+					"pos": [
+						5,
+						12,
+						5
+					],
+					"color": "#f48c06",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						8,
+						8
+					],
+					"pos": [
+						-1,
+						17,
+						1
+					],
+					"color": "#fb8500",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				18,
+				24
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"sfx": "orange"
+		},
+		{
+			"id": "hm_rice_bag",
+			"name": "米袋",
+			"name_en": "Rice Sack",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						36,
+						15
+					],
+					"pos": [
+						0,
+						18,
+						0
+					],
+					"color": "#f1e3c8"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						26,
+						4,
+						12
+					],
+					"pos": [
+						0,
+						38,
+						0
+					],
+					"color": "#e9d8b4",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						16,
+						12,
+						0.4
+					],
+					"pos": [
+						0,
+						20,
+						-7.6
+					],
+					"color": "#55a630",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				40,
+				15
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"flavor": "宜蘭種的白米，一袋好重。"
+		},
+		{
+			"id": "hm_kettle",
+			"name": "熱水壺",
+			"name_en": "Kettle",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						18,
+						18,
+						18
+					],
+					"pos": [
+						0,
+						9,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						12,
+						3,
+						12
+					],
+					"pos": [
+						0,
+						19.5,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						3,
+						14
+					],
+					"pos": [
+						0,
+						23,
+						0
+					],
+					"color": "#212529",
+					"collide": false
+				}
+			],
+			"dims": [
+				22,
+				24,
+				18
+			],
+			"color": "#cccccc",
+			"fill": 0.35
+		},
+		{
+			"id": "hm_apron",
+			"name": "圍裙",
+			"name_en": "Apron",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						55,
+						1,
+						70
+					],
+					"pos": [
+						0,
+						0.5,
+						0
+					],
+					"color": "#ffafcc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						20,
+						0.2,
+						12
+					],
+					"pos": [
+						0,
+						1.1,
+						8
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				55,
+				1,
+				70
+			],
+			"color": "#cccccc",
+			"fill": 0.3,
+			"size": 22
+		},
+		{
+			"id": "hm_slipper",
+			"name": "藍白拖",
+			"name_en": "Blue-White Slipper",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						2,
+						26
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10.4,
+						2,
+						6
+					],
+					"pos": [
+						0,
+						2.5,
+						-4
+					],
+					"color": "#1d4e89",
+					"collide": false
+				}
+			],
+			"dims": [
+				10,
+				3,
+				26
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"flavor": "台灣人的國民拖鞋，啪噠啪噠。"
+		},
+		{
+			"id": "hm_dish_soap",
+			"name": "洗碗精",
+			"name_en": "Dish Soap",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						19,
+						5
+					],
+					"pos": [
+						0,
+						9.5,
+						0
+					],
+					"color": "#80ed99"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2.5,
+						3,
+						2.5
+					],
+					"pos": [
+						0,
+						20.5,
+						0
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				22,
+				5
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_scrub",
+			"name": "菜瓜布",
+			"name_en": "Scrub Sponge",
+			"category": "廚房",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						2,
+						7
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						1,
+						7
+					],
+					"pos": [
+						0,
+						2.5,
+						0
+					],
+					"color": "#2d6a4f"
+				}
+			],
+			"dims": [
+				10,
+				3,
+				7
+			],
+			"color": "#cccccc",
+			"fill": 0.6
+		},
+		{
+			"id": "hm_cat_food_can",
+			"name": "貓罐頭",
+			"name_en": "Cat Food Can",
+			"category": "寵物",
+			"shape": "cylinder",
+			"dims": [
+				7,
+				4,
+				7
+			],
+			"color": "#90e0ef",
+			"fill": 0.7
+		},
+		{
+			"id": "hm_schoolbag",
+			"name": "書包",
+			"name_en": "School Backpack",
+			"category": "學校",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						34,
+						16
+					],
+					"pos": [
+						0,
+						17,
+						0
+					],
+					"color": "#3a86ff",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						26,
+						14,
+						2
+					],
+					"pos": [
+						0,
+						12,
+						-8.5
+					],
+					"color": "#1d4e89",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						3,
+						1
+					],
+					"pos": [
+						0,
+						22,
+						-9.6
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				38,
+				18
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#3a86ff",
+				"#e63946",
+				"#8338ec",
+				"#2a9d8f"
+			],
+			"fill": 0.4,
+			"flavor": "上學用的書包，放學就丟在走廊。"
+		},
+		{
+			"id": "hm_umbrella",
+			"name": "雨傘",
+			"name_en": "Umbrella",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						6,
+						55,
+						6
+					],
+					"pos": [
+						0,
+						3,
+						5
+					],
+					"color": "#3a86ff",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						1.2,
+						20,
+						1.2
+					],
+					"pos": [
+						0,
+						3,
+						-27
+					],
+					"color": "#495057",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				6,
+				6,
+				70
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#3a86ff",
+				"#ffd60a",
+				"#ff70a6",
+				"#2a9d8f"
+			],
+			"fill": 0.3,
+			"flavor": "宜蘭常下雨，出門一定要帶傘。"
+		},
+		{
+			"id": "hm_rain_boots",
+			"name": "雨鞋",
+			"name_en": "Rain Boots",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						9,
+						28,
+						10
+					],
+					"pos": [
+						-5,
+						14,
+						3
+					],
+					"color": "#ffd60a",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						9,
+						28,
+						10
+					],
+					"pos": [
+						5,
+						14,
+						3
+					],
+					"color": "#ffd60a",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						20,
+						7,
+						24
+					],
+					"pos": [
+						0,
+						3.5,
+						-0.5
+					],
+					"color": "#ffd60a",
+					"tint": true
+				}
+			],
+			"dims": [
+				20,
+				30,
+				25
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffd60a",
+				"#ff70a6",
+				"#3a86ff"
+			],
+			"fill": 0.35
+		},
+		{
+			"id": "hm_sneaker",
+			"name": "運動鞋",
+			"name_en": "Sneaker",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						3,
+						26
+					],
+					"pos": [
+						0,
+						1.5,
+						0
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						9,
+						7,
+						18
+					],
+					"pos": [
+						0,
+						6,
+						3
+					],
+					"color": "#e63946",
+					"tint": true
+				}
+			],
+			"dims": [
+				10,
+				10,
+				26
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#3a86ff",
+				"#2a9d8f",
+				"#4a4e69"
+			],
+			"fill": 0.45
+		},
+		{
+			"id": "hm_shoe_cabinet",
+			"name": "鞋櫃",
+			"name_en": "Shoe Cabinet",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						100,
+						35
+					],
+					"pos": [
+						0,
+						50,
+						0
+					],
+					"color": "#b08968"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2,
+						80,
+						0.5
+					],
+					"pos": [
+						0,
+						50,
+						-17.7
+					],
+					"color": "#7f5539",
+					"collide": false
+				}
+			],
+			"dims": [
+				100,
+				100,
+				35
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_helmet",
+			"name": "安全帽",
+			"name_en": "Scooter Helmet",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						25,
+						22,
+						30
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						18,
+						6,
+						2
+					],
+					"pos": [
+						0,
+						10,
+						-14
+					],
+					"color": "#264653",
+					"collide": false
+				}
+			],
+			"dims": [
+				25,
+				20,
+				30
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#ffffff",
+				"#ffd60a",
+				"#3a86ff"
+			],
+			"fill": 0.4,
+			"flavor": "爸爸騎機車要戴的安全帽。"
+		},
+		{
+			"id": "hm_bench",
+			"name": "長板凳",
+			"name_en": "Wooden Bench",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						5,
+						30
+					],
+					"pos": [
+						0,
+						42.5,
+						0
+					],
+					"color": "#c08552"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						40,
+						26
+					],
+					"pos": [
+						-50,
+						20,
+						0
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						40,
+						26
+					],
+					"pos": [
+						50,
+						20,
+						0
+					],
+					"color": "#9c6644"
+				}
+			],
+			"dims": [
+				120,
+				45,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.15
+		},
+		{
+			"id": "hm_bed",
+			"name": "單人床",
+			"name_en": "Single Bed",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						26,
+						200
+					],
+					"pos": [
+						0,
+						13,
+						0
+					],
+					"color": "#c08552"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						96,
+						19,
+						194
+					],
+					"pos": [
+						0,
+						35.5,
+						2
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						70,
+						6
+					],
+					"pos": [
+						0,
+						35,
+						-98
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						7,
+						30
+					],
+					"pos": [
+						0,
+						48,
+						-78
+					],
+					"color": "#ffffff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						97,
+						3,
+						110
+					],
+					"pos": [
+						0,
+						46.5,
+						38
+					],
+					"color": "#a0c4ff",
+					"collide": false,
+					"tint": true
+				}
+			],
+			"dims": [
+				100,
+				45,
+				200
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#a0c4ff",
+				"#ffc6ff",
+				"#caffbf"
+			],
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_bed_low",
+			"name": "妹妹的小床",
+			"name_en": "Toddler Bed",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						90,
+						18,
+						180
+					],
+					"pos": [
+						0,
+						9,
+						0
+					],
+					"color": "#f4d6cc"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						86,
+						14,
+						174
+					],
+					"pos": [
+						0,
+						25,
+						2
+					],
+					"color": "#fff0f3"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						90,
+						55,
+						6
+					],
+					"pos": [
+						0,
+						27.5,
+						-88
+					],
+					"color": "#ffc6ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						6,
+						26
+					],
+					"pos": [
+						0,
+						35,
+						-70
+					],
+					"color": "#ffffff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						87,
+						2,
+						100
+					],
+					"pos": [
+						0,
+						33,
+						35
+					],
+					"color": "#ffafcc",
+					"collide": false
+				}
+			],
+			"dims": [
+				90,
+				32,
+				180
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_desk_kid",
+			"name": "小書桌",
+			"name_en": "Kid's Desk",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						100,
+						4,
+						55
+					],
+					"pos": [
+						0,
+						70,
+						0
+					],
+					"color": "#e9c46a",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						68,
+						52
+					],
+					"pos": [
+						-48,
+						34,
+						0
+					],
+					"color": "#d4a373"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						36,
+						68,
+						52
+					],
+					"pos": [
+						32,
+						34,
+						0
+					],
+					"color": "#d4a373"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						28,
+						2
+					],
+					"pos": [
+						-12,
+						50,
+						25
+					],
+					"color": "#d4a373"
+				}
+			],
+			"dims": [
+				100,
+				72,
+				55
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e9c46a",
+				"#a0c4ff",
+				"#ffafcc"
+			],
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_wardrobe",
+			"name": "衣櫃",
+			"name_en": "Wardrobe",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120,
+						200,
+						60
+					],
+					"pos": [
+						0,
+						100,
+						0
+					],
+					"color": "#d6ccc2"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1,
+						180,
+						0.5
+					],
+					"pos": [
+						0,
+						100,
+						-30.3
+					],
+					"color": "#8d99ae",
+					"collide": false
+				}
+			],
+			"dims": [
+				120,
+				200,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_basketball",
+			"name": "籃球",
+			"name_en": "Basketball",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						24,
+						24,
+						24
+					],
+					"pos": [
+						0,
+						12,
+						0
+					],
+					"color": "#e76f51"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						24.4,
+						0.6,
+						24.4
+					],
+					"pos": [
+						0,
+						12,
+						0
+					],
+					"color": "#3d2b1f",
+					"collide": false
+				}
+			],
+			"dims": [
+				24,
+				24,
+				24
+			],
+			"color": "#cccccc",
+			"fill": 0.6,
+			"flavor": "哥哥每天放學都去打球。"
+		},
+		{
+			"id": "hm_baseball",
+			"name": "棒球",
+			"name_en": "Baseball",
+			"category": "運動",
+			"shape": "sphere",
+			"dims": [
+				7.4,
+				7.4,
+				7.4
+			],
+			"color": "#f8f9fa",
+			"fill": 0.8
+		},
+		{
+			"id": "hm_baseball_glove",
+			"name": "棒球手套",
+			"name_en": "Baseball Glove",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						22,
+						10,
+						25
+					],
+					"pos": [
+						0,
+						5,
+						0
+					],
+					"color": "#a0522d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						9,
+						12
+					],
+					"pos": [
+						9,
+						5,
+						-5
+					],
+					"color": "#8b4513",
+					"collide": false
+				}
+			],
+			"dims": [
+				22,
+				10,
+				25
+			],
+			"color": "#cccccc",
+			"fill": 0.4
+		},
+		{
+			"id": "hm_bat",
+			"name": "球棒",
+			"name_en": "Baseball Bat",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						6,
+						45,
+						6
+					],
+					"pos": [
+						0,
+						3,
+						10
+					],
+					"color": "#deb887",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						25,
+						3
+					],
+					"pos": [
+						0,
+						3,
+						-24
+					],
+					"color": "#c19a6b",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				}
+			],
+			"dims": [
+				6,
+				6,
+				70
+			],
+			"color": "#cccccc",
+			"fill": 0.4
+		},
+		{
+			"id": "hm_model_plane",
+			"name": "模型飛機",
+			"name_en": "Model Plane",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "capsule",
+					"dims": [
+						5,
+						28,
+						5
+					],
+					"pos": [
+						0,
+						5,
+						0
+					],
+					"color": "#f8f9fa",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						1,
+						7
+					],
+					"pos": [
+						0,
+						5,
+						-1
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						6,
+						1
+					],
+					"pos": [
+						0,
+						8,
+						12
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				10,
+				28
+			],
+			"color": "#cccccc",
+			"fill": 0.3
+		},
+		{
+			"id": "hm_xiangqi",
+			"name": "象棋棋子",
+			"name_en": "Xiangqi Piece",
+			"category": "傳統玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						1.2,
+						3
+					],
+					"pos": [
+						0,
+						0.6,
+						0
+					],
+					"color": "#f1dca7"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2,
+						0.1,
+						2
+					],
+					"pos": [
+						0,
+						1.25,
+						0
+					],
+					"color": "#d62828",
+					"collide": false,
+					"tint": true
+				}
+			],
+			"dims": [
+				3,
+				1.2,
+				3
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#d62828",
+				"#1d1d1f"
+			],
+			"fill": 0.8,
+			"flavor": "阿公教哥哥下象棋。"
+		},
+		{
+			"id": "hm_calculator",
+			"name": "計算機",
+			"name_en": "Calculator",
+			"category": "文具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						1.5,
+						14
+					],
+					"pos": [
+						0,
+						0.75,
+						0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						0.2,
+						3
+					],
+					"pos": [
+						0,
+						1.6,
+						-4.5
+					],
+					"color": "#caffbf",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				1.5,
+				14
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_diary",
+			"name": "日記本",
+			"name_en": "Diary",
+			"category": "文具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						15,
+						2,
+						21
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#ffafcc",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						0.4,
+						3
+					],
+					"pos": [
+						4,
+						2.1,
+						-6
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				15,
+				2,
+				21
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffafcc",
+				"#bdb2ff",
+				"#a0c4ff"
+			],
+			"fill": 0.5,
+			"flavor": "姐姐的祕密日記，有一個小鎖頭。"
+		},
+		{
+			"id": "hm_hand_mirror",
+			"name": "手鏡",
+			"name_en": "Hand Mirror",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						12,
+						1.5,
+						12
+					],
+					"pos": [
+						0,
+						0.75,
+						-5
+					],
+					"color": "#ffc6ff"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						10,
+						0.2,
+						10
+					],
+					"pos": [
+						0,
+						1.6,
+						-5
+					],
+					"color": "#e0fbfc",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						1.5,
+						10
+					],
+					"pos": [
+						0,
+						0.75,
+						6
+					],
+					"color": "#ffc6ff"
+				}
+			],
+			"dims": [
+				12,
+				1.5,
+				22
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_ukulele",
+			"name": "烏克麗麗",
+			"name_en": "Ukulele",
+			"category": "樂器",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						22,
+						6,
+						30
+					],
+					"pos": [
+						0,
+						3,
+						10
+					],
+					"color": "#d4a373"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						3,
+						30
+					],
+					"pos": [
+						0,
+						3,
+						-16
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						6,
+						0.4,
+						6
+					],
+					"pos": [
+						0,
+						6.2,
+						8
+					],
+					"color": "#3d2b1f",
+					"collide": false
+				}
+			],
+			"dims": [
+				22,
+				6,
+				55
+			],
+			"color": "#cccccc",
+			"fill": 0.35,
+			"sfx": "bell",
+			"flavor": "姐姐在學的烏克麗麗，叮叮咚咚。"
+		},
+		{
+			"id": "hm_scrunchie",
+			"name": "大髮圈",
+			"name_en": "Scrunchie",
+			"category": "飾品",
+			"shape": "cylinder",
+			"dims": [
+				8,
+				2.5,
+				8
+			],
+			"color": "#ffc6ff",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.6
+		},
+		{
+			"id": "hm_bracelet",
+			"name": "串珠手鍊",
+			"name_en": "Bead Bracelet",
+			"category": "飾品",
+			"shape": "cylinder",
+			"dims": [
+				6,
+				1,
+				6
+			],
+			"color": "#9bf6ff",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_perler_art",
+			"name": "拼豆作品",
+			"name_en": "Perler Bead Art",
+			"category": "手工藝",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						12,
+						0.6,
+						12
+					],
+					"pos": [
+						0,
+						0.3,
+						0
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						0.2,
+						6
+					],
+					"pos": [
+						0,
+						0.7,
+						0
+					],
+					"color": "#ff70a6",
+					"collide": false
+				}
+			],
+			"dims": [
+				12,
+				0.6,
+				12
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_kids_table",
+			"name": "兒童小桌",
+			"name_en": "Kids Table",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						4,
+						50
+					],
+					"pos": [
+						0,
+						43,
+						0
+					],
+					"color": "#ffd6a5"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						41,
+						5
+					],
+					"pos": [
+						30,
+						20.5,
+						20
+					],
+					"color": "#ffadad"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						41,
+						5
+					],
+					"pos": [
+						-30,
+						20.5,
+						20
+					],
+					"color": "#a0c4ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						41,
+						5
+					],
+					"pos": [
+						30,
+						20.5,
+						-20
+					],
+					"color": "#caffbf"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						5,
+						41,
+						5
+					],
+					"pos": [
+						-30,
+						20.5,
+						-20
+					],
+					"color": "#bdb2ff"
+				}
+			],
+			"dims": [
+				70,
+				45,
+				50
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_kids_chair",
+			"name": "兒童小椅子",
+			"name_en": "Kids Chair",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						3,
+						30
+					],
+					"pos": [
+						0,
+						26,
+						0
+					],
+					"color": "#ffadad",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						22,
+						3
+					],
+					"pos": [
+						0,
+						38,
+						13.5
+					],
+					"color": "#ffadad",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						25,
+						3
+					],
+					"pos": [
+						12,
+						12.5,
+						12
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						25,
+						3
+					],
+					"pos": [
+						-12,
+						12.5,
+						12
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						25,
+						3
+					],
+					"pos": [
+						12,
+						12.5,
+						-12
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						25,
+						3
+					],
+					"pos": [
+						-12,
+						12.5,
+						-12
+					],
+					"color": "#ffffff"
+				}
+			],
+			"dims": [
+				30,
+				50,
+				30
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffadad",
+				"#a0c4ff",
+				"#caffbf",
+				"#ffd6a5"
+			],
+			"fill": 0.25
+		},
+		{
+			"id": "hm_toy_kitchen",
+			"name": "玩具廚房",
+			"name_en": "Toy Kitchen",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						50,
+						30
+					],
+					"pos": [
+						0,
+						25,
+						0
+					],
+					"color": "#ffc6ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						30,
+						4
+					],
+					"pos": [
+						0,
+						65,
+						13
+					],
+					"color": "#ffadad"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						10,
+						1,
+						10
+					],
+					"pos": [
+						-14,
+						50.5,
+						0
+					],
+					"color": "#495057",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						10,
+						1,
+						10
+					],
+					"pos": [
+						12,
+						50.5,
+						0
+					],
+					"color": "#495057",
+					"collide": false
+				}
+			],
+			"dims": [
+				60,
+				80,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.18,
+			"flavor": "妹妹在煮假裝的咖哩，跟媽媽一樣。"
+		},
+		{
+			"id": "hm_soft_block",
+			"name": "軟積木",
+			"name_en": "Soft Block",
+			"category": "玩具",
+			"shape": "box",
+			"dims": [
+				15,
+				15,
+				15
+			],
+			"color": "#ffadad",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.6
+		},
+		{
+			"id": "hm_rocking_horse",
+			"name": "搖搖馬",
+			"name_en": "Rocking Horse",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						26,
+						4,
+						70
+					],
+					"pos": [
+						0,
+						3,
+						0
+					],
+					"color": "#ff70a6"
+				},
+				{
+					"shape": "capsule",
+					"dims": [
+						22,
+						40,
+						22
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#ffffff",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "capsule",
+					"dims": [
+						14,
+						26,
+						14
+					],
+					"pos": [
+						0,
+						47,
+						-20
+					],
+					"color": "#ffffff",
+					"rot": [
+						35,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						14,
+						18
+					],
+					"pos": [
+						0,
+						50,
+						-12
+					],
+					"color": "#ff70a6",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				60,
+				70
+			],
+			"color": "#cccccc",
+			"fill": 0.18
+		},
+		{
+			"id": "hm_stacking_cups",
+			"name": "疊疊杯",
+			"name_en": "Stacking Cups",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						8,
+						4,
+						8
+					],
+					"pos": [
+						0,
+						2,
+						0
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						6.5,
+						4,
+						6.5
+					],
+					"pos": [
+						0,
+						6,
+						0
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						4,
+						5
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#3a86ff"
+				}
+			],
+			"dims": [
+				8,
+				12,
+				8
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_unicorn",
+			"name": "獨角獸娃娃",
+			"name_en": "Unicorn Plush",
+			"category": "娃娃",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						12,
+						13,
+						20
+					],
+					"pos": [
+						0,
+						8,
+						0
+					],
+					"color": "#fff0f3"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						9,
+						9,
+						9
+					],
+					"pos": [
+						0,
+						15,
+						-8
+					],
+					"color": "#fff0f3"
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						2,
+						6,
+						2
+					],
+					"pos": [
+						0,
+						21,
+						-9
+					],
+					"color": "#ffd60a",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						8,
+						6
+					],
+					"pos": [
+						0,
+						15,
+						-2
+					],
+					"color": "#bdb2ff",
+					"collide": false
+				}
+			],
+			"dims": [
+				12,
+				20,
+				22
+			],
+			"color": "#cccccc",
+			"fill": 0.45
+		},
+		{
+			"id": "hm_music_box",
+			"name": "音樂盒",
+			"name_en": "Music Box",
+			"category": "擺飾",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						6,
+						7
+					],
+					"pos": [
+						0,
+						3,
+						0
+					],
+					"color": "#ffafcc"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						2,
+						4
+					],
+					"pos": [
+						0,
+						7,
+						0
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				10,
+				8,
+				7
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"sfx": "bell",
+			"flavor": "打開會叮叮咚咚唱歌。"
+		},
+		{
+			"id": "hm_toilet",
+			"name": "馬桶",
+			"name_en": "Toilet",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						38,
+						40,
+						50
+					],
+					"pos": [
+						0,
+						20,
+						6
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						35,
+						18
+					],
+					"pos": [
+						0,
+						57,
+						26
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						38,
+						3,
+						48
+					],
+					"pos": [
+						0,
+						41.5,
+						6
+					],
+					"color": "#e9ecef",
+					"collide": false
+				}
+			],
+			"dims": [
+				40,
+				75,
+				70
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_wash_basin",
+			"name": "洗手台",
+			"name_en": "Wash Basin",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						76,
+						45
+					],
+					"pos": [
+						0,
+						38,
+						0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						62,
+						4,
+						46
+					],
+					"pos": [
+						0,
+						78,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						34,
+						0.6,
+						26
+					],
+					"pos": [
+						0,
+						80.3,
+						-2
+					],
+					"color": "#caf0f8",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2.5,
+						10,
+						2.5
+					],
+					"pos": [
+						0,
+						85,
+						14
+					],
+					"color": "#adb5bd",
+					"collide": false
+				}
+			],
+			"dims": [
+				60,
+				80,
+				45
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_toilet_paper",
+			"name": "衛生紙捲",
+			"name_en": "Toilet Paper Roll",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						11,
+						10,
+						11
+					],
+					"pos": [
+						0,
+						5,
+						0
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						10.2,
+						4
+					],
+					"pos": [
+						0,
+						5,
+						0
+					],
+					"color": "#d6ccc2",
+					"collide": false
+				}
+			],
+			"dims": [
+				11,
+				10,
+				11
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_toilet_brush",
+			"name": "馬桶刷",
+			"name_en": "Toilet Brush",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						10,
+						14,
+						10
+					],
+					"pos": [
+						0,
+						7,
+						0
+					],
+					"color": "#90e0ef"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2,
+						28,
+						2
+					],
+					"pos": [
+						0,
+						26,
+						0
+					],
+					"color": "#90e0ef",
+					"collide": false
+				}
+			],
+			"dims": [
+				10,
+				40,
+				10
+			],
+			"color": "#cccccc",
+			"fill": 0.3
+		},
+		{
+			"id": "hm_air_freshener",
+			"name": "芳香劑",
+			"name_en": "Air Freshener",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						7,
+						12,
+						7
+					],
+					"pos": [
+						0,
+						6,
+						0
+					],
+					"color": "#cdb4db"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						3,
+						5
+					],
+					"pos": [
+						0,
+						13.5,
+						0
+					],
+					"color": "#ffffff"
+				}
+			],
+			"dims": [
+				7,
+				15,
+				7
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_ant",
+			"name": "螞蟻",
+			"name_en": "Ant",
+			"category": "昆蟲",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "capsule",
+					"dims": [
+						0.35,
+						0.9,
+						0.35
+					],
+					"pos": [
+						0,
+						0.18,
+						0
+					],
+					"color": "#2b2d42",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				}
+			],
+			"dims": [
+				0.4,
+				0.3,
+				0.9
+			],
+			"color": "#cccccc",
+			"fill": 0.8,
+			"sfx": "bug",
+			"flavor": "排隊在搬餅乾屑的小螞蟻。"
+		},
+		{
+			"id": "hm_ladybug",
+			"name": "瓢蟲",
+			"name_en": "Ladybug",
+			"category": "昆蟲",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						1.2,
+						0.7,
+						1.2
+					],
+					"pos": [
+						0,
+						0.35,
+						0.1
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						0.6,
+						0.5,
+						0.5
+					],
+					"pos": [
+						0,
+						0.3,
+						-0.6
+					],
+					"color": "#1d1d1f",
+					"collide": false
+				}
+			],
+			"dims": [
+				1.2,
+				0.7,
+				1.4
+			],
+			"color": "#cccccc",
+			"fill": 0.8,
+			"sfx": "bug",
+			"flavor": "紅色的瓢蟲，背上有小黑點。"
+		},
+		{
+			"id": "hm_beetle",
+			"name": "小甲蟲",
+			"name_en": "Little Beetle",
+			"category": "昆蟲",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						1.8,
+						1.0,
+						2.4
+					],
+					"pos": [
+						0,
+						0.5,
+						0.2
+					],
+					"color": "#2a9d8f"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1.0,
+						0.7,
+						0.8
+					],
+					"pos": [
+						0,
+						0.4,
+						-1.1
+					],
+					"color": "#264653",
+					"collide": false
+				}
+			],
+			"dims": [
+				1.8,
+				1.0,
+				2.8
+			],
+			"color": "#cccccc",
+			"fill": 0.8,
+			"sfx": "bug"
+		},
+		{
+			"id": "hm_cricket",
+			"name": "蟋蟀",
+			"name_en": "Cricket",
+			"category": "昆蟲",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "capsule",
+					"dims": [
+						1.0,
+						3.2,
+						1.0
+					],
+					"pos": [
+						0,
+						0.5,
+						0
+					],
+					"color": "#6b4f3a",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2.2,
+						0.2,
+						0.2
+					],
+					"pos": [
+						0,
+						1.0,
+						1.2
+					],
+					"color": "#4a3728",
+					"collide": false
+				}
+			],
+			"dims": [
+				1.2,
+				1.0,
+				3.5
+			],
+			"color": "#cccccc",
+			"fill": 0.8,
+			"sfx": "bug",
+			"flavor": "躲在角落唧唧叫的蟋蟀。"
+		},
+		{
+			"id": "hm_soap",
+			"name": "肥皂",
+			"name_en": "Soap",
+			"category": "衛浴",
+			"shape": "box",
+			"dims": [
+				9,
+				3,
+				6
+			],
+			"color": "#ffc8dd",
+			"colors": [
+				"#ffc8dd",
+				"#caffbf",
+				"#fdffb6"
+			],
+			"fill": 0.7,
+			"sfx": "bubble"
+		},
+		{
+			"id": "hm_tooth_cup",
+			"name": "漱口杯",
+			"name_en": "Tooth Cup",
+			"category": "衛浴",
+			"shape": "cylinder",
+			"dims": [
+				8,
+				10,
+				8
+			],
+			"color": "#a0c4ff",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.4
+		},
+		{
+			"id": "hm_toothbrush",
+			"name": "牙刷",
+			"name_en": "Toothbrush",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1.5,
+						1.5,
+						18
+					],
+					"pos": [
+						0,
+						0.75,
+						0
+					],
+					"color": "#3a86ff",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1.5,
+						1.5,
+						2.5
+					],
+					"pos": [
+						0,
+						2,
+						7.5
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				2,
+				2,
+				18
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#3a86ff",
+				"#ff70a6",
+				"#8ac926"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_toothpaste",
+			"name": "牙膏",
+			"name_en": "Toothpaste",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						3,
+						15
+					],
+					"pos": [
+						0,
+						1.5,
+						1
+					],
+					"color": "#ffffff"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2.5,
+						3,
+						2.5
+					],
+					"pos": [
+						0,
+						1.5,
+						-8
+					],
+					"color": "#e63946",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				}
+			],
+			"dims": [
+				4,
+				3,
+				18
+			],
+			"color": "#cccccc",
+			"fill": 0.5
+		},
+		{
+			"id": "hm_rubber_duck",
+			"name": "小黃鴨",
+			"name_en": "Rubber Duck",
+			"category": "洗澡玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						7,
+						5,
+						9
+					],
+					"pos": [
+						0,
+						2.5,
+						0
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						4.5,
+						4.5,
+						4.5
+					],
+					"pos": [
+						0,
+						6,
+						-2.5
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				7,
+				7,
+				9
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"model": "hm_rubber_duck",
+			"sfx": "duck",
+			"flavor": "洗澡一定要有的小黃鴨，呱呱！"
+		},
+		{
+			"id": "hm_toy_boat",
+			"name": "玩具小船",
+			"name_en": "Toy Boat",
+			"category": "洗澡玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						4,
+						16
+					],
+					"pos": [
+						0,
+						2,
+						0
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						3,
+						6
+					],
+					"pos": [
+						0,
+						5.5,
+						2
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				7,
+				16
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"sfx": "bubble"
+		},
+		{
+			"id": "hm_bubble_bottle",
+			"name": "泡泡水",
+			"name_en": "Bubble Bottle",
+			"category": "洗澡玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						10,
+						5
+					],
+					"pos": [
+						0,
+						5,
+						0
+					],
+					"color": "#9bf6ff"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						2,
+						3
+					],
+					"pos": [
+						0,
+						11,
+						0
+					],
+					"color": "#ff70a6",
+					"collide": false
+				}
+			],
+			"dims": [
+				5,
+				12,
+				5
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"sfx": "bubble",
+			"flavor": "吹泡泡用的，一吹就飄滿整間浴室。"
+		},
+		{
+			"id": "hm_shampoo",
+			"name": "洗髮精",
+			"name_en": "Shampoo",
+			"category": "衛浴",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						17,
+						5
+					],
+					"pos": [
+						0,
+						8.5,
+						0
+					],
+					"color": "#bde0fe",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						3,
+						3
+					],
+					"pos": [
+						0,
+						18.5,
+						0
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				20,
+				5
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#bde0fe",
+				"#ffc8dd",
+				"#caffbf"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_basin",
+			"name": "臉盆",
+			"name_en": "Wash Basin Bowl",
+			"category": "衛浴",
+			"shape": "cylinder",
+			"dims": [
+				35,
+				12,
+				35
+			],
+			"color": "#ffafcc",
+			"colors": [
+				"#ffafcc",
+				"#90e0ef",
+				"#caffbf"
+			],
+			"fill": 0.3,
+			"flavor": "大大的塑膠臉盆，洗澡、洗菜都用它。"
+		},
+		{
+			"id": "hm_red_stool",
+			"name": "紅色塑膠凳",
+			"name_en": "Red Plastic Stool",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30,
+						4,
+						30
+					],
+					"pos": [
+						0,
+						26,
+						0
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						26,
+						24,
+						26
+					],
+					"pos": [
+						0,
+						12,
+						0
+					],
+					"color": "#d62828"
+				}
+			],
+			"dims": [
+				30,
+				28,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.3,
+			"model": "hm_red_stool",
+			"flavor": "台灣每個家裡都有的紅色小板凳。"
+		},
+		{
+			"id": "hm_towel",
+			"name": "毛巾",
+			"name_en": "Towel",
+			"category": "衛浴",
+			"shape": "box",
+			"dims": [
+				30,
+				1,
+				60
+			],
+			"color": "#a0c4ff",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.3,
+			"size": 15
+		},
+		{
+			"id": "hm_bath_puff",
+			"name": "沐浴球",
+			"name_en": "Bath Puff",
+			"category": "衛浴",
+			"shape": "sphere",
+			"dims": [
+				9,
+				9,
+				9
+			],
+			"color": "#ffc6ff",
+			"colors": [
+				"#ffadad",
+				"#ffd6a5",
+				"#fdffb6",
+				"#caffbf",
+				"#9bf6ff",
+				"#a0c4ff",
+				"#bdb2ff",
+				"#ffc6ff"
+			],
+			"fill": 0.5,
+			"sfx": "bubble"
+		},
+		{
+			"id": "hm_water_gun",
+			"name": "水槍",
+			"name_en": "Water Gun",
+			"category": "洗澡玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						5,
+						16
+					],
+					"pos": [
+						0,
+						7,
+						0
+					],
+					"color": "#06d6a0"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4,
+						7,
+						4
+					],
+					"pos": [
+						0,
+						3.5,
+						5
+					],
+					"color": "#ff9f1c"
+				}
+			],
+			"dims": [
+				4,
+				10,
+				16
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"sfx": "bubble"
+		},
+		{
+			"id": "hm_car",
+			"name": "家裡的車",
+			"name_en": "Family Car",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						175,
+						75,
+						440
+					],
+					"pos": [
+						0,
+						52,
+						0
+					],
+					"color": "#e5e5e5"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160,
+						60,
+						230
+					],
+					"pos": [
+						0,
+						115,
+						20
+					],
+					"color": "#bde0fe"
+				}
+			],
+			"dims": [
+				175,
+				150,
+				440
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"model": "hm_car",
+			"pickable": false,
+			"flavor": "爸爸開的車，週末全家去冬山河。"
+		},
+		{
+			"id": "hm_cherry_tree",
+			"name": "山櫻花樹",
+			"name_en": "Taiwan Cherry Tree",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						26,
+						200,
+						26
+					],
+					"pos": [
+						0,
+						100,
+						0
+					],
+					"color": "#6f4518"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						300,
+						170,
+						300
+					],
+					"pos": [
+						0,
+						300,
+						0
+					],
+					"color": "#ffafcc",
+					"collide": false
+				}
+			],
+			"dims": [
+				340,
+				420,
+				340
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"model": "hm_cherry_tree",
+			"pickable": false,
+			"flavor": "春天開滿粉紅色的花，風一吹就下花瓣雨。"
+		},
+		{
+			"id": "hm_petal",
+			"name": "櫻花花瓣",
+			"name_en": "Cherry Petal",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						2.2,
+						0.1,
+						2.2
+					],
+					"pos": [
+						0,
+						0.05,
+						0
+					],
+					"color": "#ffafcc",
+					"tint": true
+				}
+			],
+			"dims": [
+				2.2,
+				0.1,
+				2.2
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffafcc",
+				"#ffc8dd",
+				"#ffe5ec"
+			],
+			"fill": 0.3,
+			"flavor": "從山櫻花樹飄下來的花瓣。"
+		},
+		{
+			"id": "hm_scooter",
+			"name": "機車",
+			"name_en": "Scooter",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						45,
+						120
+					],
+					"pos": [
+						0,
+						45,
+						10
+					],
+					"color": "#4ea8de"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						34,
+						20,
+						60
+					],
+					"pos": [
+						0,
+						75,
+						25
+					],
+					"color": "#212529"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10,
+						70,
+						10
+					],
+					"pos": [
+						0,
+						70,
+						-60
+					],
+					"color": "#4ea8de"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						12,
+						40,
+						40
+					],
+					"pos": [
+						0,
+						20,
+						-65
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						12,
+						40,
+						40
+					],
+					"pos": [
+						0,
+						20,
+						65
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"dims": [
+				70,
+				110,
+				180
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"model": "hm_scooter",
+			"pickable": false,
+			"flavor": "媽媽每天騎去市場的機車。"
+		},
+		{
+			"id": "hm_dog_house",
+			"name": "狗屋",
+			"name_en": "Dog House",
+			"category": "寵物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						80,
+						60,
+						90
+					],
+					"pos": [
+						0,
+						30,
+						0
+					],
+					"color": "#c08552"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						86,
+						6,
+						96
+					],
+					"pos": [
+						-20,
+						72,
+						0
+					],
+					"color": "#9d0208",
+					"rot": [
+						0,
+						0,
+						30
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						86,
+						6,
+						96
+					],
+					"pos": [
+						20,
+						72,
+						0
+					],
+					"color": "#9d0208",
+					"rot": [
+						0,
+						0,
+						-30
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						36,
+						1
+					],
+					"pos": [
+						0,
+						18,
+						-45.2
+					],
+					"color": "#3d2b1f",
+					"collide": false
+				}
+			],
+			"dims": [
+				80,
+				85,
+				90
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_plastic_chair",
+			"name": "塑膠椅",
+			"name_en": "Plastic Chair",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						45,
+						4,
+						45
+					],
+					"pos": [
+						0,
+						43,
+						0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						45,
+						36,
+						4
+					],
+					"pos": [
+						0,
+						63,
+						20
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						43,
+						4
+					],
+					"pos": [
+						18,
+						21,
+						18
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						43,
+						4
+					],
+					"pos": [
+						-18,
+						21,
+						18
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						43,
+						4
+					],
+					"pos": [
+						18,
+						21,
+						-18
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						4,
+						43,
+						4
+					],
+					"pos": [
+						-18,
+						21,
+						-18
+					],
+					"color": "#e63946",
+					"tint": true
+				}
+			],
+			"dims": [
+				45,
+				80,
+				45
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#3a86ff",
+				"#f8f9fa"
+			],
+			"fill": 0.15,
+			"flavor": "辦桌也會用的塑膠椅，可以疊很高。"
+		},
+		{
+			"id": "hm_bucket",
+			"name": "水桶",
+			"name_en": "Bucket",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						28,
+						28,
+						28
+					],
+					"pos": [
+						0,
+						14,
+						0
+					],
+					"color": "#3a86ff",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						26,
+						1,
+						26
+					],
+					"pos": [
+						0,
+						29,
+						0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				}
+			],
+			"dims": [
+				28,
+				30,
+				28
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#3a86ff",
+				"#e63946",
+				"#ffd60a",
+				"#2a9d8f"
+			],
+			"fill": 0.3
+		},
+		{
+			"id": "hm_cardboard_box",
+			"name": "紙箱",
+			"name_en": "Cardboard Box",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						40,
+						40
+					],
+					"pos": [
+						0,
+						20,
+						0
+					],
+					"color": "#c9a26b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50.4,
+						6,
+						0.4
+					],
+					"pos": [
+						0,
+						34,
+						-20.1
+					],
+					"color": "#e9c46a",
+					"collide": false
+				}
+			],
+			"dims": [
+				50,
+				40,
+				40
+			],
+			"color": "#cccccc",
+			"fill": 0.22,
+			"flavor": "網購寄來的大紙箱，貓咪最喜歡躲進去。"
+		},
+		{
+			"id": "hm_tire",
+			"name": "舊輪胎",
+			"name_en": "Old Tire",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						60,
+						20,
+						60
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#2b2d42"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						32,
+						20.4,
+						32
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#6c757d",
+					"collide": false
+				}
+			],
+			"dims": [
+				60,
+				20,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"flavor": "阿公拿來種花的舊輪胎。"
+		},
+		{
+			"id": "hm_hose_reel",
+			"name": "水管捲",
+			"name_en": "Hose Reel",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						40,
+						18,
+						40
+					],
+					"pos": [
+						0,
+						20,
+						0
+					],
+					"color": "#06d6a0",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						22,
+						19,
+						22
+					],
+					"pos": [
+						0,
+						20,
+						0
+					],
+					"color": "#2a9d8f",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				40,
+				40,
+				20
+			],
+			"color": "#cccccc",
+			"fill": 0.35
+		},
+		{
+			"id": "hm_trowel",
+			"name": "小鏟子",
+			"name_en": "Garden Trowel",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						1,
+						12
+					],
+					"pos": [
+						0,
+						1,
+						8
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						16,
+						3
+					],
+					"pos": [
+						0,
+						2,
+						-7
+					],
+					"color": "#2a9d8f",
+					"rot": [
+						90,
+						0,
+						0
+					]
+				}
+			],
+			"dims": [
+				8,
+				4,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.4
+		},
+		{
+			"id": "hm_cabbage",
+			"name": "高麗菜",
+			"name_en": "Cabbage",
+			"category": "蔬菜",
+			"shape": "sphere",
+			"dims": [
+				20,
+				18,
+				20
+			],
+			"color": "#a7c957",
+			"fill": 0.6,
+			"flavor": "菜園裡圓滾滾的高麗菜。"
+		},
+		{
+			"id": "hm_green_onion",
+			"name": "青蔥",
+			"name_en": "Green Onion",
+			"category": "蔬菜",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						2.5,
+						12,
+						2.5
+					],
+					"pos": [
+						0,
+						6,
+						0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						2.5,
+						28,
+						2.5
+					],
+					"pos": [
+						0,
+						26,
+						0
+					],
+					"color": "#55a630",
+					"collide": false
+				}
+			],
+			"dims": [
+				3,
+				40,
+				3
+			],
+			"color": "#cccccc",
+			"fill": 0.5,
+			"flavor": "菜園裡的青蔥，阿嬤煮湯要用。"
+		},
+		{
+			"id": "hm_sunflower",
+			"name": "向日葵",
+			"name_en": "Sunflower",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						3,
+						90,
+						3
+					],
+					"pos": [
+						0,
+						45,
+						0
+					],
+					"color": "#55a630"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						25,
+						4,
+						25
+					],
+					"pos": [
+						0,
+						95,
+						0
+					],
+					"color": "#ffd60a",
+					"rot": [
+						70,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						11,
+						5,
+						11
+					],
+					"pos": [
+						0,
+						95,
+						-1
+					],
+					"color": "#6f4518",
+					"rot": [
+						70,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				25,
+				110,
+				25
+			],
+			"color": "#cccccc",
+			"fill": 0.25
+		},
+		{
+			"id": "hm_flower",
+			"name": "小花",
+			"name_en": "Garden Flower",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						1,
+						20,
+						1
+					],
+					"pos": [
+						0,
+						10,
+						0
+					],
+					"color": "#55a630"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						8,
+						4,
+						8
+					],
+					"pos": [
+						0,
+						21,
+						0
+					],
+					"color": "#ff70a6",
+					"tint": true
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						3,
+						3,
+						3
+					],
+					"pos": [
+						0,
+						22.5,
+						0
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				25,
+				8
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ff70a6",
+				"#ffd60a",
+				"#bdb2ff",
+				"#ffffff",
+				"#ff9f1c"
+			],
+			"fill": 0.4,
+			"flavor": "花園裡開得好熱鬧的小花。"
+		},
+		{
+			"id": "hm_water_jar",
+			"name": "大水缸",
+			"name_en": "Water Jar",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						60,
+						55,
+						60
+					],
+					"pos": [
+						0,
+						27.5,
+						0
+					],
+					"color": "#6f4518"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						54,
+						0.6,
+						54
+					],
+					"pos": [
+						0,
+						52,
+						0
+					],
+					"color": "#4ea8de",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						12,
+						2,
+						12
+					],
+					"pos": [
+						10,
+						52.5,
+						6
+					],
+					"color": "#55a630",
+					"collide": false
+				}
+			],
+			"dims": [
+				60,
+				55,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"flavor": "接雨水的大水缸，裡面有小魚和浮萍。"
+		},
+		{
+			"id": "hm_frog",
+			"name": "小青蛙",
+			"name_en": "Little Frog",
+			"category": "動物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						5,
+						3,
+						6
+					],
+					"pos": [
+						0,
+						1.5,
+						0
+					],
+					"color": "#80b918"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1.2,
+						1.2,
+						1.2
+					],
+					"pos": [
+						-1.2,
+						3,
+						-1.8
+					],
+					"color": "#ffffff",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						1.2,
+						1.2,
+						1.2
+					],
+					"pos": [
+						1.2,
+						3,
+						-1.8
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				5,
+				3,
+				6
+			],
+			"color": "#cccccc",
+			"fill": 0.7,
+			"sfx": "frog",
+			"flavor": "住在水缸旁邊的小青蛙，呱呱！"
+		},
+		{
+			"id": "hm_snail",
+			"name": "蝸牛",
+			"name_en": "Snail",
+			"category": "動物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						3,
+						3,
+						3
+					],
+					"pos": [
+						0,
+						1.8,
+						0.6
+					],
+					"color": "#b5835a"
+				},
+				{
+					"shape": "capsule",
+					"dims": [
+						1.4,
+						5,
+						1.4
+					],
+					"pos": [
+						0,
+						0.7,
+						0
+					],
+					"color": "#e9d8a6",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				3,
+				3,
+				5
+			],
+			"color": "#cccccc",
+			"fill": 0.7,
+			"sfx": "bug"
+		},
+		{
+			"id": "hm_butterfly",
+			"name": "蝴蝶",
+			"name_en": "Butterfly",
+			"category": "昆蟲",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						0.3,
+						5
+					],
+					"pos": [
+						0,
+						0.5,
+						0
+					],
+					"color": "#ffd60a",
+					"tint": true
+				},
+				{
+					"shape": "capsule",
+					"dims": [
+						0.6,
+						4,
+						0.6
+					],
+					"pos": [
+						0,
+						0.6,
+						0
+					],
+					"color": "#2b2d42",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				6,
+				1,
+				5
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffd60a",
+				"#9bf6ff",
+				"#ffadad"
+			],
+			"fill": 0.5,
+			"sfx": "bug"
+		},
+		{
+			"id": "hm_chicken",
+			"name": "母雞",
+			"name_en": "Hen",
+			"category": "動物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						22,
+						24,
+						32
+					],
+					"pos": [
+						0,
+						18,
+						2
+					],
+					"color": "#f1e3c8"
+				}
+			],
+			"dims": [
+				22,
+				36,
+				40
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"size": 30,
+			"model": "hm_chicken",
+			"critter": {
+				"kind": "chicken",
+				"walk": 18,
+				"run": 70,
+				"sight": 150,
+				"paw_cooldown": 6.0,
+				"sound": "chicken"
+			},
+			"flavor": "阿嬤養的母雞，會跑來啄你一下。"
+		},
+		{
+			"id": "hm_bamboo_basket",
+			"name": "竹編籃",
+			"name_en": "Bamboo Basket",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						40,
+						16,
+						30
+					],
+					"pos": [
+						0,
+						8,
+						0
+					],
+					"color": "#c9a26b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						3,
+						14,
+						30
+					],
+					"pos": [
+						0,
+						22,
+						0
+					],
+					"color": "#a47148",
+					"collide": false
+				}
+			],
+			"dims": [
+				40,
+				20,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.3,
+			"flavor": "阿嬤用竹子編的籃子。"
+		},
+		{
+			"id": "hm_mailbox",
+			"name": "信箱",
+			"name_en": "Mailbox",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						6,
+						80,
+						6
+					],
+					"pos": [
+						0,
+						40,
+						0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						28,
+						25
+					],
+					"pos": [
+						0,
+						94,
+						0
+					],
+					"color": "#2a9d8f"
+				}
+			],
+			"dims": [
+				30,
+				110,
+				25
+			],
+			"color": "#cccccc",
+			"fill": 0.2
+		},
+		{
+			"id": "hm_laundry_rack",
+			"name": "曬衣架",
+			"name_en": "Clothes Drying Rack",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						160,
+						6
+					],
+					"pos": [
+						-72,
+						80,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6,
+						160,
+						6
+					],
+					"pos": [
+						72,
+						80,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150,
+						4,
+						4
+					],
+					"pos": [
+						0,
+						155,
+						0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						50,
+						1
+					],
+					"pos": [
+						-40,
+						125,
+						0
+					],
+					"color": "#a0c4ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						35,
+						45,
+						1
+					],
+					"pos": [
+						5,
+						128,
+						0
+					],
+					"color": "#ffd6a5",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30,
+						40,
+						1
+					],
+					"pos": [
+						48,
+						130,
+						0
+					],
+					"color": "#caffbf",
+					"collide": false
+				}
+			],
+			"dims": [
+				150,
+				160,
+				50
+			],
+			"color": "#cccccc",
+			"fill": 0.2,
+			"pickable": false
+		},
+		{
+			"id": "hm_tshirt",
+			"name": "T恤",
+			"name_en": "T-shirt",
+			"category": "衣服",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						45,
+						1,
+						50
+					],
+					"pos": [
+						0,
+						0.5,
+						2
+					],
+					"color": "#a0c4ff",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						1,
+						14
+					],
+					"pos": [
+						0,
+						0.6,
+						-18
+					],
+					"color": "#a0c4ff",
+					"collide": false,
+					"tint": true
+				}
+			],
+			"dims": [
+				45,
+				1,
+				55
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#a0c4ff",
+				"#ffd6a5",
+				"#caffbf",
+				"#ffadad"
+			],
+			"fill": 0.3,
+			"size": 22
+		},
+		{
+			"id": "hm_sock",
+			"name": "襪子",
+			"name_en": "Sock",
+			"category": "衣服",
+			"shape": "box",
+			"dims": [
+				8,
+				2,
+				20
+			],
+			"color": "#ffffff",
+			"colors": [
+				"#ffffff",
+				"#ffadad",
+				"#a0c4ff"
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "hm_tricycle",
+			"name": "兒童三輪車",
+			"name_en": "Kids Tricycle",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30,
+						6,
+						30
+					],
+					"pos": [
+						0,
+						15,
+						-22
+					],
+					"color": "#e63946",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						18,
+						5,
+						18
+					],
+					"pos": [
+						-20,
+						9,
+						22
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						18,
+						5,
+						18
+					],
+					"pos": [
+						20,
+						9,
+						22
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8,
+						6,
+						50
+					],
+					"pos": [
+						0,
+						22,
+						0
+					],
+					"color": "#e63946"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						18,
+						5,
+						16
+					],
+					"pos": [
+						0,
+						30,
+						10
+					],
+					"color": "#ffd60a"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						34,
+						3,
+						3
+					],
+					"pos": [
+						0,
+						46,
+						-20
+					],
+					"color": "#495057",
+					"collide": false
+				}
+			],
+			"dims": [
+				50,
+				50,
+				70
+			],
+			"color": "#cccccc",
+			"fill": 0.18,
+			"sfx": "bike_bell",
+			"flavor": "妹妹騎的三輪車，叭叭！"
+		},
+		{
+			"id": "hm_watermelon",
+			"name": "西瓜",
+			"name_en": "Watermelon",
+			"category": "水果",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "sphere",
+					"dims": [
+						30,
+						26,
+						30
+					],
+					"pos": [
+						0,
+						13,
+						0
+					],
+					"color": "#2d6a4f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2,
+						26.5,
+						30.5
+					],
+					"pos": [
+						0,
+						13,
+						0
+					],
+					"color": "#95d5b2",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30.5,
+						26.5,
+						2
+					],
+					"pos": [
+						0,
+						13,
+						0
+					],
+					"color": "#95d5b2",
+					"collide": false
+				}
+			],
+			"dims": [
+				30,
+				26,
+				30
+			],
+			"color": "#cccccc",
+			"fill": 0.6,
+			"flavor": "夏天的大西瓜，阿公說要冰起來。"
+		},
+		{
+			"id": "hm_cooler",
+			"name": "冰桶",
+			"name_en": "Cooler Box",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						30,
+						28
+					],
+					"pos": [
+						0,
+						15,
+						0
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						41,
+						5,
+						29
+					],
+					"pos": [
+						0,
+						32.5,
+						0
+					],
+					"color": "#f8f9fa"
+				}
+			],
+			"dims": [
+				40,
+				35,
+				28
+			],
+			"color": "#cccccc",
+			"fill": 0.35
+		},
+		{
+			"id": "hm_quilt",
+			"name": "曬太陽的棉被",
+			"name_en": "Quilt",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						90,
+						6,
+						70
+					],
+					"pos": [
+						0,
+						3,
+						0
+					],
+					"color": "#ffd6a5",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						0.4,
+						10
+					],
+					"pos": [
+						0,
+						6.2,
+						-15
+					],
+					"color": "#ff70a6",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						70,
+						0.4,
+						10
+					],
+					"pos": [
+						0,
+						6.2,
+						15
+					],
+					"color": "#ff70a6",
+					"collide": false
+				}
+			],
+			"dims": [
+				90,
+				6,
+				70
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#ffd6a5",
+				"#bde0fe",
+				"#caffbf"
+			],
+			"fill": 0.2,
+			"size": 45,
+			"flavor": "阿嬤拿出來曬太陽的棉被，香香的。"
+		},
+		{
+			"id": "hm_crate",
+			"name": "塑膠籃",
+			"name_en": "Plastic Crate",
+			"category": "生活",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						25,
+						35
+					],
+					"pos": [
+						0,
+						12.5,
+						0
+					],
+					"color": "#2a9d8f",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						46,
+						0.5,
+						31
+					],
+					"pos": [
+						0,
+						25.2,
+						0
+					],
+					"color": "#264653",
+					"collide": false
+				}
+			],
+			"dims": [
+				50,
+				25,
+				35
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#2a9d8f",
+				"#ffd60a",
+				"#e63946"
+			],
+			"fill": 0.3,
+			"flavor": "市場買菜用的塑膠籃。"
+		},
+		{
+			"id": "hm_soil_bag",
+			"name": "培養土",
+			"name_en": "Bag of Potting Soil",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						40,
+						12,
+						60
+					],
+					"pos": [
+						0,
+						6,
+						0
+					],
+					"color": "#6f4518"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						26,
+						0.4,
+						20
+					],
+					"pos": [
+						0,
+						12.2,
+						-8
+					],
+					"color": "#80b918",
+					"collide": false
+				}
+			],
+			"dims": [
+				40,
+				12,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.3
+		},
+		{
+			"id": "hm_tea_table",
+			"name": "泡茶桌",
+			"name_en": "Tea Table",
+			"category": "家具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						60,
+						4,
+						60
+					],
+					"pos": [
+						0,
+						43,
+						0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50,
+						39,
+						50
+					],
+					"pos": [
+						0,
+						20.5,
+						0
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						12,
+						10,
+						10
+					],
+					"pos": [
+						0,
+						50,
+						0
+					],
+					"color": "#8d5a3b",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						4,
+						5
+					],
+					"pos": [
+						15,
+						47,
+						10
+					],
+					"color": "#f8f4ec",
+					"collide": false
+				}
+			],
+			"dims": [
+				60,
+				45,
+				60
+			],
+			"color": "#cccccc",
+			"fill": 0.15,
+			"flavor": "阿公在院子泡茶的小桌子。"
+		},
+		{
+			"id": "hm_big_pot",
+			"name": "大花盆",
+			"name_en": "Large Planter Pot",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						48,
+						34,
+						48
+					],
+					"pos": [
+						0,
+						17,
+						0
+					],
+					"color": "#e07a5f"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						44,
+						30,
+						44
+					],
+					"pos": [
+						0,
+						42,
+						0
+					],
+					"color": "#55a630",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						10,
+						8,
+						10
+					],
+					"pos": [
+						8,
+						54,
+						4
+					],
+					"color": "#ff70a6",
+					"collide": false
+				}
+			],
+			"dims": [
+				48,
+				55,
+				48
+			],
+			"color": "#cccccc",
+			"fill": 0.25
+		},
+		{
+			"id": "hm_garden_lamp",
+			"name": "庭園燈",
+			"name_en": "Garden Lamp",
+			"category": "庭院",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						5,
+						50,
+						5
+					],
+					"pos": [
+						0,
+						25,
+						0
+					],
+					"color": "#343a40"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						15,
+						15,
+						15
+					],
+					"pos": [
+						0,
+						54,
+						0
+					],
+					"color": "#fff3b0"
+				}
+			],
+			"dims": [
+				15,
+				60,
+				15
+			],
+			"color": "#cccccc",
+			"fill": 0.25
+		},
+		{
+			"id": "hm_kite",
+			"name": "風箏",
+			"name_en": "Kite",
+			"category": "玩具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						42,
+						1,
+						42
+					],
+					"pos": [
+						0,
+						1,
+						0
+					],
+					"color": "#e63946",
+					"rot": [
+						0,
+						45,
+						0
+					],
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						2,
+						1,
+						40
+					],
+					"pos": [
+						0,
+						1.5,
+						30
+					],
+					"color": "#ffd60a",
+					"collide": false
+				}
+			],
+			"dims": [
+				50,
+				2,
+				60
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#e63946",
+				"#3a86ff",
+				"#ffd60a"
+			],
+			"fill": 0.3,
+			"size": 26
+		},
+		{
+			"id": "hm_coin_1",
+			"name": "一元硬幣",
+			"name_en": "NT$1 Coin",
+			"category": "錢",
+			"shape": "cylinder",
+			"dims": [
+				2.0,
+				0.15,
+				2.0
+			],
+			"color": "#c9a227",
+			"fill": 0.9
+		},
+		{
+			"id": "hm_coin_5",
+			"name": "五元硬幣",
+			"name_en": "NT$5 Coin",
+			"category": "錢",
+			"shape": "cylinder",
+			"dims": [
+				2.2,
+				0.17,
+				2.2
+			],
+			"color": "#ced4da",
+			"fill": 0.9
+		},
+		{
+			"id": "hm_coin_10",
+			"name": "十元硬幣",
+			"name_en": "NT$10 Coin",
+			"category": "錢",
+			"shape": "cylinder",
+			"dims": [
+				2.6,
+				0.2,
+				2.6
+			],
+			"color": "#dee2e6",
+			"fill": 0.9
+		},
+		{
+			"id": "hm_coin_50",
+			"name": "五十元硬幣",
+			"name_en": "NT$50 Coin",
+			"category": "錢",
+			"shape": "cylinder",
+			"dims": [
+				2.8,
+				0.25,
+				2.8
+			],
+			"color": "#e9c46a",
+			"fill": 0.9
+		},
+		{
+			"id": "hm_zhuyin_book",
+			"name": "注音作業簿",
+			"name_en": "Zhuyin Workbook",
+			"category": "學校",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						18,
+						0.6,
+						26
+					],
+					"pos": [
+						0,
+						0.3,
+						0
+					],
+					"color": "#8ecae6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12,
+						0.2,
+						4
+					],
+					"pos": [
+						0,
+						0.7,
+						-8
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				18,
+				0.6,
+				26
+			],
+			"color": "#cccccc",
+			"fill": 0.4,
+			"size": 12,
+			"flavor": "ㄅㄆㄇ寫得好整齊的作業簿。"
+		},
+		{
+			"id": "hm_bento",
+			"name": "便當盒",
+			"name_en": "Lunch Box",
+			"category": "學校",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						20,
+						6,
+						13
+					],
+					"pos": [
+						0,
+						3,
+						0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						21,
+						2,
+						14
+					],
+					"pos": [
+						0,
+						6.5,
+						0
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"dims": [
+				20,
+				7,
+				13
+			],
+			"color": "#cccccc",
+			"fill": 0.45
+		},
+		{
+			"id": "hm_water_bottle",
+			"name": "水壺",
+			"name_en": "Water Bottle",
+			"category": "學校",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						8,
+						19,
+						8
+					],
+					"pos": [
+						0,
+						9.5,
+						0
+					],
+					"color": "#90e0ef",
+					"tint": true
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						6,
+						3,
+						6
+					],
+					"pos": [
+						0,
+						20.5,
+						0
+					],
+					"color": "#ffffff",
+					"collide": false
+				}
+			],
+			"dims": [
+				8,
+				22,
+				8
+			],
+			"color": "#cccccc",
+			"colors": [
+				"#90e0ef",
+				"#ffafcc",
+				"#caffbf"
+			],
+			"fill": 0.5
+		}
+	]
+}
