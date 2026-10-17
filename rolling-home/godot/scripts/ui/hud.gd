@@ -68,6 +68,11 @@ func _ready() -> void:
 	root.add_child(_hint)
 	refresh_hint()
 
+	var touch := TouchControls.new()
+	root.add_child(touch)
+	touch.shown.connect(refresh_hint)
+	refresh_hint()
+
 	_pause = _build_pause()
 	root.add_child(_pause)
 	_pause.visible = false
@@ -84,7 +89,9 @@ func _label(font_size: int, align: HorizontalAlignment) -> Label:
 
 
 func refresh_hint() -> void:
-	if Controls.is_simple():
+	if Controls.touch_active:
+		_hint.text = ""
+	elif Controls.is_simple():
 		_hint.text = "W/S 前進後退  A/D 轉彎  Shift 衝刺  Space 轉身  Tab 看遠一點  Esc 暫停"
 	else:
 		_hint.text = "左桿 WASD  右桿 方向鍵  兩桿交替=衝刺  Space 轉身  Tab 看遠一點  Esc 暫停"

@@ -1,2 +1,5 @@
 # Python 快取
 __pycache__/
+
+# 匯出結果（建置產物，不進版控）
+export/

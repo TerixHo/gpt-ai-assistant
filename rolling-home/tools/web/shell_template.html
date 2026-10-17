@@ -1,0 +1,246 @@
+<title>家滾滾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<style>
+/* 版面：遊戲畫面鋪滿整個框；載入時在上面蓋一層「書桌上的小珠珠」開場卡片。單一的傍晚室內色調，不跟隨明暗主題。 */
+:root {
+  --bg: #2a1f1a;
+  --card: #3a2b23;
+  --line: #5a4434;
+  --fg: #fff4e0;
+  --muted: #cdb9a3;
+  --accent: #ffc93c;
+  --accent-ink: #3a2410;
+  --bad: #ff9c8a;
+  --font: "Huninn", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+#canvas {
+  position: fixed;
+  left: env(safe-area-inset-left, 0px);
+  right: env(safe-area-inset-right, 0px);
+  top: env(safe-area-inset-top, 0px);
+  bottom: env(safe-area-inset-bottom, 0px);
+  width: calc(100% - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+  height: calc(100% - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  display: block;
+  touch-action: none;
+  outline: none;
+  background: var(--bg);
+}
+#boot {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding-block: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: radial-gradient(120% 90% at 50% 0%, #4a3527 0%, var(--bg) 62%);
+  z-index: 2;
+}
+.card {
+  width: min(560px, 100%);
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  text-align: center;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(56px, 14vw, 96px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  text-shadow: 0 4px 0 #1a120e;
+}
+.lead { margin: 0; font-size: 18px; line-height: 1.6; color: var(--fg); text-wrap: balance; }
+.beads {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  padding-top: 6px;
+}
+.bead { display: grid; justify-items: center; gap: 6px; }
+.bead i {
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0 12%, var(--c) 40%);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+}
+.bead span { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+button {
+  font: inherit;
+  font-size: 22px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 34px;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 4px 0 #b8861a;
+}
+button.secondary { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 2px var(--line); }
+button:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+button:active { transform: translateY(2px); box-shadow: 0 2px 0 #b8861a; }
+button.secondary:active { box-shadow: inset 0 0 0 2px var(--line); }
+.progress { width: 100%; display: grid; gap: 8px; }
+.bar { height: 14px; border-radius: 999px; background: var(--card); box-shadow: inset 0 0 0 2px var(--line); overflow: hidden; }
+.bar b { display: block; height: 100%; width: 0%; background: var(--accent); border-radius: 999px; transition: width 0.2s; }
+.status { margin: 0; font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.howto {
+  margin: 0;
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--card);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align: left;
+}
+.howto b { color: var(--fg); font-weight: 400; margin-right: 6px; }
+.error { margin: 0; color: var(--bad); font-size: 16px; line-height: 1.6; white-space: pre-line; }
+/* 手機橫放時高度很矮：縮小標題與間距，讓按鈕和說明都在同一個畫面裡 */
+@media (max-height: 520px) {
+  .card { gap: 10px; }
+  h1 { font-size: 52px; }
+  .lead { font-size: 15px; }
+  .beads { display: none; }
+  button { font-size: 19px; padding: 9px 28px; }
+  .howto { font-size: 13px; padding: 10px 14px; gap: 2px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bead i { animation: roll 2.4s ease-in-out infinite; animation-delay: calc(var(--n) * 0.12s); }
+  @keyframes roll { 0%, 70%, 100% { transform: translateY(0); } 80% { transform: translateY(-6px); } }
+}
+</style>
+
+<canvas id="canvas" tabindex="0">你的瀏覽器不支援 HTML5 畫布。</canvas>
+
+<div id="boot">
+  <div class="card">
+    <h1>家滾滾</h1>
+    <p class="lead">從書桌上的小珠珠開始，把家裡的東西滾成一顆大球！</p>
+    <div class="beads" aria-hidden="true">
+      <div class="bead" style="--n:0"><i style="width:8px;height:8px;--c:#7fd3ff"></i><span>6mm</span></div>
+      <div class="bead" style="--n:1"><i style="width:11px;height:11px;--c:#ff8fb8"></i><span>8mm</span></div>
+      <div class="bead" style="--n:2"><i style="width:18px;height:18px;--c:#ffc93c"></i><span>1.2cm</span></div>
+      <div class="bead" style="--n:3"><i style="width:30px;height:30px;--c:#8ee08a"></i><span>5cm</span></div>
+      <div class="bead" style="--n:4"><i style="width:44px;height:44px;--c:#ffa463"></i><span>15cm</span></div>
+      <div class="bead" style="--n:5"><i style="width:60px;height:60px;--c:#c9a6ff"></i><span>30cm</span></div>
+    </div>
+    <div class="actions" id="actions">
+      <button id="play" type="button">開始玩</button>
+      <button id="play-full" type="button" class="secondary">全螢幕玩</button>
+    </div>
+    <div class="progress" id="progress" hidden>
+      <div class="bar"><b id="bar"></b></div>
+      <p class="status" id="status">準備中</p>
+    </div>
+    <p class="error" id="error" hidden></p>
+    <div class="howto">
+      <div><b>電腦</b>W 前進、S 後退、A D 轉彎，Shift 衝刺，Space 轉身，Esc 暫停</div>
+      <div><b>手機平板</b>左半邊按住拖曳來走路和轉彎，右邊有衝刺、轉身、暫停按鈕</div>
+      <div><b>第一次</b>要下載約 __TOTAL_MB__MB，等一下下就好</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// 遊戲檔案超過單檔上限，所以壓縮後分段放；這裡攔截引擎的下載，把分段接回來再解壓。
+const CHUNKS = __CHUNKS__;
+const GODOT_CONFIG = __GODOT_CONFIG__;
+const realFetch = window.fetch.bind(window);
+window.fetch = function (input, init) {
+  const url = typeof input === "string" ? input : input.url;
+  const name = url.split("?")[0].split("/").pop();
+  const entry = CHUNKS[name];
+  if (!entry) return realFetch(input, init);
+  return Promise.all(entry.parts.map(function (p) {
+    return realFetch(p).then(function (r) {
+      if (!r.ok) throw new Error("下載失敗：" + p + "（" + r.status + "）");
+      return r.blob();
+    });
+  })).then(function (blobs) {
+    const stream = new Blob(blobs).stream().pipeThrough(new DecompressionStream("gzip"));
+    return new Response(stream, {
+      headers: {
+        "Content-Type": name.endsWith(".wasm") ? "application/wasm" : "application/octet-stream",
+        "Content-Length": String(entry.size),
+      },
+    });
+  });
+};
+
+const boot = document.getElementById("boot");
+const actions = document.getElementById("actions");
+const progress = document.getElementById("progress");
+const bar = document.getElementById("bar");
+const statusEl = document.getElementById("status");
+const errorEl = document.getElementById("error");
+
+function showError(msg) {
+  progress.hidden = true;
+  actions.hidden = true;
+  errorEl.hidden = false;
+  errorEl.textContent = msg;
+}
+
+function start(full) {
+  if (full && document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(function () {});
+  }
+  actions.hidden = true;
+  progress.hidden = false;
+  if (typeof Engine === "undefined") {
+    showError("遊戲引擎沒有載入成功。\n請重新整理頁面再試一次。");
+    return;
+  }
+  const missing = Engine.getMissingFeatures({ threads: false });
+  if (missing.length) {
+    showError("這個瀏覽器少了遊戲需要的功能：\n" + missing.join("\n") + "\n建議改用最新版的 Chrome、Edge 或 Safari。");
+    return;
+  }
+  if (typeof DecompressionStream === "undefined") {
+    showError("這個瀏覽器太舊，沒辦法解開遊戲檔案。\n建議改用最新版的 Chrome、Edge 或 Safari。");
+    return;
+  }
+  const engine = new Engine(GODOT_CONFIG);
+  engine.startGame({
+    onProgress: function (current, total) {
+      if (total > 0) {
+        const pct = Math.min(100, Math.round((current / total) * 100));
+        bar.style.width = pct + "%";
+        statusEl.textContent = "下載中 " + pct + "%（" + (current / 1048576).toFixed(1) + " / " + (total / 1048576).toFixed(1) + " MB）";
+      } else {
+        statusEl.textContent = "下載中…";
+      }
+    },
+  }).then(function () {
+    boot.hidden = true;
+    document.getElementById("canvas").focus();
+  }).catch(function (err) {
+    showError("遊戲沒有辦法啟動。\n" + (err && err.message ? err.message : String(err)));
+  });
+}
+
+document.getElementById("play").addEventListener("click", function () { start(false); });
+document.getElementById("play-full").addEventListener("click", function () { start(true); });
+</script>
+<script src="index.js"></script>

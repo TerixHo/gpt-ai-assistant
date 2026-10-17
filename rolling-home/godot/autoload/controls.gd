@@ -27,6 +27,13 @@ const DASH_FLIP_WINDOW := 0.4
 ## 測試與展示用：設定後完全取代硬體輸入
 var override_drive: Drive = null
 
+## 觸控（手機、平板）：由 TouchControls 寫入。觸控一律是簡單操作：上下前進後退、左右轉彎
+var touch_active := false
+var touch_stick := Vector2.ZERO
+var touch_dash := false
+var touch_turn := false
+var touch_look := false
+
 var _flip_count := 0
 var _flip_timer := 0.0
 var _last_flip_sign := 0
@@ -116,22 +123,29 @@ func read(delta: float) -> Drive:
 		left += Vector2(Input.get_axis("kb_left", "kb_right"), Input.get_axis("kb_back", "kb_forward"))
 		right += Vector2(Input.get_axis("kb_r_left", "kb_r_right"), Input.get_axis("kb_r_back", "kb_r_forward"))
 
+	if touch_stick != Vector2.ZERO:
+		var touch_turn_amount := touch_stick.x * 0.8
+		left += Vector2(0.0, touch_stick.y + touch_turn_amount)
+		right += Vector2(0.0, touch_stick.y - touch_turn_amount)
+
 	left = left.limit_length(1.0)
 	right = right.limit_length(1.0)
 	d.left = left
 	d.right = right
 	d.move = ((left + right) * 0.5).limit_length(1.0)
 	d.turn = clampf((left.y - right.y) * 0.5, -1.0, 1.0)
-	d.look_up = Input.is_action_pressed("look_up")
+	d.look_up = Input.is_action_pressed("look_up") or touch_look
 
 	# 180 度迴轉：同時按兩桿（只在按下瞬間觸發一次）或快捷鍵
 	if stick_click and not _stick_click_latch:
 		d.quick_turn = true
 	_stick_click_latch = stick_click
-	if Input.is_action_just_pressed("quick_turn"):
+	if Input.is_action_just_pressed("quick_turn") or touch_turn:
 		d.quick_turn = true
+	touch_turn = false
 
-	d.dash = Input.is_action_just_pressed("dash") or _detect_dash_gesture(left, right, delta)
+	d.dash = Input.is_action_just_pressed("dash") or touch_dash or _detect_dash_gesture(left, right, delta)
+	touch_dash = false
 	if Input.is_action_just_pressed("toggle_scheme"):
 		toggle_scheme()
 	return d

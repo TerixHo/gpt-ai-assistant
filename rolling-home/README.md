@@ -7,6 +7,10 @@
 
 ## 1. 快速開始
 
+不想安裝：直接開啟網頁版 https://claude.ai/artifact/JAZV8uYdapnA5hbhnhLir9 ，按「開始玩」即可（第一次下載約 15MB；電腦用鍵盤，手機平板用觸控）。這個連結預設只有擁有者能開，要給別人玩請用頁面的分享選單。
+
+自己用 Godot 開專案：
+
 1. 下載 Godot 4.7.2 stable（標準版即可，不需要 .NET 版）：https://godotengine.org/download/archive/4.7.2-stable/
 
 2. 開啟 Godot，選「匯入」，指向 `rolling-home/godot/project.godot`。
@@ -75,6 +79,7 @@ godot --headless res://tests/unit_tests.tscn
 godot --headless --fixed-fps 60 res://tests/flow_test.tscn
 godot --headless --fixed-fps 60 res://tests/autoplay_test.tscn -- --stage home_1 --seed 1
 godot --headless --fixed-fps 60 res://tests/autoplay_test.tscn -- --stage home_3 --seed 1
+godot --headless --fixed-fps 60 res://tests/touch_test.tscn
 ```
 
 
