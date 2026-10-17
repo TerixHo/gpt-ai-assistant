@@ -6,7 +6,8 @@ extends RigidBody3D
 ## 吸附條件：物件尺寸 ≤ 直徑 × pickup_ratio，且碰到塊球（或其突出物）。
 ## 撞落規則：以高速撞上牆或過大的物件時，最外層的幾個物件會掉落並扣回體積。
 ## 外觀：白色核心加上粉彩彩虹小圓點；最後黏的 10 件會突出在球的外圍，
-## 滾動時它們轉到底下就把球撐高一點、往旁邊推一點，形成不規則的滾動。
+## 滾動時它們轉到底下就把球的外觀撐高一點、往旁邊歪一點，形成一顛一顛的不規則滾動。
+## （只改外觀、不改物理：試過把碰撞球放大與往旁邊推，球會卡在窄走道與家具之間，自動測試成長掉一半以上。）
 ## 所有數值皆可在檢視器調整，預設值見 docs/01_遊戲設定文件.md 第 4 章。
 
 signal collected(item_id: String, def: Dictionary)
@@ -52,6 +53,8 @@ const GRAB_EXTRA := 0.2
 ## 台階輔助：推著接觸點低於「半徑 × 此比例」的低矮障礙物或地板落差時自動滾上去。
 ## 接觸點在球的赤道以上代表是牆或櫃子側面，不觸發（要跳）。
 @export var step_up_ratio := 1.0
+## 地板落差（台階、門檻、矮平台）頂面低於「直徑 × 此比例」就自動滾上去，更高的才需要跳
+@export var step_max_d := 0.55
 ## 每次撞擊最多掉幾件（給小朋友玩，不宜太多）
 @export var max_drop := 2
 ## 跳躍：往前小跳一段。高度 = 直徑 × jump_height_d + jump_min_cm（公分）
@@ -92,6 +95,11 @@ var _knock_cooldown := 0.0
 var _pending_knock: Dictionary = {}
 var _pending_lift := 0.0
 var _step_cooldown := 0.0
+var _step_ray := PhysicsRayQueryParameters3D.new()
+## 台階輔助：還要往上抬多少（分幾個物理幀抬完，看起來像順順地滾上去）
+var _step_lift := 0.0
+## 抬到台階高度後，維持高度往前一小段（球心越過台階邊緣才放下）
+var _step_hover := 0.0
 var _air_time := 0.0
 var _jump_request := false
 var _double_request := false
@@ -110,13 +118,14 @@ var _grab_shape := SphereShape3D.new()
 var _query := PhysicsShapeQueryParameters3D.new()
 var _core: Node3D
 var _stuck_root: Node3D
+## 外觀節點（核心與黏上的物件），不規則滾動時整個往上撐
+var _look: Node3D
 ## 每個黏上的物件：{node, id, def, size, volume, dist, half, dir（本地方向）, basis（本地朝向）, cy（中心離底面的高度）}
 var _stuck: Array[Dictionary] = []
 ## 最新黏上的物件（最多 RECENT_COUNT 件），突出在外圍
 var _recent: Array[Dictionary] = []
 ## 不規則滾動：目前突出物把球撐高的量（公分）與側推方向
 var _lump := 0.0
-var _lump_lift := 0.0
 var _wobble := Vector3.ZERO
 
 
@@ -138,11 +147,14 @@ func _ready() -> void:
 	cs.name = "Shape"
 	cs.shape = _body_shape
 	add_child(cs)
+	_look = Node3D.new()
+	_look.name = "Look"
+	add_child(_look)
 	_core = _build_core()
-	add_child(_core)
+	_look.add_child(_core)
 	_stuck_root = Node3D.new()
 	_stuck_root.name = "Stuck"
-	add_child(_stuck_root)
+	_look.add_child(_stuck_root)
 
 	_query.shape = _grab_shape
 	_query.collision_mask = KMath.LAYER_ITEM
@@ -312,7 +324,7 @@ func _physics_process(delta: float) -> void:
 	_update_lump(delta)
 
 
-## 不規則滾動：最新的突出物轉到球底下時，把碰撞球放大（球心被撐高），並往反方向推一點。
+## 不規則滾動：最新的突出物轉到球底下時，把球的外觀撐高（突出物剛好碰到地面），並往反方向歪一點。
 func _update_lump(delta: float) -> void:
 	var r := radius()
 	var basis := global_transform.basis
@@ -329,13 +341,10 @@ func _update_lump(delta: float) -> void:
 		if lift > target:
 			target = lift
 			side = -Vector3(d.x, 0.0, d.z)
-	var before := _lump
-	# 升降速度有上限，避免一下子彈起來
-	_lump = move_toward(_lump, target, maxf(r * 6.0, 6.0) * delta)
-	if _grounded and _lump > before:
-		_lump_lift += _lump - before
+	# 升降速度有上限，避免一下子彈起來；只在地上時撐高
+	_lump = move_toward(_lump, target if _grounded else 0.0, maxf(r * 6.0, 6.0) * delta)
 	_wobble = side * (_lump / maxf(r, 0.01))
-	_body_shape.radius = r + _lump
+	_look.position = basis.inverse() * (Vector3.UP * _lump + _wobble * r * 0.25)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -347,6 +356,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var impact_normal := Vector3.ZERO
 	var step_normal := Vector3.ZERO
 	var step_height := 0.0
+	var wall_normal := Vector3.ZERO
 	var bottom := state.transform.origin.y - radius()
 	for i in state.get_contact_count():
 		var n := state.get_contact_local_normal(i)
@@ -362,6 +372,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			if not pickable_now and h < radius() * step_up_ratio and h > diameter * 0.05 and h > step_height:
 				step_normal = n
 				step_height = h
+			elif not pickable_now:
+				wall_normal = n
 			# 碰到本來就黏得起來的小東西不算撞擊
 			var other := state.get_contact_collider_object(i)
 			if other is PickupItem and KMath.can_pick((other as PickupItem).size_cm, diameter, pickup_ratio):
@@ -376,12 +388,17 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	_air_time = 0.0 if _grounded else _air_time + dt
 	_jump_cooldown -= dt
 
-	if _pending_lift > 0.0 or _lump_lift > 0.0:
+	var step_up := 0.0
+	_step_hover -= dt
+	var step_lifting := _step_lift > 0.0 or _step_hover > 0.0
+	if _step_lift > 0.0:
+		step_up = minf(_step_lift, maxf(diameter * 20.0, 60.0) * dt)
+		_step_lift -= step_up
+	if _pending_lift > 0.0 or step_up > 0.0:
 		var t := state.transform
-		t.origin += Vector3.UP * (_pending_lift + _lump_lift)
+		t.origin += Vector3.UP * (_pending_lift + step_up)
 		state.transform = t
 		_pending_lift = 0.0
-		_lump_lift = 0.0
 
 	# 2. 驅動：以速度導向方式控制，接地時沿地面平面移動
 	var fwd := forward_dir()
@@ -419,9 +436,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		accel = maxf(coast_decel_d * diameter, 10.0) if _grounded else 0.0
 	var dv := (target - v_plane).limit_length(accel * dt)
 	v += dv
-	# 突出物在旁邊底下時往反方向推一點（不規則滾動）
-	if _grounded and _wobble != Vector3.ZERO and v_plane.length() > base_top * 0.2:
-		v += _wobble * base_top * 1.2 * dt
+	# 集氣時球高速自轉，地面摩擦會把球往前帶；直接把水平速度定在慢慢推的速度
+	if _charging and _grounded:
+		v = target + up * v.dot(up)
 	# 上坡時只抵銷「與前進方向相反」的重力分量，讓上坡手感接近原作。
 	# （不能整個抵銷：在台階邊角時接觸法線會傾斜，整個抵銷會把球吸回邊緣。）
 	if _grounded and wish_len > 0.01:
@@ -431,10 +448,22 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			v -= dir * along * dt
 	# 台階輔助：正推著低矮障礙時，給剛好跳過障礙高度的向上速度（v = √(2gh)）
 	_step_cooldown -= dt
+	# 接觸點在赤道附近（台階高度接近或超過半徑）：往前方探測頂面，夠矮就當台階
+	if _grounded and step_normal == Vector3.ZERO and wall_normal != Vector3.ZERO and wish_len > 0.3 and _step_cooldown <= 0.0:
+		var into_wall := -Vector3(wall_normal.x, 0.0, wall_normal.z).normalized()
+		if dir.dot(into_wall) > 0.3:
+			var top_h := _probe_step(state, bottom, into_wall)
+			if top_h > 0.0:
+				step_normal = wall_normal
+				step_height = top_h
 	if _grounded and _step_cooldown <= 0.0 and step_normal != Vector3.ZERO and wish_len > 0.3 and dir.dot(-step_normal) > 0.3:
-		var g_len := state.total_gravity.length()
-		v.y = maxf(v.y, sqrt(2.0 * g_len * (step_height + diameter * 0.12)))
-		_step_cooldown = 0.3
+		# 直接把球抬到台階頂面（分幾幀抬完）；往上滑時台階側面的摩擦會吃掉向上速度，所以不用速度推
+		_step_lift = step_height + diameter * 0.06
+		_step_hover = clampf(radius() / maxf(base_top * 0.8, 0.01), 0.1, 0.35)
+		v.y = maxf(v.y, 0.0)
+		# 撞到台階邊緣那一下水平速度會被吃掉，補回往前的速度
+		v = _push_forward(v, Vector3(dir.x, 0.0, dir.z).normalized(), base_top * 0.7)
+		_step_cooldown = 0.25
 	# 跳躍：給剛好跳到目標高度的向上速度（v = √(2gh)），並確保往前的速度，站著按跳也會往前跳一小段
 	var g_jump := state.total_gravity.length() * jump_gravity
 	if _jump_request:
@@ -477,6 +506,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			vh = vh.normalized() * cap
 			v.x = vh.x
 			v.z = vh.z
+	# 正在抬上台階：抵銷重力，保持往前
+	if step_lifting:
+		v.y = maxf(v.y, 0.0)
+		v = _push_forward(v, Vector3(fwd.x, 0.0, fwd.z) if wish_len < 0.01 else Vector3(dir.x, 0.0, dir.z).normalized(), base_top * 0.8)
 	state.linear_velocity = v
 
 	# 3. 接地時讓角速度貼近純滾動，外觀上確實在「滾」；集氣時在原地越轉越快
@@ -504,6 +537,24 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	_last_velocity = v
 
 
+## 往前方探測台階頂面：回傳頂面比球底高多少（公分）；不是台階（太高、斜面、沒東西）回傳 -1。
+func _probe_step(state: PhysicsDirectBodyState3D, bottom: float, into_wall: Vector3) -> float:
+	var max_h := diameter * step_max_d
+	var p := state.transform.origin + into_wall * (radius() + maxf(diameter * 0.08, 0.3))
+	_step_ray.from = Vector3(p.x, bottom + max_h + 0.1, p.z)
+	_step_ray.to = Vector3(p.x, bottom + diameter * 0.04, p.z)
+	_step_ray.collision_mask = KMath.LAYER_WORLD | KMath.LAYER_ITEM | KMath.LAYER_GATE
+	_step_ray.exclude = [get_rid()]
+	var hit := state.get_space_state().intersect_ray(_step_ray)
+	if hit.is_empty() or (hit["normal"] as Vector3).y < 0.7:
+		return -1.0
+	# 射線一開始就在物體裡（太高的牆）：position 等於起點
+	var h := (hit["position"] as Vector3).y - bottom
+	if h >= max_h:
+		return -1.0
+	return h
+
+
 ## 往 fwd 方向的速度至少要有 want（不夠就補上，原本更快就不變）。
 func _push_forward(v: Vector3, fwd: Vector3, want: float) -> Vector3:
 	var along := Vector3(v.x, 0.0, v.z).dot(fwd)
@@ -527,8 +578,7 @@ func _bounce(v: Vector3, impact: float, normal: Vector3, base_top: float, g: flo
 func _grab_check() -> void:
 	var space := get_world_3d().direct_space_state
 	_query.transform = Transform3D(Basis.IDENTITY, global_position)
-	# 突出物把球撐高時，吸附範圍也跟著放大，才黏得到地上的東西
-	_grab_shape.radius = radius() * grab_margin + GRAB_EXTRA + _lump
+	_grab_shape.radius = radius() * grab_margin + GRAB_EXTRA
 	_try_hits(space.intersect_shape(_query, 32))
 	# 突出在外圍的大物件也能黏東西（迭代副本：吸附過程可能改變清單）
 	var r := radius()
@@ -602,7 +652,7 @@ func _place_stuck(e: Dictionary) -> void:
 func _apply_size() -> void:
 	diameter = KMath.diameter_from_volume(volume)
 	var r := radius()
-	_body_shape.radius = r + _lump
+	_body_shape.radius = r
 	_grab_shape.radius = r * grab_margin + GRAB_EXTRA
 	_core.scale = Vector3.ONE * diameter * 0.9
 	mass = maxf(0.02, volume * 0.0008)

@@ -1,6 +1,6 @@
 extends Node
 ## 觸控操作測試：模擬手指在螢幕上拖曳與按按鈕，確認滾球真的會動、轉身、跳躍、視角、暫停、
-## 往上滑衝刺、按住槿寶集氣都有反應。
+## 往上滑衝刺、搖桿放開後再按住集氣、卡住時「回到中間」按鈕都有反應。
 ##
 ## 用法（專案根目錄）：
 ##   godot --headless --fixed-fps 60 res://tests/touch_test.tscn
@@ -140,20 +140,42 @@ func _physics_process(delta: float) -> void:
 				_step = 9
 		9:
 			if _t > 7.4:
-				var info: Dictionary = touch.call("_character_screen")
-				_check(not info.is_empty(), "找得到槿寶在畫面上的位置")
-				if not info.is_empty():
-					_vars_charge_pos = info["char"]
-					_touch(7, _vars_charge_pos, true)
+				# 搖桿點一下放開，馬上再按住：集氣
+				_vars_charge_pos = Vector2(220, size.y - 220)
+				_touch(7, _vars_charge_pos, true)
 				_step = 10
 		10:
-			if _t > 9.7:
-				_check(k.is_charging() and k.charge_level() == 2, "按住槿寶 2.3 秒：集氣到第 2 段橘光（第 %d 段）" % k.charge_level())
+			if _t > 7.5:
 				_touch(7, _vars_charge_pos, false)
 				_step = 11
 		11:
-			if _t > 9.8:
-				_check(k.is_bursting() and not k.is_charging(), "放開槿寶：衝出去")
+			if _t > 7.6:
+				_touch(8, _vars_charge_pos, true)
+				_start_pos = k.global_position
+				_step = 12
+		12:
+			if _t > 9.95:
+				_check(k.is_charging() and k.charge_level() == 2, "搖桿放開再按住 2.3 秒：集氣到第 2 段橘光（第 %d 段）" % k.charge_level())
+				var crept := Vector2(k.global_position.x - _start_pos.x, k.global_position.z - _start_pos.z).length()
+				_check(crept > 0.5, "集氣時主角慢慢往前推（%.1f 公分）" % crept)
+				_touch(8, _vars_charge_pos, false)
+				_step = 13
+		13:
+			if _t > 10.05:
+				_check(k.is_bursting() and not k.is_charging(), "放開搖桿：衝出去")
+				# 卡住時出現「回到中間」按鈕，按下去回到救援點
+				_stage.hud.show_rescue(true)
+				_check(bool(touch.get("rescue_visible")), "卡住時顯示回到中間按鈕")
+				var btn: Vector2 = touch.call("button_center", "rescue")
+				_touch(9, btn, true)
+				_touch(9, btn, false)
+				_step = 14
+		14:
+			if _t > 10.3:
+				var p := k.global_position
+				var rescue_pos: Vector3 = _stage.get("_rescue_pos")
+				_check(Vector2(p.x - rescue_pos.x, p.z - rescue_pos.z).length() < 5.0, "按回到中間：球回到救援點")
+				_check(not bool(touch.get("rescue_visible")), "回到中間後按鈕消失")
 				_finish()
 
 

@@ -3,8 +3,9 @@ extends Node
 
 const BG_TOP := Color("#ffcf56")
 const BG_BOTTOM := Color("#ff7f50")
-## 標題畫面背景輪流播放的示範關卡（自動駕駛在玩），每段秒數
-const DEMO_STAGES := ["home_1", "home_3"]
+## 標題畫面背景輪流播放的示範關卡（自動駕駛在玩），每段秒數；還沒做好的關卡略過，全部沒有時用舊版房子
+const DEMO_STAGES := ["home", "street", "station"]
+const DEMO_FALLBACK := ["home_1", "home_3"]
 const DEMO_SECONDS := 45.0
 
 var _current: Node
@@ -41,7 +42,10 @@ func _start_demo(restart := false) -> void:
 	_demo_timer = 0.0
 	var stage := Stage.new()
 	stage.demo = true
-	stage.setup(DEMO_STAGES[_demo_index % DEMO_STAGES.size()])
+	var ids := DEMO_STAGES.filter(func(id): return Game.is_stage_playable(id))
+	if ids.is_empty():
+		ids = DEMO_FALLBACK
+	stage.setup(ids[_demo_index % ids.size()])
 	stage.skip_intro = true
 	add_child(stage)
 	move_child(stage, 0)

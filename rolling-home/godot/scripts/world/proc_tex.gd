@@ -62,6 +62,8 @@ static func floor_material(pattern: String, base_hex: String, repeat_cm := 90.0)
 	img.generate_mipmaps()
 	var m := StandardMaterial3D.new()
 	m.albedo_texture = ImageTexture.create_from_image(img)
+	# 程式產生的貼圖沒有標記色彩空間，在 Compatibility 渲染器會被當成線性取樣而整片偏白
+	m.albedo_texture_force_srgb = true
 	m.roughness = 1.0
 	m.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
 	m.uv1_triplanar = true

@@ -324,7 +324,8 @@ func rescue() -> void:
 	cam.snap()
 	_stuck_timer = 0.0
 	_stuck_anchor = katamari.global_position
-	_set_rescue_shown(false)
+	_rescue_shown = false
+	hud.show_rescue(false)
 	hud.toast("回到中間囉！")
 	Sfx.play("rescue")
 
@@ -380,10 +381,7 @@ func _check_milestone(delta: float) -> void:
 	# 剛好達標時已經有過關的歡呼，不重複
 	if katamari.diameter >= goal and time_to_goal < 0.0:
 		return
-	if Sfx.has_method("play_cheer"):
-		Sfx.call("play_cheer")
-	else:
-		Sfx.play("cheer")
+	Sfx.play_cheer()
 	hud.milestone(KMath.format_size(maxf(reached, 0.0)))
 	pusher.cheer()
 	cam.pulse_zoom()
@@ -444,6 +442,9 @@ func _on_collected(item_id: String, def: Dictionary) -> void:
 	var big := size > katamari.diameter * 0.45
 	hud.toast("%s　%s" % [def.get("name", item_id), KMath.format_size(size)], big)
 	hud.bump_count()
+	# 特別的物件有自己的可愛聲音（橘子、咖哩、小昆蟲…）
+	if Sfx.play_item(def):
+		return
 	# 黏到東西的聲音依相對大小：小東西「啵」、中等「叮」、快要黏不起來的大東西「啾啾」
 	var rel := size / maxf(katamari.diameter * katamari.pickup_ratio, 0.01)
 	if rel < 0.35:
