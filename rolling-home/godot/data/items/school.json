@@ -1,0 +1,2640 @@
+{
+	"_note": "第 3 關「小學與街區」的物件。id 前綴 sc_；也沿用第 2 關的 st_ 物件。",
+	"items": [
+		{
+			"id": "sc_classroom",
+			"name": "教室大樓",
+			"name_en": "Classroom Building",
+			"category": "建築",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						1600.0,
+						1240.0,
+						1600.0
+					],
+					"pos": [
+						0.0,
+						620.0,
+						0.0
+					],
+					"color": "#ead7c0"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1640.0,
+						60.0,
+						1640.0
+					],
+					"pos": [
+						0.0,
+						1270.0,
+						0.0
+					],
+					"color": "#c1121f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1604.0,
+						120.0,
+						1500.0
+					],
+					"pos": [
+						0.0,
+						300.0,
+						0.0
+					],
+					"color": "#a2d2ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1604.0,
+						120.0,
+						1500.0
+					],
+					"pos": [
+						0.0,
+						700.0,
+						0.0
+					],
+					"color": "#a2d2ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						1500.0,
+						120.0,
+						1604.0
+					],
+					"pos": [
+						0.0,
+						1050.0,
+						0.0
+					],
+					"color": "#a2d2ff",
+					"collide": false
+				}
+			],
+			"dims": [
+				1600.0,
+				1300.0,
+				1600.0
+			],
+			"fill": 0.2,
+			"pickable": false,
+			"flavor": "三層樓的教室，槿寶的教室在二樓。"
+		},
+		{
+			"id": "sc_slide",
+			"name": "溜滑梯",
+			"name_en": "Slide",
+			"category": "遊戲場",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120.0,
+						200.0,
+						120.0
+					],
+					"pos": [
+						0.0,
+						100.0,
+						150.0
+					],
+					"color": "#ffbe0b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80.0,
+						30.0,
+						330.0
+					],
+					"pos": [
+						0.0,
+						110.0,
+						-60.0
+					],
+					"color": "#3a86ff",
+					"rot": [
+						-28,
+						0,
+						0
+					]
+				}
+			],
+			"dims": [
+				120.0,
+				260.0,
+				460.0
+			],
+			"fill": 0.25,
+			"model": "sc_slide",
+			"sfx": "squeak",
+			"flavor": "下課搶著玩的溜滑梯。"
+		},
+		{
+			"id": "sc_swing",
+			"name": "鞦韆",
+			"name_en": "Swing Set",
+			"category": "遊戲場",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						260.0,
+						8.0
+					],
+					"pos": [
+						-155.0,
+						122.0,
+						-42.0
+					],
+					"color": "#e63946",
+					"rot": [
+						-19,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						260.0,
+						8.0
+					],
+					"pos": [
+						-155.0,
+						122.0,
+						42.0
+					],
+					"color": "#e63946",
+					"rot": [
+						19,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						260.0,
+						8.0
+					],
+					"pos": [
+						155.0,
+						122.0,
+						-42.0
+					],
+					"color": "#e63946",
+					"rot": [
+						-19,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						260.0,
+						8.0
+					],
+					"pos": [
+						155.0,
+						122.0,
+						42.0
+					],
+					"color": "#e63946",
+					"rot": [
+						19,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						12.0,
+						320.0,
+						12.0
+					],
+					"pos": [
+						0.0,
+						245.0,
+						0.0
+					],
+					"color": "#e63946",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50.0,
+						5.0,
+						22.0
+					],
+					"pos": [
+						-70.0,
+						50.0,
+						0.0
+					],
+					"color": "#ffbe0b",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50.0,
+						5.0,
+						22.0
+					],
+					"pos": [
+						70.0,
+						50.0,
+						0.0
+					],
+					"color": "#ffbe0b",
+					"collide": false
+				}
+			],
+			"dims": [
+				320.0,
+				250.0,
+				180.0
+			],
+			"fill": 0.15,
+			"flavor": "盪得越高越開心的鞦韆。"
+		},
+		{
+			"id": "sc_seesaw",
+			"name": "蹺蹺板",
+			"name_en": "Seesaw",
+			"category": "遊戲場",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						40.0,
+						50.0,
+						40.0
+					],
+					"pos": [
+						0.0,
+						25.0,
+						0.0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						36.0,
+						8.0,
+						400.0
+					],
+					"pos": [
+						0.0,
+						55.0,
+						0.0
+					],
+					"color": "#8ac926",
+					"rot": [
+						8,
+						0,
+						0
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						50.0,
+						30.0,
+						6.0
+					],
+					"pos": [
+						0.0,
+						80.0,
+						-170.0
+					],
+					"color": "#e63946",
+					"collide": false
+				}
+			],
+			"dims": [
+				60.0,
+				80.0,
+				400.0
+			],
+			"fill": 0.2
+		},
+		{
+			"id": "sc_jungle_gym",
+			"name": "攀爬架",
+			"name_en": "Jungle Gym",
+			"category": "遊戲場",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						300.0,
+						8.0,
+						8.0
+					],
+					"pos": [
+						0.0,
+						196.0,
+						-146.0
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300.0,
+						8.0,
+						8.0
+					],
+					"pos": [
+						0.0,
+						196.0,
+						146.0
+					],
+					"color": "#3a86ff"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						8.0,
+						300.0
+					],
+					"pos": [
+						0.0,
+						196.0,
+						0.0
+					],
+					"color": "#3a86ff",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						200.0,
+						8.0
+					],
+					"pos": [
+						-146.0,
+						100.0,
+						-146.0
+					],
+					"color": "#ff006e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						200.0,
+						8.0
+					],
+					"pos": [
+						146.0,
+						100.0,
+						-146.0
+					],
+					"color": "#ff006e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						200.0,
+						8.0
+					],
+					"pos": [
+						-146.0,
+						100.0,
+						146.0
+					],
+					"color": "#ff006e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						200.0,
+						8.0
+					],
+					"pos": [
+						146.0,
+						100.0,
+						146.0
+					],
+					"color": "#ff006e"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300.0,
+						8.0,
+						8.0
+					],
+					"pos": [
+						0.0,
+						100.0,
+						0.0
+					],
+					"color": "#ffbe0b",
+					"collide": false
+				}
+			],
+			"dims": [
+				300.0,
+				200.0,
+				300.0
+			],
+			"fill": 0.12
+		},
+		{
+			"id": "sc_spring_rider",
+			"name": "搖搖馬",
+			"name_en": "Spring Rider",
+			"category": "遊戲場",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30.0,
+						40.0,
+						30.0
+					],
+					"pos": [
+						0.0,
+						20.0,
+						0.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						36.0,
+						40.0,
+						76.0
+					],
+					"pos": [
+						0.0,
+						62.0,
+						0.0
+					],
+					"color": "#ff8fab",
+					"tint": true
+				}
+			],
+			"dims": [
+				40.0,
+				90.0,
+				80.0
+			],
+			"fill": 0.4,
+			"colors": [
+				"#ff8fab",
+				"#8ac926",
+				"#ffbe0b",
+				"#3a86ff"
+			],
+			"sfx": "squeak"
+		},
+		{
+			"id": "sc_basketball_hoop",
+			"name": "籃球架",
+			"name_en": "Basketball Hoop",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						160.0,
+						40.0,
+						200.0
+					],
+					"pos": [
+						0.0,
+						20.0,
+						60.0
+					],
+					"color": "#1d4e89"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						20.0,
+						340.0,
+						20.0
+					],
+					"pos": [
+						0.0,
+						210.0,
+						80.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						16.0,
+						16.0,
+						120.0
+					],
+					"pos": [
+						0.0,
+						360.0,
+						10.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						180.0,
+						105.0,
+						6.0
+					],
+					"pos": [
+						0.0,
+						340.0,
+						-50.0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						46.0,
+						4.0,
+						46.0
+					],
+					"pos": [
+						0.0,
+						305.0,
+						-76.0
+					],
+					"color": "#fb8500",
+					"collide": false
+				}
+			],
+			"dims": [
+				180.0,
+				395.0,
+				300.0
+			],
+			"fill": 0.15
+		},
+		{
+			"id": "sc_soccer_goal",
+			"name": "足球門",
+			"name_en": "Soccer Goal",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						10.0,
+						200.0,
+						10.0
+					],
+					"pos": [
+						-245.0,
+						100.0,
+						-70.0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10.0,
+						200.0,
+						10.0
+					],
+					"pos": [
+						245.0,
+						100.0,
+						-70.0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						500.0,
+						10.0,
+						10.0
+					],
+					"pos": [
+						0.0,
+						195.0,
+						-70.0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						500.0,
+						200.0,
+						140.0
+					],
+					"pos": [
+						0.0,
+						100.0,
+						5.0
+					],
+					"color": "#dee2e6",
+					"collide": false
+				}
+			],
+			"dims": [
+				500.0,
+				200.0,
+				150.0
+			],
+			"fill": 0.1
+		},
+		{
+			"id": "sc_flagpole",
+			"name": "旗桿",
+			"name_en": "Flagpole",
+			"category": "校園",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						30.0,
+						40.0,
+						30.0
+					],
+					"pos": [
+						0.0,
+						20.0,
+						0.0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						14.0,
+						960.0,
+						14.0
+					],
+					"pos": [
+						0.0,
+						520.0,
+						0.0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						4.0,
+						90.0,
+						140.0
+					],
+					"pos": [
+						0.0,
+						900.0,
+						72.0
+					],
+					"color": "#3a86ff",
+					"collide": false,
+					"tint": true
+				}
+			],
+			"dims": [
+				30.0,
+				1000.0,
+				30.0
+			],
+			"fill": 0.15,
+			"colors": [
+				"#3a86ff",
+				"#2b9348",
+				"#ffbe0b"
+			],
+			"flavor": "每天早上升旗的旗桿。"
+		},
+		{
+			"id": "sc_bench",
+			"name": "長椅",
+			"name_en": "Bench",
+			"category": "校園",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						180.0,
+						6.0,
+						50.0
+					],
+					"pos": [
+						0.0,
+						42.0,
+						0.0
+					],
+					"color": "#b08968"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10.0,
+						39.0,
+						40.0
+					],
+					"pos": [
+						-75.0,
+						19.5,
+						0.0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10.0,
+						39.0,
+						40.0
+					],
+					"pos": [
+						75.0,
+						19.5,
+						0.0
+					],
+					"color": "#495057"
+				}
+			],
+			"dims": [
+				180.0,
+				45.0,
+				50.0
+			],
+			"fill": 0.3
+		},
+		{
+			"id": "sc_flower_bed",
+			"name": "花圃",
+			"name_en": "Flower Bed",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						200.0,
+						35.0,
+						100.0
+					],
+					"pos": [
+						0.0,
+						17.5,
+						0.0
+					],
+					"color": "#b5523b"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						190.0,
+						12.0,
+						90.0
+					],
+					"pos": [
+						0.0,
+						40.0,
+						0.0
+					],
+					"color": "#52b788",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						26.0,
+						20.0,
+						26.0
+					],
+					"pos": [
+						-60.0,
+						50.0,
+						10.0
+					],
+					"color": "#ff006e",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						26.0,
+						20.0,
+						26.0
+					],
+					"pos": [
+						0.0,
+						50.0,
+						-15.0
+					],
+					"color": "#ffbe0b",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						26.0,
+						20.0,
+						26.0
+					],
+					"pos": [
+						60.0,
+						50.0,
+						12.0
+					],
+					"color": "#c77dff",
+					"collide": false
+				}
+			],
+			"dims": [
+				200.0,
+				50.0,
+				100.0
+			],
+			"fill": 0.5,
+			"flavor": "小朋友輪流澆水的花圃。"
+		},
+		{
+			"id": "sc_hurdle",
+			"name": "跨欄",
+			"name_en": "Hurdle",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120.0,
+						12.0,
+						4.0
+					],
+					"pos": [
+						0.0,
+						84.0,
+						0.0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6.0,
+						84.0,
+						6.0
+					],
+					"pos": [
+						-57.0,
+						42.0,
+						0.0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						6.0,
+						84.0,
+						6.0
+					],
+					"pos": [
+						57.0,
+						42.0,
+						0.0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						120.0,
+						4.0,
+						60.0
+					],
+					"pos": [
+						0.0,
+						2.0,
+						10.0
+					],
+					"color": "#495057"
+				}
+			],
+			"dims": [
+				120.0,
+				90.0,
+				60.0
+			],
+			"fill": 0.15
+		},
+		{
+			"id": "sc_ball_cart",
+			"name": "球車",
+			"name_en": "Ball Cart",
+			"category": "運動",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						80.0,
+						60.0,
+						60.0
+					],
+					"pos": [
+						0.0,
+						50.0,
+						0.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						26.0,
+						26.0,
+						26.0
+					],
+					"pos": [
+						-20.0,
+						82.0,
+						0.0
+					],
+					"color": "#fb8500",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						26.0,
+						26.0,
+						26.0
+					],
+					"pos": [
+						10.0,
+						84.0,
+						8.0
+					],
+					"color": "#fb8500",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						26.0,
+						26.0,
+						26.0
+					],
+					"pos": [
+						22.0,
+						80.0,
+						-8.0
+					],
+					"color": "#f8f9fa",
+					"collide": false
+				}
+			],
+			"dims": [
+				80.0,
+				90.0,
+				60.0
+			],
+			"fill": 0.3,
+			"flavor": "裝滿籃球和排球的球車。"
+		},
+		{
+			"id": "sc_podium",
+			"name": "司令台講桌",
+			"name_en": "Podium",
+			"category": "校園",
+			"shape": "box",
+			"color": "#9c6644",
+			"dims": [
+				100.0,
+				110.0,
+				60.0
+			],
+			"fill": 0.5
+		},
+		{
+			"id": "sc_speaker",
+			"name": "大音箱",
+			"name_en": "PA Speaker",
+			"category": "校園",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						60.0,
+						100.0,
+						60.0
+					],
+					"pos": [
+						0.0,
+						50.0,
+						0.0
+					],
+					"color": "#343a40"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						40.0,
+						4.0,
+						40.0
+					],
+					"pos": [
+						0.0,
+						60.0,
+						-30.0
+					],
+					"color": "#6c757d",
+					"rot": [
+						90,
+						0,
+						0
+					],
+					"collide": false
+				}
+			],
+			"dims": [
+				60.0,
+				100.0,
+				60.0
+			],
+			"fill": 0.5,
+			"sfx": "school_bell"
+		},
+		{
+			"id": "sc_school_drum",
+			"name": "大鼓",
+			"name_en": "Big Drum",
+			"category": "校園",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						100.0,
+						70.0,
+						100.0
+					],
+					"pos": [
+						0.0,
+						55.0,
+						0.0
+					],
+					"color": "#c1121f"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						104.0,
+						4.0,
+						104.0
+					],
+					"pos": [
+						0.0,
+						90.0,
+						0.0
+					],
+					"color": "#f1faee"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						80.0,
+						20.0,
+						80.0
+					],
+					"pos": [
+						0.0,
+						10.0,
+						0.0
+					],
+					"color": "#6b4f3a"
+				}
+			],
+			"dims": [
+				100.0,
+				90.0,
+				100.0
+			],
+			"fill": 0.4,
+			"sfx": "bell"
+		},
+		{
+			"id": "sc_bike_shed",
+			"name": "腳踏車棚",
+			"name_en": "Bike Shed",
+			"category": "校園",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						800.0,
+						10.0,
+						300.0
+					],
+					"pos": [
+						0.0,
+						245.0,
+						0.0
+					],
+					"color": "#2a9d8f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12.0,
+						240.0,
+						12.0
+					],
+					"pos": [
+						-390.0,
+						120.0,
+						-140.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12.0,
+						240.0,
+						12.0
+					],
+					"pos": [
+						390.0,
+						120.0,
+						-140.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12.0,
+						240.0,
+						12.0
+					],
+					"pos": [
+						-390.0,
+						120.0,
+						140.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12.0,
+						240.0,
+						12.0
+					],
+					"pos": [
+						390.0,
+						120.0,
+						140.0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"dims": [
+				800.0,
+				250.0,
+				300.0
+			],
+			"fill": 0.1
+		},
+		{
+			"id": "sc_school_bus",
+			"name": "校車",
+			"name_en": "School Bus",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						250.0,
+						290.0,
+						1000.0
+					],
+					"pos": [
+						0.0,
+						175.0,
+						0.0
+					],
+					"color": "#ffbe0b"
+				}
+			],
+			"dims": [
+				250.0,
+				320.0,
+				1000.0
+			],
+			"fill": 0.35,
+			"model": "sc_school_bus",
+			"sfx": "car_horn",
+			"flavor": "載住比較遠的小朋友上學的校車。"
+		},
+		{
+			"id": "sc_palm",
+			"name": "大王椰子",
+			"name_en": "Royal Palm",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						55.0,
+						1000.0,
+						55.0
+					],
+					"pos": [
+						0.0,
+						500.0,
+						0.0
+					],
+					"color": "#b7a99a"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						60.0,
+						140.0,
+						60.0
+					],
+					"pos": [
+						0.0,
+						1050.0,
+						0.0
+					],
+					"color": "#52b788"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						320.0,
+						110.0,
+						320.0
+					],
+					"pos": [
+						0.0,
+						1140.0,
+						0.0
+					],
+					"color": "#2d6a4f",
+					"collide": false
+				},
+				{
+					"shape": "cone",
+					"dims": [
+						140.0,
+						90.0,
+						140.0
+					],
+					"pos": [
+						0.0,
+						1215.0,
+						0.0
+					],
+					"color": "#40916c",
+					"collide": false
+				}
+			],
+			"dims": [
+				300.0,
+				1200.0,
+				300.0
+			],
+			"fill": 0.15,
+			"flavor": "校門口兩排高高的大王椰子。"
+		},
+		{
+			"id": "sc_camphor",
+			"name": "老樟樹",
+			"name_en": "Old Camphor Tree",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						90.0,
+						300.0,
+						90.0
+					],
+					"pos": [
+						0.0,
+						150.0,
+						0.0
+					],
+					"color": "#6b4f3a"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						550.0,
+						470.0,
+						550.0
+					],
+					"pos": [
+						0.0,
+						510.0,
+						0.0
+					],
+					"color": "#2d6a4f"
+				}
+			],
+			"dims": [
+				550.0,
+				750.0,
+				550.0
+			],
+			"fill": 0.25,
+			"flavor": "校園裡最老的樟樹，夏天下面最涼。"
+		},
+		{
+			"id": "sc_street_tree",
+			"name": "行道樹",
+			"name_en": "Street Tree",
+			"category": "植物",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						36.0,
+						220.0,
+						36.0
+					],
+					"pos": [
+						0.0,
+						110.0,
+						0.0
+					],
+					"color": "#7f5539"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						300.0,
+						300.0,
+						300.0
+					],
+					"pos": [
+						0.0,
+						350.0,
+						0.0
+					],
+					"color": "#40916c"
+				}
+			],
+			"dims": [
+				300.0,
+				500.0,
+				300.0
+			],
+			"fill": 0.25
+		},
+		{
+			"id": "sc_pickup",
+			"name": "小貨車",
+			"name_en": "Pickup Truck",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						170.0,
+						90.0,
+						470.0
+					],
+					"pos": [
+						0.0,
+						65.0,
+						0.0
+					],
+					"color": "#f1faee",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160.0,
+						80.0,
+						160.0
+					],
+					"pos": [
+						0.0,
+						150.0,
+						-140.0
+					],
+					"color": "#f1faee",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150.0,
+						50.0,
+						4.0
+					],
+					"pos": [
+						0.0,
+						160.0,
+						-222.0
+					],
+					"color": "#3d5a80",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64.0,
+						24.0,
+						64.0
+					],
+					"pos": [
+						-78.0,
+						32.0,
+						-150.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64.0,
+						24.0,
+						64.0
+					],
+					"pos": [
+						78.0,
+						32.0,
+						-150.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						64.0,
+						24.0,
+						64.0
+					],
+					"pos": [
+						-78.0,
+						32.0,
+						150.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"dims": [
+				170.0,
+				190.0,
+				470.0
+			],
+			"fill": 0.35,
+			"colors": [
+				"#f1faee",
+				"#3a86ff",
+				"#adb5bd"
+			],
+			"sfx": "car_horn",
+			"flavor": "載文旦、載菜的小貨車。"
+		},
+		{
+			"id": "sc_truck",
+			"name": "卡車",
+			"name_en": "Truck",
+			"category": "交通",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						240.0,
+						260.0,
+						180.0
+					],
+					"pos": [
+						0.0,
+						160.0,
+						-280.0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						250.0,
+						220.0,
+						540.0
+					],
+					"pos": [
+						0.0,
+						170.0,
+						100.0
+					],
+					"color": "#e9ecef"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100.0,
+						30.0,
+						100.0
+					],
+					"pos": [
+						-105.0,
+						50.0,
+						-270.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100.0,
+						30.0,
+						100.0
+					],
+					"pos": [
+						105.0,
+						50.0,
+						-270.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100.0,
+						30.0,
+						100.0
+					],
+					"pos": [
+						-105.0,
+						50.0,
+						250.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						100.0,
+						30.0,
+						100.0
+					],
+					"pos": [
+						105.0,
+						50.0,
+						250.0
+					],
+					"color": "#212529",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"dims": [
+				250.0,
+				320.0,
+				750.0
+			],
+			"fill": 0.35,
+			"colors": [
+				"#e63946",
+				"#3a86ff",
+				"#2b9348"
+			],
+			"sfx": "car_horn"
+		},
+		{
+			"id": "sc_tractor",
+			"name": "耕耘機",
+			"name_en": "Tractor",
+			"category": "農具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						120.0,
+						100.0,
+						200.0
+					],
+					"pos": [
+						0.0,
+						110.0,
+						-60.0
+					],
+					"color": "#d62828"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						140.0,
+						40.0,
+						140.0
+					],
+					"pos": [
+						-80.0,
+						70.0,
+						70.0
+					],
+					"color": "#343a40",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						140.0,
+						40.0,
+						140.0
+					],
+					"pos": [
+						80.0,
+						70.0,
+						70.0
+					],
+					"color": "#343a40",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						70.0,
+						24.0,
+						70.0
+					],
+					"pos": [
+						-60.0,
+						35.0,
+						-130.0
+					],
+					"color": "#343a40",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						70.0,
+						24.0,
+						70.0
+					],
+					"pos": [
+						60.0,
+						35.0,
+						-130.0
+					],
+					"color": "#343a40",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "box",
+					"dims": [
+						90.0,
+						90.0,
+						10.0
+					],
+					"pos": [
+						0.0,
+						190.0,
+						40.0
+					],
+					"color": "#212529",
+					"collide": false
+				}
+			],
+			"dims": [
+				180.0,
+				220.0,
+				380.0
+			],
+			"fill": 0.3,
+			"flavor": "在田裡犁田的耕耘機。"
+		},
+		{
+			"id": "sc_hay_bale",
+			"name": "稻草捲",
+			"name_en": "Rice Straw Bale",
+			"category": "農具",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						150.0,
+						150.0,
+						150.0
+					],
+					"pos": [
+						0.0,
+						75.0,
+						0.0
+					],
+					"color": "#e9c46a",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"dims": [
+				150.0,
+				150.0,
+				150.0
+			],
+			"fill": 0.6,
+			"flavor": "收割後捲起來的稻草。"
+		},
+		{
+			"id": "sc_container",
+			"name": "貨櫃",
+			"name_en": "Shipping Container",
+			"category": "建材",
+			"shape": "box",
+			"color": "#2a9d8f",
+			"dims": [
+				244.0,
+				259.0,
+				606.0
+			],
+			"fill": 0.5,
+			"colors": [
+				"#2a9d8f",
+				"#e76f51",
+				"#3a86ff",
+				"#adb5bd"
+			]
+		},
+		{
+			"id": "sc_shed",
+			"name": "鐵皮工具屋",
+			"name_en": "Tin Tool Shed",
+			"category": "建築",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						400.0,
+						260.0,
+						500.0
+					],
+					"pos": [
+						0.0,
+						130.0,
+						0.0
+					],
+					"color": "#8ecae6"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						420.0,
+						40.0,
+						520.0
+					],
+					"pos": [
+						0.0,
+						280.0,
+						0.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160.0,
+						200.0,
+						4.0
+					],
+					"pos": [
+						0.0,
+						100.0,
+						-251.0
+					],
+					"color": "#6c757d",
+					"collide": false
+				}
+			],
+			"dims": [
+				400.0,
+				300.0,
+				500.0
+			],
+			"fill": 0.4
+		},
+		{
+			"id": "sc_stall",
+			"name": "攤販車",
+			"name_en": "Food Cart",
+			"category": "街道",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						150.0,
+						100.0,
+						240.0
+					],
+					"pos": [
+						0.0,
+						70.0,
+						0.0
+					],
+					"color": "#f8f9fa"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						150.0,
+						10.0,
+						260.0
+					],
+					"pos": [
+						0.0,
+						215.0,
+						0.0
+					],
+					"color": "#e63946",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						100.0,
+						8.0
+					],
+					"pos": [
+						-70.0,
+						165.0,
+						-120.0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						8.0,
+						100.0,
+						8.0
+					],
+					"pos": [
+						70.0,
+						165.0,
+						120.0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						40.0,
+						10.0,
+						40.0
+					],
+					"pos": [
+						-80.0,
+						20.0,
+						60.0
+					],
+					"color": "#495057",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						40.0,
+						10.0,
+						40.0
+					],
+					"pos": [
+						80.0,
+						20.0,
+						60.0
+					],
+					"color": "#495057",
+					"rot": [
+						0,
+						0,
+						90
+					]
+				}
+			],
+			"dims": [
+				150.0,
+				220.0,
+				260.0
+			],
+			"fill": 0.3,
+			"colors": [
+				"#e63946",
+				"#ffbe0b",
+				"#2b9348"
+			],
+			"sfx": "snack",
+			"flavor": "放學時賣雞蛋糕的攤車。"
+		},
+		{
+			"id": "sc_bus_shelter",
+			"name": "公車候車亭",
+			"name_en": "Bus Shelter",
+			"category": "街道",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						420.0,
+						12.0,
+						170.0
+					],
+					"pos": [
+						0.0,
+						274.0,
+						0.0
+					],
+					"color": "#1d4e89"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						400.0,
+						230.0,
+						6.0
+					],
+					"pos": [
+						0.0,
+						150.0,
+						75.0
+					],
+					"color": "#caf0f8"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10.0,
+						268.0,
+						10.0
+					],
+					"pos": [
+						-195.0,
+						134.0,
+						70.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						10.0,
+						268.0,
+						10.0
+					],
+					"pos": [
+						195.0,
+						134.0,
+						70.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						300.0,
+						8.0,
+						40.0
+					],
+					"pos": [
+						0.0,
+						45.0,
+						50.0
+					],
+					"color": "#b08968"
+				}
+			],
+			"dims": [
+				400.0,
+				280.0,
+				160.0
+			],
+			"fill": 0.12
+		},
+		{
+			"id": "sc_traffic_light",
+			"name": "紅綠燈",
+			"name_en": "Traffic Light",
+			"category": "街道",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						24.0,
+						550.0,
+						24.0
+					],
+					"pos": [
+						0.0,
+						275.0,
+						0.0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12.0,
+						12.0,
+						260.0
+					],
+					"pos": [
+						0.0,
+						520.0,
+						-130.0
+					],
+					"color": "#495057"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						30.0,
+						90.0,
+						30.0
+					],
+					"pos": [
+						0.0,
+						470.0,
+						-250.0
+					],
+					"color": "#212529"
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						16.0,
+						16.0,
+						16.0
+					],
+					"pos": [
+						0.0,
+						495.0,
+						-266.0
+					],
+					"color": "#e63946",
+					"collide": false
+				},
+				{
+					"shape": "sphere",
+					"dims": [
+						16.0,
+						16.0,
+						16.0
+					],
+					"pos": [
+						0.0,
+						445.0,
+						-266.0
+					],
+					"color": "#2b9348",
+					"collide": false
+				}
+			],
+			"dims": [
+				40.0,
+				550.0,
+				300.0
+			],
+			"fill": 0.1
+		},
+		{
+			"id": "sc_street_lamp",
+			"name": "路燈",
+			"name_en": "Street Lamp",
+			"category": "街道",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						20.0,
+						700.0,
+						20.0
+					],
+					"pos": [
+						0.0,
+						350.0,
+						0.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						12.0,
+						12.0,
+						140.0
+					],
+					"pos": [
+						0.0,
+						690.0,
+						-70.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						36.0,
+						14.0,
+						50.0
+					],
+					"pos": [
+						0.0,
+						680.0,
+						-140.0
+					],
+					"color": "#fff3b0",
+					"collide": false
+				}
+			],
+			"dims": [
+				40.0,
+				700.0,
+				160.0
+			],
+			"fill": 0.1
+		},
+		{
+			"id": "sc_big_rock",
+			"name": "景觀石",
+			"name_en": "Garden Rock",
+			"category": "校園",
+			"shape": "sphere",
+			"color": "#8d99ae",
+			"dims": [
+				260.0,
+				180.0,
+				200.0
+			],
+			"fill": 0.7,
+			"flavor": "刻著校訓的大石頭。"
+		},
+		{
+			"id": "sc_pavilion",
+			"name": "涼亭",
+			"name_en": "Pavilion",
+			"category": "校園",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cone",
+					"dims": [
+						560.0,
+						140.0,
+						560.0
+					],
+					"pos": [
+						0.0,
+						350.0,
+						0.0
+					],
+					"color": "#c1121f"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						24.0,
+						280.0,
+						24.0
+					],
+					"pos": [
+						-220.0,
+						140.0,
+						-220.0
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						24.0,
+						280.0,
+						24.0
+					],
+					"pos": [
+						220.0,
+						140.0,
+						-220.0
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						24.0,
+						280.0,
+						24.0
+					],
+					"pos": [
+						-220.0,
+						140.0,
+						220.0
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						24.0,
+						280.0,
+						24.0
+					],
+					"pos": [
+						220.0,
+						140.0,
+						220.0
+					],
+					"color": "#9c6644"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						120.0,
+						70.0,
+						120.0
+					],
+					"pos": [
+						0.0,
+						35.0,
+						0.0
+					],
+					"color": "#adb5bd"
+				}
+			],
+			"dims": [
+				500.0,
+				420.0,
+				500.0
+			],
+			"fill": 0.12
+		},
+		{
+			"id": "sc_water_tower",
+			"name": "高架水塔",
+			"name_en": "Water Tower",
+			"category": "建築",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "cylinder",
+					"dims": [
+						220.0,
+						200.0,
+						220.0
+					],
+					"pos": [
+						0.0,
+						450.0,
+						0.0
+					],
+					"color": "#adb5bd"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14.0,
+						350.0,
+						14.0
+					],
+					"pos": [
+						-90.0,
+						175.0,
+						-90.0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14.0,
+						350.0,
+						14.0
+					],
+					"pos": [
+						90.0,
+						175.0,
+						-90.0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14.0,
+						350.0,
+						14.0
+					],
+					"pos": [
+						-90.0,
+						175.0,
+						90.0
+					],
+					"color": "#6c757d"
+				},
+				{
+					"shape": "box",
+					"dims": [
+						14.0,
+						350.0,
+						14.0
+					],
+					"pos": [
+						90.0,
+						175.0,
+						90.0
+					],
+					"color": "#6c757d"
+				}
+			],
+			"dims": [
+				220.0,
+				550.0,
+				220.0
+			],
+			"fill": 0.2
+		},
+		{
+			"id": "sc_house",
+			"name": "平房",
+			"name_en": "Single-story House",
+			"category": "建築",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						900.0,
+						380.0,
+						800.0
+					],
+					"pos": [
+						0.0,
+						190.0,
+						0.0
+					],
+					"color": "#fefae0",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						940.0,
+						40.0,
+						840.0
+					],
+					"pos": [
+						0.0,
+						400.0,
+						0.0
+					],
+					"color": "#b56576"
+				},
+				{
+					"shape": "cylinder",
+					"dims": [
+						140.0,
+						120.0,
+						140.0
+					],
+					"pos": [
+						250.0,
+						480.0,
+						200.0
+					],
+					"color": "#adb5bd",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						160.0,
+						230.0,
+						4.0
+					],
+					"pos": [
+						0.0,
+						115.0,
+						-402.0
+					],
+					"color": "#9c6644",
+					"collide": false
+				},
+				{
+					"shape": "box",
+					"dims": [
+						220.0,
+						130.0,
+						4.0
+					],
+					"pos": [
+						-280.0,
+						200.0,
+						-402.0
+					],
+					"color": "#a2d2ff",
+					"collide": false
+				}
+			],
+			"dims": [
+				900.0,
+				450.0,
+				800.0
+			],
+			"fill": 0.2,
+			"colors": [
+				"#fefae0",
+				"#f1faee",
+				"#ffe5d9",
+				"#e9f5db"
+			]
+		},
+		{
+			"id": "sc_shop",
+			"name": "街角商店",
+			"name_en": "Corner Shop",
+			"category": "建築",
+			"shape": "parts",
+			"parts": [
+				{
+					"shape": "box",
+					"dims": [
+						800.0,
+						700.0,
+						1200.0
+					],
+					"pos": [
+						0.0,
+						350.0,
+						0.0
+					],
+					"color": "#e9ecef",
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						810.0,
+						90.0,
+						12.0
+					],
+					"pos": [
+						0.0,
+						380.0,
+						-606.0
+					],
+					"color": "#2a9d8f",
+					"collide": false,
+					"tint": true
+				},
+				{
+					"shape": "box",
+					"dims": [
+						600.0,
+						240.0,
+						4.0
+					],
+					"pos": [
+						0.0,
+						130.0,
+						-602.0
+					],
+					"color": "#a2d2ff",
+					"collide": false
+				}
+			],
+			"dims": [
+				800.0,
+				720.0,
+				1200.0
+			],
+			"fill": 0.2,
+			"colors": [
+				"#e9ecef",
+				"#fff1e6",
+				"#e2ece9"
+			],
+			"pickable": false
+		}
+	]
+}
