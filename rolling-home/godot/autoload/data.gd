@@ -1,6 +1,10 @@
 extends Node
 ## 資料中心：載入所有資料驅動設定（物件、關卡、場景配置）。
 ## 所有尺寸單位為公分，世界座標 1 單位 = 1 公分。
+##
+## 物件定義分成多個檔案：data/items.json 是共用物件，各關卡專屬的物件放在 data/items/*.json，
+## 由 stages.json 的 item_files 列出（匯出後的網頁版不一定能列目錄，所以明確列出）。
+## 關卡設定可以寫在 stages.json，也可以寫在場景配置檔的 "stage" 區塊；stages.json 有寫的欄位優先。
 
 const ITEMS_PATH := "res://data/items.json"
 const STAGES_PATH := "res://data/stages.json"
@@ -22,13 +26,41 @@ func _exit_tree() -> void:
 func reload() -> void:
 	items.clear()
 	_levels.clear()
-	var item_data: Variant = load_json(ITEMS_PATH)
-	if item_data is Dictionary:
-		for def in item_data.get("items", []):
-			items[def["id"]] = def
 	var stage_data: Variant = load_json(STAGES_PATH)
+	var files: Array = [ITEMS_PATH]
 	if stage_data is Dictionary:
-		stages = stage_data.get("stages", [])
+		for f in stage_data.get("item_files", []):
+			if not files.has(f):
+				files.append(f)
+	for path in files:
+		# 還沒做好的關卡物件檔先略過
+		if path != ITEMS_PATH and not FileAccess.file_exists(path):
+			continue
+		var item_data: Variant = load_json(path)
+		if item_data is Dictionary:
+			for def in item_data.get("items", []):
+				if items.has(def["id"]):
+					push_warning("物件 id 重複：%s（%s）" % [def["id"], path])
+				items[def["id"]] = def
+	stages = []
+	if stage_data is Dictionary:
+		for s in stage_data.get("stages", []):
+			stages.append(_merge_stage(s))
+
+
+## 把場景配置檔裡的 "stage" 區塊併入關卡設定（stages.json 有寫的欄位優先）。
+func _merge_stage(s: Dictionary) -> Dictionary:
+	var path: String = s.get("level", "")
+	if path.is_empty() or not FileAccess.file_exists(path):
+		return s
+	var level := get_level(path)
+	var extra: Dictionary = level.get("stage", {})
+	if extra.is_empty():
+		return s
+	var merged := extra.duplicate(true)
+	for k in s:
+		merged[k] = s[k]
+	return merged
 
 
 func get_item(id: String) -> Dictionary:
@@ -44,6 +76,11 @@ func get_stage(id: String) -> Dictionary:
 			return s
 	push_warning("未定義的關卡：%s" % id)
 	return {}
+
+
+## 選關畫面與「下一關」用：不含隱藏的測試關卡。
+func visible_stages() -> Array:
+	return stages.filter(func(s): return not s.get("hidden", false))
 
 
 func get_level(path: String) -> Dictionary:

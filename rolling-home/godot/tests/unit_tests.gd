@@ -46,11 +46,19 @@ func _test_data() -> void:
 			check(not (def.get("parts", []) as Array).is_empty(), "物件 %s 的 parts 為空" % id)
 	var playable := 0
 	for s in Data.stages:
-		check(float(s["goal_cm"]) > float(s["start_cm"]), "關卡 %s 目標需大於起始" % s["id"])
-		if not s.get("playable", false):
+		# 場景配置檔還沒做好的關卡先略過
+		if not Game.is_stage_playable(s["id"]):
 			continue
+		check(float(s["goal_cm"]) > float(s["start_cm"]), "關卡 %s 目標需大於起始" % s["id"])
 		playable += 1
 		var level := Data.get_level(s["level"])
+		check(s.has("time_sec") and (s.has("start") or level.has("start")), "關卡 %s 需要 time_sec 與 start" % s["id"])
+		for st in level.get("stairs", []):
+			check(st.has("from") and st.has("to"), "關卡 %s 的樓梯缺少 from/to" % s["id"])
+			check(absf(float(st["to"][1]) - float(st["from"][1])) > 0.1, "關卡 %s 的樓梯 %s 沒有高低差" % [s["id"], st.get("name", "")])
+		for d in level.get("decor", []):
+			if d.has("item"):
+				check(Data.items.has(d["item"]), "裝飾引用未定義物件 %s" % d["item"])
 		check(not level.is_empty(), "關卡 %s 場景檔可讀" % s["id"])
 		var zones: Array = []
 		for z in level.get("spawns", []):

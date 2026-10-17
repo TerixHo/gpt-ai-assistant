@@ -1,0 +1,341 @@
+{
+	"_note": "測試用沙盒：檢查新地面材質、積木樓梯、花瓣與裝飾。",
+	"id": "sandbox",
+	"name": "沙盒",
+	"areas": [
+		{
+			"name": "沙盒",
+			"rect": [
+				0,
+				0,
+				800,
+				600
+			]
+		}
+	],
+	"start": {
+		"pos": [
+			100,
+			1,
+			100
+		],
+		"yaw_deg": 180
+	},
+	"rescue": {
+		"pos": [
+			400,
+			1,
+			300
+		],
+		"yaw_deg": 0
+	},
+	"env": {
+		"sky": "#bfe6ff",
+		"fog_color": "#e6f2ff",
+		"fog_per_d": 0.0
+	},
+	"floors": [
+		{
+			"name": "terrazzo",
+			"rect": [
+				0,
+				0,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "terrazzo",
+			"color": "#e8e2d6",
+			"repeat": 60
+		},
+		{
+			"name": "mosaic",
+			"rect": [
+				200,
+				0,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "mosaic",
+			"color": "#bde0fe",
+			"repeat": 60
+		},
+		{
+			"name": "asphalt",
+			"rect": [
+				400,
+				0,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "asphalt",
+			"color": "#4a4e54",
+			"repeat": 60
+		},
+		{
+			"name": "grass",
+			"rect": [
+				600,
+				0,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "grass",
+			"color": "#7cb867",
+			"repeat": 60
+		},
+		{
+			"name": "paddy",
+			"rect": [
+				0,
+				200,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "paddy",
+			"color": "#7dbb4f",
+			"repeat": 60
+		},
+		{
+			"name": "water",
+			"rect": [
+				200,
+				200,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "water",
+			"color": "#4ea8de",
+			"repeat": 60
+		},
+		{
+			"name": "concrete",
+			"rect": [
+				400,
+				200,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "concrete",
+			"color": "#c9c9c4",
+			"repeat": 60
+		},
+		{
+			"name": "paving",
+			"rect": [
+				600,
+				200,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "paving",
+			"color": "#d4a373",
+			"repeat": 60
+		},
+		{
+			"name": "brick",
+			"rect": [
+				0,
+				400,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "brick",
+			"color": "#b5523b",
+			"repeat": 60
+		},
+		{
+			"name": "gravel",
+			"rect": [
+				200,
+				400,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "gravel",
+			"color": "#9a9a96",
+			"repeat": 60
+		},
+		{
+			"name": "soil",
+			"rect": [
+				400,
+				400,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "soil",
+			"color": "#8d6e4f",
+			"repeat": 60
+		},
+		{
+			"name": "roof_tile",
+			"rect": [
+				600,
+				400,
+				200,
+				200
+			],
+			"y": 0,
+			"pattern": "roof_tile",
+			"color": "#c4553b",
+			"repeat": 60
+		}
+	],
+	"walls": [],
+	"blocks": [
+		{
+			"name": "桌子",
+			"pos": [
+				500,
+				0,
+				100
+			],
+			"size": [
+				100,
+				72,
+				60
+			],
+			"color": "#c9a27e"
+		}
+	],
+	"stairs": [
+		{
+			"name": "樂高",
+			"from": [
+				500,
+				0,
+				250
+			],
+			"to": [
+				500,
+				72,
+				130
+			],
+			"width": 30,
+			"step": 3,
+			"style": "lego"
+		},
+		{
+			"name": "書",
+			"from": [
+				380,
+				0,
+				100
+			],
+			"to": [
+				450,
+				72,
+				100
+			],
+			"width": 24,
+			"step": 4,
+			"style": "books"
+		},
+		{
+			"name": "木積木",
+			"from": [
+				620,
+				0,
+				100
+			],
+			"to": [
+				550,
+				72,
+				100
+			],
+			"width": 24,
+			"step": 6,
+			"style": "blocks",
+			"colors": [
+				"#deb887",
+				"#d2a679",
+				"#e6c79c"
+			]
+		}
+	],
+	"ramps": [],
+	"decor": [
+		{
+			"name": "山",
+			"shape": "cone",
+			"size": [
+				400,
+				300,
+				400
+			],
+			"pos": [
+				300,
+				0,
+				-500
+			],
+			"color": "#6a994e"
+		}
+	],
+	"petals": [
+		{
+			"name": "櫻花",
+			"pos": [
+				200,
+				0,
+				450
+			],
+			"size": [
+				200,
+				150,
+				200
+			],
+			"color": "#ffc8dd",
+			"amount": 60,
+			"petal": 2.0
+		}
+	],
+	"placements": [
+		{
+			"item": "cat",
+			"pos": [
+				150,
+				0,
+				500
+			],
+			"rot": 0
+		}
+	],
+	"spawns": [
+		{
+			"zone": "a",
+			"rect": [
+				0,
+				0,
+				400,
+				200
+			],
+			"y": 0,
+			"items": {
+				"marble": 20,
+				"crayon": 10
+			}
+		}
+	],
+	"gates": [],
+	"stage": {
+		"start_cm": 6,
+		"goal_cm": 30,
+		"time_sec": 300,
+		"seed": 1,
+		"music": "home",
+		"intro": "沙盒",
+		"zones": [],
+		"grades": []
+	}
+}

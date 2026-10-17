@@ -1082,7 +1082,29 @@ RECIPES = {
 }
 
 
+def load_recipe_modules():
+    """載入 tools/blender/recipes/*.py 的配方（各關卡的模型分檔放，彼此不衝突）。
+
+    配方模組用 `from generate_props import box, cylinder, ...` 取得共用工具，並提供 RECIPES 字典。
+    先把目前執行中的模組登記成 generate_props，配方模組才會共用同一份材質快取。
+    """
+    import importlib.util
+    sys.modules.setdefault("generate_props", sys.modules[__name__])
+    recipe_dir = Path(__file__).resolve().parent / "recipes"
+    for f in sorted(recipe_dir.glob("*.py")):
+        if f.name.startswith("_"):
+            continue
+        spec = importlib.util.spec_from_file_location(f"recipes_{f.stem}", f)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        for key, fn in getattr(mod, "RECIPES", {}).items():
+            if key in RECIPES:
+                print(f"[blender] 配方名稱重複，以 {f.name} 為準：{key}")
+            RECIPES[key] = fn
+
+
 def main(argv):
+    load_recipe_modules()
     out_dir = Path(argv[0]) if argv else DEFAULT_OUT
     names = argv[1:] or list(RECIPES)
     for name in names:

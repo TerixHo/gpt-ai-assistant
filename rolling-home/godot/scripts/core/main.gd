@@ -260,15 +260,18 @@ func show_stage_select() -> void:
 	var box := _column(root, 680)
 	box.add_child(_label("選關卡", 52))
 	var first: Button = null
-	for s in Data.stages:
-		var best := float(Game.best.get(s["id"], 0.0))
-		var line := "%s　%s → %s　%s" % [s["name"], KMath.format_size(float(s["start_cm"])), KMath.format_size(float(s["goal_cm"])), KMath.format_time(float(s["time_sec"]))]
-		if best > 0.0:
-			line += "　最佳 %s" % KMath.format_size(best)
+	for s in Data.visible_stages():
 		var id: String = s["id"]
+		var playable := Game.is_stage_playable(id)
+		var line: String = s["name"]
+		if playable:
+			line = "%s　%s → %s　%s" % [s["name"], KMath.format_size(float(s["start_cm"])), KMath.format_size(float(s["goal_cm"])), KMath.format_time(float(s["time_sec"]))]
+			var best := float(Game.best.get(id, 0.0))
+			if best > 0.0:
+				line += "　最佳 %s" % KMath.format_size(best)
 		var b := _button(line, func(): start_stage(id), 20)
 		b.custom_minimum_size = Vector2(660, 48)
-		if not s.get("playable", false):
+		if not playable:
 			b.disabled = true
 			b.text = "%s　（規劃中）" % s["name"]
 		box.add_child(b)

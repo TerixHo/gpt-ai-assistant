@@ -1,9 +1,39 @@
 {
-	"_note": "給小學生的關卡設計：從 1.2 公分（只黏得起 6 到 8mm 的小玻璃珠）開始，同一棟房子逐關放大。節奏參考 2004 原作的成長曲線，場景、物件與命名皆為原創。playable=false 為規劃中。",
+	"_note": "第四版關卡：故事從宜蘭冬山鄉開始。第 1 關在槿寶家（單層平房），第 2 關是上學的路，第 3 關是小學與街區，第 4 關一路滾到冬山火車站。各關的詳細設定（起點、目標、時間、門檻、評語）寫在場景配置檔的 stage 區塊；hidden 的舊版日式房子關卡只留給自動測試用。",
+	"item_files": [
+		"res://data/items/home.json",
+		"res://data/items/street.json",
+		"res://data/items/school.json",
+		"res://data/items/station.json"
+	],
 	"stages": [
 		{
+			"id": "home",
+			"name": "1. 槿寶的家",
+			"playable": true,
+			"level": "res://data/levels/dongshan_home.json"
+		},
+		{
+			"id": "street",
+			"name": "2. 上學的路",
+			"playable": true,
+			"level": "res://data/levels/street.json"
+		},
+		{
+			"id": "school",
+			"name": "3. 小學與街區",
+			"playable": true,
+			"level": "res://data/levels/school.json"
+		},
+		{
+			"id": "station",
+			"name": "4. 滾到冬山火車站",
+			"playable": true,
+			"level": "res://data/levels/station.json"
+		},
+		{
 			"id": "home_1",
-			"name": "1. 書桌上的小珠珠",
+			"name": "舊版 1. 書桌上的小珠珠",
 			"playable": true,
 			"level": "res://data/levels/home.json",
 			"zones": [
@@ -60,11 +90,12 @@
 					"min_ratio": 1.9,
 					"text": "星婆婆：太厲害了！這顆星星要掛在最亮的地方！"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"id": "home_2",
-			"name": "2. 客廳大冒險",
+			"name": "舊版 2. 客廳大冒險",
 			"playable": true,
 			"level": "res://data/levels/home.json",
 			"zones": [
@@ -126,11 +157,12 @@
 					"min_ratio": 1.9,
 					"text": "星婆婆：太厲害了！這顆星星亮晶晶！"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
 			"id": "home_3",
-			"name": "3. 全家走透透",
+			"name": "舊版 3. 全家走透透",
 			"playable": true,
 			"level": "res://data/levels/home.json",
 			"zones": [
@@ -199,47 +231,15 @@
 					"min_ratio": 1.9,
 					"text": "星婆婆：小狗也黏起來了？你是全世界最會滾的小朋友！"
 				}
-			]
+			],
+			"hidden": true
 		},
 		{
-			"id": "street",
-			"name": "4. 家門前的巷子",
-			"playable": false,
-			"start_cm": 20,
-			"goal_cm": 200,
-			"time_sec": 600
-		},
-		{
-			"id": "park",
-			"name": "5. 公園",
-			"playable": false,
-			"start_cm": 50,
-			"goal_cm": 500,
-			"time_sec": 600
-		},
-		{
-			"id": "school",
-			"name": "6. 學校",
-			"playable": false,
-			"start_cm": 100,
-			"goal_cm": 2000,
-			"time_sec": 720
-		},
-		{
-			"id": "town",
-			"name": "7. 小鎮",
-			"playable": false,
-			"start_cm": 300,
-			"goal_cm": 10000,
-			"time_sec": 900
-		},
-		{
-			"id": "island",
-			"name": "8. 整座島",
-			"playable": false,
-			"start_cm": 1000,
-			"goal_cm": 100000,
-			"time_sec": 1200
+			"id": "sandbox",
+			"name": "沙盒",
+			"playable": true,
+			"hidden": true,
+			"level": "res://data/levels/_sandbox.json"
 		}
 	]
 }

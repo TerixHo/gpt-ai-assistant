@@ -1,7 +1,17 @@
 class_name LevelBuilder
 ## 依關卡配置檔（data/levels/*.json）建出整個場景：
-## 地板、牆（含門洞）、斜坡與台階、家具、隨機散布的物件、尺寸門檻、區域名稱。
+## 地板、牆（含門洞）、斜坡與台階、積木樓梯、家具、隨機散布的物件、尺寸門檻、區域名稱、
+## 背景裝飾（不碰撞）、飄落的花瓣。
 ## 座標與尺寸單位皆為公分；x 往東、z 往南、y 往上。
+##
+## 配置檔欄位（都可省略）：
+##   floors / walls / blocks / ramps：建物（見各 _build_* 說明）
+##   stairs：積木樓梯，外觀是一階一階的積木，碰撞是平滑斜坡（任何大小的球都爬得上去）
+##   decor：只有外觀、不碰撞的裝飾（遠山、雲、田裡的稻子）
+##   petals：花瓣飄落的範圍
+##   placements / spawns / gates / areas / start
+##   rescue：卡住時「回到中間」的位置 {"pos": [x, y, z], "yaw_deg": 角度}，省略時用 start
+##   env：天空與霧 {"sky": "#bfe6ff", "fog_color": "#dfefff", "fog_per_d": 0.0}（由 Stage 讀取）
 
 const WALL_COLOR := "#f3ede0"
 const BASEBOARD_COLOR := "#b08a63"
@@ -23,6 +33,12 @@ static func build(level: Dictionary, world_root: Node3D, items_root: Node3D, ena
 		_build_block(b, statics)
 	for r in level.get("ramps", []):
 		_build_ramp(r, statics)
+	for st in level.get("stairs", []):
+		_build_stairs(st, statics)
+	for d in level.get("decor", []):
+		_build_decor(d, statics)
+	for pt in level.get("petals", []):
+		_build_petals(pt, statics)
 
 	# 家具與手動擺放的物件
 	var footprints: Array[Rect2] = []
@@ -47,6 +63,7 @@ static func build(level: Dictionary, world_root: Node3D, items_root: Node3D, ena
 		"gates": gates,
 		"areas": level.get("areas", []),
 		"start": level.get("start", {}),
+		"rescue": level.get("rescue", level.get("start", {})),
 		"spawned": spawned,
 	}
 
@@ -161,6 +178,225 @@ static func _build_ramp(r: Dictionary, parent: Node3D) -> void:
 	mi.material_override = PropFactory.material(r.get("color", "#d9b26f"))
 	body.add_child(mi)
 	parent.add_child(body)
+
+
+## 積木樓梯：{"from": 底部起點（地面）, "to": 頂端終點（平台邊緣）, "width": 寬, "step": 每階高度（預設 3）,
+##   "colors": [顏色…], "style": "lego"（有凸點的積木，預設）、"books"（一疊書）或 "blocks"（素面木頭積木）}
+## 碰撞是一塊實心楔形，斜面剛好通過每一階的前緣，球滾上去時看起來是踩在階梯邊上。
+static func _build_stairs(st: Dictionary, parent: Node3D) -> void:
+	var a := KMath.vec3(st["from"])
+	var b := KMath.vec3(st["to"])
+	var width := float(st.get("width", 20.0))
+	var rise := b.y - a.y
+	var flat := Vector3(b.x - a.x, 0.0, b.z - a.z)
+	var run := flat.length()
+	if run < 0.5 or absf(rise) < 0.1:
+		return
+	# 往下走的樓梯：把起終點對調，一律由低往高建
+	if rise < 0.0:
+		var tmp := a
+		a = b
+		b = tmp
+		rise = -rise
+		flat = -flat
+	var fwd := flat / run
+	var side := Vector3.UP.cross(fwd).normalized()
+	var body := StaticBody3D.new()
+	body.name = "Stairs_%s" % st.get("name", "")
+	body.collision_layer = KMath.LAYER_WORLD
+	body.collision_mask = 0
+	# 本地座標：x 沿寬度、y 往上、z 沿前進方向（0 在起點）
+	body.transform = Transform3D(Basis(side, Vector3.UP, fwd), a)
+	var hw := width * 0.5
+	var cs := CollisionShape3D.new()
+	var wedge := ConvexPolygonShape3D.new()
+	wedge.points = PackedVector3Array([
+		Vector3(-hw, 0, 0), Vector3(hw, 0, 0),
+		Vector3(-hw, 0, run), Vector3(hw, 0, run),
+		Vector3(-hw, rise, run), Vector3(hw, rise, run)])
+	cs.shape = wedge
+	body.add_child(cs)
+	var mi := MeshInstance3D.new()
+	mi.mesh = _stairs_mesh(run, rise, width, st)
+	mi.material_override = _vertex_color_material()
+	body.add_child(mi)
+	parent.add_child(body)
+
+
+const LEGO_COLORS := ["#e63946", "#ffd60a", "#3a86ff", "#06d6a0", "#ff8fab", "#f77f00", "#8338ec"]
+const BOOK_COLORS := ["#e9c46a", "#f4a261", "#2a9d8f", "#e76f51", "#8ecae6", "#b5838d", "#90be6d"]
+
+
+static func _stairs_mesh(run: float, rise: float, width: float, st: Dictionary) -> ArrayMesh:
+	var style: String = st.get("style", "lego")
+	var step_h := float(st.get("step", 3.0))
+	var n := maxi(2, int(round(rise / step_h)))
+	var colors: Array = st.get("colors", BOOK_COLORS if style == "books" else LEGO_COLORS)
+	var hw := width * 0.5
+	var surf := SurfaceTool.new()
+	surf.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for i in range(1, n + 1):
+		# 第 i 階：前緣在 run * i / (n + 1) 的位置、高度 rise * i / n。最後一階一路延伸到終點
+		var z0 := run * float(i) / float(n + 1)
+		var z1 := run * float(i + 1) / float(n + 1) if i < n else run
+		var h := rise * float(i) / float(n)
+		var c := KMath.color(colors[(i - 1) % colors.size()])
+		var inset := 0.0
+		if style == "books":
+			# 書本大小不一，左右稍微錯開
+			inset = width * 0.04 * float((i * 7) % 3)
+		_add_box(surf, Vector3(-hw + inset, 0.0, z0), Vector3(hw - inset * 0.5, h, z1), c)
+		if style == "lego":
+			# 每階頂面兩排凸點
+			var stud_r := clampf(minf(z1 - z0, width) * 0.16, 0.25, 4.0)
+			var stud_h := stud_r * 0.6
+			var cols := clampi(int(width / (stud_r * 4.0)), 1, 6)
+			for k in cols:
+				var x := -hw + width * (float(k) + 0.5) / float(cols)
+				_add_cylinder(surf, Vector3(x, h, (z0 + z1) * 0.5), stud_r, stud_h, c.lightened(0.08))
+	surf.generate_normals()
+	return surf.commit()
+
+
+static func _add_box(surf: SurfaceTool, lo: Vector3, hi: Vector3, c: Color) -> void:
+	var p := [
+		Vector3(lo.x, lo.y, lo.z), Vector3(hi.x, lo.y, lo.z), Vector3(hi.x, hi.y, lo.z), Vector3(lo.x, hi.y, lo.z),
+		Vector3(lo.x, lo.y, hi.z), Vector3(hi.x, lo.y, hi.z), Vector3(hi.x, hi.y, hi.z), Vector3(lo.x, hi.y, hi.z)]
+	# 每面兩個三角形（逆時針朝外）；側面稍微暗一點，看得出一階一階
+	var faces := [[3, 2, 6, 7, 1.0], [0, 3, 7, 4, 0.82], [1, 5, 6, 2, 0.82], [0, 1, 2, 3, 0.9], [4, 7, 6, 5, 0.9]]
+	for f in faces:
+		var col := c.darkened(1.0 - float(f[4]))
+		surf.set_smooth_group(-1)
+		for idx in [0, 1, 2, 0, 2, 3]:
+			surf.set_color(col)
+			surf.add_vertex(p[int(f[idx])])
+
+
+static func _add_cylinder(surf: SurfaceTool, base: Vector3, r: float, h: float, c: Color) -> void:
+	var seg := 8
+	for i in seg:
+		var a0 := TAU * float(i) / seg
+		var a1 := TAU * float(i + 1) / seg
+		var p0 := base + Vector3(cos(a0) * r, 0, sin(a0) * r)
+		var p1 := base + Vector3(cos(a1) * r, 0, sin(a1) * r)
+		var top := Vector3(0, h, 0)
+		surf.set_smooth_group(-1)
+		for v in [p0, p1 + top, p1, p0, p0 + top, p1 + top]:
+			surf.set_color(c.darkened(0.12))
+			surf.add_vertex(v)
+		for v in [base + top, p1 + top, p0 + top]:
+			surf.set_color(c)
+			surf.add_vertex(v)
+
+
+static var _vc_material: StandardMaterial3D
+
+
+static func _vertex_color_material() -> StandardMaterial3D:
+	if _vc_material == null:
+		_vc_material = StandardMaterial3D.new()
+		_vc_material.vertex_color_use_as_albedo = true
+		_vc_material.vertex_color_is_srgb = true
+		_vc_material.roughness = 0.85
+		_vc_material.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
+	return _vc_material
+
+
+## 裝飾：只有外觀、不碰撞。
+##   {"shape": "box"/"cylinder"/"cone"/"sphere", "size": [寬, 高, 深], "pos": 底面中心, "color": "#", "rot": 角度或 [x, y, z]}
+##   {"item": 物件 id, "pos": [...], "rot": 角度, "scale": 倍率}：借用物件的外觀
+static func _build_decor(d: Dictionary, parent: Node3D) -> void:
+	var node: Node3D
+	if d.has("item"):
+		var def := Data.get_item(d["item"])
+		if def.is_empty():
+			return
+		node = PropFactory.build(def, d.get("color", ""))["visual"]
+		node.scale = Vector3.ONE * float(d.get("scale", 1.0))
+	else:
+		var size := KMath.vec3(d.get("size"), Vector3.ONE * 10.0)
+		var mi := MeshInstance3D.new()
+		mi.mesh = PropFactory._mesh(d.get("shape", "box"), size)
+		mi.position = Vector3(0, size.y * 0.5, 0)
+		if d.has("pattern"):
+			mi.material_override = ProcTex.floor_material(d["pattern"], d.get("color", "#cccccc"), float(d.get("repeat", 90.0)))
+		else:
+			mi.material_override = PropFactory.material(d.get("color", "#cccccc"))
+		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF if d.get("no_shadow", false) else GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		node = Node3D.new()
+		node.add_child(mi)
+	node.name = "Decor_%s" % d.get("name", "")
+	node.position = KMath.vec3(d.get("pos"))
+	var rot: Variant = d.get("rot", 0.0)
+	node.rotation_degrees = KMath.vec3(rot) if rot is Array else Vector3(0, float(rot), 0)
+	parent.add_child(node)
+
+
+## 花瓣飄落：{"pos": 範圍中心, "size": [寬, 高, 深], "color": "#ffc8dd", "amount": 數量, "petal": 花瓣大小, "fall": 落下速度}
+## 粒子固定種子，避免打亂全域亂數（自動測試需要可重現）。
+static func _build_petals(pt: Dictionary, parent: Node3D) -> void:
+	var p := CPUParticles3D.new()
+	p.name = "Petals_%s" % pt.get("name", "")
+	p.use_fixed_seed = true
+	p.seed = 4242 + int(pt.get("amount", 40))
+	var size := KMath.vec3(pt.get("size"), Vector3(200, 150, 200))
+	var petal := float(pt.get("petal", 1.6))
+	var fall := float(pt.get("fall", 18.0))
+	p.amount = int(pt.get("amount", 40))
+	p.lifetime = size.y / fall * 1.15
+	p.preprocess = p.lifetime
+	p.local_coords = false
+	p.emission_shape = CPUParticles3D.EMISSION_SHAPE_BOX
+	p.emission_box_extents = Vector3(size.x * 0.5, 2.0, size.z * 0.5)
+	p.position = KMath.vec3(pt.get("pos")) + Vector3(0, size.y, 0)
+	p.direction = Vector3(0.3, -1, 0.15)
+	p.spread = 25.0
+	p.gravity = Vector3(0, -fall * 0.25, 0)
+	p.initial_velocity_min = fall * 0.6
+	p.initial_velocity_max = fall
+	p.angular_velocity_min = -180.0
+	p.angular_velocity_max = 180.0
+	p.angle_min = 0.0
+	p.angle_max = 360.0
+	p.scale_amount_min = 0.7
+	p.scale_amount_max = 1.2
+	p.hue_variation_min = -0.03
+	p.hue_variation_max = 0.03
+	p.color = KMath.color(pt.get("color", "#ffc8dd"))
+	var quad := QuadMesh.new()
+	quad.size = Vector2(petal, petal * 0.75)
+	var mat := StandardMaterial3D.new()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES
+	mat.vertex_color_use_as_albedo = true
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
+	mat.albedo_texture = _petal_texture()
+	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+	quad.material = mat
+	p.mesh = quad
+	p.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	parent.add_child(p)
+
+
+static var _petal_tex: ImageTexture
+
+
+static func _petal_texture() -> ImageTexture:
+	if _petal_tex != null:
+		return _petal_tex
+	# 花瓣形狀：橢圓，尖端有一個小缺口（櫻花花瓣）
+	var n := 32
+	var img := Image.create(n, n, false, Image.FORMAT_RGBA8)
+	for y in n:
+		for x in n:
+			var u := (x + 0.5) / n * 2.0 - 1.0
+			var v := (y + 0.5) / n * 2.0 - 1.0
+			var inside := u * u / 0.8 + v * v / 0.98 < 1.0
+			var notch := v < -0.6 and absf(u) < 0.18 * (1.0 + (v + 0.6) * 2.0)
+			var shade := 1.0 - 0.15 * (v + 1.0) * 0.5
+			img.set_pixel(x, y, Color(shade, shade, shade, 1.0 if inside and not notch else 0.0))
+	_petal_tex = ImageTexture.create_from_image(img)
+	return _petal_tex
 
 
 static func _place_item(p: Dictionary, items_root: Node3D) -> PickupItem:

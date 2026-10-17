@@ -61,16 +61,19 @@ func record_result(result: Dictionary) -> void:
 
 
 func next_stage_id(stage_id: String) -> String:
-	var stages: Array = Data.stages
+	var stages: Array = Data.visible_stages()
 	for i in stages.size():
 		if stages[i]["id"] == stage_id and i + 1 < stages.size():
 			return stages[i + 1]["id"]
 	return ""
 
 
+## 可以玩：資料標記可玩，而且場景配置檔已經做好。
 func is_stage_playable(stage_id: String) -> bool:
 	var stage := Data.get_stage(stage_id)
-	return not stage.is_empty() and stage.get("playable", false)
+	if stage.is_empty() or not stage.get("playable", false):
+		return false
+	return FileAccess.file_exists(stage.get("level", "")) and stage.has("goal_cm")
 
 
 func save() -> void:

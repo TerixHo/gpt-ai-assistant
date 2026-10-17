@@ -43,6 +43,12 @@ var _start_pos := Vector3.ZERO
 var _start_yaw := 0.0
 var _last_tick := -1
 var _sun: DirectionalLight3D
+var _env: Environment
+## 場景配置檔的 env 區塊：天空顏色、霧
+var _env_def: Dictionary = {}
+## 卡住時「回到中間」的位置與方向
+var _rescue_pos := Vector3.ZERO
+var _rescue_yaw := 0.0
 
 
 func setup(id: String) -> void:
@@ -63,12 +69,13 @@ func _ready() -> void:
 	if demo:
 		Sfx.world_muted = true
 	goal = float(stage_def.get("goal_cm", 10.0))
+	var level := Data.get_level(stage_def.get("level", ""))
+	_env_def = level.get("env", {})
 	_build_environment()
 
 	items_root = Node3D.new()
 	items_root.name = "Items"
 	add_child(items_root)
-	var level := Data.get_level(stage_def.get("level", ""))
 	var built := LevelBuilder.build(level, self, items_root, stage_def.get("zones", []), int(stage_def.get("seed", 1)))
 	spawned_count = built["spawned"]
 	_areas = built["areas"]
@@ -88,6 +95,9 @@ func _ready() -> void:
 	var start: Dictionary = stage_def.get("start", built["start"])
 	_start_pos = KMath.vec3(start.get("pos"), Vector3(100, 10, 100))
 	_start_yaw = deg_to_rad(float(start.get("yaw_deg", 0.0)))
+	var rescue: Dictionary = stage_def.get("rescue", built["rescue"])
+	_rescue_pos = KMath.vec3(rescue.get("pos"), _start_pos)
+	_rescue_yaw = deg_to_rad(float(rescue.get("yaw_deg", rad_to_deg(_start_yaw))))
 
 	katamari = Katamari.new()
 	katamari.start_diameter_cm = float(stage_def.get("start_cm", 5.0))
@@ -163,8 +173,15 @@ func _ready() -> void:
 
 func _build_environment() -> void:
 	var env := Environment.new()
+	_env = env
 	env.background_mode = Environment.BG_COLOR
-	env.background_color = KMath.color(stage_def.get("sky", "#bfe6ff"))
+	env.background_color = KMath.color(_env_def.get("sky", stage_def.get("sky", "#bfe6ff")))
+	# 霧：濃度隨塊球直徑調整（fog_per_d ÷ 直徑），大場景遠處自然淡出
+	if float(_env_def.get("fog_per_d", 0.0)) > 0.0:
+		env.fog_enabled = true
+		env.fog_light_color = KMath.color(_env_def.get("fog_color", "#dfefff"))
+		env.fog_density = float(_env_def["fog_per_d"]) / maxf(float(stage_def.get("start_cm", 5.0)), 1.0)
+		env.fog_sky_affect = 0.0
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color(0.97, 0.97, 1.0)
 	env.ambient_light_energy = 0.58
@@ -314,6 +331,8 @@ func _update_hud() -> void:
 	hud.set_speed_fx(boost, ChargeFx.LEVEL_COLORS[katamari.burst_level()])
 	hud.set_status(katamari.diameter, goal, time_left, time_total, katamari.collected_count, elapsed if no_limit else -1.0)
 	_sun.directional_shadow_max_distance = 220.0 + katamari.diameter * 25.0
+	if _env != null and _env.fog_enabled:
+		_env.fog_density = float(_env_def["fog_per_d"]) / maxf(katamari.diameter, 1.0)
 
 
 func _on_collected(item_id: String, def: Dictionary) -> void:
