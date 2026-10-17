@@ -294,10 +294,17 @@ func _draw() -> void:
 			_icon("tap", hint + Vector2(-12, -6), 40.0, Color(1, 1, 1, 0.45 + 0.4 * pulse))
 			_chevron(hint + Vector2(22, 0), Color(1, 1, 1, 0.7))
 			_icon("charge", hint + Vector2(56, 0), 44.0 + 6.0 * pulse, Color(1.0, 0.65, 0.2, 0.9))
-	# 右半邊「往上滑：衝刺」提示；滑出衝刺時亮一下
+	# 右半邊「往上滑：衝刺」提示：手指加上三個往上的箭頭；滑出衝刺時往上亮一下
 	var sw := Vector2(size.x * 0.74, size.y * 0.5)
 	var a := 0.55 + 0.45 * _swipe_flash
-	_icon("swipe", sw + Vector2(0, -60.0 * _swipe_flash), 64.0, Color(1, 1, 1, a))
+	var lift := -50.0 * _swipe_flash
+	_icon("swipe", sw + Vector2(0, 40.0 + lift), 60.0, Color(1, 1, 1, a))
+	for i in 3:
+		var y := -10.0 - 22.0 * i + lift
+		var col := Color(1, 1, 1, a * (1.0 - 0.22 * i))
+		var pts := PackedVector2Array([sw + Vector2(-18, y + 10), sw + Vector2(0, y - 8), sw + Vector2(18, y + 10)])
+		draw_polyline(pts, Color(0.1, 0.07, 0.05, col.a * 0.45), 8.0, true)
+		draw_polyline(pts, col, 4.5, true)
 	for b in _buttons:
 		var id: String = b["id"]
 		if id == "rescue" and not rescue_visible:

@@ -13,7 +13,7 @@ Tabler Icons 3.49.0（經 Iconify 圖示集 @iconify-json/tabler 1.2.42 取得�
   rescue: tabler:home-filled
   charge: tabler:flame-filled
   tap: tabler:hand-click
-  swipe: tabler:swipe-up
+  swipe: tabler:hand-finger
   move: tabler:hand-move
 
 以下授權全文取自 https://raw.githubusercontent.com/tabler/tabler-icons/main/LICENSE

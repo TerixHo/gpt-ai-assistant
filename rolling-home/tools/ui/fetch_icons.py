@@ -24,7 +24,7 @@ ICONS = {
     "rescue": "home-filled",
     "charge": "flame-filled",
     "tap": "hand-click",
-    "swipe": "swipe-up",
+    "swipe": "hand-finger",
     "move": "hand-move",
 }
 # 匯入 Godot 時的點陣大小（像素）；按鈕最大約 90 像素，畫成 128 才清楚
