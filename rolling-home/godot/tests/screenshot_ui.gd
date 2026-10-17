@@ -1,11 +1,13 @@
 extends Node
 ## 介面截圖：標題與結算畫面（需非 headless 模式）。
-## 用法：godot --rendering-driver opengl3 res://tests/screenshot_ui.tscn -- --shot-dir PATH
+## 用法：godot --rendering-driver opengl3 res://tests/screenshot_ui.tscn -- --shot-dir PATH [--title-wait 秒]
+## 標題背景是示範關卡，--title-wait 可以等它滾一陣子再拍。
 
 var _main: Node
 var _dir := "user://shots"
 var _t := 0.0
 var _step := 0
+var _title_wait := 1.2
 
 
 func _ready() -> void:
@@ -14,6 +16,9 @@ func _ready() -> void:
 	var i := args.find("--shot-dir")
 	if i >= 0 and i + 1 < args.size():
 		_dir = args[i + 1]
+	i = args.find("--title-wait")
+	if i >= 0 and i + 1 < args.size():
+		_title_wait = float(args[i + 1])
 	DirAccess.make_dir_recursive_absolute(_dir)
 	_main = load("res://scenes/main.tscn").instantiate()
 	add_child(_main)
@@ -21,7 +26,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_t += delta
-	if _t < 1.2:
+	if _t < (_title_wait if _step == 0 else 1.2):
 		return
 	_t = 0.0
 	match _step:

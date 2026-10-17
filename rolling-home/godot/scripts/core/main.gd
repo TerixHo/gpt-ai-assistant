@@ -3,8 +3,14 @@ extends Node
 
 const BG_TOP := Color("#ffcf56")
 const BG_BOTTOM := Color("#ff7f50")
+## 標題畫面背景輪流播放的示範關卡（自動駕駛在玩），每段秒數
+const DEMO_STAGES := ["home_1", "home_3"]
+const DEMO_SECONDS := 45.0
 
 var _current: Node
+var _demo: Stage
+var _demo_index := 0
+var _demo_timer := 0.0
 
 
 func _ready() -> void:
@@ -18,6 +24,40 @@ func _ready() -> void:
 		show_title()
 
 
+func _process(delta: float) -> void:
+	if _demo != null and is_instance_valid(_demo):
+		_demo_timer += delta
+		if _demo_timer > DEMO_SECONDS:
+			_demo_index += 1
+			_start_demo(true)
+
+
+## 標題畫面背景：讓自動駕駛玩一段，畫面就是遊戲裡滾啊滾的樣子
+func _start_demo(restart := false) -> void:
+	if _demo != null and is_instance_valid(_demo):
+		if not restart:
+			return
+		_demo.queue_free()
+	_demo_timer = 0.0
+	var stage := Stage.new()
+	stage.demo = true
+	stage.setup(DEMO_STAGES[_demo_index % DEMO_STAGES.size()])
+	stage.skip_intro = true
+	add_child(stage)
+	move_child(stage, 0)
+	var pilot := AutoPilot.new()
+	pilot.stage = stage
+	stage.add_child(pilot)
+	stage.cam.view = 2
+	_demo = stage
+
+
+func _stop_demo() -> void:
+	if _demo != null and is_instance_valid(_demo):
+		_demo.queue_free()
+	_demo = null
+
+
 func _swap(node: Node) -> void:
 	get_tree().paused = false
 	if _current != null and is_instance_valid(_current):
@@ -27,6 +67,7 @@ func _swap(node: Node) -> void:
 
 
 func start_stage(id: String) -> void:
+	_stop_demo()
 	Game.current_stage_id = id
 	var stage := Stage.new()
 	stage.setup(id)
@@ -38,11 +79,16 @@ func start_stage(id: String) -> void:
 
 # ---------- 畫面工具 ----------
 
-func _screen() -> Control:
+func _screen(opaque := true) -> Control:
+	if opaque:
+		_stop_demo()
 	var layer := CanvasLayer.new()
 	var root := Control.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	layer.add_child(root)
+	if not opaque:
+		_swap(layer)
+		return root
 	var bg := TextureRect.new()
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	var grad := Gradient.new()
@@ -70,15 +116,42 @@ func _label(text: String, font_size: int, color := Color.WHITE) -> Label:
 	return l
 
 
-func _button(text: String, cb: Callable, font_size := 26) -> Button:
+func _button(text: String, cb: Callable, font_size := 26, accent := false) -> Button:
 	var b := Button.new()
 	b.text = text
 	b.custom_minimum_size = Vector2(320, 54)
 	b.add_theme_font_size_override("font_size", font_size)
+	_style_button(b, accent)
 	b.pressed.connect(func():
 		Sfx.play("ui")
 		cb.call())
 	return b
+
+
+## 圓角奶油色按鈕（重點按鈕用黃色），在遊戲畫面或漸層背景上都看得清楚
+func _style_button(b: Button, accent := false) -> void:
+	var base := Color("#ffc93c") if accent else Color(1.0, 0.97, 0.91, 0.94)
+	var ink := Color("#3a2410") if accent else Color("#4a2f6b")
+	for state in ["normal", "hover", "pressed", "focus", "disabled"]:
+		var sb := StyleBoxFlat.new()
+		sb.bg_color = base.lightened(0.12) if state == "hover" else (base.darkened(0.08) if state == "pressed" else base)
+		sb.set_corner_radius_all(26)
+		sb.set_border_width_all(4 if state == "focus" else 3)
+		sb.border_color = Color.WHITE if state == "focus" else Color("#8a6ccf")
+		sb.content_margin_left = 18
+		sb.content_margin_right = 18
+		sb.content_margin_top = 6
+		sb.content_margin_bottom = 8
+		sb.shadow_color = Color(0.15, 0.08, 0.25, 0.35)
+		sb.shadow_size = 4
+		sb.shadow_offset = Vector2(0, 3)
+		if state == "focus":
+			sb.bg_color = Color(0, 0, 0, 0)
+			sb.shadow_size = 0
+		b.add_theme_stylebox_override(state, sb)
+	for key in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color"]:
+		b.add_theme_color_override(key, ink)
+	b.add_theme_constant_override("outline_size", 0)
 
 
 func _column(root: Control, width := 520.0) -> VBoxContainer:
@@ -96,42 +169,88 @@ func _column(root: Control, width := 520.0) -> VBoxContainer:
 # ---------- 標題 ----------
 
 func show_title() -> void:
-	var root := _screen()
-	var box := _column(root)
-	box.add_child(_label("家滾滾", 92))
-	box.add_child(_label("從書桌上的小珠珠開始，把家裡的東西滾成一顆大球！", 22, Color(1, 0.98, 0.9)))
-	var spacer := Control.new()
-	spacer.custom_minimum_size = Vector2(0, 12)
-	box.add_child(spacer)
-	var first := _button("開始遊戲", func(): start_stage(Data.stages[0]["id"]))
-	box.add_child(first)
-	box.add_child(_button("選關卡", show_stage_select))
-	box.add_child(_button("收藏圖鑑", show_collection))
-	box.add_child(_button("怎麼玩", show_help))
+	_start_demo()
+	var root := _screen(false)
+	# 上下各一層半透明漸層，讓標題和按鈕在遊戲畫面上看得清楚
+	for spec in [[0.0, 0.42, Color(0.12, 0.07, 0.2, 0.55), Color(0.12, 0.07, 0.2, 0.0)],
+			[0.45, 1.0, Color(0.12, 0.07, 0.2, 0.0), Color(0.12, 0.07, 0.2, 0.6)]]:
+		var shade := TextureRect.new()
+		shade.anchor_top = spec[0]
+		shade.anchor_bottom = spec[1]
+		shade.anchor_right = 1.0
+		var g := Gradient.new()
+		g.set_color(0, spec[2])
+		g.set_color(1, spec[3])
+		var gt := GradientTexture2D.new()
+		gt.gradient = g
+		gt.fill_from = Vector2(0, 0)
+		gt.fill_to = Vector2(0, 1)
+		shade.texture = gt
+		shade.stretch_mode = TextureRect.STRETCH_SCALE
+		shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		root.add_child(shade)
+	var logo := TitleLogo.new()
+	logo.anchor_right = 1.0
+	logo.anchor_bottom = 0.3
+	logo.offset_top = 8
+	root.add_child(logo)
+	var sub := _label("從書桌上的小珠珠開始，跟槿寶一起把家裡的東西滾成一顆大球！", 22, Color(1, 0.98, 0.9))
+	sub.anchor_top = 0.3
+	sub.anchor_right = 1.0
+	sub.offset_bottom = 34
+	root.add_child(sub)
+	# 按鈕放在下方，畫面中間留給背景裡滾動的球和槿寶
+	var bottom := VBoxContainer.new()
+	bottom.anchor_top = 1.0
+	bottom.anchor_right = 1.0
+	bottom.anchor_bottom = 1.0
+	bottom.offset_top = -176
+	bottom.offset_bottom = -22
+	bottom.alignment = BoxContainer.ALIGNMENT_END
+	bottom.add_theme_constant_override("separation", 12)
+	root.add_child(bottom)
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override("separation", 14)
+	bottom.add_child(row)
+	var first := _button("開始遊戲", func(): start_stage(Data.stages[0]["id"]), 30, true)
+	first.custom_minimum_size = Vector2(300, 66)
+	row.add_child(first)
+	for spec in [["選關卡", show_stage_select], ["收藏圖鑑", show_collection], ["怎麼玩", show_help]]:
+		var mb := _button(spec[0], spec[1], 24)
+		mb.custom_minimum_size = Vector2(190, 66)
+		row.add_child(mb)
 	var settings := HBoxContainer.new()
 	settings.alignment = BoxContainer.ALIGNMENT_CENTER
 	settings.add_theme_constant_override("separation", 10)
-	box.add_child(settings)
+	bottom.add_child(settings)
 	for spec in [["zhuyin", "注音"], ["no_time_limit", "不限時間"]]:
 		var key: String = spec[0]
 		var label: String = spec[1]
 		var b := Button.new()
-		b.custom_minimum_size = Vector2(200, 46)
+		b.custom_minimum_size = Vector2(190, 48)
 		b.add_theme_font_size_override("font_size", 20)
+		_style_button(b)
 		b.text = "%s：%s" % [label, "開" if Game.settings.get(key, false) else "關"]
 		b.pressed.connect(func():
 			Game.toggle_setting(key)
 			b.text = "%s：%s" % [label, "開" if Game.settings.get(key, false) else "關"])
 		settings.add_child(b)
 	var scheme := Button.new()
-	scheme.custom_minimum_size = Vector2(260, 46)
+	scheme.custom_minimum_size = Vector2(250, 48)
 	scheme.add_theme_font_size_override("font_size", 20)
+	_style_button(scheme)
 	scheme.text = "操作：" + Controls.scheme_label()
 	scheme.pressed.connect(func():
 		Controls.toggle_scheme()
 		scheme.text = "操作：" + Controls.scheme_label())
 	settings.add_child(scheme)
-	box.add_child(_button("離開", func(): get_tree().quit()))
+	var box := settings
+	# 網頁版（iPad、瀏覽器）沒有「離開」：關掉分頁就好
+	if OS.get_name() != "Web":
+		var quit := _button("離開", func(): get_tree().quit(), 20)
+		quit.custom_minimum_size = Vector2(130, 48)
+		box.add_child(quit)
 	first.grab_focus()
 	Sfx.play_music("title")
 
@@ -198,10 +317,10 @@ func show_help() -> void:
 	var lines := [
 		"比滾球小的東西，碰到就會黏上來。滾球越大，就能黏越大的東西！",
 		"一開始只黏得起小玻璃珠，慢慢變大以後，橡皮擦、小汽車、恐龍都黏得起來。",
-		"鍵盤：W/S 前進後退　A/D 轉彎　空白鍵 跳躍（按住跳更高，跑越快跳越遠）　Shift 衝刺　Shift 按兩下 轉身",
-		"E 第一人稱環視（WASD 看四周，再按 E 回來）　數字 1 到 5 換視角：1 第一人稱、2 近、3 標準、4 遠、5 正面",
-		"手把：左搖桿前進和轉彎　A 跳躍　X 衝刺　Y 轉身　LB 環視　RB 看遠一點　Back 換視角",
-		"手機、平板：左半邊按住拖曳就能走和轉彎，右邊有跳躍、衝刺、轉身、看遠、視角、暫停按鈕。",
+		"集氣衝刺：按住槿寶（電腦可以按住 Shift），球會越轉越快，每 1 秒變一個顏色：黃、橘、紅，最後是藍色火焰。放開就衝出去，集越久衝越快！",
+		"iPad 與手機：左半邊按住拖曳走路，按住槿寶集氣，右半邊往上滑衝刺，右邊有跳躍、轉身、看遠、視角、暫停按鈕。",
+		"鍵盤：W/S 前進後退　A/D 轉彎　空白鍵 跳躍（按住跳更高）　Shift 衝刺　Shift 按兩下 轉身　E 環視　1 到 5 換視角",
+		"手把：左搖桿前進和轉彎　A 跳躍　X 衝刺（按住集氣）　Y 轉身　LB 環視　RB 看遠一點　Back 換視角",
 		"小心貓咪和小狗！滾球很小的時候，牠們會把你身上的東西拍掉。",
 		"變大以後牠們就會逃跑，再大一點就能把牠們黏起來了！",
 		"想用原作的雙搖桿操作，可以在標題畫面切換，或按 F2。",

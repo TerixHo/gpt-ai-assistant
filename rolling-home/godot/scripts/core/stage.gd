@@ -16,6 +16,7 @@ var stage_def: Dictionary = {}
 var katamari: Katamari
 var cam: KatamariCamera
 var pusher: Pusher
+var charge_fx: ChargeFx
 var hud: Hud
 var items_root: Node3D
 var time_total := 180.0
@@ -30,6 +31,8 @@ var no_limit := false
 var spawned_count := 0
 ## 自動測試與展示用：關閉開場倒數
 var skip_intro := false
+## 標題畫面背景的示範：自動駕駛在玩，不顯示介面、不計時、場景靜音
+var demo := false
 
 var _state_timer := 0.0
 var _gates: Array[Dictionary] = []
@@ -56,7 +59,9 @@ func _ready() -> void:
 		return
 	time_total = float(stage_def.get("time_sec", 180.0))
 	time_left = time_total
-	no_limit = bool(Game.settings.get("no_time_limit", false))
+	no_limit = demo or bool(Game.settings.get("no_time_limit", false))
+	if demo:
+		Sfx.world_muted = true
 	goal = float(stage_def.get("goal_cm", 10.0))
 	_build_environment()
 
@@ -96,6 +101,8 @@ func _ready() -> void:
 	katamari.bumped.connect(_on_bumped)
 	katamari.dashed.connect(func(): Sfx.play("dash"))
 	katamari.jumped.connect(func(): Sfx.play_varied("jump", clampf(1.25 - katamari.diameter / 80.0, 0.8, 1.25), 0.05))
+	katamari.charge_level_changed.connect(_on_charge_level)
+	katamari.launched.connect(_on_launched)
 
 	cam = KatamariCamera.new()
 	add_child(cam)
@@ -111,9 +118,15 @@ func _ready() -> void:
 	pusher.cam = cam
 	add_child(pusher)
 
+	charge_fx = ChargeFx.new()
+	charge_fx.katamari = katamari
+	add_child(charge_fx)
+
 	hud = Hud.new()
 	hud.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+	hud.with_touch = not demo
 	add_child(hud)
+	hud.visible = not demo
 	hud.resume_requested.connect(func(): _set_paused(false))
 	hud.restart_requested.connect(func():
 		_set_paused(false)
@@ -126,14 +139,15 @@ func _ready() -> void:
 		_set_paused(false)
 		quit_requested.emit())
 
-	var watcher := Node.new()
-	watcher.name = "PauseWatcher"
-	watcher.process_mode = Node.PROCESS_MODE_ALWAYS
-	watcher.set_script(preload("res://scripts/core/pause_watcher.gd"))
-	add_child(watcher)
-	watcher.toggled.connect(func():
-		if state == "playing" or get_tree().paused:
-			_set_paused(not get_tree().paused))
+	if not demo:
+		var watcher := Node.new()
+		watcher.name = "PauseWatcher"
+		watcher.process_mode = Node.PROCESS_MODE_ALWAYS
+		watcher.set_script(preload("res://scripts/core/pause_watcher.gd"))
+		add_child(watcher)
+		watcher.toggled.connect(func():
+			if state == "playing" or get_tree().paused:
+				_set_paused(not get_tree().paused))
 
 	katamari.input_enabled = false
 	if skip_intro:
@@ -141,7 +155,8 @@ func _ready() -> void:
 	else:
 		hud.banner(stage_def.get("intro", "預備…"), INTRO_TIME - 0.6)
 	_update_hud()
-	Sfx.play_music(stage_def.get("music", "home"))
+	if not demo:
+		Sfx.play_music(stage_def.get("music", "home"))
 	# 場景剛擺好，所有東西都是「瞬間就位」，不要從原點補間過來
 	reset_physics_interpolation()
 
@@ -188,6 +203,9 @@ func _physics_process(delta: float) -> void:
 			_play_step(delta)
 		"ended":
 			katamari.set_drive(Vector2.ZERO, cam.yaw)
+			if katamari.is_charging():
+				katamari.charge_cancel()
+				Sfx.stop_loop()
 			_state_timer += delta
 			if _state_timer >= OUTRO_TIME and _state_timer - delta < OUTRO_TIME:
 				finished.emit(build_result())
@@ -201,9 +219,20 @@ func _play_step(delta: float) -> void:
 		# 第一人稱環視時球停下來，WASD 用來看四周
 		katamari.set_drive(Vector2.ZERO, cam.yaw)
 		katamari.release_jump()
+		if katamari.is_charging():
+			katamari.charge_cancel()
+			Sfx.stop_loop()
 	else:
 		katamari.set_drive(d.move, cam.yaw)
-		if d.dash:
+		# 集氣：按住開始，放開衝出去
+		if d.charge and not katamari.is_charging():
+			if katamari.charge_begin():
+				Sfx.start_loop("charge_loop", 0.8)
+		elif not d.charge and katamari.is_charging():
+			katamari.charge_release()
+		if katamari.is_charging():
+			Sfx.set_loop_pitch(0.8 + 0.35 * katamari.charge_time())
+		if d.dash and not katamari.is_charging():
 			katamari.dash()
 		if d.jump:
 			katamari.jump()
@@ -279,6 +308,10 @@ func _check_area(delta: float) -> void:
 func _update_hud() -> void:
 	if hud == null:
 		return
+	var boost := katamari.boost_amount()
+	cam.boost = boost
+	cam.charge = clampf(katamari.charge_time() / (Katamari.CHARGE_STAGE_TIME * Katamari.CHARGE_LEVELS), 0.0, 1.0)
+	hud.set_speed_fx(boost, ChargeFx.LEVEL_COLORS[katamari.burst_level()])
 	hud.set_status(katamari.diameter, goal, time_left, time_total, katamari.collected_count, elapsed if no_limit else -1.0)
 	_sun.directional_shadow_max_distance = 220.0 + katamari.diameter * 25.0
 
@@ -300,6 +333,28 @@ func _on_collected(item_id: String, def: Dictionary) -> void:
 		Sfx.play_varied("ding", clampf(1.25 - rel * 0.5, 0.9, 1.2), 0.04)
 	else:
 		Sfx.play_varied("chirp", 1.0, 0.05)
+
+
+func _exit_tree() -> void:
+	Sfx.stop_loop()
+	if demo:
+		Sfx.world_muted = false
+
+
+func _on_charge_level(level: int) -> void:
+	charge_fx.pulse()
+	if level < Katamari.CHARGE_LEVELS:
+		Sfx.play("charge_level", 1.0 + 0.2 * (level - 1))
+	else:
+		Sfx.play("flame")
+		hud.banner("藍色火焰！放開衝出去！", 1.0, Color(0.55, 0.85, 1.0))
+
+
+func _on_launched(level: int) -> void:
+	Sfx.stop_loop()
+	hud.clear_banner()
+	Sfx.play("launch", 1.15 - 0.08 * level)
+	cam.shake(0.35 + 0.15 * level)
 
 
 func _on_bumped(strength: float, lost: int) -> void:

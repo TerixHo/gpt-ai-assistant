@@ -26,6 +26,7 @@ static func height_for(diameter: float) -> float:
 
 func _ready() -> void:
 	name = "Pusher"
+	add_to_group("pusher")
 	# 位置每個畫面依插值後的塊球位置更新，不需要再做物理插值
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	_ray.collision_mask = KMath.LAYER_WORLD | KMath.LAYER_ITEM
@@ -122,11 +123,23 @@ func _animate(delta: float, airborne: bool) -> void:
 	_walk += delta * (6.0 + rel * 7.0) * (1.0 if moving else 0.0)
 	_air = move_toward(_air, 1.0 if airborne else 0.0, delta * 6.0)
 	_push = move_toward(_push, 1.0 if moving else 0.45, delta * 4.0)
+	var charging := katamari.is_charging()
+	if charging:
+		# 集氣：雙腳原地快跑、身體壓低前傾，越接近藍色火焰抖得越厲害
+		rel = 1.0
+		_walk += delta * (14.0 + 4.0 * katamari.charge_level())
+		_push = 1.0
 	var swing := sin(_walk) * rel
 	var bob := absf(sin(_walk)) * rel
 	_root.position.y = bob * 0.22
 	_root.rotation.z = swing * 0.07
-	_root.rotation.x = -0.28 if katamari.is_dashing() else -0.08 * rel
+	_root.rotation.x = -0.28 if (katamari.is_dashing() or katamari.is_bursting()) else -0.08 * rel
+	_root.position.x = 0.0
+	if charging:
+		var lvl := float(katamari.charge_level())
+		_root.rotation.x = -0.35
+		_root.position.y = -0.15
+		_root.position.x = sin(Time.get_ticks_msec() * 0.09) * 0.03 * (1.0 + lvl * 1.5)
 	if _parts.is_empty():
 		return
 	var ground_mix := 1.0 - _air

@@ -12,6 +12,10 @@ signal diameter_changed(diameter_cm: float)
 signal bumped(strength: float, lost: int)
 signal dashed
 signal jumped
+## 集氣升段（1 黃、2 橘、3 紅、4 藍色火焰）
+signal charge_level_changed(level: int)
+## 集氣放開衝出去
+signal launched(level: int)
 
 const MAX_PROTRUSIONS := 10
 ## 吸附範圍的固定餘裕（公分）：物理引擎會在極近距離就停住，小球需要這點餘裕才黏得到 6mm 珠子
@@ -47,6 +51,12 @@ const GRAB_EXTRA := 0.2
 ## 跳躍時的重力倍率：按住上升時比較輕、落下時也稍微飄，小球也看得出在空中
 @export var jump_rise_gravity := 0.5
 @export var jump_fall_gravity := 0.7
+
+## 集氣：每一段 1 秒，共四段（黃、橘、紅、藍色火焰）
+const CHARGE_STAGE_TIME := 1.0
+const CHARGE_LEVELS := 4
+## 放開時依段數的爆發：[最高速倍率, 持續秒數]（第 0 項是還沒滿 1 秒就放開）
+const BURST := [[1.4, 0.45], [1.9, 0.6], [2.4, 0.8], [2.9, 1.0], [3.6, 1.3]]
 ## 跳起來時水平速度的加成比例：跑得越快，跳得越遠
 @export var jump_speed_boost := 0.25
 
@@ -74,6 +84,13 @@ var _jump_rising := 0.0
 var _jump_cut := false
 var _jump_cooldown := 0.0
 var _jump_air := 0.0
+var _charging := false
+var _charge_time := 0.0
+var _burst_request := false
+var _burst_left := 0.0
+var _burst_total := 0.0
+var _burst_mult := 1.0
+var _burst_level := 0
 var _body_shape := SphereShape3D.new()
 var _grab_shape := SphereShape3D.new()
 var _query := PhysicsShapeQueryParameters3D.new()
@@ -165,6 +182,66 @@ func is_jumping() -> bool:
 	return _jump_rising > 0.0
 
 
+## 開始集氣：球停在原地越轉越快。
+func charge_begin() -> bool:
+	if not input_enabled or _charging:
+		return false
+	_charging = true
+	_charge_time = 0.0
+	return true
+
+
+func is_charging() -> bool:
+	return _charging
+
+
+## 目前的集氣段數（0 還沒滿 1 秒，1 黃、2 橘、3 紅、4 藍色火焰）
+func charge_level() -> int:
+	return mini(int(_charge_time / CHARGE_STAGE_TIME), CHARGE_LEVELS) if _charging else 0
+
+
+func charge_time() -> float:
+	return _charge_time if _charging else 0.0
+
+
+## 放開：依段數瞬間加速衝出去。回傳段數；沒有在集氣時回傳 -1。
+func charge_release() -> int:
+	if not _charging:
+		return -1
+	var lvl := charge_level()
+	_charging = false
+	_charge_time = 0.0
+	if not input_enabled:
+		return -1
+	_burst_level = lvl
+	_burst_mult = float(BURST[lvl][0])
+	_burst_total = float(BURST[lvl][1])
+	_burst_left = _burst_total
+	_burst_request = true
+	launched.emit(lvl)
+	return lvl
+
+
+func charge_cancel() -> void:
+	_charging = false
+	_charge_time = 0.0
+
+
+func is_bursting() -> bool:
+	return _burst_left > 0.0
+
+
+## 衝刺的速度感強度（0 到 1），給鏡頭與畫面特效用
+func boost_amount() -> float:
+	if _burst_left <= 0.0:
+		return 0.0
+	return clampf(_burst_left / maxf(_burst_total, 0.01), 0.0, 1.0) * (0.45 + 0.55 * float(_burst_level) / CHARGE_LEVELS)
+
+
+func burst_level() -> int:
+	return _burst_level
+
+
 ## 被外力打到（例如貓咪伸爪）：推開並掉落 drop 件物件。
 func external_hit(dir: Vector3, push_speed: float, drop := 1) -> void:
 	if _knock_cooldown > 0.0:
@@ -182,6 +259,13 @@ func forward_dir() -> Vector3:
 func _physics_process(delta: float) -> void:
 	_knock_cooldown -= delta
 	_dash_left -= delta
+	_burst_left = maxf(_burst_left - delta, 0.0)
+	if _charging:
+		var before := charge_level()
+		_charge_time = minf(_charge_time + delta, CHARGE_STAGE_TIME * (CHARGE_LEVELS + 1))
+		var now := charge_level()
+		if now != before:
+			charge_level_changed.emit(now)
 	if not _pending_knock.is_empty():
 		var k := _pending_knock
 		_pending_knock = {}
@@ -244,6 +328,16 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		wish = fwd
 		wish_len = 1.0
 		top *= dash_speed_mult
+	# 集氣衝刺：一路往前，最高速依段數加成，隨時間慢慢退回
+	if _burst_left > 0.0:
+		wish = fwd
+		wish_len = 1.0
+		var k := _burst_left / maxf(_burst_total, 0.01)
+		top = base_top * lerpf(1.2, _burst_mult, k)
+	# 集氣中：球停在原地（方向鍵只用來瞄準）
+	if _charging:
+		wish = Vector3.ZERO
+		wish_len = 0.0
 	var up := _ground_normal
 	var v := state.linear_velocity
 	var v_plane := v - up * v.dot(up)
@@ -256,6 +350,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		accel = maxf(accel_d * diameter, 25.0) * (1.0 if _grounded else 0.3)
 	else:
 		accel = maxf(coast_decel_d * diameter, 10.0) if _grounded else 0.0
+	if _charging:
+		accel = maxf(accel_d * diameter, 25.0) * 2.0 if _grounded else 0.0
 	var dv := (target - v_plane).limit_length(accel * dt)
 	v += dv
 	# 上坡時只抵銷「與前進方向相反」的重力分量，讓上坡手感接近原作。
@@ -302,8 +398,15 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		else:
 			var gf := jump_rise_gravity if (_jump_rising > 0.0 and not released) else jump_fall_gravity
 			v.y += state.total_gravity.length() * (1.0 - gf) * dt
+	# 放開集氣：瞬間加速到目標速度
+	if _burst_request:
+		_burst_request = false
+		var burst_v := fwd * top
+		v.x = burst_v.x
+		v.z = burst_v.z
+		_step_cooldown = 0.0
 	# 非衝刺時限制水平速度，避免碰撞把彈跳轉成暴衝（跳在空中時放寬，保留跳躍的加速）
-	if _dash_left <= 0.0:
+	if _dash_left <= 0.0 and _burst_left <= 0.0:
 		var vh := Vector3(v.x, 0.0, v.z)
 		var cap := base_top * (1.25 if _air_time < 0.5 else 1.6)
 		if vh.length() > cap:
@@ -312,14 +415,20 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			v.z = vh.z
 	state.linear_velocity = v
 
-	# 3. 接地時讓角速度貼近純滾動，外觀上確實在「滾」
-	if _grounded:
+	# 3. 接地時讓角速度貼近純滾動，外觀上確實在「滾」；集氣時在原地越轉越快
+	if _charging:
+		var spin := TAU * (2.0 + 10.0 * minf(_charge_time / (CHARGE_STAGE_TIME * CHARGE_LEVELS), 1.0))
+		state.angular_velocity = up.cross(fwd).normalized() * spin
+	elif _grounded:
 		var roll := up.cross(v) / maxf(radius(), 0.01)
 		state.angular_velocity = state.angular_velocity.lerp(roll, 0.35)
 
 	# 4. 撞擊偵測（實際掉落在 _physics_process 處理，避免在物理回呼中增刪節點）
 	# 撞落門檻至少要比平常最高速度快（衝刺或從高處摔下才會掉東西）
 	var knock_at := maxf(knock_threshold_d * diameter, base_top * 1.3)
+	# 集氣衝刺時只有正面高速撞上才會掉東西
+	if _burst_left > 0.0:
+		knock_at = maxf(knock_at, top * 0.85)
 	if impact > knock_at and _knock_cooldown <= 0.0:
 		_pending_knock = {"strength": impact / diameter, "ratio": impact / knock_at, "normal": impact_normal}
 		_knock_cooldown = 0.5

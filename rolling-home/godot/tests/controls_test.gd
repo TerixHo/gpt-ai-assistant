@@ -1,6 +1,6 @@
 extends Node
 ## 鍵盤操作測試：Shift 兩下轉身、Shift 一下衝刺、空白鍵跳躍（按住更高、跑越快跳越遠）、
-## E 第一人稱環視、數字鍵 1 到 5 切換視角。
+## E 第一人稱環視、數字鍵 1 到 5 切換視角、按住 Shift 集氣（四段各 1 秒）放開衝出去。
 ##
 ## 用法（專案根目錄）：
 ##   godot --headless --fixed-fps 60 res://tests/controls_test.tscn
@@ -92,6 +92,52 @@ func _ready() -> void:
 			var fwd := Vector3(-sin(_cam().yaw), 0.0, -cos(_cam().yaw))
 			var rel := _cam().camera.global_position - _k().global_position
 			_check(rel.dot(fwd) > 0.0, "數字 5：鏡頭在球的正前方，面對主角")
+			Input.action_press("view_3")],
+		[f + 1041, func(): Input.action_release("view_3")],
+		# 集氣：按住 Shift，四段各 1 秒（黃、橘、紅、藍色火焰），放開衝出去
+		[f + 1100, func():
+			_vars["levels"] = []
+			_k().charge_level_changed.connect(func(l: int): _vars["levels"].append([l, _frame]))
+			_vars["charge_from"] = _frame
+			Input.action_press("kb_shift")],
+		[f + 1100 + 150, func():
+			_check(_k().is_charging(), "按住 Shift：開始集氣")
+			_vars["spin_mid"] = _k().angular_velocity.length()
+			var fx := _stage.charge_fx.get_child(0) as Node3D
+			_check(fx.visible, "集氣時球外面有一層光")],
+		[f + 1100 + 270, func():
+			_check(_k().horizontal_speed() < 1.0, "集氣時球停在原地（%.1f 公分每秒）" % _k().horizontal_speed())
+			_check(_k().angular_velocity.length() > float(_vars["spin_mid"]) * 1.3,
+				"集氣越久轉得越快（%.0f → %.0f 弧度每秒）" % [_vars["spin_mid"], _k().angular_velocity.length()])
+			_check(_k().charge_level() == 4, "4 秒後變成藍色火焰（第 %d 段）" % _k().charge_level())
+			var lv: Array = _vars["levels"]
+			var ok := lv.size() == 4
+			var desc := []
+			for e in lv:
+				var sec := float(int(e[1]) - int(_vars["charge_from"])) / 60.0
+				desc.append("%d段 %.2f秒" % [e[0], sec])
+				# 從按下 Shift 起算：0.25 秒判定為按住，之後每段 1 秒
+				ok = ok and absf(sec - (0.25 + float(e[0]) + 0.02)) < 0.1
+			_check(ok, "每一段集氣約 1 秒（%s）" % "、".join(desc))
+			_vars["base_top"] = maxf(_k().max_speed_d * _k().diameter, _k().min_top_speed)
+			_vars["burst_peak"] = 0.0
+			Input.action_release("kb_shift")],
+		[f + 1100 + 290, func():
+			_check(_k().is_bursting(), "放開後衝出去")
+			_check(_stage.cam.camera.fov > 75.0, "衝出去時視野拉寬（%.0f 度）" % _stage.cam.camera.fov)],
+		[f + 1100 + 330, func():
+			_vars["blue_peak"] = _vars["burst_peak"]
+			_check(float(_vars["blue_peak"]) > float(_vars["base_top"]) * 2.5,
+				"藍色火焰衝刺速度是平常最高速的 %.1f 倍" % (float(_vars["blue_peak"]) / float(_vars["base_top"])))],
+		# 只集氣 1.3 秒（黃光）就放開，衝得比藍色火焰慢
+		[f + 1500, func(): Input.action_press("kb_shift")],
+		[f + 1500 + 93, func():
+			_check(_k().charge_level() == 1, "集氣 1 秒後是黃光（第 %d 段）" % _k().charge_level())
+			_vars["burst_peak"] = 0.0
+			Input.action_release("kb_shift")],
+		[f + 1500 + 133, func():
+			_check(float(_vars["burst_peak"]) < float(_vars["blue_peak"]) * 0.8,
+				"黃光衝刺比藍色火焰慢（%.0f 對 %.0f 公分每秒）" % [_vars["burst_peak"], _vars["blue_peak"]])
 			_finish()],
 	]
 
@@ -129,6 +175,8 @@ func _physics_process(_delta: float) -> void:
 	_frame += 1
 	if _vars.has("y0"):
 		_vars["peak"] = maxf(float(_vars.get("peak", 0.0)), _k().global_position.y - float(_vars["y0"]))
+	if _vars.has("burst_peak"):
+		_vars["burst_peak"] = maxf(float(_vars["burst_peak"]), _k().horizontal_speed())
 	if _vars.has("jump_tag"):
 		_vars["jump_frames"] = int(_vars["jump_frames"]) + 1
 		if int(_vars["jump_frames"]) > 6 and _k().is_grounded():

@@ -7,7 +7,7 @@ extends Node
 ##   兩桿上下快速交替 = 王子衝刺；同時按下兩桿（L3+R3）= 180 度迴轉。
 ## 簡化模式（預設，適合小學生）：鍵盤 W/S 前後、A/D 轉向；手把左桿上下前後、左右轉向，右桿左右也能轉向。
 ## 簡化模式會先轉成同樣的虛擬雙搖桿，後段邏輯完全共用。
-## 其他按鍵：空白鍵跳躍（按住跳比較高）、Shift 衝刺、連按兩下 Shift 轉身、E 第一人稱環視、
+## 其他按鍵：空白鍵跳躍（按住跳比較高）、Shift 輕按衝刺、按住 Shift 集氣（放開衝出去）、連按兩下 Shift 轉身、E 第一人稱環視、
 ## 數字鍵 1 到 5 切換視角（1 第一人稱、2 近、3 標準、4 遠、5 正面）、Tab 看遠一點、Esc 暫停。
 
 class Drive:
@@ -20,6 +20,8 @@ class Drive:
 	var look_up := false
 	var jump := false
 	var jump_held := false
+	## 集氣中（按住槿寶、按住 Shift 或手把 X），放開時衝出去
+	var charge := false
 	## 1 到 5：切換到指定視角；-1：切到下一個視角；0：不變
 	var view := 0
 	var free_look_toggle := false
@@ -34,6 +36,8 @@ const DASH_FLIPS_NEEDED := 4
 const DASH_FLIP_WINDOW := 0.4
 ## 連按兩下 Shift 的間隔上限（秒）。單按 Shift 要等這段時間確認沒有第二下才衝刺
 const DOUBLE_TAP_WINDOW := 0.28
+## 按住超過這個時間就開始集氣（輕按是衝刺）
+const HOLD_TO_CHARGE := 0.25
 ## 鍵盤轉向的漸進速度（每秒），避免一按下去鏡頭就瞬間全速轉
 const TURN_RAMP_UP := 7.0
 const TURN_RAMP_DOWN := 10.0
@@ -50,12 +54,17 @@ var touch_look := false
 var touch_jump := false
 var touch_jump_held := false
 var touch_view_cycle := false
+## 觸控或滑鼠按住槿寶（由 TouchControls 寫入）
+var touch_charge_held := false
 
 var _flip_count := 0
 var _flip_timer := 0.0
 var _last_flip_sign := 0
 var _stick_click_latch := false
-var _shift_wait := -1.0
+## Shift：0 沒按、1 剛按下（還不知道是輕按還是按住）、2 按住集氣中、3 放開等第二下
+var _shift_state := 0
+var _shift_t := 0.0
+var _pad_x_t := -1.0
 var _turn := 0.0
 
 
@@ -185,20 +194,41 @@ func read(delta: float) -> Drive:
 		d.quick_turn = true
 	touch_turn = false
 
-	d.dash = Input.is_action_just_pressed("dash") or touch_dash or _detect_dash_gesture(left, right, delta)
+	d.dash = touch_dash or _detect_dash_gesture(left, right, delta)
 	touch_dash = false
-	# 鍵盤 Shift：連按兩下＝轉身；只按一下＝衝刺（等確認沒有第二下才出發）
+	# 鍵盤 Shift：輕按＝衝刺（等確認沒有第二下才出發）、連按兩下＝轉身、按住＝集氣
 	if Input.is_action_just_pressed("kb_shift"):
-		if _shift_wait >= 0.0:
+		if _shift_state == 3:
 			d.quick_turn = true
-			_shift_wait = -1.0
+			_shift_state = 0
 		else:
-			_shift_wait = 0.0
-	elif _shift_wait >= 0.0:
-		_shift_wait += delta
-		if _shift_wait > DOUBLE_TAP_WINDOW:
+			_shift_state = 1
+			_shift_t = 0.0
+	elif _shift_state == 1:
+		_shift_t += delta
+		if not Input.is_action_pressed("kb_shift"):
+			_shift_state = 3
+			_shift_t = 0.0
+		elif _shift_t > HOLD_TO_CHARGE:
+			_shift_state = 2
+	elif _shift_state == 2:
+		if not Input.is_action_pressed("kb_shift"):
+			_shift_state = 0
+	elif _shift_state == 3:
+		_shift_t += delta
+		if _shift_t > DOUBLE_TAP_WINDOW:
 			d.dash = true
-			_shift_wait = -1.0
+			_shift_state = 0
+	# 手把 X：輕按＝衝刺、按住＝集氣
+	var pad_charge := false
+	if Input.is_action_pressed("dash"):
+		_pad_x_t = maxf(_pad_x_t, 0.0) + delta
+		pad_charge = _pad_x_t > HOLD_TO_CHARGE
+	elif _pad_x_t >= 0.0:
+		if _pad_x_t <= HOLD_TO_CHARGE:
+			d.dash = true
+		_pad_x_t = -1.0
+	d.charge = _shift_state == 2 or pad_charge or touch_charge_held
 	if Input.is_action_just_pressed("toggle_scheme"):
 		toggle_scheme()
 	return d

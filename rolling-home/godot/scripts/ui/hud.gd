@@ -18,6 +18,10 @@ var _count_box: Control
 var _shown_count := 0
 var _pause: PanelContainer
 var _banner_tween: Tween
+var _speed: ColorRect
+var _speed_mat: ShaderMaterial
+## 示範模式（標題畫面背景）不需要觸控按鈕
+var with_touch := true
 
 
 func _ready() -> void:
@@ -26,6 +30,16 @@ func _ready() -> void:
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(root)
+
+	# 集氣衝刺的速度線（放在最底層，不擋住其他介面）
+	_speed = ColorRect.new()
+	_speed.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_speed.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_speed_mat = ShaderMaterial.new()
+	_speed_mat.shader = preload("res://assets/shaders/speed_lines.gdshader")
+	_speed.material = _speed_mat
+	_speed.visible = false
+	root.add_child(_speed)
 
 	gauge = SizeGauge.new()
 	gauge.position = Vector2(16, 12)
@@ -69,9 +83,10 @@ func _ready() -> void:
 	root.add_child(_hint)
 	refresh_hint()
 
-	var touch := TouchControls.new()
-	root.add_child(touch)
-	touch.shown.connect(refresh_hint)
+	if with_touch:
+		var touch := TouchControls.new()
+		root.add_child(touch)
+		touch.shown.connect(refresh_hint)
 	refresh_hint()
 
 	_pause = _build_pause()
@@ -90,7 +105,9 @@ func _label(font_size: int, align: HorizontalAlignment) -> Label:
 
 
 func refresh_hint() -> void:
-	var common := "E 第一人稱環視　1 到 5 切換視角　Tab 看遠一點　Esc 暫停"
+	# 觸控時左下角是搖桿，撿到東西的通知往上移，免得疊在一起
+	_toasts.position.y = -390.0 if Controls.touch_active else -170.0
+	var common := "按住 Shift 或滑鼠按住槿寶：集氣　E 第一人稱環視　1 到 5 切換視角　Esc 暫停"
 	if Controls.touch_active:
 		_hint.text = ""
 	elif Controls.is_simple():
@@ -107,6 +124,14 @@ func set_status(diameter: float, goal: float, time_left: float, time_total: floa
 	if count != _shown_count:
 		_shown_count = count
 		_count.text = str(count)
+
+
+## 衝刺的速度感：強度 0 到 1，顏色跟著集氣段數。
+func set_speed_fx(amount: float, tint: Color) -> void:
+	_speed.visible = amount > 0.01
+	if _speed.visible:
+		_speed_mat.set_shader_parameter("intensity", clampf(amount * 1.2, 0.0, 1.0))
+		_speed_mat.set_shader_parameter("tint", tint)
 
 
 ## 右上角的「黏了幾個」計數：每黏到一個就彈一下。
@@ -160,6 +185,12 @@ func toast(text: String, big := false) -> void:
 	t.tween_interval(1.6)
 	t.tween_property(l, "modulate:a", 0.0, 0.6)
 	t.tween_callback(l.queue_free)
+
+
+func clear_banner() -> void:
+	if _banner_tween != null and _banner_tween.is_valid():
+		_banner_tween.kill()
+	_banner.modulate.a = 0.0
 
 
 func banner(text: String, hold := 1.4, color := Color.WHITE) -> void:

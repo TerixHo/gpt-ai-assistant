@@ -1,4 +1,4 @@
-<title>家滾滾</title>
+<title>Gǔn A Gǔn A</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
@@ -23,6 +23,11 @@ body {
   font-family: var(--font);
   overflow: hidden;
   overscroll-behavior: none;
+  /* iPad、手機：長按不要跳出放大鏡與選字選單（按住槿寶集氣時會用到長按） */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 #canvas {
   position: fixed;
@@ -36,6 +41,8 @@ body {
   touch-action: none;
   outline: none;
   background: var(--bg);
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 #boot {
   position: fixed;
@@ -58,13 +65,22 @@ body {
 }
 h1 {
   margin: 0;
-  font-size: clamp(56px, 14vw, 96px);
+  font-size: clamp(48px, 11vw, 92px);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  color: var(--fg);
-  text-shadow: 0 4px 0 #1a120e;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
+/* 和遊戲裡的 3D 標題同樣配色：黃、淡紫、藍、粉，加上深紫色的立體厚度 */
+h1 span {
+  display: inline-block;
+  text-shadow: 0 2px 0 #3a2650, 0 4px 0 #3a2650, 0 6px 0 #3a2650, 0 8px 0 #3a2650, 0 12px 14px rgba(0, 0, 0, 0.4);
+}
+h1 .c0 { color: #ffc93c; }
+h1 .c1 { color: #c9a6ff; }
+h1 .c2 { color: #7fb8ff; }
+h1 .c3 { color: #ff8fb8; }
+h1 .gap { width: 0.35em; }
 .lead { margin: 0; font-size: 18px; line-height: 1.6; color: var(--fg); text-wrap: balance; }
 .beads {
   display: flex;
@@ -135,8 +151,8 @@ button.secondary:active { box-shadow: inset 0 0 0 2px var(--line); }
 
 <div id="boot">
   <div class="card">
-    <h1>家滾滾</h1>
-    <p class="lead">從書桌上的小珠珠開始，把家裡的東西滾成一顆大球！</p>
+    <h1 aria-label="Gǔn A Gǔn A"><span class="c0">G</span><span class="c1">ǔ</span><span class="c2">n</span><span class="gap"></span><span class="c3">A</span><span class="gap"></span><span class="c0">G</span><span class="c1">ǔ</span><span class="c2">n</span><span class="gap"></span><span class="c3">A</span></h1>
+    <p class="lead">從書桌上的小珠珠開始，跟槿寶一起把家裡的東西滾成一顆大球！</p>
     <div class="beads" aria-hidden="true">
       <div class="bead" style="--n:0"><i style="width:8px;height:8px;--c:#7fd3ff"></i><span>6mm</span></div>
       <div class="bead" style="--n:1"><i style="width:11px;height:11px;--c:#ff8fb8"></i><span>8mm</span></div>
@@ -155,8 +171,8 @@ button.secondary:active { box-shadow: inset 0 0 0 2px var(--line); }
     </div>
     <p class="error" id="error" hidden></p>
     <div class="howto">
-      <div><b>電腦</b>W 前進、S 後退、A D 轉彎，空白鍵跳躍，Shift 衝刺，Shift 按兩下轉身，E 環視，1 到 5 換視角，Esc 暫停</div>
-      <div><b>手機平板</b>左半邊按住拖曳來走路和轉彎，右邊有跳躍、衝刺、轉身、視角、暫停按鈕</div>
+      <div><b>iPad 與手機</b>左半邊按住拖曳走路，按住槿寶集氣、放開衝出去，右半邊往上滑衝刺；建議橫著拿</div>
+      <div><b>電腦</b>W A S D 走路，滑鼠按住槿寶或按住 Shift 集氣，空白鍵跳躍，Shift 按兩下轉身，E 環視，1 到 5 換視角</div>
       <div><b>第一次</b>要下載約 __TOTAL_MB__MB，等一下下就好</div>
     </div>
   </div>
@@ -202,9 +218,22 @@ function showError(msg) {
   errorEl.textContent = msg;
 }
 
+// iPad Safari：擋掉雙指縮放與雙擊放大，免得玩到一半畫面被放大
+["gesturestart", "gesturechange", "gestureend"].forEach(function (type) {
+  document.addEventListener(type, function (e) { e.preventDefault(); }, { passive: false });
+});
+document.addEventListener("dblclick", function (e) { e.preventDefault(); }, { passive: false });
+
 function start(full) {
-  if (full && document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen().catch(function () {});
+  if (full) {
+    const el = document.documentElement;
+    const req = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (req) {
+      try {
+        const r = req.call(el);
+        if (r && r.catch) r.catch(function () {});
+      } catch (e) {}
+    }
   }
   actions.hidden = true;
   progress.hidden = false;

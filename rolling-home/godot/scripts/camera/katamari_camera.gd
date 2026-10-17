@@ -19,6 +19,10 @@ var camera: Camera3D
 var look_up := false
 var view := 3
 var free_look := false
+## 集氣衝刺的速度感（0 到 1）：視野拉寬、鏡頭往後拉
+var boost := 0.0
+## 集氣進度（0 到 1）：視野微微收窄，蓄力的緊張感
+var charge := 0.0
 
 var _look_yaw := 0.0
 var _look_pitch := 0.0
@@ -26,6 +30,7 @@ var _quick_turn_left := 0.0
 var _shake := 0.0
 var _focus := Vector3.ZERO
 var _has_focus := false
+var _boost_shown := 0.0
 var _ray := PhysicsRayQueryParameters3D.new()
 # 震動用自己的亂數，避免每秒畫面數不同時打亂遊戲邏輯共用的亂數序列（自動測試需要可重現）
 var _rng := RandomNumberGenerator.new()
@@ -102,6 +107,9 @@ func _process(delta: float) -> void:
 func _update(delta: float, instant: bool) -> void:
 	var t := target.get_global_transform_interpolated().origin
 	var dm := target.diameter
+	# 衝出去的瞬間視野一下子拉寬，之後慢慢收回
+	_boost_shown = boost if boost > _boost_shown else move_toward(_boost_shown, boost, delta * 1.5)
+	camera.fov = 64.0 + 26.0 * _boost_shown - 7.0 * charge
 	var r := dm * 0.5
 	var fwd := Vector3(-sin(yaw), 0.0, -cos(yaw))
 	if is_first_person():
@@ -134,6 +142,7 @@ func _update(delta: float, instant: bool) -> void:
 	if look_up:
 		dist *= 1.6
 		height = dm * 6.0 + 30.0
+	dist *= 1.0 + 0.3 * _boost_shown - 0.12 * charge
 	var back := fwd if view == 5 else -fwd
 	var desired := t + Vector3.UP * height + back * dist
 	# 牆壁與大型家具會把鏡頭往前推；小東西忽略，避免鏡頭亂跳

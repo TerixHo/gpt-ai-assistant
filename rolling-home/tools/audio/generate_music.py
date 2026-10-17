@@ -8,6 +8,8 @@
     music_title.wav  標題畫面：76 BPM、Eb 大調，刷鼓與電鋼琴，8 小節無縫循環
     pop.wav、ding.wav、chirp.wav  黏到東西：啵、叮、啾啾
     jump.wav、turn.wav            跳躍的彈簧聲、轉身的咻聲
+    charge_loop.wav、charge_level.wav、flame.wav、launch.wav  集氣旋轉、升段、藍色火焰、衝出去
+加上 --sfx-only 只重新產生音效（配樂不變）。
 
 編曲：電鋼琴（FM 合成，左右輕擺）、鐵琴主旋律（含延遲回音）、圓潤低音、柔和襯底、
 軟鼓組（搖擺十六分音符）、泡泡音點綴、淡淡的黑膠沙沙聲，最後加殘響。
@@ -431,10 +433,63 @@ def sfx(out: Path):
     write_wav(out / "turn.wav", whoosh, sr, 0.5)
 
 
+def charge_sfx(out: Path):
+    """集氣：旋轉聲（1 秒無縫循環，遊戲中依集氣時間升高音調）、升段晶亮音、藍色火焰點火聲、放開衝出去的爆發聲。"""
+    sr = SFX_SR
+    rng = np.random.default_rng(9)
+
+    # 旋轉聲：整數週期的頻率在 1 秒內剛好轉完整圈，頭尾接得起來；噪音用頻譜濾波（循環式），也接得起來
+    n = sr
+    t = np.arange(n) / sr
+    whir = np.zeros(n)
+    for k, amp in ((1, 1.0), (2, 0.45), (3, 0.25), (5, 0.12)):
+        whir += amp * np.sin(TAU * 180 * k * t)
+    whir *= 0.55 + 0.45 * np.sin(TAU * 16 * t)
+    air = fft_filter(rng.normal(0, 1, n), sr, lo=800, hi=4000) * (0.6 + 0.4 * np.sin(TAU * 16 * t + 1.0))
+    loop = np.tanh((whir * 0.5 + air * 0.35) * 1.2)
+    write_wav(out / "charge_loop.wav", loop, sr, 0.6)
+
+    # 升段：三個音往上爬的晶亮音
+    total = np.zeros(int(0.45 * sr))
+    for i, f in enumerate((1318.5, 1661.2, 1975.5)):
+        nn = int(0.3 * sr)
+        tt = np.arange(nn) / sr
+        tone = (np.sin(TAU * f * tt) + 0.3 * np.sin(TAU * f * 2.01 * tt)) * np.exp(-tt / 0.09)
+        start = int(i * 0.05 * sr)
+        total[start:start + nn] += tone * (0.7 + 0.15 * i)
+    write_wav(out / "charge_level.wav", total, sr, 0.6)
+
+    # 藍色火焰點火：一陣「呼」，低通濾波由暗變亮再收
+    nn = int(0.7 * sr)
+    tt = np.arange(nn) / sr
+    noise = rng.normal(0, 1, nn)
+    dark = fft_filter(noise, sr, lo=150, hi=900)
+    bright = fft_filter(noise, sr, lo=900, hi=5000)
+    mixk = np.clip(tt / 0.25, 0, 1)
+    flame = (dark * (1 - mixk) + bright * mixk * 0.8) * np.minimum(tt / 0.04, 1) * np.exp(-tt / 0.3)
+    flame += 0.4 * np.sin(TAU * np.cumsum(90 + 140 * tt) / sr) * np.exp(-tt / 0.2)
+    write_wav(out / "flame.wav", flame, sr, 0.7)
+
+    # 衝出去：強風由高往低掃過，加上低音重擊
+    nn = int(0.9 * sr)
+    tt = np.arange(nn) / sr
+    noise = rng.normal(0, 1, nn)
+    hi = fft_filter(noise, sr, lo=2500, hi=9000)
+    lo_ = fft_filter(noise, sr, lo=300, hi=2500)
+    sweep = np.clip(tt / 0.5, 0, 1)
+    wind = (hi * (1 - sweep) + lo_ * sweep) * np.minimum(tt / 0.015, 1) * np.exp(-tt / 0.35)
+    boom = np.sin(TAU * np.cumsum(40 + 90 * np.exp(-tt / 0.05)) / sr) * np.exp(-tt / 0.25)
+    write_wav(out / "launch.wav", np.tanh(wind * 0.8 + boom * 1.2), sr, 0.8)
+
+
 def main():
-    out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[2] / "godot" / "assets" / "audio"
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    out = Path(args[0]) if args else Path(__file__).resolve().parents[2] / "godot" / "assets" / "audio"
     out.mkdir(parents=True, exist_ok=True)
     sfx(out)
+    charge_sfx(out)
+    if "--sfx-only" in sys.argv:
+        return
     music_home(out)
     music_title(out)
     for name in ("pop", "ding", "chirp", "jump", "turn", "music_home", "music_title"):

@@ -21,7 +21,9 @@ func _process(delta: float) -> void:
 	_timer = 0.0
 	match _step:
 		0:
-			_expect(_find_label("家滾滾"), "標題畫面顯示遊戲名稱")
+			var logo := get_tree().root.find_child("TitleLogo", true, false)
+			_expect(logo != null and str(logo.get("text")) == "Gǔn A Gǔn A", "標題畫面顯示 3D 大標題 Gǔn A Gǔn A")
+			_expect(get_tree().root.find_children("Stage", "", true, false).size() > 0, "標題背景有示範關卡在跑")
 			_main.start_stage("home_1")
 		1:
 			var stage := _main.get_child(_main.get_child_count() - 1) as Stage

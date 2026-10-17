@@ -21,6 +21,13 @@ const SOUNDS := {
 	"chirp": "res://assets/audio/chirp.wav",
 	"jump": "res://assets/audio/jump.wav",
 	"turn": "res://assets/audio/turn.wav",
+	"charge_level": "res://assets/audio/charge_level.wav",
+	"flame": "res://assets/audio/flame.wav",
+	"launch": "res://assets/audio/launch.wav",
+}
+## 需要持續循環的音效（集氣的旋轉聲）
+const LOOPS := {
+	"charge_loop": "res://assets/audio/charge_loop.wav",
 }
 const MUSIC := {
 	"title": "res://assets/audio/music_title.wav",
@@ -32,6 +39,9 @@ var _streams: Dictionary = {}
 var _pool: Array[AudioStreamPlayer] = []
 var _music: AudioStreamPlayer
 var _music_key := ""
+var _loop: AudioStreamPlayer
+## 標題畫面的示範關卡在背景跑時，關掉場景裡的音效（貓叫、黏東西）
+var world_muted := false
 # 音高微調用自己的亂數，不影響遊戲邏輯共用的亂數（自動測試需要可重現）
 var _rng := RandomNumberGenerator.new()
 
@@ -46,10 +56,12 @@ func _ready() -> void:
 		_pool.append(p)
 	_music = AudioStreamPlayer.new()
 	add_child(_music)
+	_loop = AudioStreamPlayer.new()
+	add_child(_loop)
 
 
 func play(key: String, pitch := 1.0, volume_db := 0.0) -> void:
-	if not _streams.has(key):
+	if not _streams.has(key) or (world_muted and key != "ui"):
 		return
 	for p in _pool:
 		if not p.playing:
@@ -63,6 +75,30 @@ func play(key: String, pitch := 1.0, volume_db := 0.0) -> void:
 ## 每次音高稍微不同，連續黏東西時聽起來比較生動。
 func play_varied(key: String, pitch := 1.0, spread := 0.05, volume_db := 0.0) -> void:
 	play(key, pitch * (1.0 + _rng.randf_range(-spread, spread)), volume_db)
+
+
+func start_loop(key: String, pitch := 1.0) -> void:
+	var path: String = LOOPS.get(key, "")
+	if path.is_empty() or not ResourceLoader.exists(path):
+		return
+	var stream: AudioStream = load(path)
+	if stream is AudioStreamWAV:
+		var wav := stream as AudioStreamWAV
+		wav.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		wav.loop_begin = 0
+		wav.loop_end = int(wav.get_length() * wav.mix_rate)
+	_loop.stream = stream
+	_loop.pitch_scale = pitch
+	_loop.volume_db = linear_to_db(maxf(float(Game.settings["sfx_volume"]), 0.001)) - 4.0
+	_loop.play()
+
+
+func set_loop_pitch(pitch: float) -> void:
+	_loop.pitch_scale = clampf(pitch, 0.25, 4.0)
+
+
+func stop_loop() -> void:
+	_loop.stop()
 
 
 func play_music(key: String) -> void:

@@ -1,5 +1,6 @@
 extends Node
-## 觸控操作測試：模擬手指在螢幕上拖曳與按按鈕，確認滾球真的會動、轉身與暫停有反應。
+## 觸控操作測試：模擬手指在螢幕上拖曳與按按鈕，確認滾球真的會動、轉身、跳躍、視角、暫停、
+## 往上滑衝刺、按住槿寶集氣都有反應。
 ##
 ## 用法（專案根目錄）：
 ##   godot --headless --fixed-fps 60 res://tests/touch_test.tscn
@@ -13,6 +14,7 @@ var _fails: Array[String] = []
 var _start_pos := Vector3.ZERO
 var _yaw_before := 0.0
 var _shot := ""
+var _vars_charge_pos := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -125,6 +127,33 @@ func _physics_process(delta: float) -> void:
 			if _t > 6.1:
 				_check(get_tree().paused, "暫停按鈕讓遊戲暫停")
 				get_tree().paused = false
+				# 右半邊往上滑：衝刺
+				var from := Vector2(size.x * 0.8, size.y * 0.6)
+				_touch(6, from, true)
+				_drag(6, from + Vector2(5, -40))
+				_drag(6, from + Vector2(8, -95))
+				_step = 8
+		8:
+			if _t > 6.25:
+				_check(k.is_dashing(), "右半邊往上滑：衝刺")
+				_touch(6, Vector2(size.x * 0.8, size.y * 0.6 - 95), false)
+				_step = 9
+		9:
+			if _t > 7.4:
+				var info: Dictionary = touch.call("_character_screen")
+				_check(not info.is_empty(), "找得到槿寶在畫面上的位置")
+				if not info.is_empty():
+					_vars_charge_pos = info["char"]
+					_touch(7, _vars_charge_pos, true)
+				_step = 10
+		10:
+			if _t > 9.7:
+				_check(k.is_charging() and k.charge_level() == 2, "按住槿寶 2.3 秒：集氣到第 2 段橘光（第 %d 段）" % k.charge_level())
+				_touch(7, _vars_charge_pos, false)
+				_step = 11
+		11:
+			if _t > 9.8:
+				_check(k.is_bursting() and not k.is_charging(), "放開槿寶：衝出去")
 				_finish()
 
 
