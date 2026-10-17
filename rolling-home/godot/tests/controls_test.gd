@@ -17,6 +17,8 @@ var _vars: Dictionary = {}
 
 func _ready() -> void:
 	Game.persist = false
+	# 固定亂數：場景裡的貓狗會隨機走動，不固定的話偶爾會擋到測試路線
+	seed(20261017)
 	_stage = Stage.new()
 	_stage.setup("sandbox")
 	_stage.skip_intro = true

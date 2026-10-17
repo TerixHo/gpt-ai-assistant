@@ -19,6 +19,8 @@ var _vars_charge_pos := Vector2.ZERO
 
 func _ready() -> void:
 	Game.persist = false
+	# 固定亂數：場景裡的貓狗會隨機走動，不固定的話偶爾會擋到測試路線
+	seed(20261017)
 	var args := OS.get_cmdline_user_args()
 	var i := args.find("--shot")
 	if i >= 0 and i + 1 < args.size():
