@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 			var logo := get_tree().root.find_child("TitleLogo", true, false)
 			_expect(logo != null and str(logo.get("text")) == "Gǔn A Gǔn A", "標題畫面顯示 3D 大標題 Gǔn A Gǔn A")
 			_expect(get_tree().root.find_children("Stage", "", true, false).size() > 0, "標題背景有示範關卡在跑")
-			_main.start_stage("home_1")
+			_main.start_stage("home")
 		1:
 			var stage := _main.get_child(_main.get_child_count() - 1) as Stage
 			_expect(stage != null and stage.katamari != null, "關卡載入成功")
@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 			_main.show_help()
 		11:
 			_expect(_find_label("怎麼玩"), "怎麼玩畫面")
-			_main.start_stage("home_2")
+			_main.start_stage("street")
 		12:
 			var stage2 := _main.get_child(_main.get_child_count() - 1) as Stage
 			_expect(stage2 != null and stage2.spawned_count > 300, "第 2 關載入（物件數 %d）" % (stage2.spawned_count if stage2 else 0))

@@ -33,10 +33,10 @@ func _process(delta: float) -> void:
 		0:
 			await _shot("ui_title")
 			_main.show_results({
-				"stage_id": "home_1", "diameter_cm": 9.5, "goal_cm": 5.0, "success": true,
+				"stage_id": "home", "diameter_cm": 132.0, "goal_cm": 100.0, "success": true,
 				"items": {"bead_6": 40, "bead_8": 25, "marble": 3, "eraser": 1, "minicar": 1, "dinosaur": 1}, "count": 168, "time_total": 240.0, "time_to_goal": 105.0,
 				"comet_sec": 100.0, "top_items": ["dinosaur", "minicar", "gacha_capsule", "glue_stick", "eraser"],
-				"grades": Data.get_stage("home_1")["grades"]})
+				"grades": Data.get_stage("home")["grades"]})
 		1:
 			await _shot("ui_results")
 			_main.show_collection()

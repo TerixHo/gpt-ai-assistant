@@ -552,6 +552,12 @@ func _probe_step(state: PhysicsDirectBodyState3D, bottom: float, into_wall: Vect
 	var h := (hit["position"] as Vector3).y - bottom
 	if h >= max_h:
 		return -1.0
+	# 台階上方要有空間讓球過去：從抬高後的球心往前打一條射線，碰到東西就是牆（例如牆腳的踢腳板），不是台階
+	var lifted := state.transform.origin + Vector3.UP * (h + diameter * 0.05)
+	_step_ray.from = lifted
+	_step_ray.to = lifted + into_wall * (radius() + diameter * 0.1)
+	if not state.get_space_state().intersect_ray(_step_ray).is_empty():
+		return -1.0
 	return h
 
 
