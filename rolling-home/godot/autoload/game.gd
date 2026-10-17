@@ -3,7 +3,7 @@ extends Node
 
 const SAVE_PATH := "user://save.json"
 
-var current_stage_id := "home_1"
+var current_stage_id := "home"
 var last_result: Dictionary = {}
 ## 收藏目錄：物件 id -> 累計收集數
 var collection: Dictionary = {}

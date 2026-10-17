@@ -70,6 +70,14 @@ func _swap(node: Node) -> void:
 	add_child(node)
 
 
+## 「開始遊戲」從第一個做好的關卡開始
+static func first_stage_id() -> String:
+	for st in Data.visible_stages():
+		if Game.is_stage_playable(st["id"]):
+			return st["id"]
+	return "home_1"
+
+
 func start_stage(id: String) -> void:
 	_stop_demo()
 	Game.current_stage_id = id
@@ -217,7 +225,7 @@ func show_title() -> void:
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_theme_constant_override("separation", 14)
 	bottom.add_child(row)
-	var first := _button("開始遊戲", func(): start_stage(Data.stages[0]["id"]), 30, true)
+	var first := _button("開始遊戲", func(): start_stage(first_stage_id()), 30, true)
 	first.custom_minimum_size = Vector2(300, 66)
 	row.add_child(first)
 	for spec in [["選關卡", show_stage_select], ["收藏圖鑑", show_collection], ["怎麼玩", show_help]]:
