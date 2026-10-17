@@ -49,6 +49,8 @@ func setup(id: String) -> void:
 
 func _ready() -> void:
 	name = "Stage"
+	# 3D 場景開啟物理插值（螢幕更新率和物理更新率不同時畫面才順）；標題等介面另外關閉
+	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	if stage_def.is_empty():
 		push_error("關卡設定不存在：%s" % stage_id)
 		return
@@ -93,10 +95,14 @@ func _ready() -> void:
 	katamari.collected.connect(_on_collected)
 	katamari.bumped.connect(_on_bumped)
 	katamari.dashed.connect(func(): Sfx.play("dash"))
+	katamari.jumped.connect(func(): Sfx.play_varied("jump", clampf(1.25 - katamari.diameter / 80.0, 0.8, 1.25), 0.05))
 
 	cam = KatamariCamera.new()
 	add_child(cam)
 	cam.target = katamari
+	cam.view_changed.connect(func(label: String):
+		hud.toast(label)
+		Sfx.play("ui"))
 	cam.yaw = _start_yaw
 	cam.snap()
 
@@ -106,6 +112,7 @@ func _ready() -> void:
 	add_child(pusher)
 
 	hud = Hud.new()
+	hud.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	add_child(hud)
 	hud.resume_requested.connect(func(): _set_paused(false))
 	hud.restart_requested.connect(func():
@@ -135,6 +142,8 @@ func _ready() -> void:
 		hud.banner(stage_def.get("intro", "預備…"), INTRO_TIME - 0.6)
 	_update_hud()
 	Sfx.play_music(stage_def.get("music", "home"))
+	# 場景剛擺好，所有東西都是「瞬間就位」，不要從原點補間過來
+	reset_physics_interpolation()
 
 
 func _build_environment() -> void:
@@ -188,9 +197,18 @@ func _physics_process(delta: float) -> void:
 func _play_step(delta: float) -> void:
 	var d := Controls.read(delta)
 	cam.apply_drive(d, delta)
-	katamari.set_drive(d.move, cam.yaw)
-	if d.dash:
-		katamari.dash()
+	if cam.free_look:
+		# 第一人稱環視時球停下來，WASD 用來看四周
+		katamari.set_drive(Vector2.ZERO, cam.yaw)
+		katamari.release_jump()
+	else:
+		katamari.set_drive(d.move, cam.yaw)
+		if d.dash:
+			katamari.dash()
+		if d.jump:
+			katamari.jump()
+		if not d.jump_held:
+			katamari.release_jump()
 	elapsed += delta
 	if not no_limit:
 		time_left -= delta
@@ -199,6 +217,7 @@ func _play_step(delta: float) -> void:
 	if katamari.global_position.y < -300.0:
 		katamari.linear_velocity = Vector3.ZERO
 		katamari.global_position = _start_pos + Vector3.UP * katamari.diameter
+		katamari.reset_physics_interpolation()
 	if time_to_goal < 0.0 and katamari.diameter >= goal:
 		time_to_goal = elapsed
 		hud.banner("成功了！繼續滾，可以變得更大喔！", 1.8, Color(0.55, 1.0, 0.6))
@@ -232,6 +251,8 @@ func _check_gates() -> void:
 		var body: StaticBody3D = g["body"]
 		body.collision_layer = 0
 		var t := create_tween()
+		# 在物理幀推進，搭配物理插值才不會一頓一頓
+		t.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		t.tween_property(body, "position", body.position + (g["slide"] as Vector3), 0.9).set_trans(Tween.TRANS_QUAD)
 		var msg: String = g["message"]
 		if not msg.is_empty():
@@ -270,7 +291,15 @@ func _on_collected(item_id: String, def: Dictionary) -> void:
 		Sfx.play("cheer")
 	var big := size > katamari.diameter * 0.45
 	hud.toast("%s　%s" % [def.get("name", item_id), KMath.format_size(size)], big)
-	Sfx.play("pickup_big" if big else "pickup", clampf(1.5 - size / maxf(katamari.diameter, 0.1), 0.7, 1.6))
+	hud.bump_count()
+	# 黏到東西的聲音依相對大小：小東西「啵」、中等「叮」、快要黏不起來的大東西「啾啾」
+	var rel := size / maxf(katamari.diameter * katamari.pickup_ratio, 0.01)
+	if rel < 0.35:
+		Sfx.play_varied("pop", clampf(1.35 - rel, 0.9, 1.35), 0.06)
+	elif rel < 0.7:
+		Sfx.play_varied("ding", clampf(1.25 - rel * 0.5, 0.9, 1.2), 0.04)
+	else:
+		Sfx.play_varied("chirp", 1.0, 0.05)
 
 
 func _on_bumped(strength: float, lost: int) -> void:

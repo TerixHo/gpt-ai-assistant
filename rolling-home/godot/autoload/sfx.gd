@@ -16,6 +16,11 @@ const SOUNDS := {
 	"meow": "res://assets/audio/meow.wav",
 	"woof": "res://assets/audio/woof.wav",
 	"cheer": "res://assets/audio/cheer.wav",
+	"pop": "res://assets/audio/pop.wav",
+	"ding": "res://assets/audio/ding.wav",
+	"chirp": "res://assets/audio/chirp.wav",
+	"jump": "res://assets/audio/jump.wav",
+	"turn": "res://assets/audio/turn.wav",
 }
 const MUSIC := {
 	"title": "res://assets/audio/music_title.wav",
@@ -27,6 +32,8 @@ var _streams: Dictionary = {}
 var _pool: Array[AudioStreamPlayer] = []
 var _music: AudioStreamPlayer
 var _music_key := ""
+# 音高微調用自己的亂數，不影響遊戲邏輯共用的亂數（自動測試需要可重現）
+var _rng := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
@@ -51,6 +58,11 @@ func play(key: String, pitch := 1.0, volume_db := 0.0) -> void:
 			p.volume_db = volume_db + linear_to_db(maxf(float(Game.settings["sfx_volume"]), 0.001))
 			p.play()
 			return
+
+
+## 每次音高稍微不同，連續黏東西時聽起來比較生動。
+func play_varied(key: String, pitch := 1.0, spread := 0.05, volume_db := 0.0) -> void:
+	play(key, pitch * (1.0 + _rng.randf_range(-spread, spread)), volume_db)
 
 
 func play_music(key: String) -> void:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""產生遊戲暫代音效與配樂（原創合成，僅使用 Python 標準函式庫）。
+"""產生遊戲基本音效（原創合成，僅使用 Python 標準函式庫）。配樂見 generate_music.py。
 
 用法：
     python3 tools/audio/generate_audio.py [輸出資料夾]
@@ -158,8 +158,8 @@ def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[2] / "godot" / "assets" / "audio"
     out.mkdir(parents=True, exist_ok=True)
     sfx(out)
-    music(out, "music_title", 96, [(60, "M"), (57, "m"), (62, "m"), (55, "7")], seed=7, swing=0.08)
-    music(out, "music_home", 132, [(65, "M"), (67, "7"), (64, "m"), (69, "m")], seed=11, swing=0.1)
+    # 配樂與啵、叮、啾啾、跳躍、轉身音效改由 generate_music.py（numpy 合成的電子慢速爵士）產生；
+    # 舊的 music() 保留作參考，不再輸出，避免覆蓋新配樂。
     for f in sorted(out.glob("*.wav")):
         print(f"{f.name}\t{f.stat().st_size // 1024} KB")
 

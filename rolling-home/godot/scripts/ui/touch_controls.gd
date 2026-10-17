@@ -2,7 +2,7 @@ class_name TouchControls
 extends Control
 ## 觸控操作（手機、平板、觸控筆電）：
 ##   左半邊任意位置按住拖曳 = 虛擬搖桿（往上前進、往下後退、左右轉彎）。
-##   右側按鈕 = 衝刺、轉身、看遠一點（按住）、暫停。
+##   右側按鈕 = 跳躍（按住跳更高）、衝刺、轉身、看遠一點（按住）、視角切換、暫停。
 ## 每根手指自己判斷位置，所以一手推搖桿、一手按按鈕也不會漏掉。
 ## 有觸控螢幕時一開始就顯示；沒有的話，第一次摸到螢幕才出現。
 
@@ -16,6 +16,7 @@ var _stick_index := -1
 var _stick_origin := Vector2.ZERO
 var _stick_pos := Vector2.ZERO
 var _look_index := -1
+var _jump_index := -1
 var _buttons: Array[Dictionary] = []
 
 
@@ -42,18 +43,22 @@ func _notification(what: int) -> void:
 func _reset() -> void:
 	_stick_index = -1
 	_look_index = -1
+	_jump_index = -1
 	Controls.touch_stick = Vector2.ZERO
 	Controls.touch_look = false
+	Controls.touch_jump_held = false
 	queue_redraw()
 
 
 func _layout() -> void:
 	var s := size
 	_buttons = [
-		{"id": "dash", "label": "衝刺", "center": Vector2(s.x - 96.0, s.y - 160.0), "r": BUTTON_RADIUS},
-		{"id": "turn", "label": "轉身", "center": Vector2(s.x - 216.0, s.y - 84.0), "r": BUTTON_RADIUS},
-		{"id": "look", "label": "看遠", "center": Vector2(s.x - 96.0, s.y - 290.0), "r": BUTTON_RADIUS * 0.85},
+		{"id": "jump", "label": "跳躍", "center": Vector2(s.x - 104.0, s.y - 104.0), "r": BUTTON_RADIUS * 1.2},
+		{"id": "dash", "label": "衝刺", "center": Vector2(s.x - 246.0, s.y - 72.0), "r": BUTTON_RADIUS * 0.9},
+		{"id": "turn", "label": "轉身", "center": Vector2(s.x - 104.0, s.y - 250.0), "r": BUTTON_RADIUS * 0.9},
+		{"id": "look", "label": "看遠", "center": Vector2(s.x - 236.0, s.y - 196.0), "r": BUTTON_RADIUS * 0.75},
 		{"id": "pause", "label": "暫停", "center": Vector2(s.x - 84.0, 214.0), "r": 34.0},
+		{"id": "view", "label": "視角", "center": Vector2(s.x - 84.0, 300.0), "r": 34.0},
 	]
 	queue_redraw()
 
@@ -79,6 +84,10 @@ func _press(index: int, pos: Vector2) -> void:
 	for b in _buttons:
 		if pos.distance_to(b["center"]) <= float(b["r"]) * 1.25:
 			match b["id"]:
+				"jump":
+					_jump_index = index
+					Controls.touch_jump = true
+					Controls.touch_jump_held = true
 				"dash":
 					Controls.touch_dash = true
 				"turn":
@@ -88,6 +97,8 @@ func _press(index: int, pos: Vector2) -> void:
 					Controls.touch_look = true
 				"pause":
 					_send_pause()
+				"view":
+					Controls.touch_view_cycle = true
 			queue_redraw()
 			return
 	if _stick_index == -1 and pos.x < size.x * 0.55:
@@ -103,6 +114,9 @@ func _release(index: int) -> void:
 	if index == _look_index:
 		_look_index = -1
 		Controls.touch_look = false
+	if index == _jump_index:
+		_jump_index = -1
+		Controls.touch_jump_held = false
 	queue_redraw()
 
 
@@ -146,7 +160,7 @@ func _draw() -> void:
 		draw_circle(c, KNOB_RADIUS, Color(1, 1, 1, 0.16))
 		_text(font, c + Vector2(0, STICK_RADIUS + 34.0), "按住拖曳", 22, Color(1, 1, 1, 0.55))
 	for b in _buttons:
-		var held: bool = b["id"] == "look" and _look_index >= 0
+		var held: bool = (b["id"] == "look" and _look_index >= 0) or (b["id"] == "jump" and _jump_index >= 0)
 		var r := float(b["r"])
 		draw_circle(b["center"], r, Color(0.16, 0.12, 0.1, 0.62 if held else 0.38))
 		draw_arc(b["center"], r, 0.0, TAU, 40, Color(1, 1, 1, 0.65), 3.0, true)

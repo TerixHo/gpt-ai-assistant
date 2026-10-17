@@ -14,6 +14,8 @@ var _banner: Label
 var _area: Label
 var _hint: Label
 var _count: Label
+var _count_box: Control
+var _shown_count := 0
 var _pause: PanelContainer
 var _banner_tween: Tween
 
@@ -34,9 +36,8 @@ func _ready() -> void:
 	clock.position = Vector2(-166, 12)
 	root.add_child(clock)
 
-	_count = _label(18, HORIZONTAL_ALIGNMENT_LEFT)
-	_count.position = Vector2(30, 206)
-	root.add_child(_count)
+	_count_box = _build_counter()
+	root.add_child(_count_box)
 
 	_area = _label(24, HORIZONTAL_ALIGNMENT_CENTER)
 	_area.set_anchors_preset(Control.PRESET_CENTER_TOP)
@@ -62,8 +63,8 @@ func _ready() -> void:
 
 	_hint = _label(15, HORIZONTAL_ALIGNMENT_RIGHT)
 	_hint.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	_hint.position = Vector2(-760, -34)
-	_hint.size = Vector2(740, 24)
+	_hint.position = Vector2(-900, -54)
+	_hint.size = Vector2(880, 44)
 	_hint.modulate.a = 0.8
 	root.add_child(_hint)
 	refresh_hint()
@@ -89,12 +90,13 @@ func _label(font_size: int, align: HorizontalAlignment) -> Label:
 
 
 func refresh_hint() -> void:
+	var common := "E 第一人稱環視　1 到 5 切換視角　Tab 看遠一點　Esc 暫停"
 	if Controls.touch_active:
 		_hint.text = ""
 	elif Controls.is_simple():
-		_hint.text = "W/S 前進後退  A/D 轉彎  Shift 衝刺  Space 轉身  Tab 看遠一點  Esc 暫停"
+		_hint.text = "W/S 前進後退　A/D 轉彎　空白鍵 跳躍（按住跳更高）　Shift 衝刺　Shift 按兩下 轉身\n" + common
 	else:
-		_hint.text = "左桿 WASD  右桿 方向鍵  兩桿交替=衝刺  Space 轉身  Tab 看遠一點  Esc 暫停"
+		_hint.text = "左桿 WASD　右桿 方向鍵　兩桿交替 衝刺　空白鍵 跳躍　Shift 按兩下 轉身\n" + common
 
 
 func set_status(diameter: float, goal: float, time_left: float, time_total: float, count: int, elapsed := -1.0) -> void:
@@ -102,7 +104,46 @@ func set_status(diameter: float, goal: float, time_left: float, time_total: floa
 	clock.time_left = time_left
 	clock.time_total = time_total
 	clock.elapsed = elapsed
-	_count.text = "已經黏了 %d 個" % count
+	if count != _shown_count:
+		_shown_count = count
+		_count.text = str(count)
+
+
+## 右上角的「黏了幾個」計數：每黏到一個就彈一下。
+func bump_count() -> void:
+	_count_box.pivot_offset = _count_box.size * 0.5
+	var t := create_tween()
+	t.tween_property(_count_box, "scale", Vector2(1.12, 1.12), 0.06)
+	t.tween_property(_count_box, "scale", Vector2.ONE, 0.14)
+
+
+func _build_counter() -> Control:
+	var panel := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.16, 0.11, 0.09, 0.55)
+	sb.set_corner_radius_all(18)
+	sb.content_margin_left = 16
+	sb.content_margin_right = 16
+	sb.content_margin_top = 6
+	sb.content_margin_bottom = 8
+	panel.add_theme_stylebox_override("panel", sb)
+	panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	panel.position = Vector2(-318, 22)
+	panel.custom_minimum_size = Vector2(140, 0)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", -6)
+	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(col)
+	var title := _label(18, HORIZONTAL_ALIGNMENT_CENTER)
+	title.text = "黏了幾個"
+	title.modulate.a = 0.85
+	col.add_child(title)
+	_count = _label(48, HORIZONTAL_ALIGNMENT_CENTER)
+	_count.text = "0"
+	_count.add_theme_color_override("font_color", Color(1.0, 0.86, 0.35))
+	col.add_child(_count)
+	return panel
 
 
 func toast(text: String, big := false) -> void:

@@ -11,6 +11,7 @@ signal collected(item_id: String, def: Dictionary)
 signal diameter_changed(diameter_cm: float)
 signal bumped(strength: float, lost: int)
 signal dashed
+signal jumped
 
 const MAX_PROTRUSIONS := 10
 ## 吸附範圍的固定餘裕（公分）：物理引擎會在極近距離就停住，小球需要這點餘裕才黏得到 6mm 珠子
@@ -40,6 +41,14 @@ const GRAB_EXTRA := 0.2
 @export var step_up_ratio := 0.92
 ## 每次撞擊最多掉幾件（給小朋友玩，不宜太多）
 @export var max_drop := 2
+## 跳躍：按住到最高點的高度 = 直徑 × jump_height_d + jump_min_cm（公分）
+@export var jump_height_d := 3.0
+@export var jump_min_cm := 6.0
+## 跳躍時的重力倍率：按住上升時比較輕、落下時也稍微飄，小球也看得出在空中
+@export var jump_rise_gravity := 0.5
+@export var jump_fall_gravity := 0.7
+## 跳起來時水平速度的加成比例：跑得越快，跳得越遠
+@export var jump_speed_boost := 0.25
 
 var diameter := 5.0
 var volume := 0.0
@@ -59,6 +68,12 @@ var _knock_cooldown := 0.0
 var _pending_knock: Dictionary = {}
 var _pending_lift := 0.0
 var _step_cooldown := 0.0
+var _air_time := 0.0
+var _jump_request := false
+var _jump_rising := 0.0
+var _jump_cut := false
+var _jump_cooldown := 0.0
+var _jump_air := 0.0
 var _body_shape := SphereShape3D.new()
 var _grab_shape := SphereShape3D.new()
 var _query := PhysicsShapeQueryParameters3D.new()
@@ -133,6 +148,23 @@ func is_dashing() -> bool:
 	return _dash_left > 0.0
 
 
+## 起跳（接地或剛離地一瞬間才有效，不能連跳）。
+func jump() -> bool:
+	if not input_enabled or _air_time > 0.12 or _jump_cooldown > 0.0:
+		return false
+	_jump_request = true
+	return true
+
+
+## 放開跳躍鍵：還在上升就提早收力，所以按得越久跳得越高。
+func release_jump() -> void:
+	_jump_cut = true
+
+
+func is_jumping() -> bool:
+	return _jump_rising > 0.0
+
+
 ## 被外力打到（例如貓咪伸爪）：推開並掉落 drop 件物件。
 func external_hit(dir: Vector3, push_speed: float, drop := 1) -> void:
 	if _knock_cooldown > 0.0:
@@ -192,6 +224,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 				impact = into
 				impact_normal = n
 	_ground_normal = n_sum.normalized() if _grounded else Vector3.UP
+	_air_time = 0.0 if _grounded else _air_time + dt
+	_jump_cooldown -= dt
 
 	if _pending_lift > 0.0:
 		var t := state.transform
@@ -237,10 +271,41 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var g_len := state.total_gravity.length()
 		v.y = maxf(v.y, sqrt(2.0 * g_len * (step_height + diameter * 0.12)))
 		_step_cooldown = 0.3
-	# 非衝刺時限制水平速度，避免碰撞把彈跳轉成暴衝
+	# 跳躍：給剛好跳到目標高度的向上速度（v = √(2gh)），水平速度再加成
+	if _jump_request:
+		_jump_request = false
+		var g_len := state.total_gravity.length()
+		var h := jump_height_d * diameter + jump_min_cm
+		v.y = maxf(v.y, 0.0) + sqrt(2.0 * g_len * jump_rise_gravity * h)
+		v.x *= 1.0 + jump_speed_boost
+		v.z *= 1.0 + jump_speed_boost
+		_air_time = 1.0
+		_jump_rising = 0.0001
+		_jump_air = 0.0001
+		_jump_cooldown = 0.25
+		_step_cooldown = 0.3
+		jumped.emit.call_deferred()
+	var released := _jump_cut
+	if _jump_rising > 0.0:
+		_jump_rising += dt
+		if v.y <= 0.0:
+			_jump_rising = 0.0
+		elif _jump_cut and _jump_rising > 0.08:
+			v.y *= 0.5
+			_jump_rising = 0.0
+	_jump_cut = false
+	# 跳在空中時抵銷部分重力（落地就恢復）
+	if _jump_air > 0.0:
+		_jump_air += dt
+		if _grounded and _jump_air > 0.1:
+			_jump_air = 0.0
+		else:
+			var gf := jump_rise_gravity if (_jump_rising > 0.0 and not released) else jump_fall_gravity
+			v.y += state.total_gravity.length() * (1.0 - gf) * dt
+	# 非衝刺時限制水平速度，避免碰撞把彈跳轉成暴衝（跳在空中時放寬，保留跳躍的加速）
 	if _dash_left <= 0.0:
 		var vh := Vector3(v.x, 0.0, v.z)
-		var cap := base_top * 1.25
+		var cap := base_top * (1.25 if _air_time < 0.5 else 1.6)
 		if vh.length() > cap:
 			vh = vh.normalized() * cap
 			v.x = vh.x
@@ -298,6 +363,7 @@ func _attach(item: PickupItem) -> void:
 	var dist := r * 0.96
 	_stuck_root.add_child(v)
 	v.global_transform = Transform3D(gt.basis, gt.origin + (center + dir * dist - item_center))
+	v.reset_physics_interpolation()
 
 	var gain := KMath.item_volume(item.size_cm, float(item.def.get("fill", 0.5))) * growth_gain
 	volume += gain
@@ -379,6 +445,7 @@ func _knock(k: Dictionary) -> void:
 		var item := PickupItem.spawn(e["def"], e.get("color", ""))
 		items_parent.add_child(item)
 		item.global_transform = gt
+		item.reset_physics_interpolation()
 		var out := (gt.origin - global_position).normalized()
 		item.launch((out + normal * 0.6 + Vector3.UP).normalized() * maxf(diameter * 3.0, 30.0))
 		volume = maxf(volume - float(e["volume"]), min_volume)

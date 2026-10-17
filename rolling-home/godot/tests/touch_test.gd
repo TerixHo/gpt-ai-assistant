@@ -56,6 +56,13 @@ func _check(ok: bool, what: String) -> void:
 		_fails.append(what)
 
 
+func _center(touch: Control, id: String) -> Vector2:
+	for btn in touch.get("_buttons"):
+		if btn["id"] == id:
+			return btn["center"]
+	return Vector2.ZERO
+
+
 func _physics_process(delta: float) -> void:
 	_t += delta
 	var k := _stage.katamari
@@ -78,28 +85,44 @@ func _physics_process(delta: float) -> void:
 					_save_shot()
 				_touch(0, Vector2(200, size.y - 300), false)
 				_yaw_before = _stage.cam.yaw
-				# 轉身按鈕（右下）
-				_touch(1, Vector2(size.x - 216, size.y - 84), true)
-				_touch(1, Vector2(size.x - 216, size.y - 84), false)
+				var turn := _center(touch, "turn")
+				_touch(1, turn, true)
+				_touch(1, turn, false)
 				_step = 2
 		2:
 			if _t > 4.0:
 				_check(Controls.touch_stick == Vector2.ZERO, "放開手指搖桿歸零")
 				var turned := absf(wrapf(_stage.cam.yaw - _yaw_before, -PI, PI))
 				_check(turned > 2.8, "轉身按鈕讓鏡頭轉了約半圈（%.2f 弧度）" % turned)
-				# 看遠按鈕要按住才有效
-				_touch(2, Vector2(size.x - 96, size.y - 290), true)
+				_touch(2, _center(touch, "look"), true)
 				_step = 3
 		3:
 			if _t > 4.3:
 				_check(Controls.touch_look, "按住看遠按鈕")
-				_touch(2, Vector2(size.x - 96, size.y - 290), false)
-				_touch(3, Vector2(size.x - 84, 214), true)
-				_touch(3, Vector2(size.x - 84, 214), false)
+				_touch(2, _center(touch, "look"), false)
+				_start_pos = k.global_position
+				_touch(4, _center(touch, "jump"), true)
 				_step = 4
 		4:
-			if _t > 4.6:
+			if _t > 4.45:
+				_check(k.global_position.y > _start_pos.y + 3.0, "跳躍按鈕讓球跳起來（升高 %.1f 公分）" % (k.global_position.y - _start_pos.y))
+				_touch(4, _center(touch, "jump"), false)
+				_step = 5
+		5:
+			if _t > 5.6:
+				_check(not Controls.touch_jump_held, "放開跳躍按鈕")
+				_touch(5, _center(touch, "view"), true)
+				_touch(5, _center(touch, "view"), false)
+				_step = 6
+		6:
+			if _t > 5.8:
+				_check(_stage.cam.view == 4, "視角按鈕切到下一個視角（現在 %d）" % _stage.cam.view)
 				_check(not Controls.touch_look, "放開看遠按鈕")
+				_touch(3, _center(touch, "pause"), true)
+				_touch(3, _center(touch, "pause"), false)
+				_step = 7
+		7:
+			if _t > 6.1:
 				_check(get_tree().paused, "暫停按鈕讓遊戲暫停")
 				get_tree().paused = false
 				_finish()

@@ -26,10 +26,15 @@
 | --- | --- | --- |
 | 前進／後退 | W／S | 左搖桿上下 |
 | 轉彎 | A／D | 左搖桿左右，或右搖桿左右 |
-| 衝刺 | Shift | X |
-| 轉身 180 度 | Space | Y |
+| 跳躍（按住跳更高，跑越快跳越遠） | 空白鍵 | A |
+| 衝刺 | Shift 按一下 | X |
+| 轉身 180 度 | Shift 連按兩下 | Y |
+| 第一人稱環視（WASD 看四周） | E | LB |
+| 切換視角（1 第一人稱、2 近、3 標準、4 遠、5 正面） | 數字 1 到 5 | Back |
 | 看遠一點 | Tab | RB |
 | 暫停 | Esc | Start |
+
+手機與平板：左半邊按住拖曳走路和轉彎，右邊有跳躍、衝刺、轉身、看遠、視角、暫停按鈕。右上角會顯示目前黏了幾個。
 
 標題畫面可以切換「操作」（簡單操作或原作式雙搖桿）、「注音」（介面字旁加注音）、「不限時間」。
 
@@ -53,10 +58,12 @@
 | 第 1 關達標（5cm） | 第 2 關客廳（15cm） |
 | --- | --- |
 | ![第 1 關達標](docs/screenshots/02_第1關達標5cm.png) | ![第 2 關客廳](docs/screenshots/03_客廳大冒險15cm.png) |
-| 第 3 關兒童角落（13cm） | 標題畫面 |
-| ![第 3 關](docs/screenshots/04_全家走透透13cm.png) | ![標題畫面](docs/screenshots/05_標題畫面.png) |
+| 第 3 關兒童角落（16cm） | 標題畫面 |
+| ![第 3 關](docs/screenshots/04_全家走透透16cm.png) | ![標題畫面](docs/screenshots/05_標題畫面.png) |
 | 結算畫面 | 收藏圖鑑 |
 | ![結算畫面](docs/screenshots/06_結算畫面.png) | ![收藏圖鑑](docs/screenshots/07_收藏圖鑑.png) |
+| 主角（依 Terix 的角色圖建模） | |
+| ![主角](docs/screenshots/08_主角紫色貓咪.png) | |
 
 
 ## 4. 文件
@@ -80,6 +87,7 @@ godot --headless --fixed-fps 60 res://tests/flow_test.tscn
 godot --headless --fixed-fps 60 res://tests/autoplay_test.tscn -- --stage home_1 --seed 1
 godot --headless --fixed-fps 60 res://tests/autoplay_test.tscn -- --stage home_3 --seed 1
 godot --headless --fixed-fps 60 res://tests/touch_test.tscn
+godot --headless --fixed-fps 60 res://tests/controls_test.tscn
 ```
 
 
@@ -89,7 +97,10 @@ godot --headless --fixed-fps 60 res://tests/touch_test.tscn
 # 用 Blender 重新產生道具模型（需要 Blender 5.2 或 pip install bpy==5.2.2）
 blender --background --python tools/blender/generate_props.py
 
-# 重新合成暫代音效與配樂
+# 重新合成配樂（電子慢速爵士）與啵、叮、啾啾等音效（需要 numpy）
+python3 tools/audio/generate_music.py
+
+# 重新合成其他基本音效
 python3 tools/audio/generate_audio.py
 ```
 
@@ -100,9 +111,11 @@ python3 tools/audio/generate_audio.py
 
 2. 模型：由 `tools/blender/generate_props.py` 以程式產生，原創。
 
-3. 音效與配樂：由 `tools/audio/generate_audio.py` 以程式合成，原創暫代音。
+3. 音效與配樂：由 `tools/audio/generate_music.py` 與 `tools/audio/generate_audio.py` 以程式合成，原創暫代音。
 
-4. 「塊魂」「Katamari Damacy」為 Bandai Namco 的商標，本專案與其無關，也未使用其任何素材。
+4. 主角：依 Terix 提供的紫色貓咪角色圖，在 Blender 以程式建模（`tools/blender/generate_props.py` 的 pusher 配方）。
+
+5. 「塊魂」「Katamari Damacy」為 Bandai Namco 的商標，本專案與其無關，也未使用其任何素材。
 
 
 ## 8. 存放位置說明

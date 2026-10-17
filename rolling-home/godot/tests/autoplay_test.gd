@@ -9,6 +9,7 @@ extends Node
 ##   --shot-dir PATH    截圖輸出資料夾（預設 user://shots）
 ##   --fast             非截圖時段暫停渲染（物理步長不變），加快軟體渲染下的截圖流程
 ##   --seed N           固定亂數種子，讓測試可重現
+##   --view N           開始時切換到視角 N（1 第一人稱、2 近、3 標準、4 遠、5 正面）
 
 var _stage: Stage
 var _pilot: AutoPilot
@@ -44,6 +45,9 @@ func _ready() -> void:
 	_stage.gate_opened.connect(func(id: String, d: float):
 		print("[autoplay] t=%5.1fs 門檻開啟：%s（直徑 %s）" % [_elapsed, id, KMath.format_size(d)]))
 	add_child(_stage)
+	var view := int(_arg(args, "--view", "0"))
+	if view > 0:
+		_stage.cam.set_view(view)
 	_pilot = AutoPilot.new()
 	_pilot.stage = _stage
 	add_child(_pilot)

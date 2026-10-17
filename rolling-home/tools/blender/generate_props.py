@@ -313,16 +313,157 @@ def build_tangerine():
     cylinder(0.12, 0.4, (0, 0, 5.4), "#6b4f3a", verts=6)
 
 
+def _srgb_to_linear(hex_color):
+    h = hex_color.lstrip("#")
+    rgb = [int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4)]
+    return [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in rgb]
+
+
+def _hex_rgb(hex_color):
+    h = hex_color.lstrip("#")
+    return [int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4)]
+
+
+def _gradient(stops, z):
+    """stops：[(z, "#rrggbb"), ...] 由低到高。
+    回傳 sRGB 數值（不轉線性）：Godot 匯入 glTF 頂點顏色時會再做一次轉換，直接存 sRGB 顯示出來才是原本的顏色。"""
+    if z <= stops[0][0]:
+        return _hex_rgb(stops[0][1])
+    for (z0, c0), (z1, c1) in zip(stops, stops[1:]):
+        if z <= z1:
+            t = (z - z0) / (z1 - z0)
+            t = t * t * (3 - 2 * t)
+            a, b = _hex_rgb(c0), _hex_rgb(c1)
+            return [a[i] + (b[i] - a[i]) * t for i in range(3)]
+    return _hex_rgb(stops[-1][1])
+
+
+def _vertex_material():
+    """顏色來自頂點顏色的霧面材質（glTF 會匯出 COLOR_0，Godot 端再加上絨面光澤）。"""
+    if "pusher_skin" in _materials:
+        return _materials["pusher_skin"]
+    mat = bpy.data.materials.new(name="pusher_skin")
+    mat.use_nodes = True
+    nodes = mat.node_tree.nodes
+    bsdf = nodes.get("Principled BSDF")
+    attr = nodes.new("ShaderNodeVertexColor")
+    attr.layer_name = "Col"
+    mat.node_tree.links.new(attr.outputs["Color"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Roughness"].default_value = 0.85
+    _materials["pusher_skin"] = mat
+    return mat
+
+
+def _skin(obj, stops):
+    """平滑著色＋依高度上漸層色。"""
+    bpy.context.view_layer.update()
+    obj.data.materials.clear()
+    obj.data.materials.append(_vertex_material())
+    for poly in obj.data.polygons:
+        poly.use_smooth = True
+    col = obj.data.color_attributes.new(name="Col", type="FLOAT_COLOR", domain="CORNER")
+    mw = obj.matrix_world
+    for loop in obj.data.loops:
+        z = (mw @ obj.data.vertices[loop.vertex_index].co).z
+        c = _gradient(stops, z)
+        col.data[loop.index].color = (c[0], c[1], c[2], 1.0)
+    obj.data.color_attributes.active_color = col
+    return obj
+
+
+def _smooth_sphere(radius, loc, scale=(1, 1, 1), seg=32, rings=16):
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=seg, ring_count=rings, radius=radius, location=loc)
+    obj = bpy.context.active_object
+    obj.scale = scale
+    bpy.ops.object.transform_apply(scale=True)
+    return obj
+
+
+BODY_STOPS = [(0.6, "#95a8f0"), (2.2, "#b8a8f3"), (3.9, "#d6c2f8")]
+
+
 def build_pusher():
-    """原創推球角色「小滾」：藍色連身衣、圓頭、頭頂一片嫩芽。身高約 4.5 公分，面向 +Y（匯出後即 Godot 的前方 -Z）。"""
-    sphere(0.75, (0, 0, 3.35), "#ffd7b5", subdiv=2)
-    cylinder(0.55, 1.7, (0, 0, 1.75), "#5bc0eb", verts=10, radius2=0.42)
-    sphere(0.11, (-0.32, 0.66, 3.45), "#2b2d42", subdiv=1)
-    sphere(0.11, (0.32, 0.66, 3.45), "#2b2d42", subdiv=1)
-    sphere(0.5, (0.2, 0, 4.2), "#7bc950", scale=(1.2, 0.6, 0.35), subdiv=1)
-    for side in (-1, 1):
-        cylinder(0.18, 1.2, (0.55 * side, 0.55, 2.0), "#5bc0eb", verts=8, rot=(-70, 0, 0))
-        cylinder(0.2, 0.9, (0.35 * side, 0, 0.45), "#2b2d42", verts=8)
+    """主角：圓滾滾的紫色貓咪（依 Terix 提供的角色圖建模）。
+    身高約 4.5 公分（含耳朵），面向 +Y（匯出後即 Godot 的前方 -Z）。
+    可動部件拆成 body / ear_l / ear_r / arm_l / arm_r / foot_l / foot_r，原點在關節，遊戲端旋轉做動畫。
+    左右以角色自身為準：面向 +Y 時左邊是 -X。"""
+    cz, hw, hh, hd = 2.25, 1.75, 1.97, 1.55
+    body = _smooth_sphere(1.0, (0, 0, cz), scale=(hw, hd, hh), seg=40, rings=24)
+    # 蛋形：上半部稍微收窄，最寬處在中間偏下
+    for v in body.data.vertices:
+        t = (v.co.z - cz) / hh
+        k = 1.0 - 0.10 * max(t, 0.0) + 0.03 * max(-t, 0.0) * (1.0 + t)
+        v.co.x *= k
+        v.co.y *= k
+    flatten_bottom(body, 0.32)
+    body.data.update()
+    _skin(body, BODY_STOPS)
+
+    def surface_y(x, z):
+        t = (z - cz) / hh
+        k = 1.0 - 0.10 * max(t, 0.0) + 0.03 * max(-t, 0.0) * (1.0 + t)
+        inner = 1.0 - (x / (hw * k)) ** 2 - t * t
+        return hd * k * math.sqrt(max(inner, 0.0))
+
+    parts = [body]
+    # 眼睛：亮面黑珠子＋小反光點
+    for sx in (-1, 1):
+        ex, ez = 0.76 * sx, 2.98
+        ey = surface_y(ex, ez) - 0.05
+        eye = _smooth_sphere(0.13, (ex, ey, ez), scale=(1.0, 0.7, 1.2), seg=16, rings=10)
+        finish(eye, "#141414")
+        for poly in eye.data.polygons:
+            poly.use_smooth = True
+        eye.data.materials[0].name = "pusher_eye"
+        parts.append(eye)
+        glint = _smooth_sphere(0.035, (ex + 0.04, ey + 0.08, ez + 0.06), seg=8, rings=6)
+        finish(glint, "#ffffff")
+        parts.append(glint)
+    # 嘴巴：小小的微笑弧線
+    pts = []
+    for i in range(9):
+        a = math.radians(205 + 130 * i / 8)
+        x, z = 0.2 * math.cos(a), 2.78 + 0.13 * math.sin(a)
+        pts.append((x, surface_y(x, z) + 0.005, z))
+    for p1, p2 in zip(pts, pts[1:]):
+        seg = limb(p1, p2, 0.028, 0.028, "#2a2030", verts=6)
+        for poly in seg.data.polygons:
+            poly.use_smooth = True
+        parts.append(seg)
+    join(parts, "body", pivot=(0, 0, 0))
+
+    # 耳朵：圓錐，尖端略圓，向外微傾
+    for sx, name in ((-1, "ear_l"), (1, "ear_r")):
+        base = (1.05 * sx, -0.05, 3.55)
+        bpy.ops.mesh.primitive_cone_add(vertices=24, radius1=0.66, radius2=0.17, depth=0.95, location=(0, 0, 0.475))
+        ear = bpy.context.active_object
+        tip = _smooth_sphere(0.17, (0, 0, 0.95), seg=12, rings=8)
+        bpy.ops.object.select_all(action="DESELECT")
+        ear.select_set(True)
+        tip.select_set(True)
+        bpy.context.view_layer.objects.active = ear
+        bpy.ops.object.join()
+        ear.data.transform(Matrix.Diagonal((1.0, 0.8, 1.0, 1.0)))
+        ear.data.transform(Euler((math.radians(-8), math.radians(20 * sx), 0)).to_matrix().to_4x4())
+        ear.data.transform(Matrix.Translation(Vector(base)))
+        _skin(ear, [(3.6, "#b19cf2"), (4.5, "#c9aaf5")])
+        join([ear], name, pivot=base)
+
+    # 短短的手：在身體兩側，原點在肩膀
+    for sx, name in ((-1, "arm_l"), (1, "arm_r")):
+        shoulder = (1.55 * sx, 0.05, 2.45)
+        arm = _smooth_sphere(1.0, (1.82 * sx, 0.05, 1.78), scale=(0.3, 0.34, 0.74), seg=20, rings=12)
+        spin(arm, (0, 14 * sx, 0), shoulder)
+        _skin(arm, BODY_STOPS)
+        join([arm], name, pivot=shoulder)
+
+    # 兩隻小腳：原點在髖部
+    for sx, name in ((-1, "foot_l"), (1, "foot_r")):
+        hip = (0.82 * sx, 0.1, 0.55)
+        foot = _smooth_sphere(1.0, (0.86 * sx, 0.18, 0.2), scale=(0.36, 0.42, 0.3), seg=20, rings=12)
+        flatten_bottom(foot, 0.0)
+        _skin(foot, [(0.0, "#8a9be6"), (0.6, "#95a8f0")])
+        join([foot], name, pivot=hip)
 
 
 # ---------- 動物（可動部件） ----------

@@ -36,6 +36,8 @@ theme/custom_font="res://assets/fonts/Huninn-Regular.ttf"
 
 [physics]
 
+common/physics_interpolation=true
+
 3d/physics_engine="Jolt Physics"
 3d/default_gravity=980.0
 common/physics_ticks_per_second=60

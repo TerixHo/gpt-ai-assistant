@@ -7,6 +7,8 @@ extends Node
 ##   兩桿上下快速交替 = 王子衝刺；同時按下兩桿（L3+R3）= 180 度迴轉。
 ## 簡化模式（預設，適合小學生）：鍵盤 W/S 前後、A/D 轉向；手把左桿上下前後、左右轉向，右桿左右也能轉向。
 ## 簡化模式會先轉成同樣的虛擬雙搖桿，後段邏輯完全共用。
+## 其他按鍵：空白鍵跳躍（按住跳比較高）、Shift 衝刺、連按兩下 Shift 轉身、E 第一人稱環視、
+## 數字鍵 1 到 5 切換視角（1 第一人稱、2 近、3 標準、4 遠、5 正面）、Tab 看遠一點、Esc 暫停。
 
 class Drive:
 	## x 為向右平移、y 為前進（相機座標），長度不超過 1
@@ -16,6 +18,13 @@ class Drive:
 	var dash := false
 	var quick_turn := false
 	var look_up := false
+	var jump := false
+	var jump_held := false
+	## 1 到 5：切換到指定視角；-1：切到下一個視角；0：不變
+	var view := 0
+	var free_look_toggle := false
+	## 第一人稱環視時用來看上下左右（x 向右、y 向上）
+	var look := Vector2.ZERO
 	var left := Vector2.ZERO
 	var right := Vector2.ZERO
 
@@ -23,6 +32,11 @@ const DEADZONE := 0.2
 const DASH_STICK_THRESHOLD := 0.6
 const DASH_FLIPS_NEEDED := 4
 const DASH_FLIP_WINDOW := 0.4
+## 連按兩下 Shift 的間隔上限（秒）。單按 Shift 要等這段時間確認沒有第二下才衝刺
+const DOUBLE_TAP_WINDOW := 0.28
+## 鍵盤轉向的漸進速度（每秒），避免一按下去鏡頭就瞬間全速轉
+const TURN_RAMP_UP := 7.0
+const TURN_RAMP_DOWN := 10.0
 
 ## 測試與展示用：設定後完全取代硬體輸入
 var override_drive: Drive = null
@@ -33,11 +47,16 @@ var touch_stick := Vector2.ZERO
 var touch_dash := false
 var touch_turn := false
 var touch_look := false
+var touch_jump := false
+var touch_jump_held := false
+var touch_view_cycle := false
 
 var _flip_count := 0
 var _flip_timer := 0.0
 var _last_flip_sign := 0
 var _stick_click_latch := false
+var _shift_wait := -1.0
+var _turn := 0.0
 
 
 func _ready() -> void:
@@ -49,15 +68,19 @@ func _register_actions() -> void:
 	_add_keys("kb_back", [KEY_S])
 	_add_keys("kb_left", [KEY_A])
 	_add_keys("kb_right", [KEY_D])
-	_add_keys("kb_strafe_left", [KEY_Q])
-	_add_keys("kb_strafe_right", [KEY_E])
 	_add_keys("kb_r_forward", [KEY_UP, KEY_I])
 	_add_keys("kb_r_back", [KEY_DOWN, KEY_K])
 	_add_keys("kb_r_left", [KEY_LEFT, KEY_J])
 	_add_keys("kb_r_right", [KEY_RIGHT, KEY_L])
-	_add_keys("dash", [KEY_SHIFT], [JOY_BUTTON_X])
-	_add_keys("quick_turn", [KEY_SPACE], [JOY_BUTTON_Y])
+	_add_keys("kb_shift", [KEY_SHIFT])
+	_add_keys("dash", [], [JOY_BUTTON_X])
+	_add_keys("quick_turn", [], [JOY_BUTTON_Y])
+	_add_keys("jump", [KEY_SPACE], [JOY_BUTTON_A])
 	_add_keys("look_up", [KEY_TAB], [JOY_BUTTON_RIGHT_SHOULDER])
+	_add_keys("free_look", [KEY_E], [JOY_BUTTON_LEFT_SHOULDER])
+	_add_keys("view_next", [KEY_V], [JOY_BUTTON_BACK])
+	for i in 5:
+		_add_keys("view_%d" % (i + 1), [KEY_1 + i, KEY_KP_1 + i])
 	_add_keys("pause", [KEY_ESCAPE, KEY_P], [JOY_BUTTON_START])
 	_add_keys("toggle_scheme", [KEY_F2])
 
@@ -116,9 +139,8 @@ func read(delta: float) -> Drive:
 	if simple:
 		var fwd := Input.get_axis("kb_back", "kb_forward")
 		var turn := Input.get_axis("kb_left", "kb_right")
-		var strafe := Input.get_axis("kb_strafe_left", "kb_strafe_right")
-		left += Vector2(strafe, fwd + turn)
-		right += Vector2(strafe, fwd - turn)
+		left += Vector2(0.0, fwd + turn)
+		right += Vector2(0.0, fwd - turn)
 	else:
 		left += Vector2(Input.get_axis("kb_left", "kb_right"), Input.get_axis("kb_back", "kb_forward"))
 		right += Vector2(Input.get_axis("kb_r_left", "kb_r_right"), Input.get_axis("kb_r_back", "kb_r_forward"))
@@ -133,8 +155,27 @@ func read(delta: float) -> Drive:
 	d.left = left
 	d.right = right
 	d.move = ((left + right) * 0.5).limit_length(1.0)
-	d.turn = clampf((left.y - right.y) * 0.5, -1.0, 1.0)
+	var raw_turn := clampf((left.y - right.y) * 0.5, -1.0, 1.0)
+	var ramp := TURN_RAMP_UP if absf(raw_turn) > absf(_turn) else TURN_RAMP_DOWN
+	_turn = move_toward(_turn, raw_turn, ramp * delta)
+	d.turn = _turn
 	d.look_up = Input.is_action_pressed("look_up") or touch_look
+	d.jump = Input.is_action_just_pressed("jump") or touch_jump
+	d.jump_held = Input.is_action_pressed("jump") or touch_jump_held or touch_jump
+	touch_jump = false
+	d.free_look_toggle = Input.is_action_just_pressed("free_look")
+	for i in 5:
+		if Input.is_action_just_pressed("view_%d" % (i + 1)):
+			d.view = i + 1
+	if Input.is_action_just_pressed("view_next") or touch_view_cycle:
+		d.view = -1
+	touch_view_cycle = false
+	d.look = Vector2(
+		Input.get_axis("kb_left", "kb_right") + Input.get_axis("kb_r_left", "kb_r_right"),
+		Input.get_axis("kb_back", "kb_forward") + Input.get_axis("kb_r_back", "kb_r_forward"))
+	if not pads.is_empty():
+		d.look += _stick(pads[0], JOY_AXIS_RIGHT_X, JOY_AXIS_RIGHT_Y) + _stick(pads[0], JOY_AXIS_LEFT_X, JOY_AXIS_LEFT_Y)
+	d.look = d.look.limit_length(1.0)
 
 	# 180 度迴轉：同時按兩桿（只在按下瞬間觸發一次）或快捷鍵
 	if stick_click and not _stick_click_latch:
@@ -146,6 +187,18 @@ func read(delta: float) -> Drive:
 
 	d.dash = Input.is_action_just_pressed("dash") or touch_dash or _detect_dash_gesture(left, right, delta)
 	touch_dash = false
+	# 鍵盤 Shift：連按兩下＝轉身；只按一下＝衝刺（等確認沒有第二下才出發）
+	if Input.is_action_just_pressed("kb_shift"):
+		if _shift_wait >= 0.0:
+			d.quick_turn = true
+			_shift_wait = -1.0
+		else:
+			_shift_wait = 0.0
+	elif _shift_wait >= 0.0:
+		_shift_wait += delta
+		if _shift_wait > DOUBLE_TAP_WINDOW:
+			d.dash = true
+			_shift_wait = -1.0
 	if Input.is_action_just_pressed("toggle_scheme"):
 		toggle_scheme()
 	return d
