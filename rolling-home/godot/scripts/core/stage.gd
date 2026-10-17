@@ -57,6 +57,11 @@ var _rescue_shown := false
 ## 成長歡呼：下一個里程碑（公分）與冷卻
 var _next_milestone := 0.0
 var _cheer_cooldown := 0.0
+## 落花範圍（xz 矩形）：在樹下偶爾有花瓣的叮鈴聲
+var _petal_rects: Array[Rect2] = []
+var _petal_timer := 3.0
+var _in_water := false
+var _ground_ray := PhysicsRayQueryParameters3D.new()
 
 
 func setup(id: String) -> void:
@@ -84,6 +89,10 @@ func _ready() -> void:
 	items_root = Node3D.new()
 	items_root.name = "Items"
 	add_child(items_root)
+	for pt in level.get("petals", []):
+		var c := KMath.vec3(pt.get("pos"))
+		var sz := KMath.vec3(pt.get("size"), Vector3(200, 150, 200))
+		_petal_rects.append(Rect2(c.x - sz.x * 0.5, c.z - sz.z * 0.5, sz.x, sz.z))
 	var built := LevelBuilder.build(level, self, items_root, stage_def.get("zones", []), int(stage_def.get("seed", 1)))
 	spawned_count = built["spawned"]
 	_areas = built["areas"]
@@ -407,10 +416,12 @@ func _check_gates() -> void:
 
 func _check_area(delta: float) -> void:
 	_area_timer -= delta
+	_petal_timer -= delta
 	if _area_timer > 0.0:
 		return
 	_area_timer = 0.3
 	var p := katamari.global_position
+	_check_ambient(p)
 	for a in _areas:
 		var r: Array = a["rect"]
 		if Rect2(float(r[0]), float(r[1]), float(r[2]), float(r[3])).has_point(Vector2(p.x, p.z)):
@@ -418,6 +429,24 @@ func _check_area(delta: float) -> void:
 				_current_area = a["name"]
 				hud.show_area(_current_area)
 			return
+
+
+## 環境音：在落花樹下偶爾叮鈴一聲；剛滾進水裡（水面地板）時嘩一聲水花。
+func _check_ambient(p: Vector3) -> void:
+	if _petal_timer <= 0.0:
+		for r in _petal_rects:
+			if r.grow(katamari.diameter).has_point(Vector2(p.x, p.z)):
+				Sfx.play_varied("petal", 1.0, 0.08, -6.0)
+				_petal_timer = 6.0
+				break
+	_ground_ray.from = p
+	_ground_ray.to = p - Vector3.UP * (katamari.radius() + katamari.diameter * 0.2 + 2.0)
+	_ground_ray.collision_mask = KMath.LAYER_WORLD
+	var hit := get_world_3d().direct_space_state.intersect_ray(_ground_ray)
+	var water: bool = not hit.is_empty() and (hit["collider"] as Object).get_meta("pattern", "") == "water"
+	if water and not _in_water:
+		Sfx.play_varied("splash", 1.0, 0.06)
+	_in_water = water
 
 
 func _update_hud() -> void:

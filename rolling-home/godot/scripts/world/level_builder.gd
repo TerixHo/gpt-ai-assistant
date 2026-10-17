@@ -98,6 +98,7 @@ static func _build_floor(f: Dictionary, parent: Node3D) -> void:
 	var mat := ProcTex.floor_material(f.get("pattern", "plain"), f.get("color", "#c8a878"), float(f.get("repeat", 90.0)))
 	var body := _static_box(parent, size, center, mat)
 	body.name = "Floor_%s" % f.get("name", "")
+	body.set_meta("pattern", f.get("pattern", "plain"))
 
 
 ## 牆：from/to 為牆中線端點；gaps 為門洞 [起點距離, 終點距離, (門楣高度)]。
@@ -148,6 +149,7 @@ static func _build_block(b: Dictionary, parent: Node3D) -> void:
 		mat = PropFactory.material(b.get("color", "#cccccc"))
 	var body := _static_box(parent, size, pos + Vector3(0, size.y * 0.5, 0), mat, KMath.LAYER_WORLD, float(b.get("rot", 0.0)))
 	body.name = "Block_%s" % b.get("name", "")
+	body.set_meta("pattern", b.get("pattern", "plain"))
 
 
 ## 斜坡：從 from 到 to 的傾斜板（例如靠在矮桌邊的尺或雜誌）。
