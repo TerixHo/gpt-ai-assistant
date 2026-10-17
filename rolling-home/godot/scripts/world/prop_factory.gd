@@ -4,6 +4,10 @@ class_name PropFactory
 ## 優先使用 Blender 管線輸出的 assets/models/props/<model>.glb；
 ## 沒有模型時，以 dims / parts 定義的低多邊形幾何組合代替，確保專案隨時可執行。
 ## 物件原點一律在「底面中心」，放置時只要把 y 設成地面高度即可。
+##
+## 效能（iPad 網頁版）：一般物件的所有零件（或模型的所有材質面）合併成一個頂點色網格，
+## 一件物件只要畫一次；同一種物件同一個顏色共用同一份網格。會動的動物保留分開的零件（要做動畫）。
+## 另外依物件大小設定可見距離，遠處的小東西不畫。
 
 const MODEL_DIR := "res://assets/models/props/"
 
@@ -11,6 +15,8 @@ static var _materials: Dictionary = {}
 static var _meshes: Dictionary = {}
 static var _shapes: Dictionary = {}
 static var _models: Dictionary = {}
+static var _merged: Dictionary = {}
+static var _vc_material: StandardMaterial3D
 
 
 ## 吸附尺寸（遊戲用的「大小」，也顯示在收藏目錄）。
@@ -22,6 +28,8 @@ static func clear_cache() -> void:
 	_meshes.clear()
 	_shapes.clear()
 	_models.clear()
+	_merged.clear()
+	_vc_material = null
 
 
 static func size_of(def: Dictionary) -> float:
@@ -62,8 +70,18 @@ static func build(def: Dictionary, color_override := "") -> Dictionary:
 		if p.get("collide", true):
 			shapes.append({"shape": _collision_shape(shape_type, dims), "xform": xform})
 	var model := _model_scene(def)
-	if model != null:
+	var animated := def.has("critter")
+	if model != null and animated:
 		visual.add_child(_fit_model(model, def))
+	elif model != null:
+		var merged := _merged_model(model, def)
+		visual.add_child(merged if merged != null else _fit_model(model, def))
+	elif not animated:
+		var mi := MeshInstance3D.new()
+		mi.name = "Merged"
+		mi.mesh = _merged_parts(def, parts, color_override)
+		mi.material_override = vertex_color_material()
+		visual.add_child(mi)
 	else:
 		for p in parts:
 			var shape_type: String = p.get("shape", "box")
@@ -78,7 +96,143 @@ static func build(def: Dictionary, color_override := "") -> Dictionary:
 			if p.has("name"):
 				mi.name = p["name"]
 			visual.add_child(mi)
+	_apply_visibility(visual, size_of(def))
 	return {"visual": visual, "shapes": shapes}
+
+
+## 合併網格用的共用材質：顏色來自頂點顏色（sRGB），霧面、無高光，和單色零件的材質看起來一樣。
+static func vertex_color_material() -> StandardMaterial3D:
+	if _vc_material == null:
+		_vc_material = StandardMaterial3D.new()
+		_vc_material.vertex_color_use_as_albedo = true
+		_vc_material.vertex_color_is_srgb = true
+		_vc_material.roughness = 1.0
+		_vc_material.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
+	return _vc_material
+
+
+## 依大小設定可見距離：小東西離鏡頭遠就不畫（鏡頭會跟著球的大小退後，所以只影響相對很小的東西）。
+static func _apply_visibility(node: Node, size: float) -> void:
+	if node is GeometryInstance3D:
+		var gi := node as GeometryInstance3D
+		gi.visibility_range_end = size * 220.0 + 300.0
+		gi.visibility_range_end_margin = size * 20.0 + 20.0
+	for c in node.get_children():
+		_apply_visibility(c, size)
+
+
+## parts 物件：每個零件的基本形狀轉成頂點、套上零件的位置與顏色，合併成一個網格。
+static func _merged_parts(def: Dictionary, parts: Array, color_override: String) -> ArrayMesh:
+	var key := "%s|%s" % [def.get("id", ""), color_override]
+	if _merged.has(key):
+		return _merged[key]
+	var verts := PackedVector3Array()
+	var norms := PackedVector3Array()
+	var cols := PackedColorArray()
+	var idx := PackedInt32Array()
+	for p in parts:
+		var shape_type: String = p.get("shape", "box")
+		var dims := KMath.vec3(p.get("dims"), Vector3.ONE)
+		var hex: String = p.get("color", def.get("color", "#cccccc"))
+		if not color_override.is_empty() and (p.get("tint", false) or def.get("shape", "box") != "parts"):
+			hex = color_override
+		var prim := _mesh(shape_type, dims) as PrimitiveMesh
+		_append_arrays(prim.get_mesh_arrays(), _part_xform(p, dims), KMath.color(hex), verts, norms, cols, idx)
+	var mesh := _commit(verts, norms, cols, idx)
+	_merged[key] = mesh
+	return mesh
+
+
+static func _append_arrays(arr: Array, xform: Transform3D, c: Color, verts: PackedVector3Array, norms: PackedVector3Array,
+		cols: PackedColorArray, idx: PackedInt32Array) -> void:
+	var pv: PackedVector3Array = arr[Mesh.ARRAY_VERTEX]
+	var pn: PackedVector3Array = arr[Mesh.ARRAY_NORMAL] if arr[Mesh.ARRAY_NORMAL] != null else PackedVector3Array()
+	var pc: PackedColorArray = arr[Mesh.ARRAY_COLOR] if arr[Mesh.ARRAY_COLOR] != null else PackedColorArray()
+	var base := verts.size()
+	var nb := xform.basis.inverse().transposed()
+	for i in pv.size():
+		verts.append(xform * pv[i])
+		norms.append((nb * pn[i]).normalized() if i < pn.size() else Vector3.UP)
+		cols.append(c * pc[i] if i < pc.size() else c)
+	if arr[Mesh.ARRAY_INDEX] != null:
+		for j in (arr[Mesh.ARRAY_INDEX] as PackedInt32Array):
+			idx.append(base + j)
+	else:
+		for j in pv.size():
+			idx.append(base + j)
+
+
+static func _commit(verts: PackedVector3Array, norms: PackedVector3Array, cols: PackedColorArray, idx: PackedInt32Array) -> ArrayMesh:
+	var arrays := []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = verts
+	arrays[Mesh.ARRAY_NORMAL] = norms
+	arrays[Mesh.ARRAY_COLOR] = cols
+	arrays[Mesh.ARRAY_INDEX] = idx
+	var mesh := ArrayMesh.new()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	return mesh
+
+
+## Blender 模型：所有材質面合併成一個頂點色網格（材質都是純色）。有貼圖的模型回傳 null，改用原模型。
+static func _merged_model(scene: PackedScene, def: Dictionary) -> Node3D:
+	var key := "model|%s" % def.get("model", "")
+	var mesh: ArrayMesh = _merged.get(key)
+	if mesh == null and not _merged.has(key):
+		mesh = _merge_scene(scene)
+		_merged[key] = mesh
+	if mesh == null:
+		return null
+	var holder := Node3D.new()
+	holder.name = "Model"
+	var mi := MeshInstance3D.new()
+	mi.name = "Merged"
+	mi.mesh = mesh
+	mi.material_override = vertex_color_material()
+	holder.add_child(mi)
+	var aabb := mesh.get_aabb()
+	if aabb.size.length() < 0.0001:
+		return holder
+	var dims := dims_of(def)
+	var k := maxf(dims.x, maxf(dims.y, dims.z)) / maxf(aabb.size.x, maxf(aabb.size.y, aabb.size.z))
+	holder.scale = Vector3.ONE * k
+	mi.position = -Vector3(aabb.get_center().x, aabb.position.y, aabb.get_center().z)
+	return holder
+
+
+static func _merge_scene(scene: PackedScene) -> ArrayMesh:
+	var inst: Node3D = scene.instantiate()
+	var verts := PackedVector3Array()
+	var norms := PackedVector3Array()
+	var cols := PackedColorArray()
+	var idx := PackedInt32Array()
+	var ok := _collect(inst, Transform3D.IDENTITY, verts, norms, cols, idx)
+	inst.free()
+	if not ok or verts.is_empty():
+		return null
+	return _commit(verts, norms, cols, idx)
+
+
+static func _collect(node: Node, parent_xform: Transform3D, verts: PackedVector3Array, norms: PackedVector3Array,
+		cols: PackedColorArray, idx: PackedInt32Array) -> bool:
+	var xform := parent_xform
+	if node is Node3D:
+		xform = parent_xform * (node as Node3D).transform
+	if node is MeshInstance3D and (node as MeshInstance3D).mesh != null:
+		var mi := node as MeshInstance3D
+		for s in mi.mesh.get_surface_count():
+			var mat := mi.get_active_material(s)
+			var c := Color.WHITE
+			if mat is BaseMaterial3D:
+				var bm := mat as BaseMaterial3D
+				if bm.albedo_texture != null:
+					return false
+				c = bm.albedo_color
+			_append_arrays(mi.mesh.surface_get_arrays(s), xform, c, verts, norms, cols, idx)
+	for child in node.get_children():
+		if not _collect(child, xform, verts, norms, cols, idx):
+			return false
+	return true
 
 
 ## 把簡單形狀與組合形狀統一成 parts 陣列。
